@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ── Brand Primary Palette ── */
+  --shiny-blue: #5271FF;
+  --ryleigh: #B5B7F6;
+  --common-lilac: #E5C3F0;
+  --comfort-ice: #ACE1E4;
+
+  /* ── Primary Scale ── */
+  --primary-50: #EEF0FF;
+  --primary-100: #D8DCFF;
+  --primary-200: #B6BEFF;
+  --primary-300: #96A3FF;
+  --primary-400: #768AFF;
+  --primary-500: #5271FF;
+  --primary-600: #264AAF;
+  --primary-700: #0D3997;
+  --primary-800: #001681;
+  --primary-900: #141E3A;
+  --primary-950: #121315;
+
+  /* ── Surface Scale ── */
+  --surface-50: #FBFBFB;
+  --surface-100: #EFEFEF;
+  --surface-200: #DADADA;
+  --surface-300: #B9B9B9;
+  --surface-400: #979797;
+  --surface-500: #666666;
+  --surface-600: #5C5C5C;
+  --surface-700: #474747;
+  --surface-800: #3A3A3A;
+  --surface-900: #2F2F2F;
+  --surface-950: #1B1B1B;
+
+  /* ── Semantic ── */
+  --error: #FF5252;
+  --warning: #FFB84D;
+  --success: #4DCC8F;
+  --info: #5271FF;
+
+  /* ── Brand Gradients ── */
+  --gradient-brand: linear-gradient(135deg, #7C6CF8, #E879A0);
+  --gradient-galaxy: linear-gradient(135deg, #0D3997 0%, #5271FF 40%, #7C6CF8 70%, #E879A0 100%);
+  --gradient-nebula: radial-gradient(ellipse at 20% 50%, rgba(82, 113, 255, 0.15) 0%, transparent 50%),
+                     radial-gradient(ellipse at 80% 20%, rgba(181, 183, 246, 0.1) 0%, transparent 40%),
+                     radial-gradient(ellipse at 60% 80%, rgba(229, 195, 240, 0.08) 0%, transparent 40%);
+  --gradient-aurora: linear-gradient(135deg, #5271FF, #B5B7F6, #E5C3F0, #ACE1E4);
+
+  /* ── Typography ── */
+  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+
+  /* ── Radius ── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* ── Layout ── */
+  --sidebar-width: 256px;
+
+  /* ── Galaxy Theme ── */
+  --bg-app: #08090e;
+  --bg-sidebar: rgba(12, 13, 18, 0.92);
+  --bg-card: rgba(27, 27, 35, 0.5);
+  --bg-card-hover: rgba(40, 40, 55, 0.5);
+  --border-subtle: rgba(82, 113, 255, 0.1);
+  --border-card: rgba(255, 255, 255, 0.06);
+  --glow-primary: rgba(82, 113, 255, 0.25);
+
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-app);
+  color: var(--surface-200);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  display: flex;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--surface-800); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--surface-700); }
+
+::selection {
+  background: rgba(82, 113, 255, 0.3);
+  color: #fff;
+}
