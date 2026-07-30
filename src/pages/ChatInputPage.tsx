@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 export function ChatInputPage() {
   const [audioBars, setAudioBars] = useState<number[]>(() =>
@@ -12,7 +12,7 @@ export function ChatInputPage() {
     return () => clearInterval(id)
   }, [])
 
-  const fileInputRef = useRef<HTMLInputElement>(null)
+
 
   return (
     <>
