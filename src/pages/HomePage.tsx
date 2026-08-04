@@ -113,16 +113,31 @@ export function HomePage() {
       {/* Stats */}
       <section className="home-stats">
         {[
-          { num: '4', label: 'Brand colors' },
-          { num: '24', label: 'Components' },
-          { num: '11', label: 'Token scales' },
-          { num: '3', label: 'Type families' },
+          { num: '5', label: 'Products' },
+          { num: '40', label: 'Component sets' },
+          { num: '3.9K', label: 'Lines of CSS' },
+          { num: '1', label: 'Source of truth' },
         ].map((s) => (
           <div key={s.label} className="home-stat">
             <div className="home-stat-num">{s.num}</div>
             <div className="home-stat-label">{s.label}</div>
           </div>
         ))}
+      </section>
+
+      {/* Download */}
+      <section className="home-download">
+        <div className="home-section-label">Get the System</div>
+        <p className="home-download-desc">
+          One CSS file. Every token, component, and layout from all HumAIne products — Enterprise, Personal, Admin, Backoffice, and Mobile.
+        </p>
+        <a href="/cosmos-design-system.css" download className="home-download-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download cosmos-design-system.css
+          <span className="home-download-size">249 KB</span>
+        </a>
       </section>
 
       {/* Principles — compact */}
