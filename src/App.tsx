@@ -25,6 +25,7 @@ import { DividerPage } from './pages/DividerPage'
 import { TooltipPage } from './pages/TooltipPage'
 import { ListItemPage } from './pages/ListItemPage'
 import { SocialButtonPage } from './pages/SocialButtonPage'
+import { MobilePage } from './pages/MobilePage'
 
 export const CopyContext = createContext<(t: string) => void>(() => {})
 export const useCopy = () => useContext(CopyContext)
@@ -33,6 +34,7 @@ type PageId =
   | 'home' | 'philosophy' | 'logo' | 'colors' | 'typography' | 'radius' | 'spacing' | 'shadows' | 'gradients'
   | 'buttons' | 'inputs' | 'cards' | 'badges' | 'navigation' | 'chat-input' | 'data-display'
   | 'tabs' | 'chips' | 'avatar' | 'toggle' | 'modal' | 'divider' | 'tooltip' | 'list-item' | 'social-button'
+  | 'mobile'
 
 const NAV = [
   {
@@ -75,6 +77,12 @@ const NAV = [
       { id: 'data-display' as PageId, label: 'Table & KPI', icon: 'chart', color: '#ACE1E4' },
     ],
   },
+  {
+    section: 'Mobile',
+    items: [
+      { id: 'mobile' as PageId, label: 'Mobile System', icon: 'phone', color: '#a78bfa' },
+    ],
+  },
 ]
 
 const PAGES: Record<PageId, React.FC> = {
@@ -103,6 +111,7 @@ const PAGES: Record<PageId, React.FC> = {
   tooltip: TooltipPage,
   divider: DividerPage,
   'data-display': DataDisplayPage,
+  mobile: MobilePage,
 }
 
 function NavIcon({ name }: { name: string }) {
@@ -133,6 +142,7 @@ function NavIcon({ name }: { name: string }) {
     info: <svg {...s} viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>,
     minus: <svg {...s} viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/></svg>,
     chart: <svg {...s} viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>,
+    phone: <svg {...s} viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>,
   }
   return <span className="nav-icon">{icons[name] || null}</span>
 }
