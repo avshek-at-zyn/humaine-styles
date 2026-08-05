@@ -3,35 +3,34 @@ export function MobilePage() {
   return (
     <>
       <div className="page-header">
-        <div className="page-badge" style={{ background: 'rgba(167,139,250,0.15)', color: '#a78bfa' }}>Mobile</div>
-        <h1 className="page-title">Mobile Design System</h1>
+        <div className="page-badge">Mobile</div>
+        <h1 className="page-title">Mobile System</h1>
         <p className="page-desc">
-          Components, patterns and tokens for the HumAIne Personal mobile app. Built for 430px max-width, dark-first with animated galaxy backgrounds, safe-area insets, and touch-optimised interactions.
+          Mobile-specific patterns for HumAIne Personal. All components use the same Cosmos tokens as the web apps — same colours, same radii, same typography. Only the layout adapts: 430px max-width, safe-area insets, and touch-optimised sizing.
         </p>
       </div>
 
-      {/* ── Tokens ── */}
+      {/* ── Token Mapping ── */}
       <div className="section">
-        <h2 className="section-title">Tokens</h2>
-        <p className="section-desc">Mobile uses a distinct token set from the web apps — different brand palette, DM Sans as primary font, and frosted-glass surfaces.</p>
+        <h2 className="section-title">Token Mapping</h2>
+        <p className="section-desc">Mobile uses the exact same Cosmos tokens as web. The table below shows how each mobile surface maps to the shared token set.</p>
         <table className="demo-table">
-          <thead><tr><th>Token</th><th>Value</th><th>Notes</th></tr></thead>
+          <thead><tr><th>Surface</th><th>Cosmos Token</th><th>Value</th></tr></thead>
           <tbody>
-            <tr><td>--bg</td><td>#090b14</td><td>App background</td></tr>
-            <tr><td>--bg-card</td><td>rgba(255,255,255,0.05)</td><td>Card / surface</td></tr>
-            <tr><td>--bg-input</td><td>rgba(14,17,35,0.8)</td><td>Input fields</td></tr>
-            <tr><td>--border-input</td><td>rgba(255,255,255,0.1)</td><td>Default border</td></tr>
-            <tr><td>--border-input-focus</td><td>rgba(139,92,246,0.55)</td><td>Focus ring</td></tr>
-            <tr><td>--text-primary</td><td>#ffffff</td><td>Headings &amp; body</td></tr>
-            <tr><td>--text-secondary</td><td>rgba(255,255,255,0.5)</td><td>Hints &amp; labels</td></tr>
-            <tr><td>--text-muted</td><td>rgba(255,255,255,0.3)</td><td>Placeholders</td></tr>
-            <tr><td>--brand-purple</td><td>#9b7dff</td><td>Primary accent</td></tr>
-            <tr><td>--brand-pink</td><td>#fa81d6</td><td>Gradient end</td></tr>
-            <tr><td>--gradient-btn</td><td>linear-gradient(90deg, #7c3aed, #db2777)</td><td>CTA buttons</td></tr>
-            <tr><td>--gradient-brand</td><td>linear-gradient(90deg, #a78bfa, #fa81d6)</td><td>Brand text</td></tr>
-            <tr><td>--error-text</td><td>#fc8181</td><td>Validation errors</td></tr>
-            <tr><td>--success</td><td>#04bd67</td><td>Success states</td></tr>
-            <tr><td>--font</td><td>DM Sans</td><td>Primary typeface</td></tr>
+            <tr><td>App background</td><td>var(--bg-primary)</td><td>#121315</td></tr>
+            <tr><td>Card / elevated</td><td>var(--surface-950)</td><td>#1b1b1b</td></tr>
+            <tr><td>Input field</td><td>var(--surface-950)</td><td>#1b1b1b</td></tr>
+            <tr><td>Default border</td><td>var(--surface-700)</td><td>#474747</td></tr>
+            <tr><td>Focus border</td><td>var(--primary-500)</td><td>#5c72f5</td></tr>
+            <tr><td>Heading text</td><td>var(--surface-50)</td><td>#fbfbfb</td></tr>
+            <tr><td>Body text</td><td>var(--surface-200)</td><td>#dadada</td></tr>
+            <tr><td>Hint / label</td><td>var(--surface-400)</td><td>#979797</td></tr>
+            <tr><td>Placeholder</td><td>var(--surface-500)</td><td>#6e6e6e</td></tr>
+            <tr><td>Primary accent</td><td>var(--primary-400)</td><td>#768AFF</td></tr>
+            <tr><td>CTA gradient</td><td>var(--gradient-brand)</td><td>Shiny Blue to Common Lilac</td></tr>
+            <tr><td>Error</td><td>var(--error)</td><td>#ff5252</td></tr>
+            <tr><td>Success</td><td>var(--success)</td><td>#4dcc8f</td></tr>
+            <tr><td>Font</td><td>var(--font-body)</td><td>Helvetica Neue</td></tr>
           </tbody>
         </table>
       </div>
@@ -39,32 +38,32 @@ export function MobilePage() {
       {/* ── Screen Layout ── */}
       <div className="section">
         <h2 className="section-title">Screen Layout</h2>
-        <p className="section-desc">Every mobile screen uses a <code>.screen</code> container (100dvh, max-width 430px, centered) with a <code>.screen-content</code> flex column inside. The animated <code>.bg-scene</code> sits behind at z-index 0.</p>
+        <p className="section-desc">Every mobile screen uses a <code>.screen</code> container (100dvh, max-width 430px, centered) with a <code>.screen-content</code> flex column inside.</p>
         <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
           <div className="mob-phone">
             <div className="mob-phone-notch" />
             <div className="mob-phone-screen">
-              <div style={{ position: 'absolute', inset: 0, background: '#090b14', borderRadius: 16 }}>
-                <div style={{ position: 'absolute', width: 80, height: 80, borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.3), transparent)', top: '15%', left: '20%', filter: 'blur(20px)' }} />
-                <div style={{ position: 'absolute', width: 60, height: 60, borderRadius: '50%', background: 'radial-gradient(circle, rgba(250,129,214,0.2), transparent)', top: '40%', right: '15%', filter: 'blur(15px)' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'var(--bg-primary)', borderRadius: 16 }}>
+                <div style={{ position: 'absolute', width: 80, height: 80, borderRadius: '50%', background: 'radial-gradient(circle, rgba(82,113,255,0.2), transparent)', top: '15%', left: '20%', filter: 'blur(20px)' }} />
+                <div style={{ position: 'absolute', width: 60, height: 60, borderRadius: '50%', background: 'radial-gradient(circle, rgba(181,183,246,0.15), transparent)', top: '40%', right: '15%', filter: 'blur(15px)' }} />
                 {[{ x: '20%', y: '25%' }, { x: '70%', y: '15%' }, { x: '45%', y: '50%' }, { x: '80%', y: '60%' }, { x: '15%', y: '70%' }].map((s, i) => (
-                  <div key={i} style={{ position: 'absolute', width: 2, height: 2, borderRadius: '50%', background: '#fff', opacity: 0.4, left: s.x, top: s.y }} />
+                  <div key={i} style={{ position: 'absolute', width: 2, height: 2, borderRadius: '50%', background: '#fff', opacity: 0.3, left: s.x, top: s.y }} />
                 ))}
               </div>
               <div style={{ position: 'relative', zIndex: 1, padding: '40px 16px 16px', display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <div style={{ flex: 1 }} />
                 <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, background: 'linear-gradient(90deg, #a78bfa, #fa81d6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>humAIne</div>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginTop: 6 }}>Sign in</div>
-                  <div style={{ fontSize: 7, color: 'rgba(255,255,255,0.45)', marginTop: 2 }}>Humans must lead.</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--primary-300)' }}>humAIne</div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--surface-50)', marginTop: 6 }}>Sign in</div>
+                  <div style={{ fontSize: 7, color: 'var(--surface-500)', marginTop: 2 }}>Humans must lead.</div>
                 </div>
                 <div style={{ flex: 1 }} />
                 <div style={{ display: 'flex', gap: 4 }}>
                   {['G', 'M', 'S'].map(l => (
-                    <div key={l} style={{ flex: 1, height: 20, borderRadius: 6, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 6, color: 'rgba(255,255,255,0.5)' }}>{l}</div>
+                    <div key={l} style={{ flex: 1, height: 20, borderRadius: 6, background: 'rgba(255,255,255,0.04)', border: '1px solid var(--surface-800)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 6, color: 'var(--surface-500)' }}>{l}</div>
                   ))}
                 </div>
-                <div style={{ height: 20, borderRadius: 6, background: 'linear-gradient(90deg, #7c3aed, #db2777)', marginTop: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 6, color: '#fff', fontWeight: 600 }}>Login with email</div>
+                <div style={{ height: 20, borderRadius: 6, background: 'var(--gradient-brand)', marginTop: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 6, color: '#fff', fontWeight: 600 }}>Login with email</div>
               </div>
             </div>
           </div>
@@ -75,7 +74,7 @@ export function MobilePage() {
               <tbody>
                 <tr><td>Max Width</td><td>430px</td></tr>
                 <tr><td>Height</td><td>100dvh</td></tr>
-                <tr><td>Background</td><td>var(--bg) #090b14</td></tr>
+                <tr><td>Background</td><td>var(--bg-primary)</td></tr>
                 <tr><td>Safe Area</td><td>env(safe-area-inset-top)</td></tr>
                 <tr><td>Overflow</td><td>hidden (screen) / scroll (content)</td></tr>
                 <tr><td>Touch Scroll</td><td>-webkit-overflow-scrolling: touch</td></tr>
@@ -89,19 +88,19 @@ export function MobilePage() {
       {/* ── Animated Background ── */}
       <div className="section">
         <h2 className="section-title">Animated Background</h2>
-        <p className="section-desc">The <code>.bg-scene</code> layer provides nebula glow orbs, arc ellipses, a star field with twinkling, sparkle stars, shooting stars, and orbiting planets — all CSS-only with keyframe animations.</p>
+        <p className="section-desc">The <code>.bg-scene</code> layer renders behind screen content — nebula orbs, star field, sparkle stars, shooting stars, and orbiting planets. All CSS-only keyframe animations.</p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, maxWidth: 500 }}>
           {[
-            { label: 'Nebula Orbs', cls: '.nebula-orb', desc: 'Radial gradients, blurred, slow drift' },
+            { label: 'Nebula Orbs', cls: '.nebula-orb', desc: 'Radial gradients using brand colours, blurred' },
             { label: 'Star Field', cls: '.star', desc: '18 static stars with twinkle keyframes' },
             { label: 'Sparkle Stars', cls: '.sparkle-star', desc: '6 cross-shaped, scale pulse animation' },
-            { label: 'Shooting Stars', cls: '.shooting-star', desc: '4 diagonal streaks with staggered delays' },
-            { label: 'Orbit Planets', cls: '.orbit-planet', desc: '3 tiny dots on elliptical CSS orbits' },
-            { label: 'Arc Ellipses', cls: '.bg-arc', desc: 'Large faint ring borders in background' },
+            { label: 'Shooting Stars', cls: '.shooting-star', desc: '4 diagonal streaks, staggered delays' },
+            { label: 'Orbit Planets', cls: '.orbit-planet', desc: '3 dots on elliptical CSS orbits' },
+            { label: 'Arc Ellipses', cls: '.bg-arc', desc: 'Faint ring borders in background' },
           ].map(b => (
             <div key={b.label} className="card" style={{ padding: 12 }}>
               <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--surface-100)', marginBottom: 4 }}>{b.label}</div>
-              <div style={{ fontSize: 10, fontFamily: 'var(--font-mono)', color: '#a78bfa', marginBottom: 4 }}>{b.cls}</div>
+              <div style={{ fontSize: 10, fontFamily: 'var(--font-mono)', color: 'var(--primary-300)', marginBottom: 4 }}>{b.cls}</div>
               <div style={{ fontSize: 10, color: 'var(--surface-500)', lineHeight: 1.4 }}>{b.desc}</div>
             </div>
           ))}
@@ -111,7 +110,7 @@ export function MobilePage() {
       {/* ── Buttons ── */}
       <div className="section">
         <h2 className="section-title">Buttons</h2>
-        <p className="section-desc">Mobile buttons are full-width by default, 52px tall, with gradient primary, outline, and ghost variants.</p>
+        <p className="section-desc">Same button variants as web, adapted for touch: full-width, 48px height, larger tap targets. Uses <code>var(--gradient-brand)</code> for primary CTA.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 320 }}>
           <div className="mob-btn mob-btn--primary">Continue</div>
           <div className="mob-btn mob-btn--outline">Create account</div>
@@ -121,10 +120,10 @@ export function MobilePage() {
         <table className="demo-table" style={{ marginTop: 16 }}>
           <thead><tr><th>Variant</th><th>Background</th><th>Border</th></tr></thead>
           <tbody>
-            <tr><td>.btn-primary</td><td>var(--gradient-btn)</td><td>none</td></tr>
-            <tr><td>.btn-outline</td><td>transparent</td><td>1px solid rgba(255,255,255,0.15)</td></tr>
-            <tr><td>.btn-ghost</td><td>transparent</td><td>none</td></tr>
-            <tr><td>:disabled</td><td>rgba(255,255,255,0.08)</td><td>none, opacity 0.5</td></tr>
+            <tr><td>.btn-primary</td><td>var(--gradient-brand)</td><td>none</td></tr>
+            <tr><td>.btn-outline</td><td>transparent</td><td>1px solid var(--surface-700)</td></tr>
+            <tr><td>.btn-ghost</td><td>transparent</td><td>none, color: var(--surface-400)</td></tr>
+            <tr><td>:disabled</td><td>var(--surface-900)</td><td>none, opacity 0.5</td></tr>
           </tbody>
         </table>
       </div>
@@ -132,19 +131,19 @@ export function MobilePage() {
       {/* ── Input Fields ── */}
       <div className="section">
         <h2 className="section-title">Input Fields</h2>
-        <p className="section-desc">Frosted glass input with purple focus ring. Supports password eye toggle, error state, and OTP grid layout.</p>
+        <p className="section-desc">Same TextField component, touch-sized: 48px height, var(--radius-lg) corners. Focus uses var(--primary-500), error uses var(--error).</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 320 }}>
           <div className="mob-input">
-            <span style={{ color: 'rgba(255,255,255,0.3)' }}>Enter your email</span>
+            <span style={{ color: 'var(--surface-500)' }}>Enter your email</span>
           </div>
           <div className="mob-input mob-input--focus">
             <span>abhishek@zynglobal.ai</span>
-            <span style={{ width: 1, height: 14, background: '#a78bfa', display: 'inline-block' }} />
+            <span style={{ width: 1, height: 14, background: 'var(--primary-500)', display: 'inline-block' }} />
           </div>
           <div className="mob-input mob-input--error">
             <span>invalid-email</span>
           </div>
-          <div style={{ fontSize: 11, color: '#fc8181', marginTop: -4 }}>Please enter a valid email address</div>
+          <div style={{ fontSize: 11, color: 'var(--error)', marginTop: -4 }}>Please enter a valid email address</div>
         </div>
 
         <h3 style={{ fontSize: 13, fontWeight: 600, color: 'var(--surface-200)', marginTop: 20, marginBottom: 8 }}>OTP Input</h3>
@@ -154,16 +153,16 @@ export function MobilePage() {
           ))}
         </div>
         <table className="demo-table" style={{ marginTop: 16 }}>
-          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <thead><tr><th>Property</th><th>Cosmos Token</th></tr></thead>
           <tbody>
-            <tr><td>Height</td><td>52px</td></tr>
-            <tr><td>Background</td><td>var(--bg-input) rgba(14,17,35,0.8)</td></tr>
-            <tr><td>Border</td><td>1px solid var(--border-input)</td></tr>
-            <tr><td>Focus Border</td><td>var(--border-input-focus) rgba(139,92,246,0.55)</td></tr>
-            <tr><td>Error Border</td><td>var(--error-border) rgba(220,38,38,0.35)</td></tr>
-            <tr><td>Radius</td><td>14px</td></tr>
-            <tr><td>Font</td><td>15px / DM Sans</td></tr>
-            <tr><td>OTP Box</td><td>56px &times; 56px, 14px radius, 28px font</td></tr>
+            <tr><td>Height</td><td>48px</td></tr>
+            <tr><td>Background</td><td>var(--surface-950)</td></tr>
+            <tr><td>Border</td><td>1px solid var(--surface-700)</td></tr>
+            <tr><td>Focus Border</td><td>var(--primary-500)</td></tr>
+            <tr><td>Error Border</td><td>var(--error) at 50% opacity</td></tr>
+            <tr><td>Radius</td><td>var(--radius-lg) 12px</td></tr>
+            <tr><td>Font</td><td>15px / var(--font-body)</td></tr>
+            <tr><td>OTP Box</td><td>44 &times; 52px, var(--radius-md)</td></tr>
           </tbody>
         </table>
       </div>
@@ -171,7 +170,7 @@ export function MobilePage() {
       {/* ── Social Auth ── */}
       <div className="section">
         <h2 className="section-title">Social Auth</h2>
-        <p className="section-desc">Three-up icon-only social buttons (Google, Microsoft, Slack) above an OR divider, followed by a full-width gradient CTA.</p>
+        <p className="section-desc">Same social buttons as web, in a three-up icon-only layout for compact screens. Uses var(--surface-700) border and var(--radius-lg).</p>
         <div style={{ maxWidth: 320 }}>
           <div style={{ display: 'flex', gap: 8 }}>
             {[
@@ -183,51 +182,42 @@ export function MobilePage() {
             ))}
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '12px 0' }}>
-            <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.08)' }} />
-            <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em' }}>OR</span>
-            <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.08)' }} />
+            <div style={{ flex: 1, height: 1, background: 'var(--surface-800)' }} />
+            <span style={{ fontSize: 10, color: 'var(--surface-500)', letterSpacing: '0.1em' }}>OR</span>
+            <div style={{ flex: 1, height: 1, background: 'var(--surface-800)' }} />
           </div>
-          <div className="mob-btn mob-btn--primary" style={{ gap: 8 }}>
+          <div className="mob-btn mob-btn--primary">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
             Login/Signup with email
           </div>
         </div>
-        <table className="demo-table" style={{ marginTop: 16 }}>
-          <thead><tr><th>Property</th><th>Value</th></tr></thead>
-          <tbody>
-            <tr><td>Social Button Height</td><td>48px (flex: 1, 3-up)</td></tr>
-            <tr><td>Background</td><td>rgba(255,255,255,0.06)</td></tr>
-            <tr><td>Border</td><td>1px solid rgba(255,255,255,0.1)</td></tr>
-            <tr><td>Radius</td><td>14px</td></tr>
-          </tbody>
-        </table>
       </div>
 
       {/* ── Onboarding ── */}
       <div className="section">
         <h2 className="section-title">Onboarding Flow</h2>
-        <p className="section-desc">7-step personalisation wizard with a solar-system progress nav, step badges, chip grids, and slide enter/exit animations.</p>
+        <p className="section-desc">7-step personalisation wizard with a solar-system progress nav, step badges, chip grids, and slide enter/exit animations. All colours from Cosmos palette.</p>
 
         <h3 style={{ fontSize: 13, fontWeight: 600, color: 'var(--surface-200)', marginTop: 16, marginBottom: 10 }}>Solar System Progress</h3>
-        <div style={{ position: 'relative', height: 90, maxWidth: 360, background: 'rgba(255,255,255,0.02)', borderRadius: 12, overflow: 'hidden' }}>
+        <div style={{ position: 'relative', height: 90, maxWidth: 360, background: 'rgba(255,255,255,0.02)', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}>
           <svg viewBox="0 0 100 100" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} preserveAspectRatio="none">
             <path d="M 10 15 C 10 45, 20 74, 50 74 C 80 74, 90 45, 90 15" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="0.35" strokeDasharray="1.2 1.8" />
           </svg>
           {[
-            { x: 10, y: 15, state: 'done', color: '#768aff', label: 'About you' },
-            { x: 17, y: 42, state: 'done', color: '#4dcc8f', label: 'Know more' },
-            { x: 30, y: 64, state: 'active', color: '#f5a623', label: 'Your style' },
-            { x: 50, y: 74, state: 'future', color: '#e85d8a', label: 'Your work' },
-            { x: 70, y: 64, state: 'future', color: '#a78bfa', label: 'Decisions' },
-            { x: 83, y: 42, state: 'future', color: '#22d3ee', label: 'Working together' },
-            { x: 90, y: 15, state: 'future', color: '#f472b6', label: 'Your vision' },
+            { x: 10, y: 15, state: 'done', color: '#5271FF' },
+            { x: 17, y: 42, state: 'done', color: '#4dcc8f' },
+            { x: 30, y: 64, state: 'active', color: '#B5B7F6' },
+            { x: 50, y: 74, state: 'future', color: '#E5C3F0' },
+            { x: 70, y: 64, state: 'future', color: '#ACE1E4' },
+            { x: 83, y: 42, state: 'future', color: '#5271FF' },
+            { x: 90, y: 15, state: 'future', color: '#B5B7F6' },
           ].map((p, i) => (
             <div key={i} style={{
               position: 'absolute', left: `${p.x}%`, top: `${p.y}%`, transform: 'translate(-50%, -50%)',
               width: p.state === 'active' ? 22 : p.state === 'done' ? 14 : 10,
               height: p.state === 'active' ? 22 : p.state === 'done' ? 14 : 10,
               borderRadius: '50%',
-              background: p.state === 'future' ? 'rgba(255,255,255,0.06)' : p.color,
+              background: p.state === 'future' ? 'var(--surface-900)' : p.color,
               opacity: p.state === 'future' ? 0.5 : 1,
               border: p.state === 'active' ? `2px solid ${p.color}` : 'none',
               boxShadow: p.state === 'active' ? `0 0 12px ${p.color}55` : 'none',
@@ -241,21 +231,22 @@ export function MobilePage() {
         </div>
 
         <h3 style={{ fontSize: 13, fontWeight: 600, color: 'var(--surface-200)', marginTop: 20, marginBottom: 10 }}>Chip Selection</h3>
-        <p className="section-desc">Multi-select chips for personalisation questions. Glass background, purple border on select.</p>
+        <p className="section-desc">Multi-select chips for personalisation questions. Uses var(--primary-500) border and var(--primary-300) text on select.</p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, maxWidth: 360 }}>
           {['Strategic thinking', 'Technical depth', 'Big picture ideas', 'Practical problem solving', 'Leadership topics', 'A balanced mix'].map((c, i) => (
             <div key={c} className={`mob-chip ${i < 2 ? 'mob-chip--selected' : ''}`}>{c}</div>
           ))}
         </div>
         <table className="demo-table" style={{ marginTop: 16 }}>
-          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <thead><tr><th>Property</th><th>Cosmos Token</th></tr></thead>
           <tbody>
-            <tr><td>Chip Padding</td><td>9px 16px</td></tr>
-            <tr><td>Chip Radius</td><td>20px</td></tr>
+            <tr><td>Chip Padding</td><td>8px 14px</td></tr>
+            <tr><td>Chip Radius</td><td>var(--radius-xl) 20px</td></tr>
             <tr><td>Chip Background</td><td>rgba(255,255,255,0.04)</td></tr>
-            <tr><td>Selected Background</td><td>rgba(139,92,246,0.18)</td></tr>
-            <tr><td>Selected Border</td><td>rgba(139,92,246,0.5)</td></tr>
-            <tr><td>Animation</td><td>ob-slide-in / ob-slide-out 300ms</td></tr>
+            <tr><td>Chip Border</td><td>var(--surface-800)</td></tr>
+            <tr><td>Selected Background</td><td>rgba(92,114,245,0.15)</td></tr>
+            <tr><td>Selected Border</td><td>var(--primary-500)</td></tr>
+            <tr><td>Selected Text</td><td>var(--primary-300)</td></tr>
           </tbody>
         </table>
       </div>
@@ -263,7 +254,7 @@ export function MobilePage() {
       {/* ── Chat Interface ── */}
       <div className="section">
         <h2 className="section-title">Chat Interface</h2>
-        <p className="section-desc">Full conversational UI with message bubbles, typing indicator, mode toggle (Chat / News & PR), profile drawer, and voice overlay.</p>
+        <p className="section-desc">Conversational UI with message bubbles, typing indicator, and chat input card. Uses the same surface stack and primary colours as the web chat.</p>
 
         <h3 style={{ fontSize: 13, fontWeight: 600, color: 'var(--surface-200)', marginTop: 12, marginBottom: 10 }}>Chat Bubbles</h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 360 }}>
@@ -281,7 +272,7 @@ export function MobilePage() {
         <h3 style={{ fontSize: 13, fontWeight: 600, color: 'var(--surface-200)', marginTop: 20, marginBottom: 10 }}>Chat Input Card</h3>
         <div style={{ maxWidth: 360 }}>
           <div className="mob-ci-card">
-            <div style={{ padding: '10px 14px', color: 'rgba(255,255,255,0.3)', fontSize: 14 }}>Message to humaine...</div>
+            <div style={{ padding: '10px 14px', color: 'var(--surface-500)', fontSize: 14 }}>Message to humaine...</div>
             <div className="mob-ci-bottom">
               <div className="mob-ci-icon-btn">
                 <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
@@ -322,20 +313,20 @@ export function MobilePage() {
         <h3 style={{ fontSize: 13, fontWeight: 600, color: 'var(--surface-200)', marginTop: 16, marginBottom: 10 }}>Voice Overlay</h3>
         <p className="section-desc">Full-screen overlay with animated breathing orb for voice conversation mode.</p>
         <div style={{ position: 'relative', maxWidth: 200, height: 120, background: 'rgba(0,0,0,0.6)', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', width: 60, height: 60, borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.6), rgba(219,39,119,0.3), transparent)', filter: 'blur(8px)' }} />
-          <div style={{ position: 'relative', width: 40, height: 40, borderRadius: '50%', background: 'linear-gradient(135deg, #7c3aed, #db2777)', boxShadow: '0 0 30px rgba(139,92,246,0.5)' }} />
-          <div style={{ position: 'absolute', bottom: 10, fontSize: 8, color: 'rgba(255,255,255,0.5)' }}>Tap to stop</div>
+          <div style={{ position: 'absolute', width: 60, height: 60, borderRadius: '50%', background: 'radial-gradient(circle, rgba(82,113,255,0.5), rgba(181,183,246,0.25), transparent)', filter: 'blur(8px)' }} />
+          <div style={{ position: 'relative', width: 40, height: 40, borderRadius: '50%', background: 'var(--gradient-brand)', boxShadow: '0 0 30px rgba(82,113,255,0.4)' }} />
+          <div style={{ position: 'absolute', bottom: 10, fontSize: 8, color: 'var(--surface-500)' }}>Tap to stop</div>
         </div>
 
         <table className="demo-table" style={{ marginTop: 16 }}>
-          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <thead><tr><th>Property</th><th>Cosmos Token</th></tr></thead>
           <tbody>
-            <tr><td>User Bubble</td><td>gradient bg, 18px radius TL/TR/BL</td></tr>
-            <tr><td>Assistant Bubble</td><td>rgba(255,255,255,0.06), 18px radius</td></tr>
-            <tr><td>Input Card</td><td>rgba(14,17,35,0.85) bg, 22px radius</td></tr>
-            <tr><td>Input Focus</td><td>border: rgba(139,92,246,0.4)</td></tr>
-            <tr><td>Send Pill</td><td>gradient bg, 20px radius, 13px font</td></tr>
-            <tr><td>Typing Dots</td><td>3 spans, 0.5s bounce, staggered 0.15s</td></tr>
+            <tr><td>User Bubble</td><td>var(--primary-500) gradient, 18px radius</td></tr>
+            <tr><td>Assistant Bubble</td><td>var(--surface-950), 18px radius</td></tr>
+            <tr><td>Input Card</td><td>var(--surface-950) bg, var(--surface-800) border</td></tr>
+            <tr><td>Input Focus</td><td>border: var(--primary-500)</td></tr>
+            <tr><td>Send Pill</td><td>var(--gradient-brand), var(--radius-xl)</td></tr>
+            <tr><td>Voice Orb</td><td>var(--gradient-brand), blur glow</td></tr>
           </tbody>
         </table>
       </div>
@@ -343,13 +334,13 @@ export function MobilePage() {
       {/* ── News & PR ── */}
       <div className="section">
         <h2 className="section-title">News & PR</h2>
-        <p className="section-desc">Article feed with multi-select, summarisation flow, PR draft generation, and platform share sheet. Combines list UI with conversational thread.</p>
+        <p className="section-desc">Article feed with multi-select, AI summarisation, PR draft generation, and platform share sheet.</p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, maxWidth: 500 }}>
           <div>
             <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--surface-300)', marginBottom: 8, letterSpacing: '0.05em', textTransform: 'uppercase' }}>News Card</div>
             <div className="card" style={{ padding: 12 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                <span style={{ fontSize: 9, padding: '2px 6px', borderRadius: 4, background: 'rgba(167,139,250,0.15)', color: '#a78bfa', fontWeight: 600 }}>Reuters</span>
+                <span style={{ fontSize: 9, padding: '2px 6px', borderRadius: 4, background: 'rgba(82,113,255,0.12)', color: 'var(--primary-300)', fontWeight: 600 }}>Reuters</span>
                 <span style={{ fontSize: 9, color: 'var(--surface-500)' }}>2h ago</span>
               </div>
               <div style={{ fontSize: 12, fontWeight: 500, color: 'var(--surface-100)', lineHeight: 1.4 }}>Asahi to launch cybersecurity overhaul after crippling attack</div>
@@ -372,7 +363,7 @@ export function MobilePage() {
       {/* ── Plans & Payment ── */}
       <div className="section">
         <h2 className="section-title">Plans & Payment</h2>
-        <p className="section-desc">Subscription plans screen with glassmorphic feature cards, pricing selector with radio indicators, and a full payment form with wallet buttons (Apple Pay, Google Pay, PayPal).</p>
+        <p className="section-desc">Subscription plans with radio selector and payment form. Active plan uses var(--primary-500) accent.</p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, maxWidth: 400 }}>
           {[
             { name: 'Starter', price: 'Free', active: false },
@@ -380,8 +371,8 @@ export function MobilePage() {
             { name: 'Enterprise', price: 'Custom', active: false },
           ].map(p => (
             <div key={p.name} className={`mob-plan ${p.active ? 'mob-plan--active' : ''}`}>
-              <div style={{ fontSize: 11, fontWeight: 600, color: p.active ? '#a78bfa' : 'var(--surface-300)' }}>{p.name}</div>
-              <div style={{ fontSize: 16, fontWeight: 700, color: p.active ? '#fff' : 'var(--surface-200)', marginTop: 4 }}>{p.price}</div>
+              <div style={{ fontSize: 11, fontWeight: 600, color: p.active ? 'var(--primary-300)' : 'var(--surface-300)' }}>{p.name}</div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: p.active ? 'var(--surface-50)' : 'var(--surface-200)', marginTop: 4 }}>{p.price}</div>
               <div className={`mob-plan-radio ${p.active ? 'mob-plan-radio--on' : ''}`} />
             </div>
           ))}
@@ -394,57 +385,52 @@ export function MobilePage() {
         </div>
       </div>
 
-      {/* ── Profile Drawer ── */}
+      {/* ── Drawers & Sheets ── */}
       <div className="section">
         <h2 className="section-title">Drawers & Sheets</h2>
-        <p className="section-desc">Bottom sheets with backdrop blur, handle bar, and slide-up animation. Used for profile menus, share destinations, and settings.</p>
-        <div style={{ position: 'relative', maxWidth: 320, height: 200, borderRadius: 16, overflow: 'hidden', background: '#090b14' }}>
+        <p className="section-desc">Bottom sheets with backdrop blur, handle bar, and slide-up animation. Panel uses var(--surface-950) background.</p>
+        <div style={{ position: 'relative', maxWidth: 320, height: 200, borderRadius: 16, overflow: 'hidden', background: 'var(--bg-primary)' }}>
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }} />
-          <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'rgba(20,18,40,0.98)', borderRadius: '20px 20px 0 0', padding: '8px 16px 16px' }}>
-            <div style={{ width: 36, height: 4, borderRadius: 2, background: 'rgba(255,255,255,0.15)', margin: '0 auto 12px' }} />
-            <div style={{ fontSize: 13, fontWeight: 600, color: '#fff', marginBottom: 8 }}>Profile</div>
+          <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'var(--surface-950)', borderRadius: '20px 20px 0 0', padding: '8px 16px 16px', border: '1px solid var(--surface-800)', borderBottom: 'none' }}>
+            <div style={{ width: 36, height: 4, borderRadius: 2, background: 'var(--surface-700)', margin: '0 auto 12px' }} />
+            <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--surface-50)', marginBottom: 8 }}>Profile</div>
             {['Account Settings', 'Appearance', 'Privacy', 'Sign out'].map(item => (
-              <div key={item} style={{ padding: '8px 0', fontSize: 12, color: item === 'Sign out' ? '#fc8181' : 'var(--surface-200)', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>{item}</div>
+              <div key={item} style={{ padding: '8px 0', fontSize: 12, color: item === 'Sign out' ? 'var(--error)' : 'var(--surface-200)', borderBottom: '1px solid var(--surface-900)' }}>{item}</div>
             ))}
           </div>
         </div>
         <table className="demo-table" style={{ marginTop: 16 }}>
-          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <thead><tr><th>Property</th><th>Cosmos Token</th></tr></thead>
           <tbody>
             <tr><td>Overlay</td><td>rgba(0,0,0,0.5) + blur(8px)</td></tr>
-            <tr><td>Panel Background</td><td>rgba(20,18,40,0.98)</td></tr>
+            <tr><td>Panel Background</td><td>var(--surface-950)</td></tr>
+            <tr><td>Panel Border</td><td>var(--surface-800)</td></tr>
             <tr><td>Panel Radius</td><td>20px 20px 0 0</td></tr>
-            <tr><td>Handle Bar</td><td>36px &times; 4px, rgba(255,255,255,0.15)</td></tr>
-            <tr><td>Animation</td><td>drawer-slide 0.35s ease-out</td></tr>
+            <tr><td>Handle Bar</td><td>36 &times; 4px, var(--surface-700)</td></tr>
           </tbody>
         </table>
       </div>
 
-      {/* ── All CSS Classes ── */}
+      {/* ── CSS Classes ── */}
       <div className="section">
         <h2 className="section-title">CSS Class Reference</h2>
-        <p className="section-desc">All mobile-specific class prefixes from the centralized <code>cosmos-design-system.css</code>. Download from the home page.</p>
+        <p className="section-desc">Mobile-only classes from <code>cosmos-design-system.css</code>. All reference the shared Cosmos token set.</p>
         <table className="demo-table">
-          <thead><tr><th>Prefix</th><th>Component</th><th>Section</th></tr></thead>
+          <thead><tr><th>Class</th><th>Component</th><th>Section</th></tr></thead>
           <tbody>
             <tr><td>.screen, .screen-content</td><td>Screen Layout</td><td>§35</td></tr>
-            <tr><td>.bg-scene, .nebula-*, .star-*, .shooting-star-*</td><td>Animated Background</td><td>§35</td></tr>
-            <tr><td>.btn, .btn-primary, .btn-outline, .btn-ghost</td><td>Buttons</td><td>§35</td></tr>
-            <tr><td>.input-field, .input-wrapper, .otp-*</td><td>Form Inputs</td><td>§36</td></tr>
-            <tr><td>.tab-bar, .tab-btn</td><td>Tab Bar</td><td>§36</td></tr>
+            <tr><td>.bg-scene, .nebula-*, .star-*</td><td>Animated Background</td><td>§35</td></tr>
+            <tr><td>.btn, .btn-primary, .btn-outline</td><td>Buttons</td><td>§35</td></tr>
+            <tr><td>.input-field, .otp-*</td><td>Form Inputs</td><td>§36</td></tr>
             <tr><td>.sol-nav-m, .sol-planet-m</td><td>Solar System Nav</td><td>§39</td></tr>
-            <tr><td>.ob-*, .ob-chip, .ob-pills</td><td>Onboarding</td><td>§39</td></tr>
-            <tr><td>.chat-bubble, .chat-bubble--user/--assistant</td><td>Chat Bubbles</td><td>§37</td></tr>
-            <tr><td>.ci-card-m, .ci-textarea-m, .ci-send-pill-m</td><td>Chat Input</td><td>§37</td></tr>
-            <tr><td>.ci-menu-m, .ci-menu-item-m</td><td>Attach Menu</td><td>§37</td></tr>
+            <tr><td>.ob-chip, .ob-pills</td><td>Onboarding Chips</td><td>§39</td></tr>
+            <tr><td>.chat-bubble--user/--assistant</td><td>Chat Bubbles</td><td>§37</td></tr>
+            <tr><td>.ci-card-m, .ci-send-pill-m</td><td>Chat Input</td><td>§37</td></tr>
             <tr><td>.voice-overlay, .voice-orb</td><td>Voice Mode</td><td>§37</td></tr>
-            <tr><td>.np-m-*, .news-card, .news-feed</td><td>News & PR</td><td>§37</td></tr>
+            <tr><td>.np-m-*, .news-card</td><td>News & PR</td><td>§37</td></tr>
             <tr><td>.sheet-overlay, .sheet-container</td><td>Bottom Sheets</td><td>§37</td></tr>
-            <tr><td>.plans-*, .plans-option</td><td>Plans Screen</td><td>§38</td></tr>
-            <tr><td>.pay-*, .pay-wallet-btn-m</td><td>Payment Form</td><td>§38</td></tr>
-            <tr><td>.addr-*, .pin-*</td><td>Address / PIN Entry</td><td>§36</td></tr>
-            <tr><td>.cd-card-m, .cd-card-grid-m</td><td>Confirm Details</td><td>§36</td></tr>
-            <tr><td>.mfa-*, .sr-*</td><td>MFA / Recovery Setup</td><td>§36</td></tr>
+            <tr><td>.plans-option, .plans-option--active</td><td>Plans Screen</td><td>§38</td></tr>
+            <tr><td>.pay-wallet-btn-m</td><td>Payment</td><td>§38</td></tr>
           </tbody>
         </table>
       </div>
