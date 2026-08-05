@@ -78,6 +78,52 @@ export function ButtonsPage() {
       </div>
 
       <div className="section">
+        <h2 className="section-title">Mobile Variant</h2>
+        <p className="section-desc">On mobile, buttons become full-width (100%), use the large 48px height for touch targets, and icon-only variants collapse text. Same tokens, adapted layout.</p>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+          <div>
+            <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--surface-400)', marginBottom: 8, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Web</div>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <button className="demo-btn demo-btn-primary demo-btn-md">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Add New
+              </button>
+              <button className="demo-btn demo-btn-secondary demo-btn-md">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export
+              </button>
+              <button className="demo-btn demo-btn-ghost demo-btn-sm">Cancel</button>
+            </div>
+          </div>
+          <div>
+            <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--surface-400)', marginBottom: 8, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Mobile</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 280 }}>
+              <div className="mob-btn mob-btn--primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Add New
+              </div>
+              <div style={{ display: 'flex', gap: 8 }}>
+                <div className="mob-btn mob-btn--outline" style={{ flex: 1 }}>Cancel</div>
+                <div style={{ width: 48, height: 48, borderRadius: 'var(--radius-lg)', border: '1px solid var(--surface-700)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--surface-300)' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <table className="demo-table" style={{ marginTop: 16 }}>
+          <thead><tr><th>Adaptation</th><th>Web</th><th>Mobile</th></tr></thead>
+          <tbody>
+            <tr><td>Width</td><td>auto (content)</td><td>100% full-width</td></tr>
+            <tr><td>Height</td><td>32 / 40 / 48px</td><td>48px (touch min)</td></tr>
+            <tr><td>Layout</td><td>inline row</td><td>stacked column</td></tr>
+            <tr><td>Secondary actions</td><td>text + icon</td><td>icon-only (48px square)</td></tr>
+            <tr><td>Radius</td><td>8 / 12px</td><td>var(--radius-lg) 12px</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div className="section">
         <h2 className="section-title">Specs</h2>
         <table className="demo-table">
           <thead>
