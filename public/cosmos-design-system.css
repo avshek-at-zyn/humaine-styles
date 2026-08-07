@@ -3668,6 +3668,67 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 .plans-cta-area { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
 .plans-legal { font-size: 10px; color: rgba(255,255,255,0.25); text-align: center; font-family: var(--font); line-height: 1.6; }
 
+/* ── Plans: MFP-style playful layout ── */
+.plans-hero-block { padding: 0 16px; }
+.plans-hero-title { font-size: 34px; font-weight: 800; letter-spacing: -0.6px; line-height: 1.05; color: #fff; font-family: var(--font); margin-bottom: 14px; }
+.plans-hero-sub { font-size: 14px; color: rgba(255,255,255,0.55); font-family: var(--font); line-height: 1.5; max-width: 320px; }
+.plans-top-ray { position: absolute; inset: 0; pointer-events: none; z-index: 0; background: linear-gradient(to bottom, rgba(167,139,250,0.14) 0%, rgba(155,125,255,0.08) 12%, rgba(124,58,237,0.04) 25%, transparent 45%), radial-gradient(ellipse 60% 30% at 50% -5%, rgba(196,181,253,0.18) 0%, transparent 70%); }
+.plans-corner-decor { position: absolute; top: 0; right: 0; width: 180px; height: 180px; pointer-events: none; z-index: 0; animation: plans-corner-float 8s ease-in-out infinite; }
+.plans-corner-decor svg { width: 100%; height: 100%; filter: drop-shadow(0 6px 20px rgba(192,132,252,0.35)); }
+@keyframes plans-corner-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+.plans-select-heading { text-align: center; font-size: 17px; font-weight: 700; color: #fff; font-family: var(--font); margin: 56px 16px 16px; letter-spacing: -0.1px; }
+.plans-selector { display: flex; gap: 10px; padding: 20px 20px 0; }
+.plans-selector--mfp { padding: 0 16px; gap: 12px; }
+.plans-inline-features { display: flex; flex-direction: column; gap: 20px; padding: 40px 16px 0; }
+.plans-inline-feat { display: flex; align-items: flex-start; gap: 16px; }
+.plans-inline-feat-icon { flex-shrink: 0; filter: drop-shadow(0 0 10px rgba(196,132,252,0.35)); }
+.plans-inline-feat-title { color: #fff; font-weight: 700; }
+.plans-inline-feat-text { font-size: 15px; color: rgba(255,255,255,0.75); font-family: var(--font); line-height: 1.45; }
+.plans-option-mfp { position: relative; flex: 1; display: flex; flex-direction: column; padding: 20px 14px 16px; background: rgba(255,255,255,0.04); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 16px; cursor: pointer; font-family: var(--font); text-align: left; transition: border-color 0.18s, background 0.18s, box-shadow 0.18s; }
+.plans-option-mfp--active { border-color: rgba(155,125,255,0.6); background: rgba(124,58,237,0.1); box-shadow: 0 0 24px rgba(124,58,237,0.15); }
+.plans-option-mfp-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.plans-option-mfp-label { font-size: 15px; font-weight: 800; color: #fff; letter-spacing: 0.5px; }
+.plans-option-mfp-badge { position: absolute; top: -12px; left: 12px; background: linear-gradient(90deg, #22c55e, #16a34a); color: #fff; font-size: 10.5px; font-weight: 800; letter-spacing: 0.4px; padding: 4px 10px; border-radius: 999px; box-shadow: 0 4px 12px rgba(34,197,94,0.35); }
+.plans-option-mfp-price { display: flex; align-items: baseline; gap: 2px; margin-bottom: 4px; }
+.plans-option-mfp-amount { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.4px; }
+.plans-option-mfp-per { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5); }
+.plans-option-mfp-strike { font-size: 13px; color: rgba(255,255,255,0.3); text-decoration: line-through; margin-bottom: 12px; }
+.plans-option-mfp-strike span { color: rgba(255,255,255,0.3); }
+.plans-option-mfp-note { font-size: 11.5px; color: rgba(255,255,255,0.4); line-height: 1.35; margin-top: auto; }
+.plans-option-mfp-radio { width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; transition: background 0.15s, border-color 0.15s; flex-shrink: 0; }
+.plans-option-mfp-radio--on { background: #22c55e; border-color: #22c55e; }
+.plans-cancel-line { text-align: center; font-size: 12px; color: rgba(255,255,255,0.4); font-family: var(--font); padding: 8px 16px 0; }
+
+/* ── Payment: missing classes ── */
+.pay-section-label-m { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.4); letter-spacing: 0.04em; margin: 8px 0 4px; font-family: var(--font); }
+.pay-wallet-row-m { display: flex; gap: 8px; margin-bottom: 8px; }
+.pay-card-half-m--last { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+
+/* ── Payment Success ── */
+.ps-title-m { font-size: 26px; font-weight: 700; color: #fff; font-family: var(--font); letter-spacing: -0.3px; margin-bottom: 10px; }
+.ps-subtitle-m { font-size: 14px; color: rgba(255,255,255,0.55); font-family: var(--font); line-height: 1.6; max-width: 320px; }
+.ps-body-m { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 24px; width: 100%; animation: ps-fade-in 0.3s ease-out; }
+@keyframes ps-fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.ps-cta-m { width: 100%; max-width: 340px; box-shadow: 0 4px 20px rgba(124,58,237,0.4); }
+.ps-illustration-m { width: 168px; height: 168px; object-fit: contain; margin-bottom: 22px; display: block; animation: ps-illus-in 0.4s ease-out; }
+@keyframes ps-illus-in { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+.ps-receipt-m { width: 100%; max-width: 340px; margin: 24px 0 20px; padding: 16px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; text-align: left; }
+.ps-receipt-row-m { display: flex; justify-content: space-between; align-items: center; font-size: 13.5px; color: #fff; font-family: var(--font); }
+.ps-receipt-row-total-m { font-weight: 700; font-size: 14.5px; }
+.ps-receipt-sub-m { font-size: 11.5px; color: rgba(255,255,255,0.4); margin-top: 4px; font-family: var(--font); }
+.ps-receipt-divider-m { height: 1px; background: rgba(255,255,255,0.08); margin: 12px 0; }
+.ps-preview-tabs-m { position: absolute; top: max(14px, env(safe-area-inset-top, 14px)); left: 50%; transform: translateX(-50%); z-index: 3; display: flex; padding: 4px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 999px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.ps-pending-dot-m { width: 8px; height: 8px; border-radius: 50%; background: #fcd34d; animation: ps-pending-pulse 1.4s ease-in-out infinite; }
+@keyframes ps-pending-pulse { 0%, 100% { opacity: 0.4; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.15); } }
+.ps-pending-note-m { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; background: rgba(252,211,77,0.08); border: 1px solid rgba(252,211,77,0.2); border-radius: 10px; font-size: 12px; color: rgba(252,211,77,0.9); font-family: var(--font); margin-bottom: 16px; }
+
+/* ── Singletons ── */
+.bg-top-ray { position: absolute; inset: 0; pointer-events: none; z-index: 0; background: linear-gradient(to bottom, rgba(167,139,250,0.32) 0%, rgba(155,125,255,0.18) 12%, rgba(124,58,237,0.09) 25%, transparent 45%), radial-gradient(ellipse 60% 30% at 50% -5%, rgba(196,181,253,0.4) 0%, transparent 70%); }
+.cd-locked-chip { display: inline-flex; align-items: center; gap: 4px; margin-left: 8px; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: #86efac; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.25); padding: 2px 7px; border-radius: 999px; vertical-align: middle; }
+.gd-account-m { display: flex; align-items: center; gap: 10px; margin: 16px 20px 4px; padding: 12px 14px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; }
+.np-m-subheader { display: flex; align-items: center; gap: 6px; padding: 54px 16px 0; }
+.ob-badge-icon { font-size: 13px; line-height: 1; }
+
 /* ============================================================
    §39 MOBILE ONBOARDING
    ============================================================ */
