@@ -4915,3 +4915,391 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   background: rgba(92,114,245,0.2);
   color: #768AFF;
 }
+
+/* ============================================================
+   §53 MOBILE — FORGOT PASSWORD FLOW
+   ============================================================ */
+.fp-err-m {
+  font-size: 12.5px;
+  color: var(--error-text);
+  font-family: var(--font);
+  margin-top: 8px;
+  padding-left: 2px;
+  line-height: 1.4;
+}
+.fp-hint-m {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.4);
+  font-family: var(--font);
+  margin-top: 8px;
+  padding-left: 2px;
+  line-height: 1.4;
+}
+.fp-switch-m {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  font-family: var(--font);
+  margin-top: 14px;
+}
+
+.fp-backup-row-m {
+  align-items: center;
+  gap: 6px;
+}
+.fp-backup-dash-m {
+  color: rgba(255,255,255,0.35);
+  font-size: 18px;
+  font-weight: 700;
+  padding: 0 2px;
+}
+
+.fp-center-m {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 28px;
+  gap: 0;
+}
+.fp-center-m img {
+  margin-bottom: 22px;
+}
+.fp-center-title-m {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font);
+  letter-spacing: -0.3px;
+  margin-bottom: 10px;
+}
+.fp-center-sub-m {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  font-family: var(--font);
+  line-height: 1.6;
+  max-width: 320px;
+}
+.fp-note-m {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 18px;
+  padding: 11px 14px;
+  background: rgba(155,142,248,0.08);
+  border: 1px solid rgba(155,142,248,0.22);
+  border-radius: 12px;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.6);
+  font-family: var(--font);
+  line-height: 1.5;
+  text-align: left;
+  max-width: 340px;
+}
+.fp-demo-link-m {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 18px;
+  padding: 9px 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  color: rgba(255,255,255,0.75);
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: var(--font);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.fp-success-icon-m {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  background: rgba(4,189,103,0.14);
+  border: 1px solid rgba(4,189,103,0.4);
+  color: #4ade80;
+  position: relative;
+}
+.fp-success-icon-m::after {
+  content: '';
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  background: rgba(4,189,103,0.25);
+  filter: blur(24px);
+  z-index: -1;
+}
+
+/* ============================================================
+   §54 MOBILE — POST-SYNC ADDITIONS (chat glass buttons, translated
+   copy, feedback, payment preview, plans MFP layout, google chip,
+   news dropdowns, drawer, toast)
+   ============================================================ */
+
+/* ---------------------------------------------------------------
+   Cosmos Design System — single source of truth
+   Registered in /Users/abhishek/Desktop/humaine-styles/public/cosmos-design-system.css
+   Any new component / token must be added there first. This file only
+   holds page-specific overrides that don't belong in the design system.
+   --------------------------------------------------------------- */
+@import './cosmos-design-system.css';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Chat screen: plain dark bg with only the top ray — no stars/planets/nebula */
+.chat-screen .bg-scene {
+  opacity: 1;
+}
+
+/* Cosmos's .chat-private is an inline notice card (padding/margin/border) —
+   on this app the class marks the whole screen, so neutralise the card styles
+   or the entire layout shifts when toggling private mode. Only bg + centre
+   content may change. */
+.chat-screen.chat-private {
+  background: var(--bg);
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.chat-screen .bg-scene > *:not(.bg-top-ray) {
+  display: none;
+}
+
+/* One continuous surface: cosmos paints its own translucent bands + hairlines on
+   the topbar and input wrap, which visibly splits the screen into three sections.
+   Strip them so the ray + var(--bg) show through uninterrupted. */
+.chat-screen .chat-topbar {
+  background: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+}
+
+.chat-screen .ci-wrap {
+  background: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-top: none;
+}
+
+/* Clear the floating button stack so the first message doesn't slide under it */
+.chat-screen .chat-thread {
+  padding-top: 64px;
+}
+
+/* Two circular glass buttons stacked vertically, top-right */
+.chat-top-stack {
+  position: absolute;
+  top: 54px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 3;
+}
+
+.chat-glass-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  /* Frosted: opaque enough that scrolling messages never wash out the icon */
+  background: rgba(28, 32, 52, 0.85);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+}
+
+.chat-glass-btn:active {
+  background: rgba(42, 47, 72, 0.95);
+}
+
+.chat-glass-btn--on {
+  background: rgba(155,125,255,0.28);
+  border-color: rgba(155,125,255,0.5);
+  color: #ede9fe;
+}
+
+.chat-msg-actions--user {
+  justify-content: flex-end;
+  padding-right: 4px;
+  padding-left: 0;
+}
+
+.chat-feedback-textarea {
+  width: 100%;
+  min-height: 110px;
+  resize: none;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: var(--font);
+}
+
+.chat-share-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 110px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(30,34,55,0.98);
+  border: 1px solid rgba(34,197,94,0.35);
+  border-radius: 999px;
+  color: #86efac;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font);
+  z-index: 200;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  animation: chat-toast-in 0.25s ease-out;
+}
+
+/* Chip on the left, copy on the right, above the translated text */
+.chat-translated-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.chat-translated-head .chat-translated-chip {
+  margin-bottom: 0;
+}
+
+.chat-translated-copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 7px;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.chat-translated-copy:active {
+  background: rgba(255,255,255,0.16);
+}
+
+.ps-preview-btn-m {
+  padding: 6px 14px;
+  border: none;
+  background: none;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  font-family: var(--font);
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.ps-preview-btn-m--active {
+  background: rgba(155,125,255,0.25);
+  color: #fff;
+}
+
+.ps-icon-m {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.ps-icon-m::after {
+  content: '';
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  filter: blur(22px);
+  z-index: -1;
+}
+
+.ps-icon-confirmed-m {
+  background: rgba(4,189,103,0.15);
+  border: 1px solid rgba(4,189,103,0.4);
+  color: #4ade80;
+}
+
+.ps-icon-confirmed-m::after { background: rgba(4,189,103,0.3); }
+
+.ps-icon-pending-m {
+  background: rgba(252,211,77,0.12);
+  border: 1px solid rgba(252,211,77,0.35);
+  color: #fcd34d;
+}
+
+.ps-icon-pending-m::after { background: rgba(252,211,77,0.2); }
+
+.ps-icon-pending-m svg { animation: ps-tick-rotate 4s linear infinite; }
+
+.ps-icon-error-m {
+  background: rgba(248,113,113,0.12);
+  border: 1px solid rgba(248,113,113,0.4);
+  color: #f87171;
+}
+
+.ps-icon-error-m::after { background: rgba(248,113,113,0.28); }
+
+.input-field--locked {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+/* flexible hero window: grows to fill spare space, shrinks on short screens
+   so the page only scrolls when content is actually cut off */
+.plans-hero-spacer {
+  flex: 1 1 auto;
+  min-height: 13vh;
+}
+
+/* Three-item vertical layout — icon + title + one-line desc */
+.plans-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@keyframes chat-toast-in {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes ps-tick-rotate {
+  to { transform: rotate(360deg); }
+}
