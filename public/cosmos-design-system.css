@@ -3755,8 +3755,11 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
    §39 MOBILE ONBOARDING
    ============================================================ */
 /* Solar system onboarding nav */
-:root[data-platform="mobile"] .sol-nav-m { position: relative; width: 100%; height: 320px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-:root[data-platform="mobile"] .sol-svg-m { width: 100%; height: 100%; overflow: visible; }
+/* Curved step trail (matches web). Container height MUST equal the SVG
+   viewBox height (80) so the y values the planets are placed with are the
+   same pixels the curve is drawn at. */
+:root[data-platform="mobile"] .sol-nav-m { position: relative; width: 100%; height: 80px; flex-shrink: 0; margin-top: 20px; overflow: visible; }
+:root[data-platform="mobile"] .sol-svg-m { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
 :root[data-platform="mobile"] .sol-orbit-ellipse-m { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 1; }
 :root[data-platform="mobile"] .sol-planet-m { cursor: pointer; transition: opacity 0.3s; }
 :root[data-platform="mobile"] .sol-planet-m--active .sol-planet-icon-m { filter: drop-shadow(0 0 12px rgba(124,58,237,0.7)); }
@@ -3770,12 +3773,16 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 @keyframes sol-float-m { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
 
 /* Onboarding badge */
-:root[data-platform="mobile"] .ob-badge { position: absolute; top: max(16px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 6px; padding: 6px 14px 6px 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 50px; backdrop-filter: blur(8px); z-index: 10; white-space: nowrap; }
+/* Badge sits in normal flow BELOW the trail — absolute-top collided with
+   the curve's planets. */
+:root[data-platform="mobile"] .ob-badge { display: flex; align-items: center; gap: 6px; margin: 14px auto 0; padding: 6px 14px 6px 10px; width: fit-content; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 50px; backdrop-filter: blur(8px); white-space: nowrap; flex-shrink: 0; }
 :root[data-platform="mobile"] .ob-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-purple); flex-shrink: 0; }
 :root[data-platform="mobile"] .ob-badge-text { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); font-family: var(--font); }
 
 /* Onboarding content */
-:root[data-platform="mobile"] .ob-content { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(5,8,22,1) 80%, transparent); padding: 40px 20px 0; display: flex; flex-direction: column; gap: 16px; }
+/* Content flows between the badge and the nav row; absolute-bottom left the
+   Continue button stranded mid-screen. */
+:root[data-platform="mobile"] .ob-content { flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 20px 20px 0; display: flex; flex-direction: column; gap: 16px; }
 :root[data-platform="mobile"] .ob-enter { animation: ob-slide-in 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
 :root[data-platform="mobile"] .ob-exit { animation: ob-slide-out 0.3s ease forwards; }
 @keyframes ob-slide-in { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -3797,7 +3804,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .ob-textarea { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 14px; padding: 14px; color: #fff; font-size: 14px; font-family: var(--font); resize: none; outline: none; min-height: 100px; line-height: 1.5; transition: border-color 0.2s; }
 :root[data-platform="mobile"] .ob-textarea::placeholder { color: rgba(255,255,255,0.25); }
 :root[data-platform="mobile"] .ob-textarea:focus { border-color: rgba(124,58,237,0.45); }
-:root[data-platform="mobile"] .ob-nav-row { display: flex; align-items: center; gap: 12px; }
+:root[data-platform="mobile"] .ob-nav-row { display: flex; align-items: center; gap: 12px; flex-shrink: 0; padding: 12px 20px; padding-bottom: max(24px, env(safe-area-inset-bottom)); }
 :root[data-platform="mobile"] .ob-back-btn { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.15s; }
 :root[data-platform="mobile"] .ob-back-btn:active { background: rgba(255,255,255,0.12); }
 :root[data-platform="mobile"] .ob-continue-btn { flex: 1; padding: 15px; border-radius: 16px; border: none; background: var(--gradient-btn); color: #fff; font-size: 16px; font-weight: 700; font-family: var(--font); cursor: pointer; transition: opacity 0.15s, transform 0.1s; }
@@ -5300,4 +5307,47 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 @keyframes ps-tick-rotate {
   to { transform: rotate(360deg); }
+}
+
+/* Security check — manual identity verification when every recovery
+   method is lost (name + registered address + open recall question) */
+.sc-divider-m {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 6px 0 2px;
+}
+.sc-divider-m::before,
+.sc-divider-m::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+.sc-divider-m span {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: rgba(255,255,255,0.35);
+  font-family: var(--font);
+  white-space: nowrap;
+}
+
+.sc-label-m {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  font-family: var(--font);
+  line-height: 1.45;
+  margin-bottom: -4px;
+}
+
+.sc-textarea-m {
+  min-height: 104px;
+  resize: none;
+  line-height: 1.5;
+  padding-top: 13px;
+  font-family: var(--font);
 }
