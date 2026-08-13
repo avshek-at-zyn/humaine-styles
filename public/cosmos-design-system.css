@@ -3798,9 +3798,14 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .ob-qblock { display: flex; flex-direction: column; gap: 6px; }
 :root[data-platform="mobile"] .ob-qblock-title { font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.85); font-family: var(--font); }
 :root[data-platform="mobile"] .ob-qblock-hint { font-size: 12px; color: rgba(255,255,255,0.35); font-family: var(--font); }
-:root[data-platform="mobile"] .ob-chips { display: flex; gap: 8px; flex-wrap: wrap; }
-:root[data-platform="mobile"] .ob-chip { padding: 7px 14px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 500; cursor: pointer; font-family: var(--font); transition: background 0.15s, border-color 0.15s, color 0.15s; }
+/* Compact mobile chip: the 13px/7-14px size wrapped to two rows per chip
+   on a 375px screen. Icon + label, tighter padding, smaller type. */
+:root[data-platform="mobile"] .ob-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+:root[data-platform="mobile"] .ob-chip { display: inline-flex; align-items: center; gap: 5px; padding: 5px 10px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.6); font-size: 11.5px; font-weight: 500; line-height: 1.35; cursor: pointer; font-family: var(--font); white-space: nowrap; transition: background 0.15s, border-color 0.15s, color 0.15s; }
 :root[data-platform="mobile"] .ob-chip.selected { background: rgba(124,58,237,0.18); border-color: rgba(124,58,237,0.5); color: #c4b5fd; }
+:root[data-platform="mobile"] .ob-chip-icon { flex-shrink: 0; opacity: 0.75; }
+:root[data-platform="mobile"] .ob-chip.selected .ob-chip-icon { opacity: 1; }
+:root[data-platform="mobile"] .ob-chip-dot { width: 4px; height: 4px; border-radius: 50%; background: currentColor; opacity: 0.45; flex-shrink: 0; }
 :root[data-platform="mobile"] .ob-textarea { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 14px; padding: 14px; color: #fff; font-size: 14px; font-family: var(--font); resize: none; outline: none; min-height: 100px; line-height: 1.5; transition: border-color 0.2s; }
 :root[data-platform="mobile"] .ob-textarea::placeholder { color: rgba(255,255,255,0.25); }
 :root[data-platform="mobile"] .ob-textarea:focus { border-color: rgba(124,58,237,0.45); }
