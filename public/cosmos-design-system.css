@@ -3380,10 +3380,13 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .confirm-checkbox.checked { background: var(--gradient-btn); border-color: transparent; }
 
 /* MFA setup */
-:root[data-platform="mobile"] .mfa-prompt-page { display: flex; flex-direction: column; flex: 1; padding: 54px 0 0; }
-:root[data-platform="mobile"] .mfa-sheet-card { background: rgba(18,19,28,0.96); border-radius: 24px 24px 0 0; padding: 28px 20px; padding-bottom: max(28px, env(safe-area-inset-bottom)); border-top: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(16px); animation: sheet-slide-up 0.4s ease-out; }
-:root[data-platform="mobile"] .mfa-hero { display: flex; justify-content: center; position: relative; margin-bottom: 20px; background: radial-gradient(circle at 50% 45%, #1A1040 0%, transparent 100%); border-radius: 16px; padding: 20px 0; }
-:root[data-platform="mobile"] .mfa-hero-img { width: 160px; height: auto; position: relative; z-index: 1; }
+/* Full page, not a bottom sheet: the body scrolls between the top of the
+   screen and a pinned action row. */
+:root[data-platform="mobile"] .mfa-prompt-page { display: flex; flex-direction: column; flex: 1; min-height: 0; padding-top: max(40px, env(safe-area-inset-top)); }
+:root[data-platform="mobile"] .mfa-prompt-body { flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; justify-content: center; padding: 0 20px; }
+:root[data-platform="mobile"] .mfa-prompt-actions { flex-shrink: 0; padding: 16px 20px; padding-bottom: max(24px, env(safe-area-inset-bottom)); }
+:root[data-platform="mobile"] .mfa-hero { display: flex; justify-content: center; position: relative; margin-bottom: 24px; padding: 8px 0; }
+:root[data-platform="mobile"] .mfa-hero-img { width: 200px; height: auto; position: relative; z-index: 1; }
 :root[data-platform="mobile"] .mfa-hero-glow { position: absolute; width: 180px; height: 180px; top: 50%; left: 50%; transform: translate(-50%,-50%); border-radius: 50%; background: radial-gradient(circle, rgba(92,114,245,0.2) 0%, transparent 70%); filter: blur(20px); }
 :root[data-platform="mobile"] .mfa-title { font-size: 20px; font-weight: 700; color: #fff; font-family: var(--font); text-align: center; }
 :root[data-platform="mobile"] .mfa-subtitle { font-size: 13px; color: rgba(255,255,255,0.45); text-align: center; line-height: 1.55; margin-top: 8px; font-family: var(--font); }
