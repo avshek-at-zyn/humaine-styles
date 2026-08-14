@@ -6421,11 +6421,17 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 :root[data-platform="mobile"] .pl-title {
-  font-family: 'Instrument Serif', Georgia, serif;
+  /* Hahmlet, as the frame specifies. Its serifs are heavier than Instrument
+     Serif's at the same size, so the size comes down a touch and the line
+     height opens up to keep the two lines from crowding. */
+  font-family: 'Hahmlet', Georgia, serif;
   font-weight: 400;
-  font-size: 32px;
-  line-height: 39.9px;
-  letter-spacing: -0.4px;
+  /* Hahmlet sets much wider than Instrument Serif: at the frame's 32px the
+     first line overflows a 375pt screen and wraps to three lines. 28px keeps
+     "Think with something" on one line, so the headline stays two lines. */
+  font-size: 28px;
+  line-height: 37px;
+  letter-spacing: -0.2px;
   color: #f5f0fa;
   text-shadow: 0 2px 30px rgba(4, 6, 18, 0.85);
 }
