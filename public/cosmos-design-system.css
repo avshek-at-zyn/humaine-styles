@@ -487,8 +487,8 @@ a {
 
 .btn--primary-outline {
   background: transparent;
-  border: 1px solid var(--primary-500);
-  color: var(--primary-400);
+  border: 1px solid var(--primary-400);
+  color: var(--primary-300);
 }
 .btn--primary-outline:hover:not(:disabled) { background: rgba(82,113,255,0.08); }
 
@@ -3737,9 +3737,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .ob-name-input:focus { border-bottom-color: var(--brand-purple); }
 :root[data-platform="mobile"] .ob-name-input::placeholder { color: rgba(255,255,255,0.25); font-weight: 400; font-size: 16px; }
 :root[data-platform="mobile"] .ob-gradient-line { height: 2px; background: linear-gradient(90deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%); border-radius: 1px; margin-top: 0; }
-:root[data-platform="mobile"] .ob-pills { display: flex; flex-wrap: wrap; gap: 8px; }
-:root[data-platform="mobile"] .ob-pill { padding: 9px 18px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 500; cursor: pointer; font-family: var(--font); transition: background 0.15s, border-color 0.15s, color 0.15s; -webkit-tap-highlight-color: transparent; }
-:root[data-platform="mobile"] .ob-pill.selected { background: rgba(124,58,237,0.2); border-color: rgba(124,58,237,0.6); color: #c4b5fd; }
 :root[data-platform="mobile"] .ob-qblock { display: flex; flex-direction: column; gap: 6px; }
 :root[data-platform="mobile"] .ob-qblock-title { font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.85); font-family: var(--font); }
 :root[data-platform="mobile"] .ob-qblock-hint { font-size: 12px; color: rgba(255,255,255,0.35); font-family: var(--font); }
@@ -3750,6 +3747,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .ob-chip.selected { background: rgba(124,58,237,0.18); border-color: rgba(124,58,237,0.5); color: #c4b5fd; }
 :root[data-platform="mobile"] .ob-chip-icon { flex-shrink: 0; opacity: 0.75; }
 :root[data-platform="mobile"] .ob-chip.selected .ob-chip-icon { opacity: 1; }
+:root[data-platform="mobile"] .ob-chip--plain { gap: 0; }
+
 :root[data-platform="mobile"] .ob-chip-dot { width: 4px; height: 4px; border-radius: 50%; background: currentColor; opacity: 0.45; flex-shrink: 0; }
 :root[data-platform="mobile"] .ob-textarea { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 14px; padding: 14px; color: #fff; font-size: 14px; font-family: var(--font); resize: none; outline: none; min-height: 100px; line-height: 1.5; transition: border-color 0.2s; }
 :root[data-platform="mobile"] .ob-textarea::placeholder { color: rgba(255,255,255,0.25); }
@@ -6162,8 +6161,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
    variants are restated here with the design system's own tokens. */
 :root[data-platform="mobile"] .btn--primary-outline {
   background: transparent;
-  border: 1px solid var(--primary-500);
-  color: var(--primary-400);
+  border: 1px solid var(--primary-400);
+  color: var(--primary-300);
 }
 
 :root[data-platform="mobile"] .btn--secondary {
@@ -6612,4 +6611,19 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   color: rgba(245, 240, 250, 0.48);
   border-bottom: 1px solid rgba(245, 240, 250, 0.16);
   cursor: pointer;
+}
+
+/* ============================================================
+   §60 MOBILE — MACHINE-TRANSLATION NOTICE
+   ============================================================ */
+
+/* Shown under the composer whenever the app is running in a language other
+   than English. Deliberately quiet: this is a disclosure, not a warning. */
+:root[data-platform="mobile"] .chat-mt-note {
+  padding: 2px 20px 6px;
+  text-align: center;
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.28);
+  font-family: var(--font);
 }
