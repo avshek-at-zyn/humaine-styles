@@ -6281,16 +6281,56 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 /* ── Sky ── */
 :root[data-platform="mobile"] .pl-sky { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
 
+/* Light, as in the frame: a broad wash off the top edge and a soft beam
+   falling from top centre. Both are radial so they have no edge of their own —
+   an earlier clip-path cone read as a visible triangle. */
 :root[data-platform="mobile"] .pl-glow {
   position: absolute;
-  top: -22%;
+  top: -34%;
   left: 50%;
   transform: translateX(-50%);
-  width: 130%;
-  height: 62%;
+  width: 165%;
+  height: 80%;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(82, 113, 255, 0.28) 0%, rgba(82, 113, 255, 0.08) 45%, transparent 72%);
-  filter: blur(12px);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(128, 116, 214, 0.5) 0%,
+    rgba(98, 96, 190, 0.22) 38%,
+    rgba(62, 64, 138, 0.07) 60%,
+    transparent 78%
+  );
+  filter: blur(26px);
+}
+
+:root[data-platform="mobile"] .pl-ray {
+  position: absolute;
+  top: -16%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  height: 80%;
+  background: radial-gradient(
+    ellipse 42% 58% at 50% 0%,
+    rgba(196, 186, 255, 0.20) 0%,
+    rgba(152, 140, 244, 0.09) 40%,
+    rgba(110, 104, 214, 0.03) 62%,
+    transparent 78%
+  );
+  filter: blur(34px);
+}
+
+/* The rim of a huge sphere sitting just below the fold */
+:root[data-platform="mobile"] .pl-horizon {
+  position: absolute;
+  left: 50%;
+  bottom: -104%;
+  transform: translateX(-50%);
+  width: 205%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 0%, rgba(82, 113, 255, 0.12) 0%, rgba(30, 38, 82, 0.05) 26%, transparent 46%);
+  border-top: 1px solid rgba(181, 183, 246, 0.12);
+  box-shadow: 0 -22px 70px -26px rgba(123, 135, 247, 0.42);
 }
 
 :root[data-platform="mobile"] .pl-star {
