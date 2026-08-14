@@ -5673,3 +5673,526 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 :root[data-platform="mobile"] .ps-success-desc strong { color: #c8bfff; font-weight: 500; }
+
+/* ============================================================
+   §56 MOBILE — SECURITY SETTINGS (flat label/action rows, clay
+   link rows, MFA setup, export picker, sessions)
+   ============================================================ */
+
+:root[data-platform="mobile"] .ss-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px calc(28px + env(safe-area-inset-bottom));
+}
+
+/* ── Label + action rows (MFA, password reset, PIN reset) ── */
+:root[data-platform="mobile"] .ss-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 10px 0;
+}
+
+:root[data-platform="mobile"] .ss-row--sub { padding-top: 0; min-height: 40px; }
+:root[data-platform="mobile"] .ss-row--section { align-items: flex-start; padding-top: 4px; }
+
+:root[data-platform="mobile"] .ss-row-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+
+:root[data-platform="mobile"] .ss-row-title {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-row-title--sub {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+:root[data-platform="mobile"] .ss-row-meta {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font);
+}
+
+/* ── Outline action button (Reset Password, View Sessions) ── */
+:root[data-platform="mobile"] .ss-outline-btn {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: background 0.15s, border-color 0.15s;
+}
+
+:root[data-platform="mobile"] .ss-outline-btn:active {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+:root[data-platform="mobile"] .ss-danger-btn {
+  background: rgba(239, 68, 68, 0.14);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+}
+
+/* ── MFA info card. There is deliberately no toggle or Remove action:
+   once multi-factor auth is set up it cannot be switched off from here. ── */
+:root[data-platform="mobile"] .ss-mfa-block {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+:root[data-platform="mobile"] .ss-mfa-head { display: flex; align-items: center; gap: 10px; }
+
+:root[data-platform="mobile"] .ss-mfa-icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(139, 92, 246, 0.16);
+  border: 1px solid rgba(139, 92, 246, 0.28);
+  color: #c8bfff;
+}
+
+:root[data-platform="mobile"] .ss-mfa-title {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-mfa-subtitle {
+  margin-top: -6px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-mfa-badge {
+  flex-shrink: 0;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: var(--font);
+}
+
+/* MFA is always active on mobile, so this is the only variant in use */
+:root[data-platform="mobile"] .ss-mfa-badge--on {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.14);
+  border-color: rgba(74, 222, 128, 0.3);
+}
+
+:root[data-platform="mobile"] .ss-mfa-method {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+:root[data-platform="mobile"] .ss-mfa-method-icon { color: rgba(255, 255, 255, 0.6); flex-shrink: 0; display: flex; }
+
+:root[data-platform="mobile"] .ss-mfa-method-info { display: flex; flex-direction: column; gap: 3px; }
+
+:root[data-platform="mobile"] .ss-mfa-method-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-mfa-method-meta {
+  font-size: 11.5px;
+  color: #4ade80;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-mfa-actions { display: flex; gap: 8px; }
+:root[data-platform="mobile"] .ss-mfa-actions .ss-outline-btn { flex: 1; padding: 10px 8px; }
+
+/* ── Dividers ── */
+:root[data-platform="mobile"] .ss-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.09);
+  margin: 18px 0 20px;
+}
+
+:root[data-platform="mobile"] .ss-hairline {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin-left: 52px;
+}
+
+/* ── Section heads ── */
+:root[data-platform="mobile"] .ss-section-head { margin-bottom: 10px; }
+
+:root[data-platform="mobile"] .ss-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-section-desc {
+  display: block;
+  margin-top: 3px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font);
+}
+
+/* ── Clay icon link rows ── */
+:root[data-platform="mobile"] .ss-link-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+:root[data-platform="mobile"] .ss-link-row:active { opacity: 0.7; }
+
+:root[data-platform="mobile"] .ss-link-icon { width: 40px; height: 40px; flex-shrink: 0; }
+
+:root[data-platform="mobile"] .ss-link-label {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-arrow-out { color: rgba(255, 255, 255, 0.8); flex-shrink: 0; }
+
+/* ── MFA setup: QR ── */
+:root[data-platform="mobile"] .ss-qr-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+:root[data-platform="mobile"] .ss-qr { border-radius: 10px; }
+:root[data-platform="mobile"] .ss-qr-user { text-align: center; }
+
+:root[data-platform="mobile"] .ss-qr-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-qr-email {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-or {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-or::before,
+:root[data-platform="mobile"] .ss-or::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+:root[data-platform="mobile"] .ss-key-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+:root[data-platform="mobile"] .ss-key-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-key-value {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #fff;
+  font-family: var(--font);
+}
+
+/* ── MFA setup: push number ── */
+:root[data-platform="mobile"] .ss-push-number {
+  font-size: 56px;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  font-family: var(--font);
+  letter-spacing: 0.04em;
+  padding: 12px 0 4px;
+}
+
+:root[data-platform="mobile"] .ss-push-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+:root[data-platform="mobile"] .ss-push-bar span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #7c3aed, #db2777);
+  transform-origin: left;
+  animation: ss-push-countdown 30s linear forwards;
+}
+
+@keyframes ss-push-countdown {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+/* ── Backup codes ── */
+:root[data-platform="mobile"] .ss-code-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+:root[data-platform="mobile"] .ss-code {
+  padding: 10px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: #fff;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-code--btn { cursor: pointer; }
+
+:root[data-platform="mobile"] .ss-code--used {
+  color: rgba(255, 255, 255, 0.3);
+  text-decoration: line-through;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+:root[data-platform="mobile"] .ss-code-actions { display: flex; gap: 8px; }
+:root[data-platform="mobile"] .ss-code-actions .ss-outline-btn { flex: 1; }
+
+/* ── Export picker ── */
+:root[data-platform="mobile"] .ss-field-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-segmented {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+:root[data-platform="mobile"] .ss-segment {
+  flex: 1;
+  padding: 8px 4px;
+  border-radius: 9px;
+  background: none;
+  border: none;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-segment--on {
+  background: rgba(139, 92, 246, 0.22);
+  color: #fff;
+  font-weight: 600;
+}
+
+:root[data-platform="mobile"] .ss-format-list { display: flex; flex-direction: column; gap: 8px; }
+
+:root[data-platform="mobile"] .ss-format {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-format--on {
+  background: rgba(139, 92, 246, 0.14);
+  border-color: rgba(139, 92, 246, 0.45);
+}
+
+:root[data-platform="mobile"] .ss-format-ext {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #c8bfff;
+  min-width: 42px;
+}
+
+:root[data-platform="mobile"] .ss-format-desc { font-size: 13px; color: rgba(255, 255, 255, 0.7); }
+
+/* ── Chat history stats ── */
+:root[data-platform="mobile"] .ss-stat-row { display: flex; gap: 8px; }
+
+:root[data-platform="mobile"] .ss-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+:root[data-platform="mobile"] .ss-stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-stat-label {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: var(--font);
+}
+
+/* ── Policy rows ── */
+:root[data-platform="mobile"] .ss-policy-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  text-align: left;
+}
+
+:root[data-platform="mobile"] .ss-policy-text { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+
+:root[data-platform="mobile"] .ss-policy-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-policy-meta {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font);
+}
+
+/* ── Sessions ── */
+:root[data-platform="mobile"] .ss-session {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+:root[data-platform="mobile"] .ss-session-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+
+:root[data-platform="mobile"] .ss-session-device {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-session-meta {
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ss-session-badge {
+  flex-shrink: 0;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.14);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-family: var(--font);
+}
