@@ -6302,6 +6302,27 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   filter: blur(26px);
 }
 
+:root[data-platform="mobile"] .pl-shaft {
+  position: absolute;
+  top: -8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 76%;
+  height: 60%;
+  /* narrow at the top, opening as it falls */
+  clip-path: polygon(45% 0, 55% 0, 90% 100%, 10% 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(206, 196, 255, 0.17) 0%,
+    rgba(166, 154, 250, 0.07) 42%,
+    rgba(130, 122, 226, 0.02) 68%,
+    transparent 88%
+  );
+  /* blur keeps the wedge from reading as a hard triangle; the drop-shadow is
+     the faint outline that makes it read as a shaft of light */
+  filter: blur(15px) drop-shadow(0 0 22px rgba(158, 148, 246, 0.28));
+}
+
 :root[data-platform="mobile"] .pl-ray {
   position: absolute;
   top: -16%;
@@ -6319,18 +6340,25 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   filter: blur(34px);
 }
 
-/* The rim of a huge sphere sitting just below the fold */
+/* The rim of a huge sphere, sitting so its apex crosses the middle of the
+   screen rather than hiding below the fold — that curved outline is what
+   reads as a planet edge behind the feature card. */
 :root[data-platform="mobile"] .pl-horizon {
   position: absolute;
+  top: 52%;
   left: 50%;
-  bottom: -104%;
   transform: translateX(-50%);
-  width: 205%;
+  width: 212%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 0%, rgba(82, 113, 255, 0.12) 0%, rgba(30, 38, 82, 0.05) 26%, transparent 46%);
-  border-top: 1px solid rgba(181, 183, 246, 0.12);
-  box-shadow: 0 -22px 70px -26px rgba(123, 135, 247, 0.42);
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(82, 113, 255, 0.13) 0%,
+    rgba(32, 40, 86, 0.06) 22%,
+    transparent 42%
+  );
+  border-top: 1px solid rgba(181, 183, 246, 0.16);
+  box-shadow: 0 -24px 72px -26px rgba(123, 135, 247, 0.5);
 }
 
 :root[data-platform="mobile"] .pl-star {
@@ -6429,7 +6457,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 /* ── Membership card ── */
 :root[data-platform="mobile"] .pl-card {
   position: relative;
-  margin: 56px 24px 0;
+  margin: 80px 24px 0;
   padding: 18px 22px;
   border-radius: 20px;
   border: 1px solid rgba(181, 183, 246, 0.16);
