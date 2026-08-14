@@ -6290,3 +6290,127 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 /* A locked or master-off toggle reads as inactive, not broken */
 :root[data-platform="mobile"] .nt-toggle--locked { cursor: default; }
 :root[data-platform="mobile"] .nt-group--off { opacity: 0.4; }
+
+/* ============================================================
+   §58 MOBILE — DESIGN-SYSTEM BUTTONS INLINE, SETTINGS DETAIL PAGES
+   ============================================================ */
+
+/* The mobile scope makes .btn a full-width block, which is right for a page's
+   primary action and wrong for a button sitting inside a row. Any button that
+   opts into a size modifier is an inline control and keeps the design system's
+   own metrics and colours. */
+:root[data-platform="mobile"] .btn--sm,
+:root[data-platform="mobile"] .btn--md,
+:root[data-platform="mobile"] .btn--lg {
+  display: inline-flex;
+  width: auto;
+  border-radius: var(--radius-md, 10px);
+  letter-spacing: 0;
+}
+
+:root[data-platform="mobile"] .btn--sm { height: 34px; padding: 0 14px; font-size: 13px; gap: 6px; }
+:root[data-platform="mobile"] .btn--md { height: 40px; padding: 0 16px; font-size: 14px; }
+:root[data-platform="mobile"] .btn--lg { height: 48px; padding: 0 20px; font-size: 15px; }
+
+/* The same mobile .btn rule also wins `border: none` over the variants, so the
+   variants are restated here with the design system's own tokens. */
+:root[data-platform="mobile"] .btn--primary-outline {
+  background: transparent;
+  border: 1px solid var(--primary-500);
+  color: var(--primary-400);
+}
+
+:root[data-platform="mobile"] .btn--secondary {
+  background: var(--surface-900);
+  border: 1px solid var(--surface-800);
+  color: var(--surface-200);
+}
+
+:root[data-platform="mobile"] .btn--ghost {
+  background: transparent;
+  border: none;
+  color: var(--surface-300);
+}
+
+:root[data-platform="mobile"] .btn--danger {
+  background: transparent;
+  border: 1px solid #ed6a6c;
+  color: #ed6a6c;
+}
+
+/* Touch feedback, since the design system's variants only define :hover */
+:root[data-platform="mobile"] .btn--primary-outline:active:not(:disabled) { background: rgba(82, 113, 255, 0.16); }
+:root[data-platform="mobile"] .btn--secondary:active:not(:disabled) { background: var(--surface-800); }
+:root[data-platform="mobile"] .btn--ghost:active:not(:disabled) { background: rgba(255, 255, 255, 0.08); }
+
+:root[data-platform="mobile"] .btn--secondary svg { color: var(--surface-400, rgba(255,255,255,0.35)); }
+
+/* ── Settings detail pages (the former bottom sheets) ── */
+:root[data-platform="mobile"] .sp-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 20px calc(104px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+:root[data-platform="mobile"] .sp-body--list { gap: 8px; padding-top: 4px; }
+
+:root[data-platform="mobile"] .sp-link { align-self: flex-start; padding: 0; height: auto; color: var(--primary-300); }
+
+:root[data-platform="mobile"] .sp-opt {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .sp-opt:active { background: rgba(255, 255, 255, 0.075); }
+
+:root[data-platform="mobile"] .sp-opt--on {
+  background: rgba(139, 92, 246, 0.14);
+  border-color: rgba(139, 92, 246, 0.45);
+}
+
+:root[data-platform="mobile"] .sp-opt-flag { font-size: 22px; line-height: 1; flex-shrink: 0; }
+:root[data-platform="mobile"] .sp-opt-text { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+
+:root[data-platform="mobile"] .sp-opt-label { font-size: 15px; color: #fff; }
+:root[data-platform="mobile"] .sp-opt--on .sp-opt-label { color: #c8bfff; }
+:root[data-platform="mobile"] .sp-opt-desc { font-size: 12px; color: rgba(255, 255, 255, 0.42); }
+
+/* ── Success page (replaces the success sheet) ── */
+:root[data-platform="mobile"] .sp-done {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 0 32px;
+  text-align: center;
+}
+
+:root[data-platform="mobile"] .sp-done-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .sp-done-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .sp-done-desc strong { color: #c8bfff; font-weight: 500; }
