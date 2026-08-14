@@ -3640,67 +3640,10 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .pay-fine-print-m { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.6; text-align: center; font-family: var(--font); }
 
 /* Plans screen */
-:root[data-platform="mobile"] .plans-screen { position: relative; width: 100%; max-width: 430px; margin: 0 auto; height: 100dvh; overflow: hidden; display: flex; flex-direction: column; background: #050816; }
-:root[data-platform="mobile"] .plans-hero { position: relative; flex-shrink: 0; padding-top: max(20px, env(safe-area-inset-top)); text-align: center; z-index: 1; }
-:root[data-platform="mobile"] .plans-hero-img { width: 200px; height: auto; position: relative; z-index: 2; margin: 0 auto; }
-:root[data-platform="mobile"] .plans-hero-tint { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 100%, rgba(92,114,245,0.15) 0%, transparent 70%); pointer-events: none; }
-:root[data-platform="mobile"] .plans-orb { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; }
-:root[data-platform="mobile"] .plans-orb--1 { width: 300px; height: 300px; background: rgba(92,114,245,0.12); top: -100px; left: -80px; }
-:root[data-platform="mobile"] .plans-orb--2 { width: 200px; height: 200px; background: rgba(124,58,237,0.1); top: 0; right: -60px; }
-:root[data-platform="mobile"] .plans-grid-floor { position: absolute; bottom: 0; left: 0; right: 0; height: 220px; overflow: hidden; pointer-events: none; opacity: 0.3; perspective: 600px; }
-:root[data-platform="mobile"] .plans-grid-floor::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, rgba(92,114,245,0.4) 0, rgba(92,114,245,0.4) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(0deg, rgba(92,114,245,0.4) 0, rgba(92,114,245,0.4) 1px, transparent 1px, transparent 40px); transform: rotateX(65deg); transform-origin: bottom center; animation: plans-grid-slide 6s linear infinite; background-size: 60px 40px; }
 @keyframes plans-grid-slide { from { background-position: 0 0; } to { background-position: 0 -40px; } }
-:root[data-platform="mobile"] .plans-hero-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, transparent, #050816); pointer-events: none; }
-:root[data-platform="mobile"] .plans-content { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; padding: 0 20px; padding-bottom: max(24px, env(safe-area-inset-bottom)); }
-:root[data-platform="mobile"] .plans-heading { font-size: 26px; font-weight: 800; color: #fff; font-family: var(--font); text-align: center; line-height: 1.2; }
-:root[data-platform="mobile"] .plans-subheading { font-size: 14px; color: rgba(255,255,255,0.45); text-align: center; margin-top: 8px; font-family: var(--font); line-height: 1.5; }
-:root[data-platform="mobile"] .plans-features-glass { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 20px; padding: 20px; backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); margin: 20px 0; }
-:root[data-platform="mobile"] .plans-features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; }
-:root[data-platform="mobile"] .plans-feature-item { display: flex; align-items: flex-start; gap: 8px; }
-:root[data-platform="mobile"] .plans-feature-icon { font-size: 16px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
-:root[data-platform="mobile"] .plans-feature-text { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.4; font-family: var(--font); }
-:root[data-platform="mobile"] .plans-option { display: flex; align-items: center; gap: 14px; padding: 16px; border-radius: 16px; border: 1.5px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); cursor: pointer; transition: border-color 0.2s, background 0.2s; margin-bottom: 10px; }
-:root[data-platform="mobile"] .plans-option--active { border-color: rgba(124,58,237,0.7); background: rgba(124,58,237,0.08); }
-:root[data-platform="mobile"] .plans-option-radio { width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: border-color 0.2s; }
-:root[data-platform="mobile"] .plans-option-radio--on { border-color: var(--brand-purple); background: var(--brand-purple); }
-:root[data-platform="mobile"] .plans-option-radio--on::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
-:root[data-platform="mobile"] .plans-option-body { flex: 1; }
-:root[data-platform="mobile"] .plans-option-name { font-size: 15px; font-weight: 700; color: #fff; font-family: var(--font); }
-:root[data-platform="mobile"] .plans-option-price { font-size: 13px; color: rgba(255,255,255,0.5); font-family: var(--font); margin-top: 2px; }
-:root[data-platform="mobile"] .plans-option-badge { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 50px; background: rgba(92,114,245,0.2); color: #818cf8; letter-spacing: 0.05em; white-space: nowrap; font-family: var(--font); }
-:root[data-platform="mobile"] .plans-cta-area { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
-:root[data-platform="mobile"] .plans-legal { font-size: 10px; color: rgba(255,255,255,0.25); text-align: center; font-family: var(--font); line-height: 1.6; }
 
 /* ── Plans: MFP-style playful layout ── */
-:root[data-platform="mobile"] .plans-hero-block { padding: 0 16px; }
-:root[data-platform="mobile"] .plans-hero-title { font-size: 34px; font-weight: 800; letter-spacing: -0.6px; line-height: 1.05; color: #fff; font-family: var(--font); margin-bottom: 14px; }
-:root[data-platform="mobile"] .plans-hero-sub { font-size: 14px; color: rgba(255,255,255,0.55); font-family: var(--font); line-height: 1.5; max-width: 320px; }
-:root[data-platform="mobile"] .plans-top-ray { position: absolute; inset: 0; pointer-events: none; z-index: 0; background: linear-gradient(to bottom, rgba(167,139,250,0.14) 0%, rgba(155,125,255,0.08) 12%, rgba(124,58,237,0.04) 25%, transparent 45%), radial-gradient(ellipse 60% 30% at 50% -5%, rgba(196,181,253,0.18) 0%, transparent 70%); }
-:root[data-platform="mobile"] .plans-corner-decor { position: absolute; top: 0; right: 0; width: 180px; height: 180px; pointer-events: none; z-index: 0; animation: plans-corner-float 8s ease-in-out infinite; }
-:root[data-platform="mobile"] .plans-corner-decor svg { width: 100%; height: 100%; filter: drop-shadow(0 6px 20px rgba(192,132,252,0.35)); }
 @keyframes plans-corner-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
-:root[data-platform="mobile"] .plans-select-heading { text-align: center; font-size: 17px; font-weight: 700; color: #fff; font-family: var(--font); margin: 56px 16px 16px; letter-spacing: -0.1px; }
-:root[data-platform="mobile"] .plans-selector { display: flex; gap: 10px; padding: 20px 20px 0; }
-:root[data-platform="mobile"] .plans-selector--mfp { padding: 0 16px; gap: 12px; }
-:root[data-platform="mobile"] .plans-inline-features { display: flex; flex-direction: column; gap: 20px; padding: 40px 16px 0; }
-:root[data-platform="mobile"] .plans-inline-feat { display: flex; align-items: flex-start; gap: 16px; }
-:root[data-platform="mobile"] .plans-inline-feat-icon { flex-shrink: 0; filter: drop-shadow(0 0 10px rgba(196,132,252,0.35)); }
-:root[data-platform="mobile"] .plans-inline-feat-title { color: #fff; font-weight: 700; }
-:root[data-platform="mobile"] .plans-inline-feat-text { font-size: 15px; color: rgba(255,255,255,0.75); font-family: var(--font); line-height: 1.45; }
-:root[data-platform="mobile"] .plans-option-mfp { position: relative; flex: 1; display: flex; flex-direction: column; padding: 20px 14px 16px; background: rgba(255,255,255,0.04); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 16px; cursor: pointer; font-family: var(--font); text-align: left; transition: border-color 0.18s, background 0.18s, box-shadow 0.18s; }
-:root[data-platform="mobile"] .plans-option-mfp--active { border-color: rgba(155,125,255,0.6); background: rgba(124,58,237,0.1); box-shadow: 0 0 24px rgba(124,58,237,0.15); }
-:root[data-platform="mobile"] .plans-option-mfp-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-:root[data-platform="mobile"] .plans-option-mfp-label { font-size: 15px; font-weight: 800; color: #fff; letter-spacing: 0.5px; }
-:root[data-platform="mobile"] .plans-option-mfp-badge { position: absolute; top: -12px; left: 12px; background: linear-gradient(90deg, #22c55e, #16a34a); color: #fff; font-size: 10.5px; font-weight: 800; letter-spacing: 0.4px; padding: 4px 10px; border-radius: 999px; box-shadow: 0 4px 12px rgba(34,197,94,0.35); }
-:root[data-platform="mobile"] .plans-option-mfp-price { display: flex; align-items: baseline; gap: 2px; margin-bottom: 4px; }
-:root[data-platform="mobile"] .plans-option-mfp-amount { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.4px; }
-:root[data-platform="mobile"] .plans-option-mfp-per { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5); }
-:root[data-platform="mobile"] .plans-option-mfp-strike { font-size: 13px; color: rgba(255,255,255,0.3); text-decoration: line-through; margin-bottom: 12px; }
-:root[data-platform="mobile"] .plans-option-mfp-strike span { color: rgba(255,255,255,0.3); }
-:root[data-platform="mobile"] .plans-option-mfp-note { font-size: 11.5px; color: rgba(255,255,255,0.4); line-height: 1.35; margin-top: auto; }
-:root[data-platform="mobile"] .plans-option-mfp-radio { width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; transition: background 0.15s, border-color 0.15s; flex-shrink: 0; }
-:root[data-platform="mobile"] .plans-option-mfp-radio--on { background: #22c55e; border-color: #22c55e; }
-:root[data-platform="mobile"] .plans-cancel-line { text-align: center; font-size: 12px; color: rgba(255,255,255,0.4); font-family: var(--font); padding: 8px 16px 0; }
 
 /* ── Payment: missing classes ── */
 :root[data-platform="mobile"] .pay-section-label-m { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.4); letter-spacing: 0.04em; margin: 8px 0 4px; font-family: var(--font); }
@@ -4627,103 +4570,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   font-family: var(--font);
 }
 :root[data-platform="mobile"] .np-m-platform-arrow { color: rgba(255,255,255,0.3); }
-
-
-/* ============================================================
-   §46 MOBILE — PLANS / PRICING
-   ============================================================ */
-
-:root[data-platform="mobile"] .plans-orb-1 {
-  width: 210px; height: 190px;
-  top: 2vh; left: -60px;
-  background: radial-gradient(circle, rgba(219,39,119,0.35) 0%, transparent 70%);
-}
-:root[data-platform="mobile"] .plans-orb-2 {
-  width: 230px; height: 200px;
-  top: 12vh; right: -70px;
-  background: radial-gradient(circle, rgba(124,58,237,0.4) 0%, transparent 70%);
-}
-:root[data-platform="mobile"] .plans-header {
-  text-align: center;
-  padding: 0 24px;
-  margin-bottom: 20px;
-}
-:root[data-platform="mobile"] .plans-title {
-  font-size: 26px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.3px;
-  font-family: var(--font);
-  margin-bottom: 6px;
-}
-:root[data-platform="mobile"] .plans-subtitle {
-  font-size: 14px;
-  color: rgba(255,255,255,0.45);
-  font-family: var(--font);
-}
-:root[data-platform="mobile"] .plans-features-heading {
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.5);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 16px;
-  font-family: var(--font);
-}
-:root[data-platform="mobile"] .plans-feature {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-:root[data-platform="mobile"] .plans-feature-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-  font-family: var(--font);
-  line-height: 1.3;
-}
-:root[data-platform="mobile"] .plans-feature-desc {
-  font-size: 11px;
-  color: rgba(255,255,255,0.35);
-  font-family: var(--font);
-  margin-top: 2px;
-  line-height: 1.35;
-}
-:root[data-platform="mobile"] .plans-option-top {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 4px;
-}
-:root[data-platform="mobile"] .plans-option-label {
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.6);
-}
-:root[data-platform="mobile"] .plans-option--active .plans-option-label {
-  color: #fff;
-}
-:root[data-platform="mobile"] .plans-option-per {
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.4);
-}
-:root[data-platform="mobile"] .plans-option-note {
-  font-size: 12px;
-  color: rgba(255,255,255,0.4);
-  font-family: var(--font);
-}
-:root[data-platform="mobile"] .plans-option--active .plans-option-note {
-  color: rgba(255,255,255,0.55);
-}
-:root[data-platform="mobile"] .plans-cta {
-  box-shadow: 0 4px 20px rgba(124,58,237,0.4), 0 2px 8px rgba(219,39,119,0.3);
-}
-:root[data-platform="mobile"] .plans-links {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-}
 
 
 /* ============================================================
@@ -6414,3 +6260,304 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 :root[data-platform="mobile"] .sp-done-desc strong { color: #c8bfff; font-weight: 500; }
+
+/* ============================================================
+   §59 MOBILE — PLANS / PRICING (Zyn Design System 2831:49428)
+   Serif headline over a star field, a membership card, two billing
+   cycle cards and a gradient subscribe button.
+   ============================================================ */
+
+:root[data-platform="mobile"] .pl-screen {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  height: 100dvh;
+  overflow: hidden;
+  background: #080c1b;
+  font-family: 'Manrope', var(--font);
+}
+
+/* ── Sky ── */
+:root[data-platform="mobile"] .pl-sky { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+
+:root[data-platform="mobile"] .pl-glow {
+  position: absolute;
+  top: -22%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130%;
+  height: 62%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(82, 113, 255, 0.28) 0%, rgba(82, 113, 255, 0.08) 45%, transparent 72%);
+  filter: blur(12px);
+}
+
+:root[data-platform="mobile"] .pl-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #f5f0fa;
+}
+
+:root[data-platform="mobile"] .pl-moon {
+  position: absolute;
+  top: 20%;
+  right: 8%;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e8ecff 0%, #b9c2e8 55%, #7d88b5 100%);
+  box-shadow: 0 0 40px rgba(210, 220, 255, 0.28);
+  /* crescent: a second circle cut out of the first */
+  mask-image: radial-gradient(circle at 78% 26%, transparent 0 58%, #000 58%);
+  -webkit-mask-image: radial-gradient(circle at 78% 26%, transparent 0 58%, #000 58%);
+}
+
+:root[data-platform="mobile"] .pl-planet {
+  position: absolute;
+  top: 26%;
+  left: 12%;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, rgba(181, 183, 246, 0.5), rgba(82, 113, 255, 0.16) 70%, transparent);
+  border: 1px solid rgba(181, 183, 246, 0.22);
+}
+
+:root[data-platform="mobile"] .pl-planet::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 92px;
+  height: 26px;
+  transform: translate(-50%, -50%) rotate(-18deg);
+  border: 1px solid rgba(181, 183, 246, 0.28);
+  border-radius: 50%;
+}
+
+/* ── Layout ── */
+:root[data-platform="mobile"] .pl-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: max(14px, env(safe-area-inset-top));
+}
+
+:root[data-platform="mobile"] .pl-close {
+  align-self: flex-start;
+  margin: 6px 0 0 22px;
+  padding: 6px;
+  background: none;
+  border: none;
+  color: #f5f0fa;
+  cursor: pointer;
+}
+
+/* ── Head ── */
+:root[data-platform="mobile"] .pl-head { padding: 16px 26px 0; text-align: center; }
+
+:root[data-platform="mobile"] .pl-wordmark {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  color: #f5f0fa;
+  margin-bottom: 13px;
+}
+
+:root[data-platform="mobile"] .pl-wordmark-ai {
+  background: linear-gradient(115.56deg, #8e9bff 0%, #e5c3f0 60%, #f06fd0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+:root[data-platform="mobile"] .pl-title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 39.9px;
+  letter-spacing: -0.4px;
+  color: #f5f0fa;
+  text-shadow: 0 2px 30px rgba(4, 6, 18, 0.85);
+}
+
+:root[data-platform="mobile"] .pl-title-accent { color: #dcc9f5; }
+
+/* ── Membership card ── */
+:root[data-platform="mobile"] .pl-card {
+  position: relative;
+  margin: 56px 24px 0;
+  padding: 18px 22px;
+  border-radius: 20px;
+  border: 1px solid rgba(181, 183, 246, 0.16);
+  background: linear-gradient(173.16deg, rgba(82, 113, 255, 0.1) 0%, rgba(14, 19, 38, 0.86) 46%, rgba(10, 14, 28, 0.94) 100%);
+  box-shadow: 0 18px 44px -26px rgba(82, 113, 255, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  overflow: hidden;
+}
+
+/* The lit top edge from the frame */
+:root[data-platform="mobile"] .pl-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(123, 135, 247, 0) 0%, #7b87f7 22%, #e5c3f0 62%, rgba(229, 195, 240, 0) 100%);
+}
+
+:root[data-platform="mobile"] .pl-feature { display: flex; gap: 12px; align-items: flex-start; }
+
+:root[data-platform="mobile"] .pl-feature-icon {
+  flex-shrink: 0;
+  width: 19px;
+  height: 19px;
+  margin-top: 1px;
+  color: #ccf6b5;
+}
+
+:root[data-platform="mobile"] .pl-feature-text { display: flex; flex-direction: column; gap: 1px; }
+
+:root[data-platform="mobile"] .pl-feature-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -0.1px;
+  color: #f5f0fa;
+}
+
+:root[data-platform="mobile"] .pl-feature-desc {
+  font-size: 12px;
+  line-height: 16.2px;
+  color: rgba(245, 240, 250, 0.38);
+}
+
+/* ── Billing sheet ── */
+:root[data-platform="mobile"] .pl-sheet {
+  margin-top: auto;
+  padding-bottom: calc(18px + env(safe-area-inset-bottom));
+}
+
+:root[data-platform="mobile"] .pl-cycles { display: flex; gap: 11px; padding: 0 22px; align-items: stretch; }
+
+:root[data-platform="mobile"] .pl-cycle {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 15px;
+  border-radius: 18px;
+  background: rgba(245, 240, 250, 0.04);
+  border: 1px solid rgba(181, 183, 246, 0.15);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.18s, border-color 0.18s, box-shadow 0.18s;
+}
+
+:root[data-platform="mobile"] .pl-cycle--on {
+  background: rgba(82, 113, 255, 0.14);
+  border-color: rgba(126, 142, 255, 0.8);
+  box-shadow: 0 12px 34px -18px rgba(82, 113, 255, 0.95);
+}
+
+:root[data-platform="mobile"] .pl-cycle-top { display: flex; align-items: center; gap: 7px; }
+
+:root[data-platform="mobile"] .pl-radio {
+  width: 15px;
+  height: 15px;
+  border-radius: 7.5px;
+  border: 1px solid rgba(181, 183, 246, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+:root[data-platform="mobile"] .pl-cycle--on .pl-radio { background: #5271ff; border-color: #5271ff; }
+
+:root[data-platform="mobile"] .pl-cycle-name {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: rgba(245, 240, 250, 0.62);
+}
+
+:root[data-platform="mobile"] .pl-cycle--on .pl-cycle-name { color: #f5f0fa; }
+
+:root[data-platform="mobile"] .pl-price { display: flex; align-items: baseline; gap: 3px; margin-top: 3px; }
+
+:root[data-platform="mobile"] .pl-price-amount {
+  font-family: 'Jura', var(--font);
+  font-weight: 700;
+  font-size: 25px;
+  letter-spacing: -0.6px;
+  color: #f5f0fa;
+}
+
+:root[data-platform="mobile"] .pl-price-per {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(245, 240, 250, 0.62);
+}
+
+:root[data-platform="mobile"] .pl-cycle-note {
+  font-size: 11px;
+  color: rgba(245, 240, 250, 0.36);
+}
+
+:root[data-platform="mobile"] .pl-save {
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 4px 8px;
+  border-radius: 7px;
+  background: linear-gradient(92deg, #ace1e4 0%, #b5b7f6 100%);
+  color: #0a0e1f;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+/* ── CTA ── */
+:root[data-platform="mobile"] .pl-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: calc(100% - 44px);
+  margin: 13px 22px 0;
+  height: 56px;
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(90deg, #7b87f7 0%, #a97be8 52%, #f06fd0 100%);
+  box-shadow: 0 14px 34px -16px rgba(240, 111, 208, 0.8);
+  color: #fff;
+  font-family: inherit;
+  font-size: 16.5px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.15s;
+}
+
+:root[data-platform="mobile"] .pl-cta:active { transform: scale(0.985); opacity: 0.94; }
+
+/* ── Terms ── */
+:root[data-platform="mobile"] .pl-terms {
+  margin: 11px 22px 0;
+  font-size: 10.5px;
+  line-height: 16.27px;
+  text-align: center;
+  color: rgba(245, 240, 250, 0.32);
+}
+
+:root[data-platform="mobile"] .pl-link {
+  color: rgba(245, 240, 250, 0.48);
+  border-bottom: 1px solid rgba(245, 240, 250, 0.16);
+  cursor: pointer;
+}
