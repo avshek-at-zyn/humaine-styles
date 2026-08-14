@@ -5372,25 +5372,34 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   padding: 8px 16px calc(28px + env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 /* ── Cards ── */
-:root[data-platform="mobile"] .ps-card {
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 18px;
-  padding: 16px 16px 6px;
+/* Sections carry no outline of their own — a heading plus the rule above them
+   is what separates one category from the next. Only genuinely distinct blocks
+   (the MFA card in Security Settings) keep a container. */
+:root[data-platform="mobile"] .ps-card { display: flex; flex-direction: column; }
+
+:root[data-platform="mobile"] .ps-card + .ps-card {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
 }
 
 :root[data-platform="mobile"] .ps-card-title {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
   font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ps-card-desc {
+  margin-top: 3px;
   margin-bottom: 4px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font);
 }
 
 /* ── Avatar ── */
