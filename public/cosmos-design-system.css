@@ -6294,8 +6294,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 :root[data-platform="mobile"] .pl-decor {
   position: relative;
-  height: 62px;
-  margin: auto 24px 14px;
+  height: 56px;
+  margin: 0 24px 16px;
   flex-shrink: 0;
 }
 
@@ -6303,8 +6303,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   position: absolute;
   top: 0;
   right: 4px;
-  width: 62px;
-  height: 62px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: linear-gradient(135deg, #e8ecff 0%, #b9c2e8 55%, #7d88b5 100%);
   box-shadow: 0 0 40px rgba(210, 220, 255, 0.28);
@@ -6347,7 +6347,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 /* ── Head ── */
-:root[data-platform="mobile"] .pl-head { padding: 64px 26px 0; margin-bottom: 40px; text-align: center; }
+:root[data-platform="mobile"] .pl-head { padding: 38px 26px 0; margin: auto 0 28px; text-align: center; }
 
 :root[data-platform="mobile"] .pl-wordmark {
   font-size: 19px;
@@ -6386,8 +6386,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .pl-card {
   position: relative;
   /* the decor strip above carries the auto margin, so this pair is pushed
-     down together and the card keeps its fixed 20px above the billing sheet */
-  margin: 0 24px 20px;
+     down together and the card keeps its fixed gap above the billing sheet */
+  margin: 0 24px 24px;
   padding: 18px 22px;
   border-radius: 20px;
   border: 1px solid rgba(181, 183, 246, 0.16);
@@ -6529,7 +6529,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   justify-content: center;
   gap: 9px;
   width: calc(100% - 44px);
-  margin: 13px 22px 0;
+  margin: 24px 22px 0;
   height: 56px;
   border: none;
   border-radius: 15px;
@@ -6734,13 +6734,13 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   :root[data-platform="mobile"] .pl-planet { width: 32px; height: 32px; top: 5px; }
   :root[data-platform="mobile"] .pl-planet::after { width: 64px; height: 18px; }
 
-  :root[data-platform="mobile"] .pl-head { padding-top: 12px; margin-bottom: 14px; }
+  :root[data-platform="mobile"] .pl-head { padding-top: 12px; margin: auto 0 14px; }
   :root[data-platform="mobile"] .pl-title { font-size: 25px; line-height: 33px; }
   :root[data-platform="mobile"] .pl-wordmark { margin-bottom: 10px; }
   :root[data-platform="mobile"] .pl-card { padding: 13px 18px; gap: 9px; }
   :root[data-platform="mobile"] .pl-feature-desc { line-height: 15.4px; }
   :root[data-platform="mobile"] .pl-cycle { padding: 12px; gap: 3px; }
-  :root[data-platform="mobile"] .pl-cta { height: 50px; margin-top: 11px; }
+  :root[data-platform="mobile"] .pl-cta { height: 50px; margin-top: 24px; }
   :root[data-platform="mobile"] .pl-terms { margin-top: 7px; font-size: 10px; line-height: 14.5px; }
   :root[data-platform="mobile"] .pl-sheet { padding-bottom: calc(10px + env(safe-area-inset-bottom)); }
 }
