@@ -6292,8 +6292,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 :root[data-platform="mobile"] .pl-moon {
   position: absolute;
-  top: 20%;
-  right: 8%;
+  top: 26%;
+  right: 7%;
   width: 62px;
   height: 62px;
   border-radius: 50%;
@@ -6338,7 +6338,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 /* ── Head ── */
-:root[data-platform="mobile"] .pl-head { padding: 40px 26px 0; text-align: center; }
+:root[data-platform="mobile"] .pl-head { padding: 64px 26px 0; text-align: center; }
 
 :root[data-platform="mobile"] .pl-wordmark {
   font-size: 19px;
@@ -6376,7 +6376,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 /* ── Membership card ── */
 :root[data-platform="mobile"] .pl-card {
   position: relative;
-  margin: 80px 24px 0;
+  margin: 104px 24px 0;
   padding: 18px 22px;
   border-radius: 20px;
   border: 1px solid rgba(181, 183, 246, 0.16);
