@@ -6239,10 +6239,11 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   border-radius: 50%;
   background: radial-gradient(
     ellipse at center,
-    rgba(128, 116, 214, 0.5) 0%,
-    rgba(98, 96, 190, 0.22) 38%,
-    rgba(62, 64, 138, 0.07) 60%,
-    transparent 78%
+    rgba(155, 125, 255, 0.72) 0%,
+    rgba(124, 108, 248, 0.38) 34%,
+    rgba(250, 129, 214, 0.12) 56%,
+    rgba(60, 62, 140, 0.05) 70%,
+    transparent 84%
   );
   filter: blur(26px);
 }
@@ -6255,12 +6256,13 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   width: 96%;
   height: 46%;
   background: radial-gradient(
-    ellipse 46% 56% at 50% 0%,
-    rgba(196, 186, 255, 0.13) 0%,
-    rgba(152, 140, 244, 0.05) 42%,
-    transparent 70%
+    ellipse 46% 58% at 50% 0%,
+    rgba(214, 199, 255, 0.30) 0%,
+    rgba(155, 125, 255, 0.14) 38%,
+    rgba(250, 129, 214, 0.05) 60%,
+    transparent 78%
   );
-  filter: blur(38px);
+  filter: blur(36px);
 }
 
 /* The rim of a huge sphere, sitting so its apex crosses the middle of the
@@ -6290,10 +6292,17 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   background: #f5f0fa;
 }
 
+:root[data-platform="mobile"] .pl-decor {
+  position: relative;
+  height: 62px;
+  margin: auto 24px 14px;
+  flex-shrink: 0;
+}
+
 :root[data-platform="mobile"] .pl-moon {
   position: absolute;
-  top: 26%;
-  right: 7%;
+  top: 0;
+  right: 4px;
   width: 62px;
   height: 62px;
   border-radius: 50%;
@@ -6306,8 +6315,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 :root[data-platform="mobile"] .pl-planet {
   position: absolute;
-  top: 26%;
-  left: 12%;
+  top: 10px;
+  left: 12px;
   width: 46px;
   height: 46px;
   border-radius: 50%;
@@ -6376,9 +6385,9 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 /* ── Membership card ── */
 :root[data-platform="mobile"] .pl-card {
   position: relative;
-  /* auto pushes the card down to sit just above the billing sheet, so the gap
-     below it is 20px on any device height rather than growing with it */
-  margin: auto 24px 20px;
+  /* the decor strip above carries the auto margin, so this pair is pushed
+     down together and the card keeps its fixed 20px above the billing sheet */
+  margin: 0 24px 20px;
   padding: 18px 22px;
   border-radius: 20px;
   border: 1px solid rgba(181, 183, 246, 0.16);
@@ -6717,21 +6726,21 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   font-family: var(--font);
 }
 
-/* The moon and planet sit at a share of viewport height while the card is
-   anchored to the billing sheet, so on a short screen the card rises into
-   them. They are decoration and the card is not, so below ~780px they step
-   aside and the head and card each give back a little — otherwise the sheet
-   is pushed off the bottom of a 667pt screen. */
+/* Below ~780px the head, decor, card and sheet each give back a little,
+   otherwise the sheet is pushed off the bottom of a 667pt screen. */
 @media (max-height: 780px) {
-  :root[data-platform="mobile"] .pl-moon,
-  :root[data-platform="mobile"] .pl-planet { display: none; }
+  :root[data-platform="mobile"] .pl-decor { height: 42px; margin-bottom: 8px; }
+  :root[data-platform="mobile"] .pl-moon { width: 42px; height: 42px; }
+  :root[data-platform="mobile"] .pl-planet { width: 32px; height: 32px; top: 5px; }
+  :root[data-platform="mobile"] .pl-planet::after { width: 64px; height: 18px; }
 
-  :root[data-platform="mobile"] .pl-head { padding-top: 20px; margin-bottom: 20px; }
+  :root[data-platform="mobile"] .pl-head { padding-top: 12px; margin-bottom: 14px; }
   :root[data-platform="mobile"] .pl-title { font-size: 25px; line-height: 33px; }
   :root[data-platform="mobile"] .pl-wordmark { margin-bottom: 10px; }
   :root[data-platform="mobile"] .pl-card { padding: 13px 18px; gap: 9px; }
   :root[data-platform="mobile"] .pl-feature-desc { line-height: 15.4px; }
   :root[data-platform="mobile"] .pl-cycle { padding: 12px; gap: 3px; }
   :root[data-platform="mobile"] .pl-cta { height: 50px; margin-top: 11px; }
-  :root[data-platform="mobile"] .pl-terms { margin-top: 8px; }
+  :root[data-platform="mobile"] .pl-terms { margin-top: 7px; font-size: 10px; line-height: 14.5px; }
+  :root[data-platform="mobile"] .pl-sheet { padding-bottom: calc(10px + env(safe-area-inset-bottom)); }
 }
