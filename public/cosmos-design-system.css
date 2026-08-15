@@ -6337,18 +6337,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   padding-top: max(14px, env(safe-area-inset-top));
 }
 
-:root[data-platform="mobile"] .pl-close {
-  align-self: flex-start;
-  margin: 6px 0 0 22px;
-  padding: 6px;
-  background: none;
-  border: none;
-  color: #f5f0fa;
-  cursor: pointer;
-}
-
 /* ── Head ── */
-:root[data-platform="mobile"] .pl-head { padding: 16px 26px 0; text-align: center; }
+:root[data-platform="mobile"] .pl-head { padding: 40px 26px 0; text-align: center; }
 
 :root[data-platform="mobile"] .pl-wordmark {
   font-size: 19px;
