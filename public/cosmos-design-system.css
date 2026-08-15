@@ -4229,60 +4229,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 
 /* ============================================================
-   §43 MOBILE — VOICE / CONVERSATION MODE
-   ============================================================ */
-
-:root[data-platform="mobile"] .voice-orb-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 34px;
-}
-:root[data-platform="mobile"] .voice-bars .voice-bar--live {
-  animation: voice-bar-bounce 0.9s ease-in-out infinite;
-}
-:root[data-platform="mobile"] .voice-status {
-  font-size: 15px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.85);
-  font-family: var(--font);
-  min-height: 22px;
-}
-:root[data-platform="mobile"] .voice-transcript {
-  margin-top: 14px;
-  font-size: 14px;
-  line-height: 1.55;
-  color: rgba(255,255,255,0.55);
-  text-align: center;
-  font-family: var(--font);
-  max-width: 320px;
-  max-height: 130px;
-  overflow: hidden;
-}
-:root[data-platform="mobile"] .voice-end-btn {
-  position: absolute;
-  bottom: max(44px, env(safe-area-inset-bottom, 44px));
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(248,113,113,0.18);
-  color: #fca5a5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-@keyframes voice-bar-bounce {
-  0%, 100% { transform: scaleY(0.6); }
-  50% { transform: scaleY(1.4); }
-}
-
-
-/* ============================================================
    §44 MOBILE — LANGUAGE BOTTOM SHEET
    ============================================================ */
 
@@ -6625,5 +6571,113 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   font-size: 10.5px;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.28);
+  font-family: var(--font);
+}
+
+/* ============================================================
+   §61 MOBILE — CONVERSATION MODE COMPOSER GLOW (replaces §43)
+   Ported from the web (.hc-input-wrap--voice): the composer itself
+   reads as listening / thinking / speaking, rather than a full-screen
+   overlay covering the thread.
+   ============================================================ */
+
+:root[data-platform="mobile"] .ci-wrap--voice { position: relative; }
+
+:root[data-platform="mobile"] .ci-wrap--voice::before {
+  content: '';
+  position: absolute;
+  inset: -34px -24px;
+  border-radius: 44px;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(58% 62% at 50% 55%,
+    rgba(124, 108, 248, 0.34) 0%,
+    rgba(124, 108, 248, 0.16) 42%,
+    rgba(232, 121, 160, 0.07) 66%,
+    transparent 82%);
+  filter: blur(14px);
+  animation: ci-voice-breathe 2.8s ease-in-out infinite;
+}
+
+/* the card floats above its own light */
+:root[data-platform="mobile"] .ci-wrap--voice > * { position: relative; z-index: 1; }
+
+:root[data-platform="mobile"] .ci-wrap--voice .ci-card-m {
+  border-color: rgba(124, 108, 248, 0.55);
+  box-shadow: 0 0 24px -6px rgba(124, 108, 248, 0.45);
+}
+
+/* thinking — the light draws in and dims, considering */
+:root[data-platform="mobile"] .ci-wrap--voice-thinking::before {
+  animation: ci-voice-think 1.4s ease-in-out infinite;
+  filter: blur(18px);
+}
+
+/* speaking — brighter, warmer, faster: the reply pouring out */
+:root[data-platform="mobile"] .ci-wrap--voice-speaking::before {
+  background: radial-gradient(58% 62% at 50% 55%,
+    rgba(232, 121, 160, 0.36) 0%,
+    rgba(124, 108, 248, 0.22) 45%,
+    rgba(124, 108, 248, 0.08) 68%,
+    transparent 82%);
+  animation: ci-voice-speak 0.9s ease-in-out infinite;
+}
+
+:root[data-platform="mobile"] .ci-wrap--voice-speaking .ci-card-m {
+  border-color: rgba(232, 121, 160, 0.55);
+  box-shadow: 0 0 28px -6px rgba(232, 121, 160, 0.5);
+}
+
+@keyframes ci-voice-breathe {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.045); }
+}
+@keyframes ci-voice-think {
+  0%, 100% { opacity: 0.45; transform: scale(0.97); }
+  50%      { opacity: 0.7;  transform: scale(1); }
+}
+@keyframes ci-voice-speak {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.07); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-platform="mobile"] .ci-wrap--voice::before { animation: none; }
+}
+
+/* ── Phase line under the composer ── */
+:root[data-platform="mobile"] .ci-voice-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 2px 20px 6px;
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ci-voice-phase {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(196, 181, 253, 0.85);
+}
+
+:root[data-platform="mobile"] .ci-voice-interim {
+  flex-basis: 100%;
+  text-align: center;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+:root[data-platform="mobile"] .ci-voice-stop {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: underline;
+  cursor: pointer;
   font-family: var(--font);
 }
