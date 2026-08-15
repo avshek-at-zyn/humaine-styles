@@ -6338,7 +6338,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 /* ── Head ── */
-:root[data-platform="mobile"] .pl-head { padding: 64px 26px 0; text-align: center; }
+:root[data-platform="mobile"] .pl-head { padding: 64px 26px 0; margin-bottom: 40px; text-align: center; }
 
 :root[data-platform="mobile"] .pl-wordmark {
   font-size: 19px;
@@ -6376,7 +6376,9 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 /* ── Membership card ── */
 :root[data-platform="mobile"] .pl-card {
   position: relative;
-  margin: 104px 24px 0;
+  /* auto pushes the card down to sit just above the billing sheet, so the gap
+     below it is 20px on any device height rather than growing with it */
+  margin: auto 24px 20px;
   padding: 18px 22px;
   border-radius: 20px;
   border: 1px solid rgba(181, 183, 246, 0.16);
@@ -6385,6 +6387,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   display: flex;
   flex-direction: column;
   gap: 13px;
+  flex-shrink: 0;
   overflow: hidden;
 }
 
@@ -6426,7 +6429,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 /* ── Billing sheet ── */
 :root[data-platform="mobile"] .pl-sheet {
-  margin-top: auto;
   padding-bottom: calc(18px + env(safe-area-inset-bottom));
 }
 
@@ -6713,4 +6715,23 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   text-decoration: underline;
   cursor: pointer;
   font-family: var(--font);
+}
+
+/* The moon and planet sit at a share of viewport height while the card is
+   anchored to the billing sheet, so on a short screen the card rises into
+   them. They are decoration and the card is not, so below ~780px they step
+   aside and the head and card each give back a little — otherwise the sheet
+   is pushed off the bottom of a 667pt screen. */
+@media (max-height: 780px) {
+  :root[data-platform="mobile"] .pl-moon,
+  :root[data-platform="mobile"] .pl-planet { display: none; }
+
+  :root[data-platform="mobile"] .pl-head { padding-top: 20px; margin-bottom: 20px; }
+  :root[data-platform="mobile"] .pl-title { font-size: 25px; line-height: 33px; }
+  :root[data-platform="mobile"] .pl-wordmark { margin-bottom: 10px; }
+  :root[data-platform="mobile"] .pl-card { padding: 13px 18px; gap: 9px; }
+  :root[data-platform="mobile"] .pl-feature-desc { line-height: 15.4px; }
+  :root[data-platform="mobile"] .pl-cycle { padding: 12px; gap: 3px; }
+  :root[data-platform="mobile"] .pl-cta { height: 50px; margin-top: 11px; }
+  :root[data-platform="mobile"] .pl-terms { margin-top: 8px; }
 }
