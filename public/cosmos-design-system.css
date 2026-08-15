@@ -6607,6 +6607,49 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   box-shadow: 0 0 24px -6px rgba(124, 108, 248, 0.45);
 }
 
+/* Listening answers the microphone rather than breathing on a timer:
+   --voice-level is written per frame from the mic RMS. Scale and opacity ride
+   it, so the halo swells with the voice and settles in the pauses. The
+   transition is short enough to feel immediate and long enough to smooth the
+   frame-to-frame jitter. */
+:root[data-platform="mobile"] .ci-wrap--voice-listening::before {
+  animation: none;
+  transform: scale(calc(1 + var(--voice-level, 0) * 0.22));
+  opacity: calc(0.55 + var(--voice-level, 0) * 0.45);
+  transition: transform 90ms linear, opacity 90ms linear;
+}
+
+/* A second ring rides the same level a beat wider, which is what reads as a
+   wave rather than a pulse. */
+:root[data-platform="mobile"] .ci-wrap--voice-listening::after {
+  content: '';
+  position: absolute;
+  inset: -34px -24px;
+  border-radius: 44px;
+  pointer-events: none;
+  z-index: 0;
+  border: 1px solid rgba(167, 139, 250, calc(0.10 + var(--voice-level, 0) * 0.5));
+  transform: scale(calc(1 + var(--voice-level, 0) * 0.4));
+  opacity: calc(0.25 + var(--voice-level, 0) * 0.75);
+  transition: transform 140ms ease-out, opacity 140ms ease-out, border-color 140ms linear;
+}
+
+/* If the mic is unavailable the level stays 0, so fall back to the timed
+   breathing rather than a dead halo. */
+@supports not (transform: scale(calc(1 + var(--voice-level, 0)))) {
+  :root[data-platform="mobile"] .ci-wrap--voice-listening::before {
+    animation: ci-voice-breathe 2.8s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-platform="mobile"] .ci-wrap--voice-listening::before,
+  :root[data-platform="mobile"] .ci-wrap--voice-listening::after {
+    transition: none;
+    transform: none;
+  }
+}
+
 /* thinking — the light draws in and dims, considering */
 :root[data-platform="mobile"] .ci-wrap--voice-thinking::before {
   animation: ci-voice-think 1.4s ease-in-out infinite;
