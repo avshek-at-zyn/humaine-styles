@@ -5,38 +5,28 @@ export function ChatBubblesPage() {
         <div className="page-badge">Component</div>
         <h1 className="page-title">Chat Bubbles</h1>
         <p className="page-desc">
-          Message bubbles for conversational UI. User messages use a gradient background and right-align; assistant messages use a subtle surface fill and left-align. Both platforms share the same visual language — only sizing and radius adapt for touch.
+          Message bubbles for conversational UI. User messages use a gradient background and right-align; assistant messages use a subtle surface fill and left-align. The same bubble styling is shared across web and mobile — one component, one spec.
         </p>
       </div>
 
-      {/* ── Web vs Mobile ── */}
+      {/* ── Bubble Demo ── */}
       <div className="section">
-        <h2 className="section-title">Web vs Mobile</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
-          <div>
-            <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--surface-400)', marginBottom: 10, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Web (§24 HumaineChat)</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, padding: 16, background: 'var(--surface-950)', borderRadius: 16, border: '1px solid var(--surface-800)' }}>
-              <div style={{ alignSelf: 'flex-end', maxWidth: '75%', padding: '10px 14px', borderRadius: '16px 16px 4px 16px', background: 'linear-gradient(135deg, rgba(82,113,255,0.35), rgba(181,183,246,0.2))', border: '1px solid rgba(82,113,255,0.25)', color: '#fff', fontSize: 13, lineHeight: 1.5 }}>What were our Q4 highlights?</div>
-              <div style={{ alignSelf: 'flex-start', maxWidth: '75%', padding: '10px 14px', borderRadius: '16px 16px 16px 4px', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.9)', fontSize: 13, lineHeight: 1.5 }}>Revenue grew 23% YoY, driven by enterprise contracts in APAC.</div>
-            </div>
-          </div>
-          <div>
-            <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--surface-400)', marginBottom: 10, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Mobile (§37 Chat)</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, padding: 16, background: 'var(--bg-primary)', borderRadius: 16, border: '1px solid var(--surface-800)' }}>
-              <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '12px 14px', borderRadius: '18px 18px 6px 18px', background: 'linear-gradient(135deg, #6b4ff0, #8a5cf6)', color: '#fff', fontSize: 14.5, lineHeight: 1.55 }}>What were our Q4 highlights?</div>
-              <div style={{ alignSelf: 'flex-start', maxWidth: '82%', padding: '12px 14px', borderRadius: '18px 18px 18px 6px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.9)', fontSize: 14.5, lineHeight: 1.55 }}>Revenue grew 23% YoY, driven by enterprise contracts in APAC.</div>
-            </div>
+        <h2 className="section-title">User &amp; Assistant Bubbles</h2>
+        <div style={{ maxWidth: 420 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, padding: 16, background: 'var(--bg-primary)', borderRadius: 16, border: '1px solid var(--surface-800)' }}>
+            <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '12px 14px', borderRadius: '18px 18px 6px 18px', background: 'linear-gradient(135deg, #6b4ff0, #8a5cf6)', color: '#fff', fontSize: 14.5, lineHeight: 1.55 }}>What were our Q4 highlights?</div>
+            <div style={{ alignSelf: 'flex-start', maxWidth: '82%', padding: '12px 14px', borderRadius: '18px 18px 18px 6px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.9)', fontSize: 14.5, lineHeight: 1.55 }}>Revenue grew 23% YoY, driven by enterprise contracts in APAC.</div>
           </div>
         </div>
         <table className="demo-table" style={{ marginTop: 16 }}>
-          <thead><tr><th>Property</th><th>Web</th><th>Mobile</th></tr></thead>
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
           <tbody>
-            <tr><td>Max Width</td><td>75%</td><td>82%</td></tr>
-            <tr><td>Padding</td><td>10px 14px</td><td>12px 14px</td></tr>
-            <tr><td>Font Size</td><td>13px</td><td>14.5px</td></tr>
-            <tr><td>Border Radius</td><td>16px (4px tail)</td><td>18px (6px tail)</td></tr>
-            <tr><td>User Gradient</td><td>rgba(82,113,255,0.35) → rgba(181,183,246,0.2)</td><td>#6b4ff0 → #8a5cf6</td></tr>
-            <tr><td>Assistant BG</td><td>rgba(255,255,255,0.06)</td><td>rgba(255,255,255,0.07)</td></tr>
+            <tr><td>Max Width</td><td>82%</td></tr>
+            <tr><td>Padding</td><td>12px 14px</td></tr>
+            <tr><td>Font Size</td><td>14.5px</td></tr>
+            <tr><td>Border Radius</td><td>18px (6px tail corner)</td></tr>
+            <tr><td>User Gradient</td><td>#6b4ff0 → #8a5cf6</td></tr>
+            <tr><td>Assistant BG</td><td>rgba(255,255,255,0.07), 1px border</td></tr>
           </tbody>
         </table>
       </div>
