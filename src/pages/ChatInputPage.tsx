@@ -205,6 +205,55 @@ export function ChatInputPage() {
         </div>
       </div>
 
+      {/* Mobile Variant */}
+      <div className="section">
+        <h2 className="section-title">Mobile Variant</h2>
+        <p className="section-desc">On mobile, ChatInput is a sticky bottom bar with safe-area padding. The card uses a 20px radius, and the send pill is a gradient capsule instead of a solid primary.</p>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+          <div>
+            <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--surface-400)', marginBottom: 8, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Web</div>
+            <div className="ci-demo-card" style={{ transform: 'scale(0.9)', transformOrigin: 'top left' }}>
+              <div className="ci-demo-textarea" style={{ color: '#979797' }}>Message to humaine...</div>
+              <div className="ci-demo-bottom">
+                <button className="ci-demo-icon-btn">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
+                </button>
+                <button className="ci-demo-mic-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="9" y="2" width="6" height="12" rx="3" stroke="currentColor" strokeWidth="1.8"/><path d="M5 10a7 7 0 0 0 14 0" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/><line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--surface-400)', marginBottom: 8, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Mobile</div>
+            <div className="mob-ci-card" style={{ transform: 'scale(0.9)', transformOrigin: 'top left' }}>
+              <div style={{ padding: '12px 14px 4px', color: 'rgba(255,255,255,0.28)', fontSize: 15 }}>Message to humaine...</div>
+              <div className="mob-ci-bottom">
+                <div className="mob-ci-icon-btn">
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
+                </div>
+                <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+                  <div className="mob-ci-icon-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="9" y="2" width="6" height="12" rx="3" stroke="currentColor" strokeWidth="1.8"/><path d="M5 10a7 7 0 0014 0" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/><line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <table className="demo-table" style={{ marginTop: 16 }}>
+          <thead><tr><th>Adaptation</th><th>Web (§22)</th><th>Mobile (§37)</th></tr></thead>
+          <tbody>
+            <tr><td>Position</td><td>Static in layout</td><td>sticky bottom, safe-area inset</td></tr>
+            <tr><td>Card Radius</td><td>24px</td><td>20px</td></tr>
+            <tr><td>Textarea Font</td><td>14px</td><td>15px</td></tr>
+            <tr><td>Icon Button</td><td>32px, bordered circle</td><td>36px, borderless square, radius 10px</td></tr>
+            <tr><td>Send Pill</td><td>var(--primary-500), solid</td><td>#6b4ff0 → #8a5cf6 gradient, capsule</td></tr>
+            <tr><td>Background</td><td>var(--surface-950)</td><td>rgba(5,8,22,0.85) + blur(16px)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
       {/* Specs */}
       <div className="section">
         <h2 className="section-title">Specs</h2>
