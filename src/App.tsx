@@ -26,6 +26,8 @@ import { TooltipPage } from './pages/TooltipPage'
 import { ListItemPage } from './pages/ListItemPage'
 import { SocialButtonPage } from './pages/SocialButtonPage'
 import { MobilePage } from './pages/MobilePage'
+import { ChatBubblesPage } from './pages/ChatBubblesPage'
+import { ChatInteractionsPage } from './pages/ChatInteractionsPage'
 
 export const CopyContext = createContext<(t: string) => void>(() => {})
 export const useCopy = () => useContext(CopyContext)
@@ -34,7 +36,7 @@ type PageId =
   | 'home' | 'philosophy' | 'logo' | 'colors' | 'typography' | 'radius' | 'spacing' | 'shadows' | 'gradients'
   | 'buttons' | 'inputs' | 'cards' | 'badges' | 'navigation' | 'chat-input' | 'data-display'
   | 'tabs' | 'chips' | 'avatar' | 'toggle' | 'modal' | 'divider' | 'tooltip' | 'list-item' | 'social-button'
-  | 'mobile'
+  | 'mobile' | 'chat-bubbles' | 'chat-interactions'
 
 const NAV = [
   {
@@ -78,6 +80,13 @@ const NAV = [
     ],
   },
   {
+    section: 'Chat',
+    items: [
+      { id: 'chat-bubbles' as PageId, label: 'Chat Bubbles', icon: 'bubble', color: '#5271FF' },
+      { id: 'chat-interactions' as PageId, label: 'Chat Interactions', icon: 'zap', color: '#B5B7F6' },
+    ],
+  },
+  {
     section: 'Mobile',
     items: [
       { id: 'mobile' as PageId, label: 'Mobile System', icon: 'phone', color: '#a78bfa' },
@@ -111,6 +120,8 @@ const PAGES: Record<PageId, React.FC> = {
   tooltip: TooltipPage,
   divider: DividerPage,
   'data-display': DataDisplayPage,
+  'chat-bubbles': ChatBubblesPage,
+  'chat-interactions': ChatInteractionsPage,
   mobile: MobilePage,
 }
 
@@ -128,7 +139,7 @@ function NavIcon({ name }: { name: string }) {
     layers: <svg {...s} viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>,
     click: <svg {...s} viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 12h8" opacity="0.5"/></svg>,
     input: <svg {...s} viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="10" x2="6" y2="14"/></svg>,
-    tabs: <svg {...s} viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M8 6v4"/><path d="M14" y1="6" y2="10"/></svg>,
+    tabs: <svg {...s} viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M8 6v4"/><line x1="14" x2="14" y1="6" y2="10"/></svg>,
     tag: <svg {...s} viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>,
     badge: <svg {...s} viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>,
     user: <svg {...s} viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
@@ -143,6 +154,8 @@ function NavIcon({ name }: { name: string }) {
     minus: <svg {...s} viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/></svg>,
     chart: <svg {...s} viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>,
     phone: <svg {...s} viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>,
+    bubble: <svg {...s} viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>,
+    zap: <svg {...s} viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
   }
   return <span className="nav-icon">{icons[name] || null}</span>
 }
