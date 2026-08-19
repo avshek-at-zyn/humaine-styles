@@ -5015,12 +5015,14 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   background: rgba(255,255,255,0.16);
 }
 
+/* Four states now, so the pill has to hold one more tab on a 375pt screen */
 .ps-preview-btn-m {
-  padding: 6px 14px;
+  padding: 6px 11px;
+  white-space: nowrap;
   border: none;
   background: none;
   border-radius: 999px;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 700;
   font-family: var(--font);
   color: rgba(255,255,255,0.5);
@@ -6744,3 +6746,29 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   :root[data-platform="mobile"] .pl-terms { margin-top: 7px; font-size: 10px; line-height: 14.5px; }
   :root[data-platform="mobile"] .pl-sheet { padding-bottom: calc(10px + env(safe-area-inset-bottom)); }
 }
+
+/* ============================================================
+   §62 MOBILE — WHATSAPP DELIVERY HINT
+   Sits under a recovery mobile field. Codes go out over WhatsApp,
+   not SMS, so the channel is named before a number is entered.
+   ============================================================ */
+
+:root[data-platform="mobile"] .wa-hint {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 9px 0 0;
+  padding: 0 20px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .wa-hint svg {
+  flex-shrink: 0;
+  color: #25D366;   /* WhatsApp green — the one cue that names the channel */
+}
+
+/* Inside a settings page the field is already inset, so drop the extra gutter */
+:root[data-platform="mobile"] .sp-body .wa-hint { padding: 0; margin-top: 4px; }
