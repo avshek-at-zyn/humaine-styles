@@ -6913,3 +6913,50 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 /* Conversation mode paints its own border, so the focus ring stands down */
 :root[data-platform="mobile"] .ci-wrap--voice .ci-card-m::after { opacity: 0; }
+
+/* ============================================================
+   §64 MOBILE — MFA SETUP KEY CARD
+   A phone cannot scan a QR shown on itself, so this step leads with
+   the key and a hand-off to the authenticator app.
+   ============================================================ */
+
+:root[data-platform="mobile"] .mfa-key-card {
+  margin: 16px 20px 0;
+  padding: 16px 18px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 14px 36px -22px rgba(82, 113, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+:root[data-platform="mobile"] .mfa-key-card-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font);
+}
+
+/* Underlined and set large: this is the one string the user has to carry
+   across to another app, so it reads as the subject of the screen. */
+:root[data-platform="mobile"] .mfa-key-card-code {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #fff;
+  font-family: var(--font);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 2px;
+  word-break: break-word;
+}
+
+:root[data-platform="mobile"] .mfa-no-app-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+}
