@@ -6960,3 +6960,70 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   gap: 8px;
   font-weight: 700;
 }
+
+/* ============================================================
+   §65 MOBILE — AUTH SKY: SHOOTING STARS AND RINGED PLANETS
+   Signup and login only. The sparkle blobs that sat near the top
+   read as smudges rather than as anything, so on these screens
+   they give way to shapes that are legible at a glance.
+   ============================================================ */
+
+:root[data-platform="mobile"] .bg-scene--auth .sparkle-star { display: none; }
+
+/* ── Ringed planets ──
+   Kept dim on purpose: this is set dressing behind a form, so it should
+   reward a second look rather than pull the eye off the field. */
+:root[data-platform="mobile"] .bg-ringed {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, rgba(181, 183, 246, 0.30), rgba(82, 113, 255, 0.10) 68%, transparent);
+  border: 1px solid rgba(181, 183, 246, 0.2);
+  pointer-events: none;
+}
+
+:root[data-platform="mobile"] .bg-ringed::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 210%;
+  height: 58%;
+  transform: translate(-50%, -50%) rotate(-18deg);
+  border: 1px solid rgba(181, 183, 246, 0.22);
+  border-radius: 50%;
+}
+
+:root[data-platform="mobile"] .bg-ringed-1 { top: 13%; left: 8%; width: 28px; height: 28px; opacity: 0.75; }
+:root[data-platform="mobile"] .bg-ringed-2 { top: 31%; right: 11%; width: 20px; height: 20px; opacity: 0.6; }
+:root[data-platform="mobile"] .bg-ringed-2::after { transform: translate(-50%, -50%) rotate(14deg); }
+
+/* ── Shooting stars ──
+   A short streak that crosses and disappears. The animation is mostly dead
+   time — a 9s cycle where the streak occupies about 8% of it — so one is an
+   occasional event rather than a loop the eye starts tracking. */
+:root[data-platform="mobile"] .bg-shoot {
+  position: absolute;
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(214, 220, 255, 0.85), transparent);
+  filter: blur(0.3px);
+  opacity: 0;
+  transform: rotate(18deg);
+  pointer-events: none;
+  animation: bg-shoot-run 9s linear infinite;
+}
+
+:root[data-platform="mobile"] .bg-shoot-1 { top: 9%;  left: -18%; animation-delay: 1s; }
+:root[data-platform="mobile"] .bg-shoot-2 { top: 24%; left: -22%; animation-delay: 5.5s; width: 90px; }
+:root[data-platform="mobile"] .bg-shoot-3 { top: 42%; left: -16%; animation-delay: 12s; width: 70px; opacity: 0; }
+
+@keyframes bg-shoot-run {
+  0%      { opacity: 0; transform: translate3d(0, 0, 0) rotate(18deg); }
+  2%      { opacity: 0.9; }
+  8%      { opacity: 0; transform: translate3d(150vw, 46vw, 0) rotate(18deg); }
+  100%    { opacity: 0; transform: translate3d(150vw, 46vw, 0) rotate(18deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-platform="mobile"] .bg-shoot { display: none; }
+}
