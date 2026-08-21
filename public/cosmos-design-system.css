@@ -7027,3 +7027,98 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 @media (prefers-reduced-motion: reduce) {
   :root[data-platform="mobile"] .bg-shoot { display: none; }
 }
+
+/* ── Orbits ──
+   The old orbit tweened between four points, so the path was a rhombus and the
+   body turned a hard corner at each one. Here the ring is a real circle and the
+   body rides an arm that rotates, so the motion has no corners to hit. */
+:root[data-platform="mobile"] .bg-orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(181, 183, 246, 0.09);
+  pointer-events: none;
+}
+
+:root[data-platform="mobile"] .bg-orbit-arm {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  animation: bg-orbit-spin linear infinite;
+  animation-duration: inherit;
+}
+
+:root[data-platform="mobile"] .bg-orbit-body {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #cfd6ff, #8b93e8 60%, #5b62b4);
+  box-shadow: 0 0 8px 1px rgba(167, 175, 255, 0.5);
+}
+
+@keyframes bg-orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Tilted so the rings read as orbits seen at an angle rather than as circles
+   drawn on the glass */
+:root[data-platform="mobile"] .bg-orbit-1 {
+  top: 6%;
+  /* symmetric overhang, so the body is off-screen for equal arcs on each side
+     rather than spending most of its circuit past the left edge */
+  left: -8%;
+  width: 116%;
+  aspect-ratio: 1;
+  transform: rotateX(72deg) rotate(-8deg);
+  animation: bg-orbit-spin 46s linear infinite;
+}
+:root[data-platform="mobile"] .bg-orbit-1 .bg-orbit-arm { animation-duration: 46s; }
+
+:root[data-platform="mobile"] .bg-orbit-2 {
+  top: 30%;
+  left: 6%;
+  width: 76%;
+  aspect-ratio: 1;
+  transform: rotateX(76deg) rotate(12deg);
+  opacity: 0.75;
+}
+:root[data-platform="mobile"] .bg-orbit-2 .bg-orbit-arm { animation-duration: 68s; animation-direction: reverse; }
+:root[data-platform="mobile"] .bg-orbit-2 .bg-orbit-body {
+  width: 5px; height: 5px; margin-left: -2.5px; top: -2.5px;
+  background: radial-gradient(circle at 34% 30%, #f6d3ee, #e08fd0 60%, #a8548f);
+  box-shadow: 0 0 7px 1px rgba(240, 143, 208, 0.45);
+}
+
+/* The ring itself must not spin — only the arm does, or the tilt wobbles */
+:root[data-platform="mobile"] .bg-orbit-1 { animation: none; }
+
+/* ── Glow stars, gathered into the top corners ── */
+:root[data-platform="mobile"] .bg-glow-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #eef1ff;
+  pointer-events: none;
+  animation: bg-glow-pulse ease-in-out infinite;
+}
+
+@keyframes bg-glow-pulse {
+  0%, 100% { opacity: 0.35; box-shadow: 0 0 6px 1px rgba(199, 209, 255, 0.35); }
+  50%      { opacity: 1;    box-shadow: 0 0 12px 3px rgba(199, 209, 255, 0.6); }
+}
+
+:root[data-platform="mobile"] .bg-glow-star-1 { top: 5%;  left: 7%;  width: 3px; height: 3px; animation-duration: 4.2s; }
+:root[data-platform="mobile"] .bg-glow-star-2 { top: 11%; left: 17%; width: 2px; height: 2px; animation-duration: 5.6s; animation-delay: 1.1s; }
+:root[data-platform="mobile"] .bg-glow-star-3 { top: 4%;  right: 9%; width: 3px; height: 3px; animation-duration: 3.8s; animation-delay: 0.6s; }
+:root[data-platform="mobile"] .bg-glow-star-4 { top: 13%; right: 19%; width: 2px; height: 2px; animation-duration: 6.1s; animation-delay: 2.3s; }
+:root[data-platform="mobile"] .bg-glow-star-5 { top: 19%; left: 5%;  width: 2px; height: 2px; animation-duration: 4.9s; animation-delay: 1.7s; }
+
+/* The old rhombus orbit has no place on these screens */
+:root[data-platform="mobile"] .bg-scene--auth .orbit-container { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-platform="mobile"] .bg-orbit-arm,
+  :root[data-platform="mobile"] .bg-glow-star { animation: none; }
+}
