@@ -3493,13 +3493,13 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .ci-attach-remove-m { position: absolute; top: -4px; right: -4px; background: rgba(0,0,0,0.7); border: none; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; }
 :root[data-platform="mobile"] .ci-textarea-m { width: 100%; border: none; background: none; color: #fff; font-size: 15px; font-family: var(--font); resize: none; outline: none; padding: 12px 14px 4px; line-height: 1.5; min-height: 44px; max-height: 140px; overflow-y: auto; }
 :root[data-platform="mobile"] .ci-textarea-m::placeholder { color: rgba(255,255,255,0.28); }
-:root[data-platform="mobile"] .ci-bottom-m { display: flex; align-items: center; padding: 6px 10px 8px; gap: 6px; }
-:root[data-platform="mobile"] .ci-right-m { display: flex; align-items: center; gap: 6px; margin-left: auto; }
-:root[data-platform="mobile"] .ci-icon-btn-m { background: none; border: none; color: rgba(255,255,255,0.4); cursor: pointer; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; transition: background 0.15s, color 0.15s; }
+:root[data-platform="mobile"] .ci-bottom-m { display: flex; align-items: center; padding: 6px 8px 8px; gap: 4px; }
+:root[data-platform="mobile"] .ci-right-m { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+:root[data-platform="mobile"] .ci-icon-btn-m { background: none; border: none; color: rgba(255,255,255,0.4); cursor: pointer; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; transition: background 0.15s, color 0.15s; }
 :root[data-platform="mobile"] .ci-icon-btn-m:active { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
 :root[data-platform="mobile"] .ci-mic-btn--rec { background: rgba(239,68,68,0.12) !important; color: #ef4444 !important; animation: ci-rec-pulse 1.5s ease-in-out infinite; }
 @keyframes ci-rec-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); } 50% { box-shadow: 0 0 0 6px rgba(239,68,68,0.18); } }
-:root[data-platform="mobile"] .ci-send-pill-m { display: flex; align-items: center; gap: 6px; padding: 8px 16px 8px 12px; border: none; border-radius: 50px; background: linear-gradient(135deg, #6b4ff0 0%, #8a5cf6 100%); color: #fff; font-size: 13px; font-weight: 700; cursor: pointer; transition: opacity 0.15s, transform 0.1s; font-family: var(--font); }
+:root[data-platform="mobile"] .ci-send-pill-m { display: flex; align-items: center; gap: 5px; padding: 7px 13px 7px 11px; border: none; border-radius: 50px; background: linear-gradient(135deg, #6b4ff0 0%, #8a5cf6 100%); color: #fff; font-size: 13px; font-weight: 700; cursor: pointer; transition: opacity 0.15s, transform 0.1s; font-family: var(--font); }
 :root[data-platform="mobile"] .ci-send-pill-m:active { transform: scale(0.97); opacity: 0.9; }
 :root[data-platform="mobile"] .ci-send-pill-m:disabled { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.3); cursor: not-allowed; }
 
@@ -6772,3 +6772,144 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 /* Inside a settings page the field is already inset, so drop the extra gutter */
 :root[data-platform="mobile"] .sp-body .wa-hint { padding: 0; margin-top: 4px; }
+
+/* ============================================================
+   §63 MOBILE — REPLY MODE CHIP + ACTIVE COMPOSER STROKE
+   The web shows both modes on a sliding track; at 375pt that cannot
+   share the row with the uploader and the two right-hand buttons, so
+   mobile states the current mode and opens the alternative on tap.
+   ============================================================ */
+
+:root[data-platform="mobile"] .ci-mode-wrap-m { position: relative; flex-shrink: 0; }
+
+/* The composer clips to its radius, which would cut a menu opening upward out
+   of it. Only while one is open does it stop clipping. */
+:root[data-platform="mobile"] .ci-card-m--menu-open { overflow: visible; }
+
+:root[data-platform="mobile"] .ci-mode-chip-m {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 30px;
+  padding: 0 7px 0 11px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(124, 108, 248, 0.07);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Gradient stroke, masked to the 1px edge so it follows the pill radius —
+   border-image cannot. Same treatment as the web's active segment. */
+:root[data-platform="mobile"] .ci-mode-chip-m::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(115deg, var(--brand-purple, #7C6CF8), var(--brand-pink, #E879A0));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  /* Quieter than the composer's own focus ring — this chip is a setting, not
+     the thing being typed into, so it should not compete with it. */
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+:root[data-platform="mobile"] .ci-mode-chip-m--open::after { opacity: 0.45; }
+:root[data-platform="mobile"] .ci-mode-chip-m svg { flex-shrink: 0; }
+
+:root[data-platform="mobile"] .ci-mode-chevron-m {
+  color: rgba(255, 255, 255, 0.45);
+  transition: transform 0.2s;
+}
+:root[data-platform="mobile"] .ci-mode-chip-m--open .ci-mode-chevron-m { transform: rotate(180deg); }
+
+/* ── Dropdown ── */
+:root[data-platform="mobile"] .ci-mode-menu-m {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  z-index: 20;
+  width: 244px;
+  padding: 5px;
+  border-radius: 14px;
+  background: #12152a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.7);
+  animation: ci-mode-menu-in 0.16s ease-out;
+}
+
+@keyframes ci-mode-menu-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+:root[data-platform="mobile"] .ci-mode-opt-m {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 9px 10px;
+  border: none;
+  border-radius: 10px;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font);
+}
+
+:root[data-platform="mobile"] .ci-mode-opt-m:active { background: rgba(255, 255, 255, 0.05); }
+:root[data-platform="mobile"] .ci-mode-opt-m--on { background: rgba(124, 108, 248, 0.14); color: #c8bfff; }
+:root[data-platform="mobile"] .ci-mode-opt-m > svg:first-child { margin-top: 2px; }
+
+:root[data-platform="mobile"] .ci-mode-opt-text-m { flex: 1; display: flex; flex-direction: column; gap: 1px; }
+
+:root[data-platform="mobile"] .ci-mode-opt-label-m {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #fff;
+}
+
+:root[data-platform="mobile"] .ci-mode-opt-sub-m {
+  font-size: 11px;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Brand gradient stroke while the composer is active ──
+   border-image cannot follow border-radius, so the gradient is painted on a
+   ring and masked to the 1px edge with composite: xor, as on the web. */
+:root[data-platform="mobile"] .ci-card-m { position: relative; }
+
+:root[data-platform="mobile"] .ci-card-m::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, var(--brand-purple, #7C6CF8), var(--brand-pink, #E879A0));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+:root[data-platform="mobile"] .ci-card-m:focus-within { border-color: transparent; }
+:root[data-platform="mobile"] .ci-card-m:focus-within::after { opacity: 0.75; }
+
+/* Conversation mode paints its own border, so the focus ring stands down */
+:root[data-platform="mobile"] .ci-wrap--voice .ci-card-m::after { opacity: 0; }
