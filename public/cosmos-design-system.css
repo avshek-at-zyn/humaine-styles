@@ -6976,8 +6976,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .bg-ringed {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle at 34% 30%, rgba(181, 183, 246, 0.30), rgba(82, 113, 255, 0.10) 68%, transparent);
-  border: 1px solid rgba(181, 183, 246, 0.2);
+  background: radial-gradient(circle at 34% 30%, rgba(199, 202, 255, 0.55), rgba(96, 126, 255, 0.22) 68%, rgba(40, 50, 110, 0.12));
+  border: 1px solid rgba(181, 183, 246, 0.34);
   pointer-events: none;
 }
 
@@ -6989,12 +6989,12 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   width: 210%;
   height: 58%;
   transform: translate(-50%, -50%) rotate(-18deg);
-  border: 1px solid rgba(181, 183, 246, 0.22);
+  border: 1px solid rgba(190, 194, 255, 0.42);
   border-radius: 50%;
 }
 
-:root[data-platform="mobile"] .bg-ringed-1 { top: 13%; left: 8%; width: 28px; height: 28px; opacity: 0.75; }
-:root[data-platform="mobile"] .bg-ringed-2 { top: 31%; right: 11%; width: 20px; height: 20px; opacity: 0.6; }
+:root[data-platform="mobile"] .bg-ringed-1 { top: 13%; left: 8%; width: 38px; height: 38px; opacity: 0.95; }
+:root[data-platform="mobile"] .bg-ringed-2 { top: 31%; right: 11%; width: 26px; height: 26px; opacity: 0.8; }
 :root[data-platform="mobile"] .bg-ringed-2::after { transform: translate(-50%, -50%) rotate(14deg); }
 
 /* ── Shooting stars ──
@@ -7010,17 +7010,19 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   opacity: 0;
   transform: rotate(18deg);
   pointer-events: none;
-  animation: bg-shoot-run 9s linear infinite;
+  animation: bg-shoot-run 5s linear infinite;
 }
 
-:root[data-platform="mobile"] .bg-shoot-1 { top: 9%;  left: -18%; animation-delay: 1s; }
-:root[data-platform="mobile"] .bg-shoot-2 { top: 24%; left: -22%; animation-delay: 5.5s; width: 90px; }
-:root[data-platform="mobile"] .bg-shoot-3 { top: 42%; left: -16%; animation-delay: 12s; width: 70px; opacity: 0; }
+:root[data-platform="mobile"] .bg-shoot-1 { top: 9%;  left: -18%; animation-delay: 0.4s; }
+:root[data-platform="mobile"] .bg-shoot-2 { top: 24%; left: -22%; animation-delay: 2.1s; width: 90px; }
+:root[data-platform="mobile"] .bg-shoot-3 { top: 42%; left: -16%; animation-delay: 3.6s; width: 70px; }
+:root[data-platform="mobile"] .bg-shoot-4 { top: 16%; left: -20%; animation-delay: 6.2s; width: 100px; }
+:root[data-platform="mobile"] .bg-shoot-5 { top: 34%; left: -14%; animation-delay: 8.4s; width: 80px; }
 
 @keyframes bg-shoot-run {
   0%      { opacity: 0; transform: translate3d(0, 0, 0) rotate(18deg); }
-  2%      { opacity: 0.9; }
-  8%      { opacity: 0; transform: translate3d(150vw, 46vw, 0) rotate(18deg); }
+  3%      { opacity: 0.95; }
+  16%     { opacity: 0; transform: translate3d(150vw, 46vw, 0) rotate(18deg); }
   100%    { opacity: 0; transform: translate3d(150vw, 46vw, 0) rotate(18deg); }
 }
 
@@ -7121,4 +7123,62 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 @media (prefers-reduced-motion: reduce) {
   :root[data-platform="mobile"] .bg-orbit-arm,
   :root[data-platform="mobile"] .bg-glow-star { animation: none; }
+}
+
+/* ============================================================
+   §66 MOBILE — TRAVELLING SHEEN ON THE COMPOSER STROKE
+   A short bright arc that runs around the composer's 1px edge.
+   ============================================================ */
+
+/* An angle has to be registered before it can be animated — a plain custom
+   property would jump from 0 to 360 rather than sweep. Where @property is
+   unsupported the arc simply sits still, which still reads as a highlight. */
+@property --ci-sheen {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+:root[data-platform="mobile"] .ci-card-m::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  /* Most of the sweep is transparent, so what travels is one short glint
+     rather than a rotating ring. */
+  background: conic-gradient(
+    from var(--ci-sheen),
+    transparent 0deg 296deg,
+    rgba(167, 175, 255, 0.20) 318deg,
+    rgba(226, 232, 255, 0.95) 340deg,
+    rgba(250, 129, 214, 0.55) 350deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  animation: ci-sheen-run 5.5s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes ci-sheen-run {
+  to { --ci-sheen: 360deg; }
+}
+
+/* The card's own children sit above the sheen */
+:root[data-platform="mobile"] .ci-card-m > * { position: relative; z-index: 1; }
+
+/* While typing, the focus stroke is already lit, so the glint eases off
+   rather than doubling up on the same edge */
+:root[data-platform="mobile"] .ci-card-m:focus-within::before { opacity: 0.5; }
+
+/* Conversation mode owns the border while it runs */
+:root[data-platform="mobile"] .ci-wrap--voice .ci-card-m::before { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-platform="mobile"] .ci-card-m::before { animation: none; }
 }
