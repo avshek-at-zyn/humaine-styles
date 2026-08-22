@@ -3486,14 +3486,14 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 /* Chat input - mobile */
 :root[data-platform="mobile"] .ci-wrap { position: sticky; bottom: 0; padding: 8px 16px; padding-bottom: max(8px, env(safe-area-inset-bottom)); background: rgba(5,8,22,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-top: 1px solid rgba(255,255,255,0.06); }
-:root[data-platform="mobile"] .ci-card-m { display: flex; flex-direction: column; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; }
-:root[data-platform="mobile"] .ci-attachments-m { display: flex; gap: 8px; padding: 10px 14px 0; flex-wrap: wrap; }
+:root[data-platform="mobile"] .ci-card-m { display: flex; flex-direction: column; padding: 16px 16px 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; }
+:root[data-platform="mobile"] .ci-attachments-m { display: flex; gap: 8px; padding: 0 0 10px; flex-wrap: wrap; }
 :root[data-platform="mobile"] .ci-attach-thumb-m { position: relative; }
 :root[data-platform="mobile"] .ci-attach-img-m { width: 64px; height: 64px; object-fit: cover; border-radius: 10px; }
 :root[data-platform="mobile"] .ci-attach-remove-m { position: absolute; top: -4px; right: -4px; background: rgba(0,0,0,0.7); border: none; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; }
-:root[data-platform="mobile"] .ci-textarea-m { width: 100%; border: none; background: none; color: #fff; font-size: 15px; font-family: var(--font); resize: none; outline: none; padding: 12px 14px 4px; line-height: 1.5; min-height: 44px; max-height: 140px; overflow-y: auto; }
+:root[data-platform="mobile"] .ci-textarea-m { width: 100%; border: none; background: none; color: #fff; font-size: 15px; font-family: var(--font); resize: none; outline: none; padding: 0; line-height: 1.5; min-height: 40px; max-height: 140px; overflow-y: auto; }
 :root[data-platform="mobile"] .ci-textarea-m::placeholder { color: rgba(255,255,255,0.28); }
-:root[data-platform="mobile"] .ci-bottom-m { display: flex; align-items: center; padding: 6px 8px 8px; gap: 4px; }
+:root[data-platform="mobile"] .ci-bottom-m { display: flex; align-items: center; padding: 0; gap: 4px; }
 :root[data-platform="mobile"] .ci-right-m { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 :root[data-platform="mobile"] .ci-icon-btn-m { background: none; border: none; color: rgba(255,255,255,0.4); cursor: pointer; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; transition: background 0.15s, color 0.15s; }
 :root[data-platform="mobile"] .ci-icon-btn-m:active { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
