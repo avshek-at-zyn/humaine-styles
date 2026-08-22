@@ -189,7 +189,7 @@ a {
 
   --brand-purple:    #9b7dff;
   --brand-pink:      #fa81d6;
-  --gradient-btn:    linear-gradient(90deg, #7c3aed 0%, #db2777 100%);
+  --gradient-btn:    linear-gradient(90deg, var(--primary-400) 0%, var(--brand-pink) 100%);
   --gradient-brand:  linear-gradient(90deg, #a78bfa, #fa81d6);
 
   --error-bg:     rgba(220,38,38,0.12);
@@ -3190,7 +3190,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   --text-muted: rgba(255,255,255,0.3);
   --brand-purple: #9b7dff;
   --brand-pink: #fa81d6;
-  --gradient-btn: linear-gradient(90deg, #7c3aed 0%, #db2777 100%);
+  --gradient-btn: linear-gradient(90deg, var(--primary-400) 0%, var(--brand-pink) 100%);
   --gradient-brand: linear-gradient(90deg, #a78bfa, #fa81d6);
   --error-bg: rgba(220,38,38,0.12);
   --error-border: rgba(220,38,38,0.35);
@@ -3268,7 +3268,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .sheet-footer { display: flex; justify-content: flex-end; gap: 10px; padding: 0 20px 28px; }
 :root[data-platform="mobile"] .sheet-cancel-btn { height: 40px; padding: 0 20px; font-size: 13px; font-weight: 500; font-family: var(--font); background: transparent; border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; color: rgba(255,255,255,0.7); cursor: pointer; transition: background 0.15s; }
 :root[data-platform="mobile"] .sheet-cancel-btn:active { background: rgba(255,255,255,0.06); }
-:root[data-platform="mobile"] .sheet-save-btn { height: 40px; padding: 0 24px; font-size: 13px; font-weight: 700; font-family: var(--font); background: linear-gradient(135deg, #7C6CF8 0%, #c76ef8 100%); border: none; border-radius: 10px; color: #fff; cursor: pointer; transition: opacity 0.15s; }
+:root[data-platform="mobile"] .sheet-save-btn { height: 40px; padding: 0 24px; font-size: 13px; font-weight: 700; font-family: var(--font); background: var(--gradient-btn); border: none; border-radius: 10px; color: #fff; cursor: pointer; transition: opacity 0.15s; }
 :root[data-platform="mobile"] .sheet-save-btn:active { opacity: 0.85; }
 @keyframes sheet-fade-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes sheet-slide-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
@@ -3342,8 +3342,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .pin-input { background: none; border: none; outline: none; font-size: 26px; font-weight: 600; color: var(--text-primary); padding: 4px 0 10px; letter-spacing: 6px; width: 100%; font-family: var(--font); flex: 1; text-align: center; }
 :root[data-platform="mobile"] .pin-input::placeholder { font-size: 15px; letter-spacing: 0; color: rgba(255,255,255,0.28); font-weight: 400; text-align: center; }
 :root[data-platform="mobile"] .pin-eye-btn { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.4); display: flex; align-items: center; padding: 4px; flex-shrink: 0; }
-:root[data-platform="mobile"] .pin-gradient-line { height: 2px; background: linear-gradient(90deg, transparent 0%, rgba(124,58,237,0.3) 30%, rgba(167,139,250,0.5) 50%, rgba(219,39,119,0.3) 70%, transparent 100%); border-radius: 1px; transition: background 0.2s; }
-:root[data-platform="mobile"] .pin-gradient-line.active { background: linear-gradient(90deg, transparent 0%, #7c3aed 25%, #a78bfa 50%, #db2777 75%, transparent 100%); }
+:root[data-platform="mobile"] .pin-gradient-line { height: 2px; background: linear-gradient(90deg, transparent 0%, rgba(118,138,255,0.3) 30%, rgba(150,165,255,0.5) 50%, rgba(250,129,214,0.3) 70%, transparent 100%); border-radius: 1px; transition: background 0.2s; }
+:root[data-platform="mobile"] .pin-gradient-line.active { background: linear-gradient(90deg, transparent 0%, var(--primary-400) 25%, var(--primary-300) 50%, var(--brand-pink) 75%, transparent 100%); }
 :root[data-platform="mobile"] .pin-gradient-line.error { background: linear-gradient(90deg, transparent 0%, #dc2626 25%, #ef4444 50%, #dc2626 75%, transparent 100%); }
 :root[data-platform="mobile"] .pin-error-banner { margin-top: 8px; padding: 8px 12px; background: var(--error-bg); border: 1px solid var(--error-border); border-radius: 8px; font-size: 13px; color: var(--error-text); font-family: var(--font); }
 :root[data-platform="mobile"] .pin-req-wrap { padding: 0 20px; margin-top: 4px; }
@@ -3425,7 +3425,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .sr-dest-row { display: flex; align-items: stretch; }
 :root[data-platform="mobile"] .sr-dest-row--has-btn .sr-dest-input { border-top-right-radius: 0; border-bottom-right-radius: 0; border-right: none; }
 :root[data-platform="mobile"] .sr-dest-input { flex: 1; min-width: 0; }
-:root[data-platform="mobile"] .sr-dest-btn-m { flex-shrink: 0; min-width: 80px; padding: 0 18px; border: none; border-radius: 0 14px 14px 0; background: linear-gradient(135deg, #7C6CF8 0%, #c76ef8 100%); color: #fff; font-size: 14px; font-weight: 700; font-family: var(--font); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; transition: opacity 0.15s, transform 0.1s; }
+:root[data-platform="mobile"] .sr-dest-btn-m { flex-shrink: 0; min-width: 80px; padding: 0 18px; border: none; border-radius: 0 14px 14px 0; background: var(--gradient-btn); color: #fff; font-size: 14px; font-weight: 700; font-family: var(--font); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; transition: opacity 0.15s, transform 0.1s; }
 :root[data-platform="mobile"] .sr-dest-btn-m:hover { opacity: 0.9; }
 :root[data-platform="mobile"] .sr-dest-btn-m:active { transform: scale(0.98); }
 :root[data-platform="mobile"] .sr-field-err { font-size: 12px; color: var(--error-text); margin-top: 6px; font-family: var(--font); }
@@ -3499,9 +3499,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .ci-icon-btn-m:active { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
 :root[data-platform="mobile"] .ci-mic-btn--rec { background: rgba(239,68,68,0.12) !important; color: #ef4444 !important; animation: ci-rec-pulse 1.5s ease-in-out infinite; }
 @keyframes ci-rec-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); } 50% { box-shadow: 0 0 0 6px rgba(239,68,68,0.18); } }
-:root[data-platform="mobile"] .ci-send-pill-m { display: flex; align-items: center; padding: 7px 14px; border: none; border-radius: 50px; background: linear-gradient(135deg, #6b4ff0 0%, #8a5cf6 100%); color: #fff; font-size: 13px; font-weight: 700; cursor: pointer; transition: opacity 0.15s, transform 0.1s; font-family: var(--font); }
-:root[data-platform="mobile"] .ci-send-pill-m:active { transform: scale(0.97); opacity: 0.9; }
-:root[data-platform="mobile"] .ci-send-pill-m:disabled { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.3); cursor: not-allowed; }
 
 /* Chat context menu */
 :root[data-platform="mobile"] .ci-menu-m { position: absolute; background: rgba(18,21,40,0.98); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 6px; min-width: 180px; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: 0 8px 32px rgba(0,0,0,0.5); animation: ci-menu-in 0.15s ease; z-index: 100; }
@@ -3735,7 +3732,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .ob-name-input { width: 100%; background: rgba(255,255,255,0.06); border: none; border-bottom: 2px solid rgba(255,255,255,0.15); padding: 10px 4px; color: #fff; font-size: 18px; font-weight: 600; font-family: var(--font); outline: none; transition: border-color 0.2s; border-radius: 0; }
 :root[data-platform="mobile"] .ob-name-input:focus { border-bottom-color: var(--brand-purple); }
 :root[data-platform="mobile"] .ob-name-input::placeholder { color: rgba(255,255,255,0.25); font-weight: 400; font-size: 16px; }
-:root[data-platform="mobile"] .ob-gradient-line { height: 2px; background: linear-gradient(90deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%); border-radius: 1px; margin-top: 0; }
+:root[data-platform="mobile"] .ob-gradient-line { height: 2px; background: linear-gradient(90deg, var(--primary-400) 0%, var(--primary-300) 50%, var(--brand-pink) 100%); border-radius: 1px; margin-top: 0; }
 :root[data-platform="mobile"] .ob-qblock { display: flex; flex-direction: column; gap: 6px; }
 :root[data-platform="mobile"] .ob-qblock-title { font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.85); font-family: var(--font); }
 :root[data-platform="mobile"] .ob-qblock-hint { font-size: 12px; color: rgba(255,255,255,0.35); font-family: var(--font); }
@@ -5344,7 +5341,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 :root[data-platform="mobile"] .ps-toggle--on {
-  background: linear-gradient(90deg, #7c3aed, #db2777);
+  background: var(--gradient-btn);
   border-color: transparent;
 }
 
@@ -5779,7 +5776,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   height: 100%;
   width: 100%;
   border-radius: 2px;
-  background: linear-gradient(90deg, #7c3aed, #db2777);
+  background: var(--gradient-btn);
   transform-origin: left;
   animation: ss-push-countdown 30s linear forwards;
 }
@@ -6471,8 +6468,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   height: 56px;
   border: none;
   border-radius: 15px;
-  background: linear-gradient(90deg, #7b87f7 0%, #a97be8 52%, #f06fd0 100%);
-  box-shadow: 0 14px 34px -16px rgba(240, 111, 208, 0.8);
+  background: var(--gradient-btn);
+  box-shadow: 0 14px 34px -16px rgba(250, 129, 214, 0.8);
   color: #fff;
   font-family: inherit;
   font-size: 16.5px;
@@ -8117,7 +8114,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   padding: 7px 14px;
   border-radius: 14px;
   border: none;
-  background: var(--brand-purple);
+  background: var(--gradient-btn);
   color: #fff;
   font-size: 14px;
   font-weight: 700;
@@ -8128,6 +8125,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 :root[data-platform="mobile"] .ci-send-pill-m:active { transform: scale(0.97); }
+:root[data-platform="mobile"] .ci-send-pill-m:disabled { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.3); cursor: not-allowed; }
 
 :root[data-platform="mobile"] .ci-attach-wrap-m { position: relative; }
 
