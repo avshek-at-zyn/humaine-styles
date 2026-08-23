@@ -30,7 +30,7 @@ export function ChatInteractionsPage() {
         <table className="demo-table" style={{ marginTop: 16 }}>
           <thead><tr><th>Class</th><th>Description</th></tr></thead>
           <tbody>
-            <tr><td>.chat-topbar</td><td>Sticky, blur(16px), safe-area padding</td></tr>
+            <tr><td>.chat-topbar</td><td>Relative, blur(16px), safe-area padding</td></tr>
             <tr><td>.chat-back-btn</td><td>Back arrow, no bg</td></tr>
             <tr><td>.chat-topbar-info</td><td>Name + status column</td></tr>
             <tr><td>.chat-topbar-actions</td><td>Icon button row</td></tr>
@@ -77,7 +77,7 @@ export function ChatInteractionsPage() {
         <h2 className="section-title">Context Menu</h2>
         <p className="section-desc">Floating menu triggered by long-press on a message or the + button. Blurred glass panel.</p>
         <div style={{ maxWidth: 220 }}>
-          <div style={{ background: 'rgba(18,21,40,0.98)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 16, padding: 6, backdropFilter: 'blur(16px)', boxShadow: '0 8px 32px rgba(0,0,0,0.5)' }}>
+          <div style={{ background: 'rgba(14,17,35,0.95)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 14, padding: 6, backdropFilter: 'blur(16px)', boxShadow: '0 8px 32px rgba(0,0,0,0.5)' }}>
             {[
               { label: 'Copy', icon: '📋', danger: false },
               { label: 'Translate', icon: '🌐', danger: false },
@@ -94,8 +94,8 @@ export function ChatInteractionsPage() {
         <table className="demo-table" style={{ marginTop: 16 }}>
           <thead><tr><th>Class</th><th>Description</th></tr></thead>
           <tbody>
-            <tr><td>.ci-menu-m</td><td>Glass panel, blur(16px), radius 16px, scale-in anim</td></tr>
-            <tr><td>.ci-menu-item-m</td><td>Row: icon + label, 11px padding, :active bg</td></tr>
+            <tr><td>.ci-menu-m</td><td>Glass panel, blur(16px), radius 14px, scale-in anim</td></tr>
+            <tr><td>.ci-menu-item-m</td><td>Row: icon + label, 10px 12px padding, :active bg</td></tr>
             <tr><td>.ci-menu-item-m--danger</td><td>Red text (#f87171) for destructive actions</td></tr>
           </tbody>
         </table>
@@ -106,7 +106,7 @@ export function ChatInteractionsPage() {
         <h2 className="section-title">History Drawer</h2>
         <p className="section-desc">Side panel sliding in from the right with conversation history, grouped by date. Includes a profile card at the bottom.</p>
         <div style={{ display: 'flex', gap: 16 }}>
-          <div style={{ width: 280, background: 'rgba(9,11,24,0.98)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, overflow: 'hidden' }}>
+          <div style={{ width: 280, background: 'rgba(13,16,32,0.97)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, overflow: 'hidden' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
               <div style={{ fontSize: 16, fontWeight: 700, color: '#fff' }}>History</div>
               <div style={{ color: 'rgba(255,255,255,0.5)', cursor: 'pointer' }}>✕</div>
@@ -135,8 +135,8 @@ export function ChatInteractionsPage() {
             <table className="demo-table">
               <thead><tr><th>Class</th><th>Description</th></tr></thead>
               <tbody>
-                <tr><td>.drawer-overlay</td><td>Fixed backdrop, rgba(0,0,0,0.5)</td></tr>
-                <tr><td>.drawer-panel</td><td>80% width, max 320px, slide-in anim</td></tr>
+                <tr><td>.drawer-overlay</td><td>Fixed backdrop, rgba(0,0,0,0.55), blur(4px), z-90</td></tr>
+                <tr><td>.drawer-panel</td><td>min(310px, 84vw) width, blur(30px), slide-in anim</td></tr>
                 <tr><td>.drawer-header</td><td>Title + close button row</td></tr>
                 <tr><td>.drawer-section-label</td><td>Date group label (10px, uppercase)</td></tr>
                 <tr><td>.drawer-history-item</td><td>Truncated row, :active bg</td></tr>
@@ -152,7 +152,7 @@ export function ChatInteractionsPage() {
         <h2 className="section-title">Voice Overlay</h2>
         <p className="section-desc">Full-screen overlay for voice conversation mode. Central orb breathes while listening and pulses while the assistant speaks.</p>
         <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
-          <div style={{ position: 'relative', width: 180, height: 180, borderRadius: 20, background: 'rgba(5,8,22,0.92)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+          <div style={{ position: 'relative', width: 180, height: 180, borderRadius: 20, background: 'rgba(5,8,20,0.92)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', width: 100, height: 100, borderRadius: '50%', background: 'radial-gradient(circle at 40% 35%, rgba(124,58,237,0.6), rgba(91,33,182,0.3) 40%, transparent 70%)', boxShadow: '0 0 60px rgba(124,58,237,0.2), inset 0 0 30px rgba(124,58,237,0.1)' }} />
             <div style={{ position: 'absolute', bottom: 14, display: 'flex', gap: 4, alignItems: 'center', height: 24 }}>
               {[12, 20, 28, 16, 24, 18, 10].map((h, i) => (
@@ -164,7 +164,7 @@ export function ChatInteractionsPage() {
             <table className="demo-table">
               <thead><tr><th>Class</th><th>Description</th></tr></thead>
               <tbody>
-                <tr><td>.voice-overlay</td><td>Fixed inset, blur(20px), z-300</td></tr>
+                <tr><td>.voice-overlay</td><td>Fixed inset, blur(28px), z-100</td></tr>
                 <tr><td>.voice-orb</td><td>160px circle, radial gradient</td></tr>
                 <tr><td>.voice-orb--listening</td><td>Breathe animation (2.5s loop)</td></tr>
                 <tr><td>.voice-orb--speaking</td><td>Talk animation (0.6s alternate)</td></tr>

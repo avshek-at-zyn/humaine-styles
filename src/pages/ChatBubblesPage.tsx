@@ -14,19 +14,19 @@ export function ChatBubblesPage() {
         <h2 className="section-title">User &amp; Assistant Bubbles</h2>
         <div style={{ maxWidth: 420 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, padding: 16, background: 'var(--bg-primary)', borderRadius: 16, border: '1px solid var(--surface-800)' }}>
-            <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '12px 14px', borderRadius: '18px 18px 6px 18px', background: 'linear-gradient(135deg, #6b4ff0, #8a5cf6)', color: '#fff', fontSize: 14.5, lineHeight: 1.55 }}>What were our Q4 highlights?</div>
-            <div style={{ alignSelf: 'flex-start', maxWidth: '82%', padding: '12px 14px', borderRadius: '18px 18px 18px 6px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.9)', fontSize: 14.5, lineHeight: 1.55 }}>Revenue grew 23% YoY, driven by enterprise contracts in APAC.</div>
+            <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '11px 14px', borderRadius: '18px 18px 6px 18px', background: 'linear-gradient(90deg, #768AFF, #fa81d6)', color: '#fff', fontSize: 14, lineHeight: 1.5 }}>What were our Q4 highlights?</div>
+            <div style={{ alignSelf: 'flex-start', maxWidth: '82%', padding: '11px 14px', borderRadius: '18px 18px 18px 6px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.92)', fontSize: 14, lineHeight: 1.5 }}>Revenue grew 23% YoY, driven by enterprise contracts in APAC.</div>
           </div>
         </div>
         <table className="demo-table" style={{ marginTop: 16 }}>
           <thead><tr><th>Property</th><th>Value</th></tr></thead>
           <tbody>
             <tr><td>Max Width</td><td>82%</td></tr>
-            <tr><td>Padding</td><td>12px 14px</td></tr>
-            <tr><td>Font Size</td><td>14.5px</td></tr>
+            <tr><td>Padding</td><td>11px 14px</td></tr>
+            <tr><td>Font Size</td><td>14px / 1.5 line-height</td></tr>
             <tr><td>Border Radius</td><td>18px (6px tail corner)</td></tr>
-            <tr><td>User Gradient</td><td>#6b4ff0 → #8a5cf6</td></tr>
-            <tr><td>Assistant BG</td><td>rgba(255,255,255,0.07), 1px border</td></tr>
+            <tr><td>User Gradient</td><td><code>var(--gradient-btn)</code> — primary-400 → brand-pink (#768AFF → #fa81d6)</td></tr>
+            <tr><td>Assistant BG</td><td>rgba(255,255,255,0.07), 1px border rgba(255,255,255,0.08)</td></tr>
           </tbody>
         </table>
       </div>
@@ -36,7 +36,7 @@ export function ChatBubblesPage() {
         <h2 className="section-title">Typing Indicator</h2>
         <p className="section-desc">Three bouncing dots in an assistant-styled bubble. Shared across both platforms.</p>
         <div style={{ display: 'flex', gap: 24 }}>
-          <div style={{ padding: '10px 14px', borderRadius: '18px 18px 18px 6px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', gap: 6, alignItems: 'center' }}>
+          <div style={{ padding: '14px 16px', borderRadius: '18px 18px 18px 6px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', gap: 4, alignItems: 'center' }}>
             {[0, 1, 2].map(i => (
               <div key={i} style={{ width: 6, height: 6, borderRadius: '50%', background: 'rgba(255,255,255,0.5)', animation: `chat-typing-dot 1.4s ease-in-out infinite ${i * 0.2}s` }} />
             ))}
@@ -48,9 +48,9 @@ export function ChatBubblesPage() {
       {/* ── Message Actions ── */}
       <div className="section">
         <h2 className="section-title">Message Actions</h2>
-        <p className="section-desc">Action buttons appear on hover (web) or long-press (mobile) below a message. Copy, translate, react.</p>
+        <p className="section-desc">Action buttons sit below a message and are always visible. Copy, translate, react.</p>
         <div style={{ maxWidth: 360 }}>
-          <div style={{ padding: '12px 14px', borderRadius: '18px 18px 18px 6px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.9)', fontSize: 14, lineHeight: 1.5, marginBottom: 6 }}>
+          <div style={{ padding: '11px 14px', borderRadius: '18px 18px 18px 6px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.92)', fontSize: 14, lineHeight: 1.5, marginBottom: 6 }}>
             Revenue grew 23% YoY, driven by enterprise contracts.
           </div>
           <div style={{ display: 'flex', gap: 6 }}>
@@ -62,8 +62,8 @@ export function ChatBubblesPage() {
         <table className="demo-table" style={{ marginTop: 16 }}>
           <thead><tr><th>Class</th><th>Description</th></tr></thead>
           <tbody>
-            <tr><td>.chat-msg-actions</td><td>Flex container, opacity 0 → 1 on hover</td></tr>
-            <tr><td>.chat-msg-action-btn</td><td>11px, rgba bg, 6px radius</td></tr>
+            <tr><td>.chat-msg-actions</td><td>Flex container, gap 4px, always visible</td></tr>
+            <tr><td>.chat-msg-action</td><td>28 × 28px icon button, 8px radius</td></tr>
             <tr><td>.chat-translated</td><td>Border-top separator, muted text for translation</td></tr>
           </tbody>
         </table>
@@ -76,7 +76,7 @@ export function ChatBubblesPage() {
         <div style={{ maxWidth: 360 }}>
           <div style={{ padding: '12px 14px', borderRadius: '18px 18px 18px 6px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.08)' }}>
             <div style={{ color: 'rgba(255,255,255,0.9)', fontSize: 14, lineHeight: 1.5 }}>El ingreso creció un 23% interanual.</div>
-            <div style={{ marginTop: 8, paddingTop: 8, borderTop: '1px solid rgba(255,255,255,0.1)', fontSize: 12.5, color: 'rgba(255,255,255,0.5)' }}>Revenue grew 23% year-over-year.</div>
+            <div style={{ marginTop: 10, paddingTop: 10, borderTop: '1px solid rgba(255,255,255,0.12)', fontSize: 12.5, color: 'rgba(255,255,255,0.5)' }}>Revenue grew 23% year-over-year.</div>
           </div>
         </div>
       </div>
@@ -86,8 +86,8 @@ export function ChatBubblesPage() {
         <h2 className="section-title">Attachments</h2>
         <p className="section-desc">Image and file thumbnails inside a bubble, before the text content.</p>
         <div style={{ maxWidth: 360 }}>
-          <div style={{ alignSelf: 'flex-end', padding: '12px 14px', borderRadius: '18px 18px 6px 18px', background: 'linear-gradient(135deg, #6b4ff0, #8a5cf6)', color: '#fff' }}>
-            <div style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
+          <div style={{ alignSelf: 'flex-end', padding: '11px 14px', borderRadius: '18px 18px 6px 18px', background: 'linear-gradient(90deg, #768AFF, #fa81d6)', color: '#fff' }}>
+            <div style={{ display: 'flex', gap: 6, marginBottom: 6 }}>
               <div style={{ width: 80, height: 80, borderRadius: 10, background: 'linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05))', border: '1px solid rgba(255,255,255,0.1)' }} />
               <div style={{ width: 80, height: 80, borderRadius: 10, background: 'linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.03))', border: '1px solid rgba(255,255,255,0.1)' }} />
             </div>
@@ -97,7 +97,7 @@ export function ChatBubblesPage() {
         <table className="demo-table" style={{ marginTop: 16 }}>
           <thead><tr><th>Class</th><th>Specs</th></tr></thead>
           <tbody>
-            <tr><td>.chat-bubble-attachments</td><td>flex, gap 8px, wrap, margin-bottom 6px</td></tr>
+            <tr><td>.chat-bubble-attachments</td><td>flex, gap 6px, wrap, margin-bottom 6px</td></tr>
             <tr><td>.chat-attachment-thumb</td><td>80 × 80px, radius 10px, object-fit cover</td></tr>
           </tbody>
         </table>
@@ -123,14 +123,14 @@ export function ChatBubblesPage() {
         <table className="demo-table">
           <thead><tr><th>Class</th><th>Component</th><th>Section</th></tr></thead>
           <tbody>
-            <tr><td>.chat-bubble</td><td>Base bubble</td><td>§37</td></tr>
-            <tr><td>.chat-bubble--user</td><td>User message (gradient, right-align)</td><td>§37</td></tr>
-            <tr><td>.chat-bubble--assistant</td><td>Assistant message (surface, left-align)</td><td>§37</td></tr>
-            <tr><td>.chat-typing, .chat-typing-dot</td><td>Typing indicator</td><td>§37</td></tr>
-            <tr><td>.chat-msg-actions, .chat-msg-action-btn</td><td>Message action buttons</td><td>§37</td></tr>
-            <tr><td>.chat-translated</td><td>In-bubble translation</td><td>§37</td></tr>
-            <tr><td>.chat-bubble-attachments</td><td>Attachment thumbnails</td><td>§37</td></tr>
-            <tr><td>.chat-private, .chat-private-text</td><td>Privacy notice banner</td><td>§37</td></tr>
+            <tr><td>.chat-bubble</td><td>Base bubble</td><td>§67</td></tr>
+            <tr><td>.chat-bubble--user</td><td>User message (gradient, right-align)</td><td>§67</td></tr>
+            <tr><td>.chat-bubble--assistant</td><td>Assistant message (surface, left-align)</td><td>§67</td></tr>
+            <tr><td>.chat-typing, .chat-typing-dot</td><td>Typing indicator</td><td>§67 · dots §37</td></tr>
+            <tr><td>.chat-msg-actions, .chat-msg-action</td><td>Message action buttons</td><td>§67</td></tr>
+            <tr><td>.chat-translated</td><td>In-bubble translation</td><td>§67</td></tr>
+            <tr><td>.chat-bubble-attachments</td><td>Attachment thumbnails</td><td>§67</td></tr>
+            <tr><td>.chat-private, .chat-private-text</td><td>Privacy notice banner</td><td>§67</td></tr>
             <tr><td>.chip, .chip--clickable</td><td>Follow-up suggestion chips</td><td>§8</td></tr>
           </tbody>
         </table>

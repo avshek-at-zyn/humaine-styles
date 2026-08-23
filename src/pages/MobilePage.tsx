@@ -423,13 +423,13 @@ export function MobilePage() {
             <tr><td>.btn, .btn-primary, .btn-outline</td><td>Buttons</td><td>§35</td></tr>
             <tr><td>.input-field, .otp-*</td><td>Form Inputs</td><td>§36</td></tr>
             <tr><td>.sol-nav-m, .sol-planet-m</td><td>Solar System Nav</td><td>§39</td></tr>
-            <tr><td>.ob-chip, .ob-pills</td><td>Onboarding Chips</td><td>§39</td></tr>
-            <tr><td>.chat-bubble--user/--assistant</td><td>Chat Bubbles</td><td>§37</td></tr>
-            <tr><td>.ci-card-m, .ci-send-pill-m</td><td>Chat Input</td><td>§37</td></tr>
-            <tr><td>.voice-overlay, .voice-orb</td><td>Voice Mode</td><td>§37</td></tr>
-            <tr><td>.np-m-*, .news-card</td><td>News & PR</td><td>§37</td></tr>
-            <tr><td>.sheet-overlay, .sheet-container</td><td>Bottom Sheets</td><td>§37</td></tr>
-            <tr><td>.plans-option, .plans-option--active</td><td>Plans Screen</td><td>§38</td></tr>
+            <tr><td>.ob-chip, .ob-chips</td><td>Onboarding Chips</td><td>§39</td></tr>
+            <tr><td>.chat-bubble--user/--assistant</td><td>Chat Bubbles</td><td>§67</td></tr>
+            <tr><td>.ci-card-m, .ci-send-pill-m</td><td>Chat Input</td><td>§61/§67</td></tr>
+            <tr><td>.voice-overlay, .voice-orb</td><td>Voice Mode</td><td>§67</td></tr>
+            <tr><td>.np-m-*, .news-card</td><td>News & PR</td><td>§37/§45</td></tr>
+            <tr><td>.sheet-overlay, .sheet-container</td><td>Bottom Sheets</td><td>§35</td></tr>
+            <tr><td>.pl-card, .pl-cycle--on</td><td>Plans Screen</td><td>§59</td></tr>
             <tr><td>.pay-wallet-btn-m</td><td>Payment</td><td>§38</td></tr>
           </tbody>
         </table>
