@@ -3432,6 +3432,19 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   font-size: 12px; line-height: 1.5; color: #5f6368; margin: 28px 0 0;
 }
 :root[data-platform="mobile"] .ca-legal a { color: #1a73e8; text-decoration: none; }
+/* Inert row — kept visible because the provider's sheet has one, but adding
+   an account happens inside the provider, so there is nothing to open. */
+:root[data-platform="mobile"] .ca-row--off { cursor: default; }
+:root[data-platform="mobile"] .ca-row--off:active { background: none; }
+:root[data-platform="mobile"] .ca-row--off .ca-name { color: #80868b; }
+:root[data-platform="mobile"] .ca-row--off .ca-email { color: #9aa0a6; font-style: italic; }
+:root[data-platform="mobile"] .ca-row--off .ca-avatar--add { opacity: 0.55; }
+/* Ours, not the provider's — marked out so it is never mistaken for their UI. */
+:root[data-platform="mobile"] .ca-caution {
+  font-size: 11.5px; line-height: 1.55; color: #5f6368; margin: 22px 0 0;
+  padding: 12px 14px; border: 1px dashed #dadce0; border-radius: 8px; background: #f8f9fa;
+}
+:root[data-platform="mobile"] .ca-caution strong { color: #3c4043; font-weight: 500; }
 
 :root[data-platform="mobile"] .mfa-prompt-back { align-self: flex-start; margin: 0 0 4px 16px; }
 :root[data-platform="mobile"] .mfa-prompt-body { flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; justify-content: center; padding: 0 20px; }
