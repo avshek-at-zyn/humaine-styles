@@ -3395,6 +3395,109 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   border-radius: 4px; background: rgba(255,255,255,0.07);
 }
 
+/* ── §70 "Open in" sheet ──────────────────────────────────────
+   The system's app-picker, so it wears the system's look and not ours:
+   a rounded card off the bottom edge with Cancel set apart below it. */
+:root[data-platform="mobile"] .ois-backdrop {
+  position: fixed; inset: 0; z-index: 60; display: flex; align-items: flex-end;
+  background: rgba(0,0,0,0.42); animation: ois-fade 0.18s ease;
+  font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+}
+@keyframes ois-fade { from { opacity: 0 } to { opacity: 1 } }
+:root[data-platform="mobile"] .ois-wrap {
+  width: 100%; padding: 0 8px calc(8px + env(safe-area-inset-bottom));
+  animation: ois-rise 0.24s cubic-bezier(0.32, 0.72, 0, 1);
+}
+@keyframes ois-rise { from { transform: translateY(24px) } to { transform: translateY(0) } }
+:root[data-platform="mobile"] .ois-card {
+  background: rgba(249,249,249,0.94); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+  border-radius: 14px; overflow: hidden;
+}
+:root[data-platform="mobile"] .ois-head {
+  display: flex; flex-direction: column; gap: 3px; padding: 14px 20px 12px;
+  text-align: center; border-bottom: 0.5px solid rgba(60,60,67,0.2);
+}
+:root[data-platform="mobile"] .ois-title { font-size: 13px; font-weight: 600; color: #3c3c43; }
+:root[data-platform="mobile"] .ois-sub { font-size: 12px; line-height: 1.35; color: rgba(60,60,67,0.6); }
+:root[data-platform="mobile"] .ois-row {
+  display: flex; align-items: center; gap: 14px; width: 100%; padding: 12px 20px;
+  background: none; border: none; border-bottom: 0.5px solid rgba(60,60,67,0.2);
+  font-family: inherit; cursor: pointer; text-align: left;
+}
+:root[data-platform="mobile"] .ois-row:last-child { border-bottom: none; }
+:root[data-platform="mobile"] .ois-row:active { background: rgba(60,60,67,0.1); }
+:root[data-platform="mobile"] .ois-app { font-size: 17px; color: #007aff; }
+:root[data-platform="mobile"] .ois-cancel {
+  width: 100%; margin-top: 8px; padding: 16px; border: none; border-radius: 14px;
+  background: rgba(255,255,255,0.96); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+  font-family: inherit; font-size: 17px; font-weight: 600; color: #007aff; cursor: pointer;
+}
+:root[data-platform="mobile"] .ois-cancel:active { background: rgba(235,235,240,0.96); }
+:root[data-platform="mobile"] .ai-icon { border-radius: 22.5%; flex-shrink: 0; display: block; }
+
+/* ── §71 App Store stand-in ───────────────────────────────────
+   Not the App Store — a mock so the "no authenticator yet" path leads
+   somewhere. Same reasoning as §69: another party's surface, their look. */
+:root[data-platform="mobile"] .as-screen {
+  position: fixed; inset: 0; z-index: 60; background: #fff; overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  color: #000;
+}
+:root[data-platform="mobile"] .as-nav {
+  position: sticky; top: 0; z-index: 2; padding: max(10px, env(safe-area-inset-top)) 12px 10px;
+  background: rgba(255,255,255,0.86); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+  border-bottom: 0.5px solid rgba(60,60,67,0.18);
+}
+:root[data-platform="mobile"] .as-back {
+  display: inline-flex; align-items: center; gap: 5px; background: none; border: none;
+  padding: 4px 6px; font-family: inherit; font-size: 17px; color: #007aff; cursor: pointer;
+}
+:root[data-platform="mobile"] .as-body { padding: 20px 20px calc(32px + env(safe-area-inset-bottom)); }
+:root[data-platform="mobile"] .as-hero { display: flex; gap: 16px; align-items: flex-start; }
+:root[data-platform="mobile"] .as-hero-text { flex: 1; min-width: 0; padding-top: 2px; }
+:root[data-platform="mobile"] .as-name { font-size: 21px; line-height: 1.2; font-weight: 600; margin: 0; letter-spacing: -0.3px; }
+:root[data-platform="mobile"] .as-dev { font-size: 14px; color: #8a8a8e; margin: 4px 0 0; }
+:root[data-platform="mobile"] .as-actions { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+:root[data-platform="mobile"] .as-get {
+  min-width: 74px; padding: 6px 18px; border: none; border-radius: 100px;
+  background: #e9e9eb; color: #007aff; font-family: inherit; font-size: 15px; font-weight: 700;
+  letter-spacing: 0.2px; cursor: default;
+}
+:root[data-platform="mobile"] .as-inapp { font-size: 11px; color: #8a8a8e; }
+:root[data-platform="mobile"] .as-meta {
+  display: flex; margin: 26px 0 0; padding: 16px 0; border-top: 0.5px solid rgba(60,60,67,0.18);
+  border-bottom: 0.5px solid rgba(60,60,67,0.18);
+}
+:root[data-platform="mobile"] .as-meta-cell {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; text-align: center;
+  border-right: 0.5px solid rgba(60,60,67,0.18);
+}
+:root[data-platform="mobile"] .as-meta-cell:last-child { border-right: none; }
+:root[data-platform="mobile"] .as-meta-label {
+  font-size: 11px; font-weight: 600; color: #8a8a8e; text-transform: uppercase; letter-spacing: 0.3px;
+}
+:root[data-platform="mobile"] .as-meta-value { font-size: 19px; font-weight: 700; color: #8a8a8e; }
+:root[data-platform="mobile"] .as-meta-value--sm { font-size: 13px; font-weight: 600; }
+:root[data-platform="mobile"] .as-stars { font-size: 10px; color: #8a8a8e; letter-spacing: 1px; }
+:root[data-platform="mobile"] .as-section { font-size: 20px; font-weight: 700; margin: 26px 0 12px; letter-spacing: -0.3px; }
+:root[data-platform="mobile"] .as-shots { display: flex; gap: 12px; overflow-x: auto; margin: 0 -20px; padding: 0 20px 4px; }
+:root[data-platform="mobile"] .as-shot {
+  position: relative; flex: 0 0 148px; height: 268px; border-radius: 16px;
+  border: 0.5px solid rgba(60,60,67,0.2); background: linear-gradient(170deg, #f7f8fa 0%, #eceef3 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+}
+:root[data-platform="mobile"] .as-shot-bar { position: absolute; top: 14px; width: 42px; height: 4px; border-radius: 2px; background: rgba(60,60,67,0.22); }
+:root[data-platform="mobile"] .as-shot-code { font-size: 24px; font-weight: 600; color: #1c1c1e; letter-spacing: 2px; font-variant-numeric: tabular-nums; }
+:root[data-platform="mobile"] .as-shot-label { font-size: 12px; color: #8a8a8e; }
+:root[data-platform="mobile"] .as-shot-ring { width: 30px; height: 30px; border-radius: 50%; border: 2.5px solid #d3d3d8; border-top-color: #34c759; }
+:root[data-platform="mobile"] .as-about { font-size: 15px; line-height: 1.55; color: #1c1c1e; margin: 0; }
+:root[data-platform="mobile"] .as-caution {
+  font-size: 12px; line-height: 1.55; color: #6c6c70; margin: 26px 0 0;
+  padding: 13px 15px; border: 1px dashed rgba(60,60,67,0.25); border-radius: 10px; background: #f7f7f9;
+}
+:root[data-platform="mobile"] .as-caution strong { color: #1c1c1e; font-weight: 600; }
+
 /* ── §69 Provider account chooser ─────────────────────────────
    A replica of the provider's own OAuth sheet, so it deliberately does NOT
    use our tokens: it is their surface, their greys, their type. Light in a
