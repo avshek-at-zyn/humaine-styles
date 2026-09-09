@@ -3747,10 +3747,10 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .np-m-selectbar { display: flex; align-items: center; justify-content: space-between; padding: 6px 16px; flex-shrink: 0; }
 :root[data-platform="mobile"] .np-m-select-all { display: flex; align-items: center; gap: 8px; font-size: 14px; color: rgba(255,255,255,0.7); font-family: var(--font); cursor: pointer; }
 :root[data-platform="mobile"] .np-m-count { font-size: 13px; color: rgba(255,255,255,0.35); font-family: var(--font); }
-:root[data-platform="mobile"] .np-m-list { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; gap: 1px; }
-:root[data-platform="mobile"] .np-m-card { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.04); cursor: pointer; transition: background 0.15s; }
+:root[data-platform="mobile"] .np-m-list { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; gap: 16px; padding: 4px 16px 8px; }
+:root[data-platform="mobile"] .np-m-card { display: flex; align-items: flex-start; gap: 12px; padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; cursor: pointer; transition: background 0.15s, border-color 0.15s; }
 :root[data-platform="mobile"] .np-m-card:active { background: rgba(255,255,255,0.05); }
-:root[data-platform="mobile"] .np-m-card.selected { background: rgba(124,58,237,0.07); }
+:root[data-platform="mobile"] .np-m-card.selected { background: rgba(124,58,237,0.07); border-color: rgba(124,58,237,0.35); }
 :root[data-platform="mobile"] .np-m-card-img { width: 72px; height: 72px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
 :root[data-platform="mobile"] .np-m-card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
 :root[data-platform="mobile"] .np-m-card-meta { display: flex; align-items: center; gap: 6px; }
