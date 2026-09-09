@@ -3395,6 +3395,64 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   border-radius: 4px; background: rgba(255,255,255,0.07);
 }
 
+/* ── §72 Billing & Payments ───────────────────────────────────
+   The web's Billing tab as stacked cards. A phone has no room for its
+   two-column grid, so each concern gets its own card in the same order. */
+:root[data-platform="mobile"] .bp-body { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; gap: 16px; padding: 4px 20px calc(28px + env(safe-area-inset-bottom)); }
+:root[data-platform="mobile"] .bp-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 18px; padding: 18px 16px; }
+:root[data-platform="mobile"] .bp-card-title { font-size: 15px; font-weight: 700; color: var(--text-primary); font-family: var(--font); margin: 0; }
+:root[data-platform="mobile"] .bp-card-desc { font-size: 12.5px; line-height: 1.5; color: var(--text-secondary); font-family: var(--font); margin: 5px 0 14px; }
+
+:root[data-platform="mobile"] .bp-plan-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+:root[data-platform="mobile"] .bp-plan-name { font-size: 16px; font-weight: 700; color: var(--text-primary); font-family: var(--font); }
+:root[data-platform="mobile"] .bp-badge { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 50px; background: rgba(4,189,103,0.14); color: #4ade80; font-size: 11px; font-weight: 700; font-family: var(--font); letter-spacing: 0.02em; }
+:root[data-platform="mobile"] .bp-badge--ending { background: rgba(232,161,92,0.14); color: #e8a15c; }
+:root[data-platform="mobile"] .bp-badge-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+:root[data-platform="mobile"] .bp-plan-price { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+:root[data-platform="mobile"] .bp-plan-amount { font-size: 28px; font-weight: 700; color: var(--text-primary); font-family: var(--font); letter-spacing: -0.5px; font-variant-numeric: tabular-nums; }
+:root[data-platform="mobile"] .bp-plan-per { font-size: 13px; color: var(--text-secondary); font-family: var(--font); }
+:root[data-platform="mobile"] .bp-chip { padding: 3px 9px; border-radius: 50px; background: rgba(118,138,255,0.16); color: #96a5ff; font-size: 11px; font-weight: 700; font-family: var(--font); }
+:root[data-platform="mobile"] .bp-plan-note { font-size: 12.5px; line-height: 1.55; color: var(--text-secondary); font-family: var(--font); margin: 10px 0 0; }
+:root[data-platform="mobile"] .bp-plan-actions { display: flex; gap: 10px; margin-top: 16px; }
+:root[data-platform="mobile"] .bp-btn { flex: 1; padding: 11px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); color: var(--text-primary); font-size: 13.5px; font-weight: 600; font-family: var(--font); cursor: pointer; transition: background 0.15s; }
+:root[data-platform="mobile"] .bp-btn:active { background: rgba(255,255,255,0.09); }
+:root[data-platform="mobile"] .bp-btn--danger { border-color: rgba(252,129,129,0.3); color: #fc8181; background: rgba(220,38,38,0.08); }
+:root[data-platform="mobile"] .bp-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 16px -16px 0; }
+:root[data-platform="mobile"] .bp-row { display: flex; align-items: center; gap: 14px; padding-top: 14px; }
+:root[data-platform="mobile"] .bp-row-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+:root[data-platform="mobile"] .bp-row-title { font-size: 14px; font-weight: 600; color: var(--text-primary); font-family: var(--font); }
+:root[data-platform="mobile"] .bp-row-desc { font-size: 12px; line-height: 1.5; color: var(--text-secondary); font-family: var(--font); }
+
+:root[data-platform="mobile"] .bp-method { display: flex; align-items: center; gap: 12px; width: 100%; padding: 12px; margin-bottom: 8px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); cursor: pointer; text-align: left; font-family: var(--font); transition: border-color 0.15s, background 0.15s; }
+:root[data-platform="mobile"] .bp-method--default { border-color: rgba(118,138,255,0.4); background: rgba(118,138,255,0.07); }
+:root[data-platform="mobile"] .bp-card-mark { width: 38px; height: 26px; flex-shrink: 0; border-radius: 5px; background: #fff; display: flex; align-items: center; justify-content: center; }
+:root[data-platform="mobile"] .bp-method-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+:root[data-platform="mobile"] .bp-method-num { font-size: 14px; font-weight: 600; color: var(--text-primary); letter-spacing: 0.5px; }
+:root[data-platform="mobile"] .bp-method-sub { font-size: 12px; color: var(--text-secondary); }
+:root[data-platform="mobile"] .bp-default-tag { flex-shrink: 0; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #96a5ff; }
+:root[data-platform="mobile"] .bp-set-default { flex-shrink: 0; font-size: 12px; font-weight: 600; color: var(--text-muted); }
+:root[data-platform="mobile"] .bp-add { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; margin-top: 4px; border-radius: 14px; border: 1px dashed rgba(255,255,255,0.18); background: none; color: var(--brand-purple); font-size: 13.5px; font-weight: 600; font-family: var(--font); cursor: pointer; }
+
+:root[data-platform="mobile"] .bp-info { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+:root[data-platform="mobile"] .bp-info:last-child { border-bottom: none; padding-bottom: 0; }
+:root[data-platform="mobile"] .bp-info-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+:root[data-platform="mobile"] .bp-info-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); font-family: var(--font); }
+:root[data-platform="mobile"] .bp-info-value { font-size: 14px; line-height: 1.5; color: var(--text-primary); font-family: var(--font); }
+:root[data-platform="mobile"] .bp-info-change { flex-shrink: 0; padding: 6px 14px; border-radius: 10px; border: none; background: var(--primary-300); color: #10132b; font-size: 12.5px; font-weight: 700; font-family: var(--font); cursor: pointer; }
+
+:root[data-platform="mobile"] .bp-invoice { display: flex; align-items: flex-start; gap: 12px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+:root[data-platform="mobile"] .bp-invoice:last-child { border-bottom: none; padding-bottom: 0; }
+:root[data-platform="mobile"] .bp-invoice-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+:root[data-platform="mobile"] .bp-invoice-desc { font-size: 13.5px; font-weight: 600; color: var(--text-primary); font-family: var(--font); }
+:root[data-platform="mobile"] .bp-invoice-meta { font-size: 11.5px; color: var(--text-muted); font-family: var(--font); }
+:root[data-platform="mobile"] .bp-invoice-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+:root[data-platform="mobile"] .bp-invoice-amount { font-size: 14px; font-weight: 700; color: var(--text-primary); font-family: var(--font); font-variant-numeric: tabular-nums; }
+:root[data-platform="mobile"] .bp-invoice-amount--refund { color: #4ade80; }
+:root[data-platform="mobile"] .bp-status { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 50px; font-family: var(--font); }
+:root[data-platform="mobile"] .bp-status--paid { background: rgba(4,189,103,0.13); color: #4ade80; }
+:root[data-platform="mobile"] .bp-status--refunded { background: rgba(255,255,255,0.07); color: var(--text-secondary); }
+:root[data-platform="mobile"] .bp-invoice-dl { background: none; border: none; padding: 2px; color: var(--text-muted); cursor: pointer; }
+
 /* ── §70 "Open in" sheet ──────────────────────────────────────
    The system's app-picker, so it wears the system's look and not ours:
    a rounded card off the bottom edge with Cancel set apart below it. */
