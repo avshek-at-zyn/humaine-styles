@@ -3457,6 +3457,50 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .bp-status--refunded { background: rgba(255,255,255,0.07); color: var(--text-secondary); }
 :root[data-platform="mobile"] .bp-invoice-dl { background: none; border: none; padding: 2px; color: var(--text-muted); cursor: pointer; }
 
+/* Change plan happens in place — leaving for the signup pricing screen,
+   which deliberately has no exit, strands the person outside the app. */
+:root[data-platform="mobile"] .bp-sheet-backdrop {
+  position: fixed; inset: 0; z-index: 55; display: flex; align-items: flex-end;
+  background: rgba(3,5,16,0.6); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  animation: drawer-fade 0.18s ease;
+}
+:root[data-platform="mobile"] .bp-sheet {
+  width: 100%; background: var(--primary-950); border: 1px solid rgba(255,255,255,0.08);
+  border-bottom: none; border-radius: 22px 22px 0 0;
+  padding: 10px 20px calc(20px + env(safe-area-inset-bottom));
+  display: flex; flex-direction: column;
+  animation: bp-sheet-rise 0.26s cubic-bezier(0.32, 0.72, 0, 1);
+}
+@keyframes bp-sheet-rise { from { transform: translateY(100%) } to { transform: translateY(0) } }
+:root[data-platform="mobile"] .bp-sheet-grip {
+  width: 36px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.18);
+  align-self: center; margin-bottom: 16px;
+}
+:root[data-platform="mobile"] .bp-sheet-title { font-size: 18px; font-weight: 700; color: var(--text-primary); font-family: var(--font); margin: 0; }
+:root[data-platform="mobile"] .bp-sheet-sub { font-size: 13px; color: var(--text-secondary); font-family: var(--font); margin: 5px 0 16px; }
+:root[data-platform="mobile"] .bp-plan-opt {
+  display: flex; align-items: center; gap: 12px; width: 100%; padding: 14px;
+  margin-bottom: 10px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.09);
+  background: rgba(255,255,255,0.02); cursor: pointer; text-align: left; font-family: var(--font);
+  transition: border-color 0.15s, background 0.15s;
+}
+:root[data-platform="mobile"] .bp-plan-opt--on { border-color: rgba(118,138,255,0.5); background: rgba(118,138,255,0.08); }
+:root[data-platform="mobile"] .bp-plan-opt-radio {
+  width: 18px; height: 18px; flex-shrink: 0; border-radius: 50%;
+  border: 1.6px solid rgba(255,255,255,0.25); transition: border-color 0.15s, box-shadow 0.15s;
+}
+:root[data-platform="mobile"] .bp-plan-opt--on .bp-plan-opt-radio {
+  border-color: var(--primary-400); box-shadow: inset 0 0 0 4px var(--primary-400);
+}
+:root[data-platform="mobile"] .bp-plan-opt-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+:root[data-platform="mobile"] .bp-plan-opt-name { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: var(--text-primary); }
+:root[data-platform="mobile"] .bp-plan-opt-current {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--text-muted); border: 1px solid rgba(255,255,255,0.16); border-radius: 4px; padding: 1px 5px;
+}
+:root[data-platform="mobile"] .bp-plan-opt-price { font-size: 12.5px; color: var(--text-secondary); }
+:root[data-platform="mobile"] .bp-sheet-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+
 /* ── §70 "Open in" sheet ──────────────────────────────────────
    The system's app-picker, so it wears the system's look and not ours:
    a rounded card off the bottom edge with Cancel set apart below it. */
