@@ -8264,43 +8264,62 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
    rather than growing another one-off set of classes.
    ============================================================ */
 
+/* ── §68 List row ─────────────────────────────────────────────
+   One grouped surface with inset dividers, not a stack of floating cards
+   each carrying a tinted icon tile — that arrangement is the default every
+   settings screen arrives at, and it reads as such. The glyph sits bare in a
+   fixed column so the titles align, the divider starts where the text does,
+   and the brand colour appears only on press, where it means something. */
 :root[data-platform="mobile"] .ds-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  overflow: hidden;
 }
 
 :root[data-platform="mobile"] .ds-list-row {
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 13px;
-  padding: 15px 14px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 14px;
+  padding: 17px 16px;
+  border: none;
+  background: none;
   cursor: pointer;
   text-align: left;
   font-family: var(--font);
-  transition: background 0.15s, border-color 0.15s;
+  transition: background 0.15s;
 }
 
-:root[data-platform="mobile"] .ds-list-row:active {
-  background: rgba(255, 255, 255, 0.075);
+/* Divider aligned to the text, not the edge — the detail that separates a
+   considered list from a default one. */
+:root[data-platform="mobile"] .ds-list-row::after {
+  content: '';
+  position: absolute;
+  left: 52px;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
 }
+
+:root[data-platform="mobile"] .ds-list-row:last-child::after { display: none; }
+:root[data-platform="mobile"] .ds-list-row:active { background: rgba(255, 255, 255, 0.05); }
 
 :root[data-platform="mobile"] .ds-list-icon {
   flex-shrink: 0;
-  width: 38px;
-  height: 38px;
-  border-radius: 11px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(139, 92, 246, 0.16);
-  border: 1px solid rgba(139, 92, 246, 0.28);
-  color: #c8bfff;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  color: var(--text-secondary);
+  transition: color 0.15s;
 }
+
+:root[data-platform="mobile"] .ds-list-row:active .ds-list-icon { color: var(--primary-300); }
 
 :root[data-platform="mobile"] .ds-list-text {
   flex: 1;
@@ -8313,16 +8332,22 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .ds-list-title {
   font-size: 15px;
   font-weight: 600;
-  color: #fff;
+  letter-spacing: -0.1px;
+  color: var(--text-primary);
 }
 
 :root[data-platform="mobile"] .ds-list-desc {
-  font-size: 12px;
-  line-height: 1.4;
-  color: rgba(255, 255, 255, 0.45);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 :root[data-platform="mobile"] .ds-list-chev {
   flex-shrink: 0;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--text-muted);
+  opacity: 0.5;
 }
