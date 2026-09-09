@@ -78,6 +78,10 @@ a {
   --primary-400: #768AFF;
   --primary-500: #5c72f5;       /* enterprise value; personal uses #7C6CF8 as --color-primary */
   --primary-600: #3a4ed4;
+  --primary-700: #2b3aa3;
+  --primary-800: #1d2770;
+  --primary-900: #131a45;
+  --primary-950: #0b0f26;       /* deepest brand surface — near the app ground */
 
   /* ── Surface stack (design-system.css) ── */
   --surface-0:   #080a12;
@@ -3745,22 +3749,15 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .ci-menu-item-m--danger { color: #f87171; }
 
 /* Side drawer */
-:root[data-platform="mobile"] .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; animation: drawer-fade 0.25s ease; }
 @keyframes drawer-fade { from { opacity: 0; } to { opacity: 1; } }
-:root[data-platform="mobile"] .drawer-panel { position: fixed; top: 0; right: 0; bottom: 0; width: 80%; max-width: 320px; background: rgba(9,11,24,0.98); border-left: 1px solid rgba(255,255,255,0.07); z-index: 201; display: flex; flex-direction: column; animation: drawer-slide 0.28s ease; padding-top: env(safe-area-inset-top); backdrop-filter: blur(20px); }
 @keyframes drawer-slide { from { transform: translateX(100%); } to { transform: translateX(0); } }
-:root[data-platform="mobile"] .drawer-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); }
 :root[data-platform="mobile"] .drawer-close-btn { background: none; border: none; color: rgba(255,255,255,0.5); cursor: pointer; padding: 4px; display: flex; }
-:root[data-platform="mobile"] .drawer-history { flex: 1; overflow-y: auto; padding: 12px; }
 :root[data-platform="mobile"] .drawer-section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: rgba(255,255,255,0.3); padding: 8px 8px 6px; text-transform: uppercase; font-family: var(--font); }
 :root[data-platform="mobile"] .drawer-history-item { width: 100%; padding: 10px 12px; border-radius: 10px; border: none; background: none; color: rgba(255,255,255,0.75); font-size: 13px; font-family: var(--font); text-align: left; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: background 0.15s; }
 :root[data-platform="mobile"] .drawer-history-item:active, :root[data-platform="mobile"] .drawer-history-item.active { background: rgba(255,255,255,0.06); color: #fff; }
-:root[data-platform="mobile"] .drawer-profile-wrap { padding: 12px; border-top: 1px solid rgba(255,255,255,0.06); position: relative; }
 :root[data-platform="mobile"] .drawer-profile-btn { width: 100%; display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 12px; border: none; background: rgba(255,255,255,0.04); cursor: pointer; }
-:root[data-platform="mobile"] .drawer-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
 :root[data-platform="mobile"] .drawer-user-name { font-size: 14px; font-weight: 600; color: #fff; font-family: var(--font); text-align: left; }
 :root[data-platform="mobile"] .drawer-user-plan { font-size: 11px; color: rgba(255,255,255,0.4); font-family: var(--font); text-align: left; }
-:root[data-platform="mobile"] .drawer-profile-menu { position: absolute; bottom: calc(100% - 8px); left: 12px; right: 12px; background: rgba(18,21,40,0.98); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 6px; backdrop-filter: blur(16px); box-shadow: 0 -8px 32px rgba(0,0,0,0.4); animation: drawer-menu-pop 0.18s ease; }
 @keyframes drawer-menu-pop { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
 /* Voice overlay */
@@ -4364,106 +4361,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
    §42 MOBILE — HISTORY DRAWER
    ============================================================ */
 
-:root[data-platform="mobile"] .drawer-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #fff;
-  font-family: var(--font);
-}
-:root[data-platform="mobile"] .drawer-new-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 12px;
-  border: 1px solid rgba(155,125,255,0.35);
-  border-radius: 999px;
-  background: rgba(155,125,255,0.12);
-  color: #d8ccff;
-  font-size: 12.5px;
-  font-weight: 600;
-  font-family: var(--font);
-  cursor: pointer;
-}
-:root[data-platform="mobile"] .drawer-group { margin-bottom: 14px; }
-:root[data-platform="mobile"] .drawer-group-label {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.7px;
-  color: rgba(255,255,255,0.3);
-  font-family: var(--font);
-  padding: 6px 8px;
-}
-:root[data-platform="mobile"] .drawer-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding: 10px 8px;
-  border: none;
-  border-radius: 10px;
-  background: none;
-  color: rgba(255,255,255,0.72);
-  font-size: 13.5px;
-  font-family: var(--font);
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.15s;
-}
-:root[data-platform="mobile"] .drawer-item:active { background: rgba(255,255,255,0.07); }
-:root[data-platform="mobile"] .drawer-item svg { flex-shrink: 0; opacity: 0.5; }
-:root[data-platform="mobile"] .drawer-item span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-:root[data-platform="mobile"] .drawer-profile-row {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  width: 100%;
-  padding: 9px 10px;
-  border: none;
-  border-radius: 12px;
-  background: none;
-  cursor: pointer;
-  color: rgba(255,255,255,0.5);
-  transition: background 0.15s;
-}
-:root[data-platform="mobile"] .drawer-profile-row:active { background: rgba(255,255,255,0.06); }
-:root[data-platform="mobile"] .drawer-profile-name {
-  flex: 1;
-  text-align: left;
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-  font-family: var(--font);
-}
-:root[data-platform="mobile"] .drawer-profile-item {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  width: 100%;
-  padding: 11px 12px;
-  border: none;
-  border-radius: 9px;
-  background: none;
-  color: rgba(255,255,255,0.8);
-  font-size: 13.5px;
-  font-weight: 500;
-  font-family: var(--font);
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.15s;
-}
-:root[data-platform="mobile"] .drawer-profile-item:active { background: rgba(255,255,255,0.07); }
-:root[data-platform="mobile"] .drawer-profile-item svg { opacity: 0.6; }
-:root[data-platform="mobile"] .drawer-profile-item--danger { color: #fca5a5; }
-:root[data-platform="mobile"] .drawer-profile-divider {
-  height: 1px;
-  background: rgba(255,255,255,0.08);
-  margin: 4px 8px;
-}
 
 
 /* ============================================================
@@ -7876,155 +7773,92 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 :root[data-platform="mobile"] .drawer-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 90;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  animation: drawer-fade 0.2s ease;
+  position: fixed; inset: 0; z-index: 50; display: flex;
+  background: rgba(3,5,16,0.62); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  animation: drawer-fade 0.18s ease;
 }
+@keyframes drawer-fade { from { opacity: 0 } to { opacity: 1 } }
 
 :root[data-platform="mobile"] .drawer-panel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: min(310px, 84vw);
-  display: flex;
-  flex-direction: column;
-  background: rgba(13,16,32,0.97);
-  border-right: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  padding-top: max(20px, env(safe-area-inset-top, 20px));
-  animation: drawer-slide 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  width: min(84vw, 320px); height: 100%; display: flex; flex-direction: column;
+  background: linear-gradient(180deg, var(--primary-950) 0%, var(--bg) 58%);
+  border-right: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 24px 0 60px -24px rgba(0,0,0,0.8);
+  animation: drawer-slide 0.26s cubic-bezier(0.32, 0.72, 0, 1);
 }
+@keyframes drawer-slide { from { transform: translateX(-100%) } to { transform: translateX(0) } }
 
+/* Header: the title and the one action, on a shared baseline. */
 :root[data-platform="mobile"] .drawer-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 18px 12px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: max(18px, env(safe-area-inset-top)) 16px 14px;
+  flex-shrink: 0;
 }
-
 :root[data-platform="mobile"] .drawer-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #fff;
-  font-family: var(--font);
+  font-size: 17px; font-weight: 700; color: var(--text-primary);
+  font-family: var(--font); letter-spacing: -0.2px;
 }
-
 :root[data-platform="mobile"] .drawer-new-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 12px;
-  border: 1px solid rgba(155,125,255,0.35);
-  border-radius: 999px;
-  background: rgba(155,125,255,0.12);
-  color: #d8ccff;
-  font-size: 12.5px;
-  font-weight: 600;
-  font-family: var(--font);
-  cursor: pointer;
+  display: flex; align-items: center; gap: 6px; padding: 8px 14px;
+  border: none; border-radius: 999px;
+  background: var(--primary-300); color: #10132b;
+  font-size: 12.5px; font-weight: 700; font-family: var(--font);
+  cursor: pointer; transition: background 0.15s, transform 0.1s;
 }
+:root[data-platform="mobile"] .drawer-new-btn:active { background: var(--primary-400); transform: scale(0.97); }
 
 :root[data-platform="mobile"] .drawer-history {
-  flex: 1;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: none;
-  padding: 4px 10px 12px;
-  scrollbar-width: none;
+  flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  padding: 4px 10px 12px; scrollbar-width: none;
 }
-
 :root[data-platform="mobile"] .drawer-history::-webkit-scrollbar { display: none; }
 
-:root[data-platform="mobile"] .drawer-group { margin-bottom: 14px; }
-
+/* Groups carry the date; a rule under the label does the separating so the
+   rows themselves can stay quiet. */
+:root[data-platform="mobile"] .drawer-group + .drawer-group { margin-top: 18px; }
 :root[data-platform="mobile"] .drawer-group-label {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.7px;
-  color: rgba(255,255,255,0.3);
-  font-family: var(--font);
-  padding: 6px 8px;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted); font-family: var(--font);
+  margin: 0 0 6px; padding: 0 8px 7px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
+/* No leading icon: every row is a chat, so an icon on each one says nothing
+   and turns the list into a column of identical glyphs. */
 :root[data-platform="mobile"] .drawer-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding: 10px 8px;
-  border: none;
-  border-radius: 10px;
-  background: none;
-  color: rgba(255,255,255,0.72);
-  font-size: 13.5px;
-  font-family: var(--font);
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.15s;
+  display: block; width: 100%; padding: 10px 8px; border: none; border-radius: 10px;
+  background: none; color: var(--text-secondary);
+  font-size: 13.5px; line-height: 1.4; font-family: var(--font);
+  text-align: left; cursor: pointer; transition: background 0.15s, color 0.15s;
 }
-
-:root[data-platform="mobile"] .drawer-item:active { background: rgba(255,255,255,0.07); }
-
-:root[data-platform="mobile"] .drawer-item svg { flex-shrink: 0; opacity: 0.5; }
-
+:root[data-platform="mobile"] .drawer-item:active { background: rgba(255,255,255,0.06); color: var(--text-primary); }
 :root[data-platform="mobile"] .drawer-item span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 
 :root[data-platform="mobile"] .drawer-profile-wrap {
-  position: relative;
+  position: relative; flex-shrink: 0; padding: 10px;
   border-top: 1px solid rgba(255,255,255,0.07);
-  padding: 10px 12px calc(14px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
 }
-
 :root[data-platform="mobile"] .drawer-profile-row {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  width: 100%;
-  padding: 9px 10px;
-  border: none;
-  border-radius: 12px;
-  background: none;
-  cursor: pointer;
-  color: rgba(255,255,255,0.5);
+  display: flex; align-items: center; gap: 11px; width: 100%;
+  padding: 9px 10px; border: none; border-radius: 12px; background: none;
+  cursor: pointer; text-align: left; font-family: var(--font);
   transition: background 0.15s;
 }
-
 :root[data-platform="mobile"] .drawer-profile-row:active { background: rgba(255,255,255,0.06); }
-
 :root[data-platform="mobile"] .drawer-avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--gradient-btn);
-  color: #fff;
-  font-size: 12.5px;
-  font-weight: 700;
-  font-family: var(--font);
-  flex-shrink: 0;
+  width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--gradient-btn); color: #fff;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.03em;
+}
+:root[data-platform="mobile"] .drawer-profile-name {
+  flex: 1; min-width: 0; font-size: 14px; font-weight: 600;
+  color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 
-:root[data-platform="mobile"] .drawer-profile-name {
-  flex: 1;
-  text-align: left;
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-  font-family: var(--font);
-}
 
 :root[data-platform="mobile"] .drawer-profile-menu {
   position: absolute;
@@ -8345,20 +8179,18 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 :root[data-platform="mobile"] .ci-send-pill-m {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 14px;
-  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  padding: 0;
+  border-radius: 50%;
   border: none;
   background: var(--gradient-btn);
   color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-  font-family: var(--font);
   cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.15s, transform 0.1s;
+  transition: opacity 0.15s, transform 0.1s;
 }
 
 :root[data-platform="mobile"] .ci-send-pill-m:active { transform: scale(0.97); }
