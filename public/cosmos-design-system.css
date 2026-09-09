@@ -3418,9 +3418,12 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .bp-chip { padding: 3px 9px; border-radius: 50px; background: rgba(118,138,255,0.16); color: #96a5ff; font-size: 11px; font-weight: 700; font-family: var(--font); }
 :root[data-platform="mobile"] .bp-plan-note { font-size: 12.5px; line-height: 1.55; color: var(--text-secondary); font-family: var(--font); margin: 10px 0 0; }
 :root[data-platform="mobile"] .bp-plan-actions { display: flex; gap: 10px; margin-top: 16px; }
-:root[data-platform="mobile"] .bp-btn { flex: 1; padding: 11px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); color: var(--text-primary); font-size: 13.5px; font-weight: 600; font-family: var(--font); cursor: pointer; transition: background 0.15s; }
-:root[data-platform="mobile"] .bp-btn:active { background: rgba(255,255,255,0.09); }
-:root[data-platform="mobile"] .bp-btn--danger { border-color: rgba(252,129,129,0.3); color: #fc8181; background: rgba(220,38,38,0.08); }
+/* Outline, not filled — these sit beside a plan the person already has, so
+   neither is the thing to do next. */
+:root[data-platform="mobile"] .bp-btn { flex: 1; padding: 11px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.18); background: none; color: var(--text-primary); font-size: 13.5px; font-weight: 600; font-family: var(--font); cursor: pointer; transition: background 0.15s, border-color 0.15s; }
+:root[data-platform="mobile"] .bp-btn:active { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.3); }
+:root[data-platform="mobile"] .bp-btn--danger { border-color: rgba(252,129,129,0.35); color: #fc8181; }
+:root[data-platform="mobile"] .bp-btn--danger:active { background: rgba(220,38,38,0.1); border-color: rgba(252,129,129,0.55); }
 :root[data-platform="mobile"] .bp-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 16px -16px 0; }
 :root[data-platform="mobile"] .bp-row { display: flex; align-items: center; gap: 14px; padding-top: 14px; }
 :root[data-platform="mobile"] .bp-row-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
@@ -3442,7 +3445,10 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .bp-info-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
 :root[data-platform="mobile"] .bp-info-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); font-family: var(--font); }
 :root[data-platform="mobile"] .bp-info-value { font-size: 14px; line-height: 1.5; color: var(--text-primary); font-family: var(--font); }
-:root[data-platform="mobile"] .bp-info-change { flex-shrink: 0; padding: 6px 14px; border-radius: 10px; border: none; background: var(--primary-300); color: #10132b; font-size: 12.5px; font-weight: 700; font-family: var(--font); cursor: pointer; }
+/* A quiet outline: editing a billing detail is a side errand, not the
+   screen's purpose. */
+:root[data-platform="mobile"] .bp-info-change { flex-shrink: 0; padding: 6px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); background: none; color: var(--text-secondary); font-size: 12.5px; font-weight: 600; font-family: var(--font); cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+:root[data-platform="mobile"] .bp-info-change:active { background: rgba(255,255,255,0.07); color: var(--text-primary); border-color: rgba(255,255,255,0.34); }
 
 :root[data-platform="mobile"] .bp-invoice { display: flex; align-items: flex-start; gap: 12px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
 :root[data-platform="mobile"] .bp-invoice:last-child { border-bottom: none; padding-bottom: 0; }
@@ -3456,6 +3462,15 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .bp-status--paid { background: rgba(4,189,103,0.13); color: #4ade80; }
 :root[data-platform="mobile"] .bp-status--refunded { background: rgba(255,255,255,0.07); color: var(--text-secondary); }
 :root[data-platform="mobile"] .bp-invoice-dl { background: none; border: none; padding: 2px; color: var(--text-muted); cursor: pointer; }
+
+/* Billing details form */
+:root[data-platform="mobile"] .bd-label {
+  display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--text-muted); font-family: var(--font);
+  margin: 14px 0 7px;
+}
+:root[data-platform="mobile"] .bd-err { font-size: 12px; color: var(--error-text); font-family: var(--font); margin: 7px 0 0; }
+:root[data-platform="mobile"] .bd-hint { font-size: 12px; color: var(--text-muted); font-family: var(--font); margin: 7px 0 0; }
 
 /* Change plan happens in place — leaving for the signup pricing screen,
    which deliberately has no exit, strands the person outside the app. */
