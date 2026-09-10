@@ -3309,6 +3309,9 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .btn-outline { background: rgba(255,255,255,0.07); color: var(--text-primary); border: 1px solid rgba(255,255,255,0.12); }
 :root[data-platform="mobile"] .btn-ghost { background: none; color: var(--brand-purple); font-size: 15px; font-weight: 500; }
 :root[data-platform="mobile"] .btn-ghost:disabled { opacity: 0.35; cursor: not-allowed; }
+/* A link that leaves the app is still a link, so it is marked up as one and
+   only needs the underline taken off to sit in a row of buttons. */
+:root[data-platform="mobile"] a.btn { text-decoration: none; }
 :root[data-platform="mobile"] .btn-center-text { text-align: center; color: var(--text-secondary); font-size: 14px; font-family: var(--font); }
 
 /* OTP / phone */
