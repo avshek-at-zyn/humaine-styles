@@ -3472,6 +3472,43 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .bd-err { font-size: 12px; color: var(--error-text); font-family: var(--font); margin: 7px 0 0; }
 :root[data-platform="mobile"] .bd-hint { font-size: 12px; color: var(--text-muted); font-family: var(--font); margin: 7px 0 0; }
 
+/* ── §73 Signing up happens on the web ────────────────────────
+   Ours, not the provider's — it appears after the hand-off, so it wears our
+   surface even when it sits over the provider's light sheet. */
+:root[data-platform="mobile"] .sw-backdrop {
+  position: fixed; inset: 0; z-index: 70; display: flex; align-items: flex-end;
+  background: rgba(3,5,16,0.72); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  animation: drawer-fade 0.18s ease;
+}
+:root[data-platform="mobile"] .sw-sheet {
+  width: 100%; background: var(--primary-950); border: 1px solid rgba(255,255,255,0.09);
+  border-bottom: none; border-radius: 22px 22px 0 0;
+  padding: 10px 22px calc(22px + env(safe-area-inset-bottom));
+  display: flex; flex-direction: column; align-items: flex-start;
+  animation: bp-sheet-rise 0.26s cubic-bezier(0.32, 0.72, 0, 1);
+}
+:root[data-platform="mobile"] .sw-grip {
+  width: 36px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.18);
+  align-self: center; margin-bottom: 20px;
+}
+:root[data-platform="mobile"] .sw-icon {
+  width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
+  background: rgba(118,138,255,0.14); color: var(--primary-300); margin-bottom: 14px;
+}
+:root[data-platform="mobile"] .sw-title {
+  font-size: 19px; font-weight: 700; color: var(--text-primary); font-family: var(--font);
+  margin: 0; letter-spacing: -0.2px;
+}
+:root[data-platform="mobile"] .sw-body {
+  font-size: 13.5px; line-height: 1.6; color: var(--text-secondary);
+  font-family: var(--font); margin: 8px 0 20px;
+}
+:root[data-platform="mobile"] .sw-body strong { color: var(--text-primary); font-weight: 600; }
+:root[data-platform="mobile"] .sw-actions { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+:root[data-platform="mobile"] .sw-cta {
+  display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
+}
+
 /* Change plan happens in place — leaving for the signup pricing screen,
    which deliberately has no exit, strands the person outside the app. */
 :root[data-platform="mobile"] .bp-sheet-backdrop {
