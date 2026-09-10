@@ -3519,6 +3519,71 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 :root[data-platform="mobile"] .sw-body strong { color: var(--text-primary); font-weight: 600; }
 :root[data-platform="mobile"] .sw-actions { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+
+/* ── §74 Sign-in paused ─────────────────────────────────────────
+   Repeated failures pause the screen. Same galaxy surface as §73 — it is our
+   sheet, not a system one — but led by a lock rather than the identifier,
+   because this one is not sending you anywhere by choice. */
+:root[data-platform="mobile"] .lk-backdrop {
+  position: fixed; inset: 0; z-index: 70; display: flex; align-items: flex-end;
+  background: rgba(6,4,18,0.74); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  animation: drawer-fade 0.18s ease;
+}
+:root[data-platform="mobile"] .lk-sheet {
+  width: 100%;
+  background:
+    radial-gradient(120% 72% at 50% -12%,
+      rgba(var(--gx-primary), 0.20) 0%, rgba(var(--gx-primary), 0.07) 38%, transparent 70%),
+    radial-gradient(56% 44% at 82% 6%,
+      rgba(var(--gx-accent), 0.10) 0%, transparent 68%),
+    var(--bg);
+  border: 1px solid rgba(var(--gx-primary), 0.22);
+  border-bottom: none; border-radius: 22px 22px 0 0;
+  padding: 10px 22px calc(22px + env(safe-area-inset-bottom));
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  animation: bp-sheet-rise 0.26s cubic-bezier(0.32, 0.72, 0, 1);
+}
+:root[data-platform="mobile"] .lk-grip {
+  width: 36px; height: 4px; border-radius: 2px; background: rgba(var(--gx-primary), 0.45);
+  align-self: center; margin-bottom: 20px;
+}
+:root[data-platform="mobile"] .lk-icon {
+  width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; margin: 2px auto 14px;
+  background: rgba(var(--gx-primary), 0.13);
+  border: 1px solid rgba(var(--gx-primary), 0.28);
+  color: var(--primary-400);
+}
+:root[data-platform="mobile"] .lk-title {
+  font-size: 19px; font-weight: 700; color: var(--text-primary); font-family: var(--font);
+  margin: 0; letter-spacing: -0.2px; text-align: center;
+}
+:root[data-platform="mobile"] .lk-body {
+  font-size: 13.5px; line-height: 1.6; color: var(--text-secondary);
+  font-family: var(--font); margin: 8px 0 20px; text-align: center; max-width: 32ch;
+}
+/* The countdown is the one number worth reading, and it changes every
+   second — tabular figures stop the line jittering as it counts down. */
+:root[data-platform="mobile"] .lk-count {
+  color: var(--text-primary); font-weight: 700;
+  font-variant-numeric: tabular-nums; font-feature-settings: "tnum";
+}
+:root[data-platform="mobile"] .lk-actions { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+
+/* The same countdown on the form itself, so it is still there after the sheet
+   is dismissed. The fill drains left to right as the pause runs out. */
+:root[data-platform="mobile"] .lk-strip { position: relative; overflow: hidden; }
+:root[data-platform="mobile"] .lk-strip-fill {
+  position: absolute; inset: 0 auto 0 0; pointer-events: none;
+  /* Fading the trailing edge keeps the draining boundary from reading as a
+     seam in the banner. */
+  background: linear-gradient(90deg,
+    rgba(var(--gx-primary), 0.18) 0%,
+    rgba(var(--gx-primary), 0.18) calc(100% - 26px),
+    rgba(var(--gx-primary), 0) 100%);
+  transition: width 0.25s linear;
+}
+:root[data-platform="mobile"] .lk-strip-text { position: relative; }
 :root[data-platform="mobile"] .sw-cta {
   display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
 }
