@@ -3484,7 +3484,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   width: 100%; background: var(--primary-950); border: 1px solid rgba(255,255,255,0.09);
   border-bottom: none; border-radius: 22px 22px 0 0;
   padding: 10px 22px calc(22px + env(safe-area-inset-bottom));
-  display: flex; flex-direction: column; align-items: flex-start;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
   animation: bp-sheet-rise 0.26s cubic-bezier(0.32, 0.72, 0, 1);
 }
 :root[data-platform="mobile"] .sw-grip {
@@ -3492,15 +3492,15 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   align-self: center; margin-bottom: 20px;
 }
 :root[data-platform="mobile"] .sw-mark {
-  width: 92px; height: auto; display: block; margin: -4px 0 12px -8px;
+  width: 96px; height: auto; display: block; margin: -2px auto 14px;
 }
 :root[data-platform="mobile"] .sw-title {
   font-size: 19px; font-weight: 700; color: var(--text-primary); font-family: var(--font);
-  margin: 0; letter-spacing: -0.2px;
+  margin: 0; letter-spacing: -0.2px; text-align: center;
 }
 :root[data-platform="mobile"] .sw-body {
   font-size: 13.5px; line-height: 1.6; color: var(--text-secondary);
-  font-family: var(--font); margin: 8px 0 20px;
+  font-family: var(--font); margin: 8px 0 20px; text-align: center; max-width: 30ch;
 }
 :root[data-platform="mobile"] .sw-body strong { color: var(--text-primary); font-weight: 600; }
 :root[data-platform="mobile"] .sw-actions { display: flex; flex-direction: column; gap: 8px; width: 100%; }
