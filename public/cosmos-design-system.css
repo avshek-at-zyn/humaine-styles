@@ -3491,9 +3491,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   width: 36px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.18);
   align-self: center; margin-bottom: 20px;
 }
-:root[data-platform="mobile"] .sw-icon {
-  width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
-  background: rgba(118,138,255,0.14); color: var(--primary-300); margin-bottom: 14px;
+:root[data-platform="mobile"] .sw-mark {
+  width: 92px; height: auto; display: block; margin: -4px 0 12px -8px;
 }
 :root[data-platform="mobile"] .sw-title {
   font-size: 19px; font-weight: 700; color: var(--text-primary); font-family: var(--font);
