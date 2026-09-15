@@ -8523,31 +8523,23 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 /* ── §75 humAInizing and Stop ─────────────────────────────────────
    The wait before a reply, as on the web (HumaineChat): a set four seconds,
-   shown as what humAIne is doing — three steps over a bar that fills across
-   the same four seconds — rather than a spinner. Per the HumAIne motion
-   guide: a calm orb pulse, each step line entering as it begins (160ms), and
-   the bar filling on transform only. The title is deliberately still; one
-   purposeful movement reads better than four at once.
+   shown as what humAIne is doing rather than a spinner. The progress lives in
+   a Lottie (HumainizingLottie) — a ring closing over the wait, a dot lighting
+   per step, a calm core pulse — beside the step line, which enters as each
+   step begins (160ms). The title is deliberately still; one purposeful
+   movement reads better than several at once.
    At the end of the file so it follows the send pill it modifies. */
 :root[data-platform="mobile"] .chat-thinking {
   position: relative; display: flex; align-items: center; gap: 12px;
   min-width: 232px; max-width: 86%;
-  padding: 12px 18px 14px 14px;
+  padding: 12px 18px 12px 12px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(var(--gx-primary), 0.18);
   border-radius: 18px; border-bottom-left-radius: 6px;
   overflow: hidden;
 }
-:root[data-platform="mobile"] .chat-thinking-orb {
-  flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
-  background: radial-gradient(circle at 32% 28%, #fff 0%, var(--primary-300, #96a3ff) 24%, var(--primary-500, #5271ff) 62%, transparent 74%);
-  box-shadow: 0 0 14px rgba(118, 138, 255, 0.5);
-  animation: chat-orb 1.6s ease-in-out infinite;
-}
-@keyframes chat-orb {
-  0%, 100% { transform: scale(0.84); opacity: 0.72; }
-  50%      { transform: scale(1);    opacity: 1; }
-}
+:root[data-platform="mobile"] .chat-thinking-lottie { flex-shrink: 0; display: block; width: 32px; height: 32px; }
+:root[data-platform="mobile"] .chat-thinking-lottie svg { display: block; }
 :root[data-platform="mobile"] .chat-thinking-copy { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 :root[data-platform="mobile"] .chat-thinking-title {
   font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--text-primary);
@@ -8560,17 +8552,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   from { opacity: 0; transform: translateY(3px); }
   to   { opacity: 1; transform: none; }
 }
-:root[data-platform="mobile"] .chat-thinking-bar {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
-  background: rgba(255, 255, 255, 0.05);
-}
-:root[data-platform="mobile"] .chat-thinking-bar i {
-  display: block; width: 100%; height: 100%;
-  transform: scaleX(0); transform-origin: left;
-  background: linear-gradient(90deg, var(--primary-400), var(--brand-pink));
-  animation: chat-think-fill var(--think-ms, 4000ms) cubic-bezier(0.4, 0.1, 0.3, 1) forwards;
-}
-@keyframes chat-think-fill { to { transform: scaleX(1); } }
 
 /* Stop takes the send slot while a reply is on its way — the same geometry
    as Send so the composer doesn't shift, on a quieter surface because
@@ -8592,11 +8573,9 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 @media (prefers-reduced-motion: reduce) {
   /* The information stays — which step, how far — only the movement goes:
-     the orb holds still, steps swap without entering, and the bar shows the
-     step reached instead of sweeping. */
-  :root[data-platform="mobile"] .chat-thinking-orb { animation: none; opacity: 1; transform: none; }
+     step lines swap without entering, and the Lottie holds on the frame for
+     the step reached instead of playing (see HumainizingLottie). */
   :root[data-platform="mobile"] .chat-thinking-step { animation: none; }
-  :root[data-platform="mobile"] .chat-thinking-bar i { animation: none; transform: scaleX(var(--think-progress, 0.33)); }
 }
 
 /* ── §76 Delete account ──────────────────────────────────────────
@@ -8621,3 +8600,14 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 :root[data-platform="mobile"] .ss-delete-agree { align-items: flex-start; line-height: 1.45; }
 :root[data-platform="mobile"] .ss-delete-agree input[type="checkbox"] { margin-top: 1px; flex-shrink: 0; }
+
+/* After deletion: a quiet, final mark — not a success tick, since nothing
+   about losing an account is a celebration. */
+:root[data-platform="mobile"] .ss-deleted-mark {
+  width: 64px; height: 64px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.28);
+  color: #fca5a5;
+}
