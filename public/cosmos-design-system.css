@@ -5105,23 +5105,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   text-align: left;
   max-width: 340px;
 }
-.fp-demo-link-m {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  margin-top: 18px;
-  padding: 9px 16px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 999px;
-  color: rgba(255,255,255,0.75);
-  font-size: 12.5px;
-  font-weight: 600;
-  font-family: var(--font);
-  cursor: pointer;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
 
 .fp-success-icon-m {
   width: 104px;
@@ -8604,3 +8587,78 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 /* After deletion: the account-deleted illustration, centred above the
    message like the other end-of-flow illustrations. */
 :root[data-platform="mobile"] .ss-deleted-illo { display: block; width: 148px; height: 148px; margin: 0 auto 20px; }
+
+/* ── §77 Demo inbox ────────────────────────────────────────────────
+   Nothing is really sent, so the reset email is opened from a stand-in inbox
+   reached from the top of the email-sent screen, as on the web (MockInbox).
+   The mail client is deliberately light so it reads as another app rather
+   than another humAIne screen, and it rises as a sheet like the app's others. */
+:root[data-platform="mobile"] .fp-inbox-pill-m {
+  position: fixed; top: calc(env(safe-area-inset-top, 0px) + 14px); right: 14px; z-index: 60;
+  display: inline-flex; align-items: center; gap: 7px;
+  height: 36px; padding: 0 12px 0 11px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #e8e8e8; font-size: 13px; font-weight: 600; font-family: var(--font); cursor: pointer;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: background 0.15s, transform 0.1s;
+}
+:root[data-platform="mobile"] .fp-inbox-pill-m:active { transform: scale(0.97); background: rgba(255, 255, 255, 0.12); }
+:root[data-platform="mobile"] .fp-inbox-pill-m svg { width: 15px; height: 15px; }
+:root[data-platform="mobile"] .fp-inbox-badge-m {
+  min-width: 17px; height: 17px; padding: 0 5px; border-radius: 999px;
+  background: #ef4444; color: #fff; font-size: 10px; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+
+:root[data-platform="mobile"] .mi-overlay {
+  position: fixed; inset: 0; z-index: 80; display: flex; align-items: flex-end;
+  background: rgba(0, 0, 0, 0.6); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  animation: drawer-fade 0.18s ease;
+}
+:root[data-platform="mobile"] .mi-window {
+  width: 100%; max-height: 88vh; overflow-y: auto;
+  background: #fff; color: #202124; font-family: Roboto, Arial, sans-serif;
+  border-radius: 18px 18px 0 0; padding-bottom: env(safe-area-inset-bottom);
+  animation: bp-sheet-rise 0.26s cubic-bezier(0.32, 0.72, 0, 1);
+}
+:root[data-platform="mobile"] .mi-chrome {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 16px; border-bottom: 1px solid #e8eaed;
+  position: sticky; top: 0; background: #fff; border-radius: 18px 18px 0 0;
+}
+:root[data-platform="mobile"] .mi-chrome__left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+:root[data-platform="mobile"] .mi-chrome__title { font-size: 14px; font-weight: 500; color: #202124; }
+:root[data-platform="mobile"] .mi-chrome__demo {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: #5f6368; background: #f1f3f4; border-radius: 999px; padding: 2px 8px;
+}
+:root[data-platform="mobile"] .mi-close {
+  flex-shrink: 0; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;
+  border: none; background: none; border-radius: 50%; color: #5f6368; cursor: pointer;
+}
+:root[data-platform="mobile"] .mi-close:active { background: #f1f3f4; }
+:root[data-platform="mobile"] .mi-body { padding: 18px 20px 24px; }
+:root[data-platform="mobile"] .mi-subject { font-size: 20px; font-weight: 400; color: #202124; margin: 0 0 16px; line-height: 1.35; }
+:root[data-platform="mobile"] .mi-sender { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+:root[data-platform="mobile"] .mi-avatar {
+  flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, #7C6CF8, #E879A0); color: #fff;
+  font-size: 16px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center;
+}
+:root[data-platform="mobile"] .mi-sender__text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+:root[data-platform="mobile"] .mi-sender__name { font-size: 13px; font-weight: 700; color: #202124; }
+:root[data-platform="mobile"] .mi-sender__addr { font-weight: 400; color: #5f6368; }
+:root[data-platform="mobile"] .mi-sender__to { font-size: 12px; color: #5f6368; overflow-wrap: anywhere; }
+:root[data-platform="mobile"] .mi-time { flex-shrink: 0; font-size: 12px; color: #5f6368; }
+:root[data-platform="mobile"] .mi-content { font-size: 14px; line-height: 1.6; color: #3c4043; }
+:root[data-platform="mobile"] .mi-content p { margin: 0 0 14px; }
+:root[data-platform="mobile"] .mi-cta {
+  display: inline-block; margin: 6px 0 18px; padding: 12px 28px; border: none; border-radius: 8px;
+  background: linear-gradient(to right, #7C6CF8, #E879A0); color: #fff;
+  font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer;
+}
+:root[data-platform="mobile"] .mi-cta:active { transform: translateY(1px); opacity: 0.92; }
+:root[data-platform="mobile"] .mi-expiry { font-size: 13px; color: #5f6368; }
+:root[data-platform="mobile"] .mi-footnote {
+  font-size: 12px; color: #80868b; border-top: 1px solid #e8eaed; padding-top: 14px; margin-bottom: 0 !important;
+}
