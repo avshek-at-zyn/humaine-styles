@@ -8601,13 +8601,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .ss-delete-agree { align-items: flex-start; line-height: 1.45; }
 :root[data-platform="mobile"] .ss-delete-agree input[type="checkbox"] { margin-top: 1px; flex-shrink: 0; }
 
-/* After deletion: a quiet, final mark — not a success tick, since nothing
-   about losing an account is a celebration. */
-:root[data-platform="mobile"] .ss-deleted-mark {
-  width: 64px; height: 64px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 18px;
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.28);
-  color: #fca5a5;
-}
+/* After deletion: the account-deleted illustration, centred above the
+   message like the other end-of-flow illustrations. */
+:root[data-platform="mobile"] .ss-deleted-illo { display: block; width: 148px; height: 148px; margin: 0 auto 20px; }
