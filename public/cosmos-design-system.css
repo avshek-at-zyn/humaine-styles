@@ -3436,14 +3436,10 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .bp-row-desc { font-size: 12px; line-height: 1.5; color: var(--text-secondary); font-family: var(--font); }
 
 :root[data-platform="mobile"] .bp-method { display: flex; align-items: center; gap: 12px; width: 100%; padding: 12px; margin-bottom: 8px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); cursor: pointer; text-align: left; font-family: var(--font); transition: border-color 0.15s, background 0.15s; }
-:root[data-platform="mobile"] .bp-method--default { border-color: rgba(118,138,255,0.4); background: rgba(118,138,255,0.07); }
 :root[data-platform="mobile"] .bp-card-mark { width: 38px; height: 26px; flex-shrink: 0; border-radius: 5px; background: #fff; display: flex; align-items: center; justify-content: center; }
 :root[data-platform="mobile"] .bp-method-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 :root[data-platform="mobile"] .bp-method-num { font-size: 14px; font-weight: 600; color: var(--text-primary); letter-spacing: 0.5px; }
 :root[data-platform="mobile"] .bp-method-sub { font-size: 12px; color: var(--text-secondary); }
-:root[data-platform="mobile"] .bp-default-tag { flex-shrink: 0; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #96a5ff; }
-:root[data-platform="mobile"] .bp-set-default { flex-shrink: 0; font-size: 12px; font-weight: 600; color: var(--text-muted); }
-:root[data-platform="mobile"] .bp-add { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; margin-top: 4px; border-radius: 14px; border: 1px dashed rgba(255,255,255,0.18); background: none; color: var(--brand-purple); font-size: 13.5px; font-weight: 600; font-family: var(--font); cursor: pointer; }
 
 :root[data-platform="mobile"] .bp-info { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
 :root[data-platform="mobile"] .bp-info:last-child { border-bottom: none; padding-bottom: 0; }
@@ -3623,6 +3619,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   border-bottom: none; border-radius: 22px 22px 0 0;
   padding: 10px 20px calc(20px + env(safe-area-inset-bottom));
   display: flex; flex-direction: column;
+  max-height: 92vh; max-height: 92dvh; overflow-y: auto; overscroll-behavior: contain;
   animation: bp-sheet-rise 0.26s cubic-bezier(0.32, 0.72, 0, 1);
 }
 @keyframes bp-sheet-rise { from { transform: translateY(100%) } to { transform: translateY(0) } }
@@ -8811,4 +8808,42 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 @keyframes sup-done-pop { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
   :root[data-platform="mobile"] .sup-done-icon-m { animation: none; }
+}
+
+/* ── §79 Zyn loading screen ─────────────────────────────────────
+   The humAIne loading animation (src/lib/zynLoader.ts) as a full-screen
+   state: the brand, the molten world on its orbit, one status line. Colours
+   are the loader's own; type is the app's, so nothing waits on a web font. */
+:root[data-platform="mobile"] .zl-screen {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center;
+  background: radial-gradient(130% 78% at 50% -12%, #1A0F2E 0%, transparent 56%), #0B0616;
+  color: #F5F0FA;
+  transition: opacity .55s cubic-bezier(.4, 0, .2, 1), transform .55s cubic-bezier(.4, 0, .2, 1);
+}
+:root[data-platform="mobile"] .zl-screen.is-out { opacity: 0; transform: scale(1.035); pointer-events: none; }
+:root[data-platform="mobile"] .zl-stack { display: flex; flex-direction: column; align-items: center; padding: 24px; }
+:root[data-platform="mobile"] .zl-brand {
+  font-family: var(--font); font-weight: 600; font-size: 12px;
+  letter-spacing: .54em; text-indent: .54em; color: #B5B7F6; opacity: .65; margin-bottom: 6px;
+}
+:root[data-platform="mobile"] .zl-stage { width: min(460px, 82vw); height: auto; aspect-ratio: 1; display: block; }
+:root[data-platform="mobile"] .zl-msg {
+  margin-top: 4px; min-height: 19px; font-size: 13.5px; letter-spacing: .01em; text-align: center;
+  font-family: var(--font); color: transparent;
+  /* No numeral while indeterminate, so the line carries a light sweep instead. */
+  background: linear-gradient(100deg,
+    rgba(169, 156, 184, .55) 0%, rgba(169, 156, 184, .55) 38%, #E5C3F0 50%,
+    rgba(169, 156, 184, .55) 62%, rgba(169, 156, 184, .55) 100%);
+  background-size: 240% 100%; -webkit-background-clip: text; background-clip: text;
+  animation: zl-sweep 3.4s linear infinite;
+}
+@keyframes zl-sweep { from { background-position: 120% 0 } to { background-position: -120% 0 } }
+:root[data-platform="mobile"] .zl-slow {
+  margin-top: 22px; font-size: 12px; color: #A99CB8; font-family: var(--font); text-align: center;
+  opacity: 0; transition: opacity .6s ease;
+}
+:root[data-platform="mobile"] .zl-slow.is-on { opacity: .72; }
+@media (prefers-reduced-motion: reduce) {
+  :root[data-platform="mobile"] .zl-screen { transition: none; }
+  :root[data-platform="mobile"] .zl-msg { animation: none; background-position: 50% 0; }
 }
