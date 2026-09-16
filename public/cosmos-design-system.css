@@ -8610,6 +8610,11 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   border: 1px solid rgba(239, 68, 68, 0.18);
 }
 :root[data-platform="mobile"] .ss-delete-title { color: #fca5a5; }
+/* Stacked on a phone: the description takes the zone's full width and the
+   button sits beneath it, rather than squeezing the text into a narrow column
+   beside a button stranded in the corner. */
+:root[data-platform="mobile"] .ss-delete { flex-direction: column; align-items: stretch; gap: 14px; }
+:root[data-platform="mobile"] .ss-delete .ss-danger-btn { width: 100%; min-height: 44px; text-align: center; }
 :root[data-platform="mobile"] .ss-danger-solid-btn {
   background: #e5484d;
   box-shadow: 0 4px 16px rgba(229, 72, 77, 0.30);
