@@ -8826,7 +8826,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   font-family: var(--font); font-weight: 600; font-size: 12px;
   letter-spacing: .54em; text-indent: .54em; color: #B5B7F6; opacity: .65; margin-bottom: 6px;
 }
-:root[data-platform="mobile"] .zl-stage { width: min(460px, 82vw); height: auto; aspect-ratio: 1; display: block; }
+:root[data-platform="mobile"] .zl-stage { width: min(320px, 66vw); height: auto; aspect-ratio: 1; display: block; }
 :root[data-platform="mobile"] .zl-msg {
   margin-top: 4px; min-height: 19px; font-size: 13.5px; letter-spacing: .01em; text-align: center;
   font-family: var(--font); color: transparent;
