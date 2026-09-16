@@ -3512,9 +3512,38 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 :root[data-platform="mobile"] .sw-body {
   font-size: 13.5px; line-height: 1.6; color: var(--text-secondary);
-  font-family: var(--font); margin: 8px 0 20px; text-align: center; max-width: 30ch;
+  font-family: var(--font); margin: 8px 0 16px; text-align: center; max-width: 30ch;
 }
 :root[data-platform="mobile"] .sw-body strong { color: var(--text-primary); font-weight: 600; }
+/* The web address, to copy rather than follow: the app sends no one to the
+   web, so it is text with a copy control, never a link. Monospace reads as
+   "an address to paste". The status line under it is always there and holds
+   its height, so the sheet never changes size as it fills. */
+:root[data-platform="mobile"] .sw-copy {
+  display: flex; align-items: center; gap: 8px; width: 100%; box-sizing: border-box;
+  min-height: 52px; padding: 3px 3px 3px 14px; border-radius: 13px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(var(--gx-primary), 0.24);
+}
+:root[data-platform="mobile"] .sw-copy__addr {
+  flex: 1; min-width: 0; text-align: left; overflow-wrap: anywhere;
+  font-family: var(--font-mono); font-size: 13px; color: var(--text-primary);
+  -webkit-user-select: all; user-select: all;
+}
+:root[data-platform="mobile"] .sw-copy__btn {
+  flex-shrink: 0; width: 44px; height: 44px; border: none; border-radius: 10px;
+  display: grid; place-items: center; cursor: pointer; padding: 0;
+  background: rgba(var(--gx-primary), 0.14); color: var(--text-primary);
+  transition: background-color 100ms ease, color 160ms ease, transform 100ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+:root[data-platform="mobile"] .sw-copy__btn:active { transform: scale(0.94); background: rgba(var(--gx-primary), 0.24); }
+:root[data-platform="mobile"] .sw-copy__btn:focus-visible { outline: 2px solid rgba(var(--gx-primary), 0.8); outline-offset: 2px; }
+:root[data-platform="mobile"] .sw-copy__btn.is-copied { color: rgb(var(--gx-primary)); background: rgba(var(--gx-primary), 0.22); }
+:root[data-platform="mobile"] .sw-copy__status {
+  min-height: 16px; margin: 6px 0 8px; font-size: 12px; line-height: 16px;
+  color: var(--text-secondary); font-family: var(--font); text-align: center;
+}
 :root[data-platform="mobile"] .sw-actions { display: flex; flex-direction: column; gap: 8px; width: 100%; }
 
 /* ── §74 Sign-in paused ─────────────────────────────────────────
