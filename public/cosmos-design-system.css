@@ -6221,9 +6221,10 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 /* ── Notifications ── */
-/* A locked or master-off toggle reads as inactive, not broken */
+/* A required type's switch is on and locked; the Required badge beside its
+   title says why, so it reads as fixed rather than broken. */
 :root[data-platform="mobile"] .nt-toggle--locked { cursor: default; }
-:root[data-platform="mobile"] .nt-group--off { opacity: 0.4; }
+:root[data-platform="mobile"] .nt-required { margin: 0 0 0 8px; vertical-align: 1px; }
 
 /* ============================================================
    §58 MOBILE — DESIGN-SYSTEM BUTTONS INLINE, SETTINGS DETAIL PAGES
