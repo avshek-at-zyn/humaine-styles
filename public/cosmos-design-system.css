@@ -8703,3 +8703,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .sup-field-m { flex: 1; min-height: 0; }
 :root[data-platform="mobile"] .sup-field-m .sup-textarea-m { flex: 1; min-height: 140px; resize: none; }
 :root[data-platform="mobile"] .dl-hint { min-height: 14px; }
+/* The last row of a section on Security Settings sits right above a section
+   divider; one line between them, not two. */
+:root[data-platform="mobile"] .ss-body .ps-row:has(+ .ss-divider) { border-bottom: none; }
