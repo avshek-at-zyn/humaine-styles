@@ -8105,8 +8105,10 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   font-family: var(--font);
   margin-top: 8px;
   line-height: 1.5;
-  text-wrap: balance; /* the later copy wins; even lines, no stranded last word */
 }
+/* Each line is its own block, so each wraps evenly on its own — no stranded
+   last word, in any language or at any width. */
+:root[data-platform="mobile"] .chat-private-line { display: block; text-wrap: balance; }
 
 :root[data-platform="mobile"] .chat-menu-btn {
   background: none;
