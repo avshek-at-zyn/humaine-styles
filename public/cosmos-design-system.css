@@ -8717,3 +8717,54 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   color: #1A0F2E;
 }
 :root[data-platform="mobile"] .ci-wave-btn-m:active { background: #ECE8FF; border-color: #ECE8FF; }
+
+/* ── §85 Notifications, from the drawer ──────────────────────────
+   A bell beside Support, carrying what is unread, opening the design
+   system's tall sheet. Unread is said three ways — a dot, a tinted card and
+   a heavier title — so it never rests on colour alone. */
+:root[data-platform="mobile"] .drawer-bell-btn {
+  position: relative; flex-shrink: 0; width: 44px; height: 44px; padding: 0; border: none; border-radius: 12px;
+  display: grid; place-items: center; background: none; cursor: pointer;
+  color: var(--text-secondary); transition: background-color 150ms ease, color 150ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+:root[data-platform="mobile"] .drawer-bell-btn:active { background: rgba(255, 255, 255, 0.06); color: var(--text-primary); }
+:root[data-platform="mobile"] .drawer-bell-btn:focus-visible { outline: 2px solid rgba(var(--gx-primary), 0.8); outline-offset: 2px; }
+:root[data-platform="mobile"] .drawer-bell-badge {
+  position: absolute; top: 4px; right: 4px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 999px;
+  display: grid; place-items: center; font-family: var(--font); font-size: 10px; font-weight: 700; color: #fff;
+  background: linear-gradient(135deg, rgb(var(--gx-primary)), rgb(var(--gx-accent)));
+  box-shadow: 0 0 0 2px var(--bg);
+}
+:root[data-platform="mobile"] .nf-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+:root[data-platform="mobile"] .nf-item {
+  position: relative; display: grid; grid-template-columns: 1fr auto; gap: 0 10px;
+  padding: 13px 14px 14px 18px; border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.07);
+}
+:root[data-platform="mobile"] .nf-item.is-unread { background: rgba(var(--gx-primary), 0.10); border-color: rgba(var(--gx-primary), 0.30); }
+:root[data-platform="mobile"] .nf-item.is-unread::before {
+  content: ''; position: absolute; left: 7px; top: 19px; width: 6px; height: 6px; border-radius: 50%;
+  background: rgb(var(--gx-primary));
+}
+:root[data-platform="mobile"] .nf-type {
+  font-family: var(--font); font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+}
+:root[data-platform="mobile"] .nf-type--security { color: #fca5a5; }
+:root[data-platform="mobile"] .nf-type--product { color: rgb(var(--gx-primary)); }
+:root[data-platform="mobile"] .nf-type--promotion { color: rgb(var(--gx-accent)); }
+:root[data-platform="mobile"] .nf-when { grid-column: 2; grid-row: 1; font-family: var(--font); font-size: 11.5px; color: var(--text-muted); }
+:root[data-platform="mobile"] .nf-title {
+  grid-column: 1 / -1; margin: 3px 0 0; font-family: var(--font); font-size: 14.5px; font-weight: 500; color: var(--text-primary);
+}
+:root[data-platform="mobile"] .nf-item.is-unread .nf-title { font-weight: 700; }
+:root[data-platform="mobile"] .nf-body {
+  grid-column: 1 / -1; margin: 3px 0 0; font-family: var(--font); font-size: 12.5px; line-height: 1.5; color: var(--text-secondary);
+}
+:root[data-platform="mobile"] .nf-empty {
+  margin: 8px 0 0; font-family: var(--font); font-size: 13.5px; line-height: 1.5; color: var(--text-secondary); text-align: center;
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
