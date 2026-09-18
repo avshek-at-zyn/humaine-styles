@@ -8706,3 +8706,14 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 /* The last row of a section on Security Settings sits right above a section
    divider; one line between them, not two. */
 :root[data-platform="mobile"] .ss-body .ps-row:has(+ .ss-divider) { border-bottom: none; }
+
+/* ── §84 The voice wave on white ─────────────────────────────────
+   Conversation mode is the composer's one lit control: the wave sits on a
+   white fill with the strokes in ink, so it reads as the way in to talking.
+   The dictation mic beside it stays as it was. */
+:root[data-platform="mobile"] .ci-wave-btn-m {
+  background: #fff;
+  border-color: #fff;
+  color: #1A0F2E;
+}
+:root[data-platform="mobile"] .ci-wave-btn-m:active { background: #ECE8FF; border-color: #ECE8FF; }
