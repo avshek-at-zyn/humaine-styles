@@ -8288,6 +8288,11 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   flex-shrink: 0;
 }
 
+/* Send is the one 36px control in a row of 32s, and it is only there once
+   there is something to send — so the row holds 36 whether it is there or
+   not, and the composer keeps its height as you start typing. */
+:root[data-platform="mobile"] .ci-right-m { min-height: 36px; align-items: center; }
+
 :root[data-platform="mobile"] .ci-send-pill-m {
   display: grid;
   place-items: center;
@@ -8985,29 +8990,27 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding-bottom: 10px;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 44px);
-  mask-image: linear-gradient(to bottom, transparent 0, #000 44px);
+  gap: 10px;
+  padding-bottom: 12px;
+  /* A long fade at the top: what is older goes into the sky rather than
+     stopping at an edge. */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.35) 46px, #000 104px);
+  mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.35) 46px, #000 104px);
 }
 :root[data-platform="mobile"] .vs-turn {
   margin: 0;
   font-family: var(--font);
-  font-size: 13px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.3);
-  /* Two lines each: enough to recognise a turn, not enough to read instead
-     of listening. */
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  font-size: 13.5px;
+  line-height: 1.55;
+  /* Whole turns, not clipped ones: the point of keeping them here is that
+     they can be read when you stop talking. */
+  color: rgba(255, 255, 255, 0.42);
 }
 :root[data-platform="mobile"] .vs-turn--user {
   align-self: flex-end;
-  max-width: 78%;
+  max-width: 80%;
   text-align: right;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.34);
 }
 :root[data-platform="mobile"] .vs-turn--assistant { align-self: flex-start; max-width: 88%; }
 
@@ -9032,23 +9035,79 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
    pixels; the blur is what turns three circles into weather. */
 :root[data-platform="mobile"] .vs-aura {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* The lower half of the screen and no more: light coming up from the
+     bottom edge, not a wash over everything. */
+  height: 46%;
   width: 100%;
-  height: 100%;
+  /* Above the sky, below everything that is read. */
+  z-index: 0;
   filter: blur(34px);
   opacity: 0.95;
   pointer-events: none;
 }
-/* A halo the mark sits in, opening a little with the voice. */
+/* The light the mark sits in, and the only thing about the mark that moves
+   with the voice. Two layers: a close halo that opens with the room, and a
+   wider bloom behind it that opens further and later, so it breathes rather
+   than beats. There is nothing to see an edge of — no ring, no pulse, no
+   geometry: a logo that fires circles at you reads as a machine. */
 :root[data-platform="mobile"] .vs-mark-glow {
   position: absolute;
-  inset: 12%;
+  inset: 10%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(var(--gx-primary), 0.22) 0%, rgba(var(--gx-primary), 0.06) 45%, transparent 70%);
-  filter: blur(18px);
-  transform: scale(calc(1 + var(--voice-level, 0) * 0.14));
-  transition: transform 0.1s linear;
+  /* Softness comes from the gradient's own stops, not from a filter: a
+     blurred layer that scales every frame is re-rasterised every frame, and
+     this one moves with the voice. Measured: with the blur, 21-49fps at four
+     times the CPU load; without it, 60. */
+  background: radial-gradient(circle,
+    rgba(var(--gx-primary), 0.24) 0%,
+    rgba(var(--gx-primary), 0.15) 28%,
+    rgba(var(--gx-primary), 0.06) 52%,
+    rgba(var(--gx-primary), 0.02) 68%,
+    transparent 80%);
+  transform: scale(calc(1 + var(--voice-level, 0) * 0.2));
+  opacity: calc(0.5 + var(--voice-level, 0) * 0.5);
+  transition: transform 0.14s ease-out, opacity 0.14s ease-out;
+  will-change: transform, opacity;
 }
+:root[data-platform="mobile"] .vs-mark-glow::after {
+  content: '';
+  position: absolute;
+  inset: -34%;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(var(--gx-primary), 0.1) 0%,
+    rgba(var(--gx-primary), 0.05) 34%,
+    rgba(var(--gx-primary), 0.015) 55%,
+    transparent 72%);
+  transform: scale(calc(1 + var(--voice-level, 0) * 0.34));
+  opacity: calc(0.28 + var(--voice-level, 0) * 0.6);
+  /* Slower than the halo in front of it: the bloom follows the voice, it
+     does not track it. */
+  transition: transform 0.42s ease-out, opacity 0.42s ease-out;
+  will-change: transform, opacity;
+}
+/* Warmer while it speaks, cooler while it listens — the same shift the
+   light along the bottom makes. */
+:root[data-platform="mobile"] .vs-mark--speaking .vs-mark-glow {
+  background: radial-gradient(circle,
+    rgba(var(--gx-accent), 0.22) 0%,
+    rgba(var(--gx-accent), 0.13) 28%,
+    rgba(var(--gx-accent), 0.05) 52%,
+    rgba(var(--gx-accent), 0.02) 68%,
+    transparent 80%);
+}
+:root[data-platform="mobile"] .vs-mark--speaking .vs-mark-glow::after {
+  background: radial-gradient(circle,
+    rgba(var(--gx-accent), 0.1) 0%,
+    rgba(var(--gx-accent), 0.05) 34%,
+    rgba(var(--gx-accent), 0.015) 55%,
+    transparent 72%);
+}
+:root[data-platform="mobile"] .vs-mark--muted .vs-mark-glow { opacity: 0.22; transform: none; }
+:root[data-platform="mobile"] .vs-mark--muted .vs-mark-glow::after { opacity: 0.12; transform: none; }
 :root[data-platform="mobile"] .vs-mark-inner { position: relative; z-index: 1; display: grid; place-items: center; }
 :root[data-platform="mobile"] .vs-mark-lottie { width: 132px; height: 132px; }
 :root[data-platform="mobile"] .vs-mark-lottie svg { display: block; }
@@ -9108,11 +9167,14 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   color: rgba(255, 255, 255, 0.85);
   cursor: pointer;
 }
-:root[data-platform="mobile"] .vs-round--end { justify-self: end; }
+/* Placed by column rather than by order, so the mic stays in the middle of
+   the screen however many controls sit beside it. */
+:root[data-platform="mobile"] .vs-round--end { grid-column: 3; justify-self: end; }
 :root[data-platform="mobile"] .vs-round:active { transform: scale(0.96); }
 
 /* The mic carries the level: the ring around it opens with the room. */
 :root[data-platform="mobile"] .vs-mic {
+  grid-column: 2;
   width: 76px;
   height: 76px;
   border-radius: 50%;
@@ -9122,8 +9184,21 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   background: radial-gradient(circle at 50% 30%, rgba(var(--gx-primary), 0.35), rgba(var(--gx-primary), 0.12));
   color: #fff;
   cursor: pointer;
-  box-shadow: 0 0 0 calc(2px + var(--voice-level, 0) * 12px) rgba(var(--gx-primary), 0.14);
-  transition: box-shadow 0.08s linear;
+  position: relative;
+}
+/* The ring around the mic opens with the room. It is a scaled circle rather
+   than a growing box-shadow: a shadow that changes size repaints the button
+   under it every frame, and this changes size sixteen times a second. */
+:root[data-platform="mobile"] .vs-mic::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: rgba(var(--gx-primary), 0.14);
+  transform: scale(calc(1 + var(--voice-level, 0) * 0.3));
+  transition: transform 0.1s linear;
+  will-change: transform;
+  z-index: -1;
 }
 :root[data-platform="mobile"] .vs-mic:active { transform: scale(0.97); }
 :root[data-platform="mobile"] .vs-mic--muted {
@@ -9135,6 +9210,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 @media (prefers-reduced-motion: reduce) {
   :root[data-platform="mobile"] .vs-stage { animation: none; }
-  :root[data-platform="mobile"] .vs-mark-glow { transform: none; transition: none; }
-  :root[data-platform="mobile"] .vs-mic { box-shadow: 0 0 0 2px rgba(var(--gx-primary), 0.14); transition: none; }
+  :root[data-platform="mobile"] .vs-mark-glow,
+  :root[data-platform="mobile"] .vs-mark-glow::after { transform: none; transition: none; }
+  :root[data-platform="mobile"] .vs-mic::before { transform: none; transition: none; }
 }
