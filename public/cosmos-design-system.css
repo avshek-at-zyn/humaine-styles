@@ -8942,11 +8942,9 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   gap: 14px;
 }
 
-/* Where a billing value comes from, when it is not changed on that screen. */
-:root[data-platform="mobile"] .bp-info-hint {
-  display: block;
-  margin-top: 4px;
-  font-size: 12px;
-  line-height: 1.4;
-  color: rgba(255,255,255,0.4);
+/* One button for a card whose lines are all edited on the same page: it sits
+   under them, full width, instead of repeating itself on every row. */
+:root[data-platform="mobile"] .bp-card-action {
+  width: 100%;
+  margin-top: 12px;
 }
