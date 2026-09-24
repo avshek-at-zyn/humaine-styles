@@ -3975,9 +3975,24 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .pay-promo-applied-m { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; }
 :root[data-platform="mobile"] .pay-promo-applied-text-m { font-size: 14px; font-weight: 600; color: #6ee7b7; font-family: var(--font); flex: 1; }
 :root[data-platform="mobile"] .pay-promo-remove-m { background: none; border: none; color: rgba(255,255,255,0.4); cursor: pointer; font-size: 20px; line-height: 1; padding: 0; }
-:root[data-platform="mobile"] .pay-order-summary-m { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; }
-:root[data-platform="mobile"] .pay-order-row-m { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-:root[data-platform="mobile"] .pay-order-row-m:last-child { border-bottom: none; }
+/* No box around the summary: it is the last thing read before paying, and a
+   panel of its own only competes with the fields it follows. Plain rows,
+   aligned with those fields, one hairline parting it from the form and
+   another above the total. Every side is stated here, because index.css
+   still carries an older copy of these rules and anything left unsaid would
+   fall through to it. */
+:root[data-platform="mobile"] .pay-order-summary-m {
+  display: flex;
+  flex-direction: column;
+  background: none;
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  border-radius: 0;
+  padding: 8px 0 0;
+  margin-top: 10px;
+}
+:root[data-platform="mobile"] .pay-order-row-m { display: flex; align-items: center; justify-content: space-between; padding: 8px 2px; border-bottom: none; }
+:root[data-platform="mobile"] .pay-order-row-m.pay-order-sub-m { padding-top: 0; }
 :root[data-platform="mobile"] .pay-order-label-m { font-size: 14px; color: rgba(255,255,255,0.6); font-family: var(--font); }
 :root[data-platform="mobile"] .pay-order-value-m { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.9); font-family: var(--font); }
 :root[data-platform="mobile"] .pay-order-total-m .pay-order-label-m { color: rgba(255,255,255,0.9); font-weight: 700; font-size: 15px; }
@@ -4836,8 +4851,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .pay-order-discount-m { color: #6ee7b7 !important; }
 :root[data-platform="mobile"] .pay-order-divider-m {
   height: 1px;
-  background: rgba(255, 255, 255, 0.06);
-  margin: 2px 0;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 6px 0 2px;
 }
 
 
