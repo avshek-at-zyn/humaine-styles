@@ -8853,3 +8853,25 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
      the box centres what is left after it, which drops the mark 21px. */
   margin-bottom: -42px;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §88  THE ADDRESS SHEET
+   The address form inside the design system's sheet: the fields stack with
+   the same rhythm the signup page gives them, the body scrolls, and Save and
+   Cancel sit where every other sheet keeps them.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-platform="mobile"] .addr-sheet .sheet-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Where a billing value comes from, when it is not changed on that screen. */
+:root[data-platform="mobile"] .bp-info-hint {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(255,255,255,0.4);
+}
