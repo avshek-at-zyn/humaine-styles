@@ -3311,6 +3311,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   display: flex; flex-direction: column; gap: 12px;
 }
 :root[data-platform="mobile"] .sheet-body:empty { display: none; }
+/* The head's own margin is the gap; nothing inside adds a second one. */
+:root[data-platform="mobile"] .sheet-body > *:first-child { margin-top: 0; }
 /* A tall sheet with only a header — a thank-you — holds it in the middle. */
 :root[data-platform="mobile"] .sheet-container--tall.sheet-container--hero:has(> .sheet-body:empty) .sheet-head {
   flex: 1; justify-content: center; margin-bottom: 0;
@@ -3352,7 +3354,16 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .btn-primary:disabled { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.3); cursor: not-allowed; }
 :root[data-platform="mobile"] .btn-primary:disabled:active { transform: none; opacity: 1; }
 :root[data-platform="mobile"] .btn-outline { background: rgba(255,255,255,0.07); color: var(--text-primary); border: 1px solid rgba(255,255,255,0.12); }
-:root[data-platform="mobile"] .btn-ghost { background: none; color: var(--brand-purple); font-size: 15px; font-weight: 500; }
+/* The second action at the bottom of a screen or a sheet: an outline in
+   grey, so it reads as the way out rather than as another thing to do. */
+:root[data-platform="mobile"] .btn-ghost {
+  background: none;
+  border: 1px solid var(--surface-800, rgba(255,255,255,0.14));
+  color: var(--surface-200, rgba(255,255,255,0.78));
+  font-size: 15px;
+  font-weight: 500;
+}
+:root[data-platform="mobile"] .btn-ghost:active:not(:disabled) { background: rgba(255,255,255,0.06); }
 :root[data-platform="mobile"] .btn-ghost:disabled { opacity: 0.35; cursor: not-allowed; }
 :root[data-platform="mobile"] .btn-center-text { text-align: center; color: var(--text-secondary); font-size: 14px; font-family: var(--font); }
 
@@ -6282,11 +6293,17 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   color: var(--surface-300);
 }
 
+/* Destructive, and filled: deleting an account and ending a subscription are
+   the two places the app commits something it cannot take back, and both say
+   so the same way. Red-600 rather than the lighter red, so white text on it
+   clears 4.5:1. Disabled it stays red and fades, so it still reads as
+   destructive before it is available. */
 :root[data-platform="mobile"] .btn--danger {
-  background: transparent;
-  border: 1px solid #ed6a6c;
-  color: #ed6a6c;
+  background: #dc2626;
+  border: 1px solid #dc2626;
+  color: #fff;
 }
+:root[data-platform="mobile"] .btn--danger:active:not(:disabled) { background: #b91c1c; border-color: #b91c1c; }
 
 /* Touch feedback, since the design system's variants only define :hover */
 :root[data-platform="mobile"] .btn--primary-outline:active:not(:disabled) { background: rgba(82, 113, 255, 0.16); }
@@ -8688,6 +8705,49 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   position: relative; inset: auto; z-index: auto; flex: 1; min-height: 0; background: transparent;
 }
 :root[data-platform="mobile"] .zl-screen--inline .zl-stage { width: min(240px, 60vw); }
+
+/* ── §81b Cancel plan sheet ─────────────────────────────────────
+   What happens to the money, before the signature that ends the plan: the
+   figures in a quiet block, one line of consequence, and the rights line the
+   web carries too. */
+/* No panel around the figures: they are the same species of numbers as the
+   order summary on the payment page, and they read the same way there —
+   plain rows on the surface, with one rule above the line that matters. */
+:root[data-platform="mobile"] .cp-reconcile {
+  display: flex; flex-direction: column; gap: 10px; margin: 0;
+  padding: 0; border: none; border-radius: 0; background: none;
+}
+:root[data-platform="mobile"] .cp-reconcile-row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+  font-family: var(--font); font-size: 14px;
+}
+:root[data-platform="mobile"] .cp-reconcile-row dt { color: var(--text-secondary); }
+:root[data-platform="mobile"] .cp-reconcile-row dd {
+  margin: 0; color: var(--text-primary); font-weight: 600; text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+:root[data-platform="mobile"] .cp-reconcile-row--total dt,
+:root[data-platform="mobile"] .cp-reconcile-row--total dd { font-size: 15px; color: var(--text-primary); }
+:root[data-platform="mobile"] .cp-reconcile-rule { height: 1px; background: rgba(255, 255, 255, 0.08); }
+
+:root[data-platform="mobile"] .cp-note {
+  margin: 0; font-family: var(--font); font-size: 13px; line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+:root[data-platform="mobile"] .cp-legal {
+  margin: 0; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.07);
+  font-family: var(--font); font-size: 12px; line-height: 1.6; color: var(--text-secondary);
+}
+:root[data-platform="mobile"] .cp-legal-link {
+  border: 0; padding: 0; background: none; font: inherit;
+  color: rgb(var(--gx-primary)); text-decoration: underline; cursor: pointer;
+}
+
+:root[data-platform="mobile"] .cp-done-note {
+  margin: 0; font-family: var(--font); font-size: 13.5px; line-height: 1.6;
+  color: var(--text-secondary); text-align: center;
+}
 
 /* ── §82 Delete account sheet ───────────────────────────────────
    The one sheet that cannot be taken back: tall, on the galaxy surface with a
