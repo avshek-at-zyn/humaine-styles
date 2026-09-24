@@ -8832,3 +8832,24 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .po-para {
   margin: 0; font-family: var(--font); font-size: 14px; line-height: 1.65; color: var(--text-secondary);
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §87  THE MARK ON THE FIRST SCREEN
+   The humAIne head, animated. The still it replaces was the whole lockup at
+   220px wide, clipped at 75% so only the head showed: that drew the head
+   137px across. The head fills 89% of this animation's square frame, so a
+   155px box draws it at the same 137px — the same size, not a larger one.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-platform="mobile"] .identifier-lottie svg { display: block; }
+
+:root[data-platform="mobile"] .si-mark-lottie {
+  width: 155px;
+  height: 155px;
+  position: relative;
+  z-index: 1;
+  /* The still hung 30px below the centre of the hero box, over the glow
+     rather than in the middle of it. This margin keeps it exactly there:
+     the box centres what is left after it, which drops the mark 21px. */
+  margin-bottom: -42px;
+}
