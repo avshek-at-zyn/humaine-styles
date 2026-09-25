@@ -9214,3 +9214,101 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   :root[data-platform="mobile"] .vs-mark-glow::after { transform: none; transition: none; }
   :root[data-platform="mobile"] .vs-mic::before { transform: none; transition: none; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §90  NOTIFICATIONS
+   A list of kinds, each saying where it is delivered, and a screen per kind
+   holding the two switches that decide it. The rows borrow the policy list's
+   shape, because they do the same job: a name, a value, and a way in.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* A settings row that is itself the way in: same shape as the rest, but the
+   whole of it is the target. */
+:root[data-platform="mobile"] .ps-row--open {
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: var(--font);
+  text-align: left;
+  cursor: pointer;
+}
+:root[data-platform="mobile"] .ps-row--open:active { background: rgba(255, 255, 255, 0.04); }
+:root[data-platform="mobile"] .ps-row-open-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+:root[data-platform="mobile"] .nt-list {
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+:root[data-platform="mobile"] .nt-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: var(--font);
+  text-align: left;
+  cursor: pointer;
+}
+:root[data-platform="mobile"] .nt-row:last-child { border-bottom: none; }
+:root[data-platform="mobile"] .nt-row:active { background: rgba(255, 255, 255, 0.04); }
+:root[data-platform="mobile"] .nt-row-title {
+  flex: 1;
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+/* Where it goes, in the row rather than a screen down. */
+:root[data-platform="mobile"] .nt-row-where {
+  font-size: 14px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+:root[data-platform="mobile"] .nt-row-where--off { color: rgba(255, 255, 255, 0.32); }
+/* The arrow reads as part of the value it follows: same colour as Push or
+   Email, and plainly there rather than a hint of one. */
+:root[data-platform="mobile"] .nt-row > svg {
+  flex-shrink: 0;
+  color: var(--text-secondary);
+  opacity: 1;
+}
+
+:root[data-platform="mobile"] .nt-channels {
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 0 16px;
+}
+:root[data-platform="mobile"] .nt-channels .ps-row { padding-left: 0; padding-right: 0; }
+
+:root[data-platform="mobile"] .nt-about {
+  margin: 14px 2px 0;
+  font-family: var(--font);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+:root[data-platform="mobile"] .nt-refused {
+  margin: 10px 2px 0;
+  min-height: 1.1em;
+  font-family: var(--font);
+  font-size: 13px;
+  line-height: 1.5;
+  color: #ed6a6c;
+}
