@@ -9005,6 +9005,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   flex: 0 0 auto;
   height: 20vh;
   min-height: 0;
+  padding-top: 8px;
   overflow-y: auto;
   overscroll-behavior: contain;
   display: flex;
@@ -9057,7 +9058,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   place-items: center;
 }
 :root[data-platform="mobile"] .vs-mark-inner { position: relative; z-index: 1; display: grid; place-items: center; }
-:root[data-platform="mobile"] .vs-mark-lottie { width: 113px; height: 113px; }
+:root[data-platform="mobile"] .vs-mark-lottie { width: 140px; height: 140px; }
 :root[data-platform="mobile"] .vs-mark-lottie svg { display: block; }
 /* The light from under the screen. Blurred on the way out, because the
    canvas behind it is drawn at half resolution and soft colour needs no
@@ -9069,7 +9070,9 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   bottom: 0;
   /* The lower half of the screen and no more: light coming up from the
      bottom edge, not a wash over everything. */
-  height: 46%;
+  /* The lower two thirds: the rim runs along the bottom and up the sides as
+     far as the mark, and no further. */
+  height: 62%;
   width: 100%;
   /* Above the sky, below everything that is read. */
   z-index: 0;
@@ -9151,29 +9154,28 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
     transparent 72%);
 }
 
+/* One word, in the serif, sitting under the mark like a caption. */
 :root[data-platform="mobile"] .vs-status {
-  margin: 0 0 2px;
-  font-family: var(--font);
-  font-size: 13px;
-  font-weight: 600;
+  margin: -4px 0 18px;
+  font-family: 'Hahmlet', Georgia, serif;
+  font-size: 18px;
+  font-weight: 500;
   letter-spacing: 0.01em;
-  color: var(--brand-purple);
+  color: rgba(255, 255, 255, 0.82);
 }
-:root[data-platform="mobile"] .vs-status--speaking { color: rgba(var(--gx-accent), 0.85); }
 
 /* The line being said, and only that line. Held at three lines' height so
    nothing on the screen moves as it changes. */
-/* Hahmlet, as on the greeting and the plans headline: this is the one line
-   on the screen, and it is speech. Three lines' worth is held open so
-   nothing moves as one sentence gives way to the next. */
+/* The line itself is set in the UI face — it is speech being transcribed,
+   not an editorial line. Three lines' worth is held open so nothing moves as
+   one sentence gives way to the next. */
 :root[data-platform="mobile"] .vs-line {
   margin: 0;
   min-height: 3.6em;
-  /* Wide enough for three lines of a spoken sentence rather than five. */
-  max-width: 19ch;
-  font-family: 'Hahmlet', Georgia, serif;
-  font-size: 23px;
-  line-height: 1.32;
+  max-width: 17ch;
+  font-family: var(--font);
+  font-size: 21px;
+  line-height: 1.42;
   letter-spacing: -0.2px;
   text-align: center;
   text-wrap: balance;
@@ -9184,29 +9186,80 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
    line on screen is the one being spoken, whatever else is on the screen. */
 :root[data-platform="mobile"] .vs-line-rest { color: rgba(255, 255, 255, 0.4); }
 
+/* What the microphone will do if you press it now. Only said when it is
+   worth saying — mostly, while humAIne is talking over you. */
+:root[data-platform="mobile"] .vs-hint {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  margin: 0;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+:root[data-platform="mobile"] .vs-hint-pill {
+  padding: 9px 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  font-family: var(--font);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.88);
+  animation: vs-hint-in 0.24s cubic-bezier(0.05, 0.7, 0.1, 1);
+}
+@keyframes vs-hint-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
 :root[data-platform="mobile"] .vs-bar {
   position: relative;
   z-index: 1;
   flex: 0 0 auto;
-  display: flex;
-  justify-content: center;
-  padding-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding-top: 10px;
 }
-/* The only thing to press. Filled, and a softer red than the app's
-   destructive one: ending a conversation is not deleting an account. */
-:root[data-platform="mobile"] .vs-end {
-  width: 64px;
-  height: 64px;
+/* Add, and the way out: the same quiet circle on either side of the one
+   control that matters. */
+:root[data-platform="mobile"] .vs-round {
+  grid-column: 1;
+  justify-self: center;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  border: none;
-  background: #c1574c;
-  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.82);
   cursor: pointer;
   transition: transform 0.1s ease-out, background 0.15s;
 }
-:root[data-platform="mobile"] .vs-end:active { transform: scale(0.96); background: #ad4d43; }
+:root[data-platform="mobile"] .vs-round--end { grid-column: 3; }
+:root[data-platform="mobile"] .vs-round:active { transform: scale(0.96); background: rgba(255, 255, 255, 0.09); }
+
+/* The microphone: lit from within, so the one control you reach for without
+   looking is the one that catches the light. */
+:root[data-platform="mobile"] .vs-mic {
+  grid-column: 2;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    radial-gradient(70% 70% at 50% 62%, rgba(var(--gx-primary), 0.5) 0%, rgba(var(--gx-primary), 0.16) 46%, transparent 72%),
+    rgba(255, 255, 255, 0.05);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease-out;
+}
+:root[data-platform="mobile"] .vs-mic:active { transform: scale(0.97); }
+:root[data-platform="mobile"] .vs-mic--muted {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
+}
 
 @media (prefers-reduced-motion: reduce) {
   :root[data-platform="mobile"] .vs-stage { animation: none; }
