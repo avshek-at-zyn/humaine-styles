@@ -9017,23 +9017,11 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.35) 46px, #000 104px);
   mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.35) 46px, #000 104px);
 }
-:root[data-platform="mobile"] .vs-turn {
-  margin: 0;
-  font-family: var(--font);
-  font-size: 13.5px;
-  line-height: 1.55;
-  /* Whole turns, not clipped ones: the point of keeping them here is that
-     they can be read when you stop talking. Quieter than any part of the
-     live line, including the part of it not yet spoken. */
-  color: rgba(255, 255, 255, 0.36);
-}
-:root[data-platform="mobile"] .vs-turn--user {
-  align-self: flex-end;
-  max-width: 80%;
-  text-align: right;
-  color: rgba(255, 255, 255, 0.3);
-}
-:root[data-platform="mobile"] .vs-turn--assistant { align-self: flex-start; max-width: 88%; }
+/* The thread's own bubbles, turned right down: enough to see that the
+   conversation is there and roughly what it was, not enough to read while
+   someone is talking. The line below is the thing being said. */
+:root[data-platform="mobile"] .vs-turn { margin: 0; opacity: 0.26; }
+:root[data-platform="mobile"] .vs-turn .chat-bubble { font-size: 13.5px; }
 
 :root[data-platform="mobile"] .vs-centre {
   position: relative;
@@ -9064,15 +9052,11 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
    canvas behind it is drawn at half resolution and soft colour needs no
    pixels; the blur is what turns three circles into weather. */
 :root[data-platform="mobile"] .vs-aura {
+  /* The whole screen, because the light lives on its frame: the corners and
+     the edges, with the middle taken back out of it in the drawing. */
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* The lower half of the screen and no more: light coming up from the
-     bottom edge, not a wash over everything. */
-  /* The lower two thirds: the rim runs along the bottom and up the sides as
-     far as the mark, and no further. */
-  height: 62%;
+  inset: 0;
+  height: 100%;
   width: 100%;
   /* Above the sky, below everything that is read. */
   z-index: 0;
@@ -9287,13 +9271,12 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   cursor: pointer;
 }
 :root[data-platform="mobile"] .ps-row--open:active { background: rgba(255, 255, 255, 0.04); }
+/* Worn by a span rather than a button, so it needs the pointer the button
+   would have carried. */
 :root[data-platform="mobile"] .ps-row-open-hint {
   display: inline-flex;
   align-items: center;
-  gap: 2px;
   flex-shrink: 0;
-  font-size: 14px;
-  color: var(--text-secondary);
 }
 
 :root[data-platform="mobile"] .nt-list {
@@ -9357,11 +9340,12 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   line-height: 1.55;
   color: var(--text-secondary);
 }
-:root[data-platform="mobile"] .nt-refused {
-  margin: 10px 2px 0;
-  min-height: 1.1em;
+/* What arrives whatever anyone chooses, said once at the top rather than
+   shown as switches nobody can move. */
+:root[data-platform="mobile"] .nt-always {
+  margin: 0 2px 16px;
   font-family: var(--font);
   font-size: 13px;
-  line-height: 1.5;
-  color: #ed6a6c;
+  line-height: 1.55;
+  color: var(--text-secondary);
 }
