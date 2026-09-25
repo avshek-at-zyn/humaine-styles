@@ -9349,3 +9349,81 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   line-height: 1.55;
   color: var(--text-secondary);
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §91  IT IS AN APP
+   The things a browser does that an app does not. Pinch and double-tap zoom
+   are off at the viewport; everything here is the rest of it — no text
+   selected by a stray press, no callout menus on a long press, no images
+   that can be dragged out, no rubber-banding past the end of a list, no
+   scrollbars drawn over the content. What should still behave like text
+   does: fields, and the words someone might want to copy.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-platform="mobile"],
+:root[data-platform="mobile"] body {
+  /* No pull-to-refresh, and no bounce past the end of the screen. */
+  overscroll-behavior: none;
+  /* Taps, drags and scrolls — and nothing else. This is what stops the
+     double tap being read as a zoom. */
+  touch-action: manipulation;
+}
+
+:root[data-platform="mobile"] body {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  cursor: default;
+}
+
+/* Except where it is text: a field being typed in, and anything worth
+   copying — a reply, a policy, an invoice number. */
+:root[data-platform="mobile"] input,
+:root[data-platform="mobile"] textarea,
+:root[data-platform="mobile"] [contenteditable],
+:root[data-platform="mobile"] .chat-bubble,
+:root[data-platform="mobile"] .po-doc,
+:root[data-platform="mobile"] .vs-line,
+:root[data-platform="mobile"] .bp-info-value {
+  -webkit-user-select: text;
+  user-select: text;
+  -webkit-touch-callout: default;
+  cursor: auto;
+}
+
+/* Images belong to the screen, not to a drag. */
+:root[data-platform="mobile"] img,
+:root[data-platform="mobile"] svg,
+:root[data-platform="mobile"] canvas {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
+/* Unless the image is the control — an avatar, a card mark, a picked file. */
+:root[data-platform="mobile"] button img,
+:root[data-platform="mobile"] button svg,
+:root[data-platform="mobile"] a img,
+:root[data-platform="mobile"] label img,
+:root[data-platform="mobile"] [role="button"] img,
+:root[data-platform="mobile"] [role="button"] svg {
+  pointer-events: auto;
+}
+
+/* Scrollbars are a desktop idea. */
+:root[data-platform="mobile"] * { scrollbar-width: none; }
+:root[data-platform="mobile"] *::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
+/* Momentum where there is something to scroll, and a scroll that stays in
+   the thing being scrolled. Written against anything that scrolls rather
+   than a list of class names, so a screen added later is not left out. */
+:root[data-platform="mobile"] [class*="-body"],
+:root[data-platform="mobile"] [class*="-content"],
+:root[data-platform="mobile"] [class*="-thread"],
+:root[data-platform="mobile"] [class*="-list"],
+:root[data-platform="mobile"] .vs-turns,
+:root[data-platform="mobile"] .sheet-body,
+:root[data-platform="mobile"] .ch-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
