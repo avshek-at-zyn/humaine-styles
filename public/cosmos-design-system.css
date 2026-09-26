@@ -9046,8 +9046,14 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   place-items: center;
 }
 :root[data-platform="mobile"] .vs-mark-inner { position: relative; z-index: 1; display: grid; place-items: center; }
-:root[data-platform="mobile"] .vs-mark-lottie { width: 140px; height: 140px; }
-:root[data-platform="mobile"] .vs-mark-lottie svg { display: block; }
+/* The mark's still, drawn at the size the animation was. Its ink sits inside
+   a little padding, so the box is a touch larger than the drawing. */
+:root[data-platform="mobile"] .vs-mark-still {
+  display: block;
+  width: 156px;
+  height: 156px;
+  pointer-events: none;
+}
 /* The light from under the screen. Blurred on the way out, because the
    canvas behind it is drawn at half resolution and soft colour needs no
    pixels; the blur is what turns three circles into weather. */
@@ -9203,8 +9209,18 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   align-items: center;
   padding-top: 10px;
 }
-/* Add, and the way out: the same quiet circle on either side of the one
-   control that matters. */
+/* What to do when the microphone is not ours to open. */
+:root[data-platform="mobile"] .vs-note {
+  margin: 0 0 6px;
+  max-width: 24ch;
+  font-family: var(--font);
+  font-size: 13.5px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+/* The way out: a quiet circle beside the one control that matters. */
 :root[data-platform="mobile"] .vs-round {
   grid-column: 1;
   justify-self: center;
@@ -9240,6 +9256,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   transition: transform 0.1s ease-out;
 }
 :root[data-platform="mobile"] .vs-mic:active { transform: scale(0.97); }
+:root[data-platform="mobile"] .vs-mic:disabled { opacity: 0.45; cursor: not-allowed; }
 :root[data-platform="mobile"] .vs-mic--muted {
   background: rgba(255, 255, 255, 0.05);
   color: rgba(255, 255, 255, 0.6);
