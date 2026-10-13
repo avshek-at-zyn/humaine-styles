@@ -5,7 +5,8 @@ export function ButtonsPage() {
         <div className="page-badge">Component</div>
         <h1 className="page-title">Button</h1>
         <p className="page-desc">
-          Five button variants across three sizes. Primary for key actions, secondary for alternatives, ghost for tertiary, danger for destructive, and gradient for hero CTAs.
+          Primary for the one action that matters on a screen, secondary for alternatives, ghost for tertiary, danger for destructive.
+          The primary is the shared <span className="code-token">--gradient-cta</span> in both apps, with no glow under it.
         </p>
       </div>
 
@@ -37,7 +38,7 @@ export function ButtonsPage() {
             <button className="demo-btn demo-btn-danger demo-btn-lg">Large</button>
           </div>
           <div className="component-row">
-            <span className="component-label">Gradient</span>
+            <span className="component-label">Brand (marketing)</span>
             <button className="demo-btn demo-btn-gradient demo-btn-sm" style={{ borderRadius: 'var(--radius-full)' }}>Small</button>
             <button className="demo-btn demo-btn-gradient demo-btn-md" style={{ borderRadius: 'var(--radius-full)' }}>Medium</button>
             <button className="demo-btn demo-btn-gradient demo-btn-lg" style={{ borderRadius: 'var(--radius-full)' }}>Large</button>
@@ -118,7 +119,8 @@ export function ButtonsPage() {
             <tr><td>Height</td><td>32 / 40 / 48px</td><td>48px (touch min)</td></tr>
             <tr><td>Layout</td><td>inline row</td><td>stacked column</td></tr>
             <tr><td>Secondary actions</td><td>text + icon</td><td>icon-only (48px square)</td></tr>
-            <tr><td>Radius</td><td>8 / 12px</td><td>var(--radius-lg) 12px</td></tr>
+            <tr><td>Radius</td><td>var(--radius-md) / var(--radius-lg)</td><td>var(--radius-lg) 16px</td></tr>
+            <tr><td>Primary fill</td><td colSpan={2}>var(--gradient-cta), the same on both — #768AFF → #fa81d6, no glow</td></tr>
           </tbody>
         </table>
       </div>
@@ -130,9 +132,9 @@ export function ButtonsPage() {
             <tr><th>Size</th><th>Height</th><th>Padding</th><th>Font Size</th><th>Radius</th></tr>
           </thead>
           <tbody>
-            <tr><td>sm</td><td>32px</td><td>0 14px</td><td>12px</td><td>8px</td></tr>
-            <tr><td>md</td><td>40px</td><td>0 20px</td><td>13px</td><td>8px</td></tr>
-            <tr><td>lg</td><td>48px</td><td>0 28px</td><td>14px</td><td>12px</td></tr>
+            <tr><td>sm</td><td>32px</td><td>0 14px</td><td>12px</td><td>--radius-sm · 6px</td></tr>
+            <tr><td>md</td><td>40px</td><td>0 20px</td><td>13px</td><td>--radius-md · 10px</td></tr>
+            <tr><td>lg</td><td>48px</td><td>0 28px</td><td>14px</td><td>--radius-lg · 16px</td></tr>
           </tbody>
         </table>
       </div>

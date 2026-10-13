@@ -79,7 +79,7 @@ export function ModalPage() {
             <tr><td>Shadow</td><td>0 16px 48px rgba(0,0,0,0.5)</td></tr>
             <tr><td>Overlay</td><td>rgba(0,0,0,0.6) with backdrop-filter: blur(4px)</td></tr>
             <tr><td>Max Width</td><td>480px (small), 640px (medium)</td></tr>
-            <tr><td>Title Font</td><td>Space Grotesk, 16px, 600</td></tr>
+            <tr><td>Title Font</td><td>Helvetica Neue (var(--font)), 16px, 600</td></tr>
           </tbody>
         </table>
       </div>

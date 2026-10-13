@@ -121,8 +121,8 @@ export function IntroPage() {
             <div style={{ fontFamily: 'var(--font-body)', fontSize: 20, color: 'var(--surface-50)' }}>Helvetica Neue</div>
           </div>
           <div className="card" style={{ padding: 20 }}>
-            <div style={{ fontSize: 9, color: 'var(--surface-600)', fontFamily: 'var(--font-mono)', marginBottom: 6 }}>DISPLAY</div>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 20, color: 'var(--surface-50)' }}>Space Grotesk</div>
+            <div style={{ fontSize: 9, color: 'var(--surface-600)', fontFamily: 'var(--font-mono)', marginBottom: 6 }}>HEADINGS</div>
+            <div style={{ fontFamily: 'var(--font)', fontSize: 20, fontWeight: 700, color: 'var(--surface-50)' }}>Helvetica Neue, bold</div>
           </div>
         </div>
       </div>

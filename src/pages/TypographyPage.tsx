@@ -36,28 +36,55 @@ export function TypographyPage() {
         <div className="page-badge">Foundation</div>
         <h1 className="page-title">Typography</h1>
         <p className="page-desc">
-          Helvetica Neue for body and UI text. Space Grotesk for display and headings. A comprehensive type scale from 10px labels to 88px headlines.
+          One typeface, Helvetica Neue, for everything in both apps — headings, body, labels and buttons. App screens size their
+          text from the nine-step <span className="code-token">--fs-*</span> scale; the larger steps below are for marketing and the web's hero moments.
         </p>
       </div>
 
       <div className="section">
-        <h2 className="section-title">Font Families</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+        <h2 className="section-title">Typeface</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 16 }}>
           <div className="card">
-            <div style={{ fontSize: 11, color: 'var(--surface-500)', marginBottom: 8, fontFamily: 'var(--font-mono)' }}>--font-body</div>
-            <div style={{ fontFamily: 'var(--font-body)', fontSize: 24, color: 'var(--surface-50)', marginBottom: 8 }}>Helvetica Neue</div>
-            <div style={{ fontSize: 13, color: 'var(--surface-400)' }}>Primary typeface for all body text, labels, and UI elements.</div>
+            <div style={{ fontSize: 11, color: 'var(--surface-500)', marginBottom: 8, fontFamily: 'var(--font-mono)' }}>--font · --font-body · --font-sans</div>
+            <div style={{ fontFamily: 'var(--font)', fontSize: 24, color: 'var(--surface-50)', marginBottom: 8 }}>Helvetica Neue</div>
+            <div style={{ fontSize: 13, color: 'var(--surface-400)' }}>Every word in both apps. The three names are one value in <span className="code-token">cosmos/tokens.css</span>, kept so older stylesheets still read it.</div>
           </div>
           <div className="card">
-            <div style={{ fontSize: 11, color: 'var(--surface-500)', marginBottom: 8, fontFamily: 'var(--font-mono)' }}>--font-display</div>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 24, color: 'var(--surface-50)', marginBottom: 8 }}>Space Grotesk</div>
-            <div style={{ fontSize: 13, color: 'var(--surface-400)' }}>Display typeface for headings, section titles, and emphasis.</div>
+            <div style={{ fontSize: 11, color: 'var(--surface-500)', marginBottom: 8, fontFamily: 'var(--font-mono)' }}>The one exception</div>
+            <div style={{ fontSize: 24, fontWeight: 800, marginBottom: 8, background: 'var(--gradient-brand)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>hum<em>AI</em>ne</div>
+            <div style={{ fontSize: 13, color: 'var(--surface-400)' }}>The wordmark keeps its own drawing. It is the logo, not text, so it is never re-set in the app face.</div>
           </div>
         </div>
       </div>
 
       <div className="section">
-        <h2 className="section-title">Headline</h2>
+        <h2 className="section-title">App scale</h2>
+        <p className="section-desc">The sizes app screens use. Each is a token, so a step can be retuned in one place. Half-pixel sizes (12.5, 13.5) move onto the nearest step as screens join the scale.</p>
+        <div className="card">
+          {[
+            { t: '--fs-34', use: 'Screen titles that open a flow' },
+            { t: '--fs-28', use: 'Page titles' },
+            { t: '--fs-22', use: 'Sheet and section headings' },
+            { t: '--fs-18', use: 'Card headings' },
+            { t: '--fs-16', use: 'Buttons, body copy on a phone' },
+            { t: '--fs-14', use: 'Body copy on the web, list rows' },
+            { t: '--fs-13', use: 'Pills, chips, secondary lines' },
+            { t: '--fs-12', use: 'Descriptions, helper text' },
+            { t: '--fs-11', use: 'Badges, labels, meta' },
+          ].map(r => (
+            <div key={r.t} className="type-sample">
+              <div className="type-meta">
+                <div className="meta-name">{r.t}</div>
+                <div className="meta-detail">{r.t.replace('--fs-', '')}px<br/>{r.use}</div>
+              </div>
+              <div className="type-preview" style={{ fontSize: `var(${r.t})`, fontFamily: 'var(--font)' }}>Humans must lead. Technology must augment.</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="section">
+        <h2 className="section-title">Headline · marketing and hero</h2>
         <div className="card">
           {headlines.map((h) => (
             <div key={h.name} className="type-sample">

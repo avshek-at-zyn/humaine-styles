@@ -1,11 +1,23 @@
+import { useTokens } from '../useTokens'
+
 export function GradientsPage() {
-  const gradients = [
+  /* The two product gradients, read live from cosmos/tokens.css. */
+  const product = [
     {
-      name: 'Brand Gradient',
-      css: 'linear-gradient(135deg, #7C6CF8, #E879A0)',
-      token: '--gradient-brand',
-      desc: 'Hero CTAs, auth primary buttons, brand accents',
+      name: 'Main button',
+      token: '--gradient-cta',
+      desc: 'The primary button, a switch that is on, and your own chat message — in both apps',
     },
+    {
+      name: 'Brand',
+      token: '--gradient-brand',
+      desc: 'The wordmark, highlights, the edge of the chat composer',
+    },
+  ]
+  const live = useTokens(product.map(p => p.token))
+
+  /* Marketing and ambient gradients, kept on this site for brand moments. */
+  const gradients = [
     {
       name: 'Galaxy',
       css: 'linear-gradient(135deg, #0D3997 0%, #5271FF 40%, #7C6CF8 70%, #E879A0 100%)',
@@ -38,12 +50,33 @@ export function GradientsPage() {
         <div className="page-badge">Foundation</div>
         <h1 className="page-title">Gradients</h1>
         <p className="page-desc">
-          Multi-stop gradients that bring the galaxy aesthetic to life. Used sparingly for brand moments, CTAs, and ambient effects.
+          Two gradients belong to the product and live in <span className="code-token">cosmos/tokens.css</span>, shared by both apps.
+          The rest are for marketing and ambient effects, used sparingly.
         </p>
       </div>
 
       <div className="section">
-        <h2 className="section-title">Gradient Tokens</h2>
+        <h2 className="section-title">Product gradients</h2>
+        {product.map((g) => (
+          <div key={g.token} className="gradient-row">
+            <div className="gradient-bar" style={{ background: `var(${g.token})` }} />
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
+              <div>
+                <div className="gradient-name">{g.name}</div>
+                <div className="gradient-desc">{g.desc}</div>
+                <div className="gradient-desc" style={{ marginTop: 4 }}>{live[g.token] || '…'}</div>
+              </div>
+              <span className="code-token">{g.token}</span>
+            </div>
+          </div>
+        ))}
+        <p className="section-desc" style={{ marginTop: 8 }}>
+          <span className="code-token">--gradient-btn</span> is the same as <span className="code-token">--gradient-cta</span>, the name the mobile stylesheet has always used. No glow sits under either.
+        </p>
+      </div>
+
+      <div className="section">
+        <h2 className="section-title">Marketing gradients</h2>
         {gradients.map((g) => (
           <div key={g.name} className="gradient-row">
             <div className="gradient-bar" style={{ background: g.css }} />
@@ -79,7 +112,7 @@ export function GradientsPage() {
       <div className="section">
         <h2 className="section-title">Gradient Button Examples</h2>
         <div className="component-grid">
-          <button className="demo-btn demo-btn-gradient demo-btn-lg" style={{ borderRadius: 'var(--radius-full)' }}>
+          <button className="demo-btn demo-btn-primary demo-btn-lg">
             Get Started
           </button>
           <button className="demo-btn demo-btn-lg" style={{

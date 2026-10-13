@@ -397,12 +397,13 @@
   transition: all 0.15s ease;
   white-space: nowrap;
 }
-.demo-btn-sm { height: 30px; padding: 0 14px; font-size: 11.5px; border-radius: 6px; }
-.demo-btn-md { height: 38px; padding: 0 18px; font-size: 12.5px; border-radius: 8px; }
-.demo-btn-lg { height: 46px; padding: 0 26px; font-size: 13.5px; border-radius: 10px; }
+.demo-btn-sm { height: 30px; padding: 0 14px; font-size: 11.5px; border-radius: var(--radius-sm); }
+.demo-btn-md { height: 38px; padding: 0 18px; font-size: 12.5px; border-radius: var(--radius-md); }
+.demo-btn-lg { height: 46px; padding: 0 26px; font-size: 13.5px; border-radius: var(--radius-lg); }
 
-.demo-btn-primary { background: var(--primary-500); color: #fff; }
-.demo-btn-primary:hover { background: var(--primary-400); box-shadow: 0 4px 20px rgba(82,113,255,0.25); }
+/* The main button, as both apps draw it: the shared CTA gradient, no glow. */
+.demo-btn-primary { background: var(--gradient-cta); color: #fff; }
+.demo-btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
 
 .demo-btn-secondary {
   background: rgba(255,255,255,0.04);
@@ -559,15 +560,19 @@
 .demo-kpi-change.down { color: var(--error); }
 
 /* ── Badge ── */
+/* Cosmos §9 .badge, as the apps draw it: a pill, a 12% fill, a 25% edge,
+   no dot. */
 .demo-badge {
   display: inline-flex; align-items: center;
-  padding: 2px 8px; border-radius: 4px;
-  font-size: 10px; font-weight: 500; letter-spacing: 0.2px;
+  padding: 4px 10px; border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-family: var(--font); font-size: 11px; font-weight: 600; letter-spacing: 0.02em; line-height: 1.2;
 }
-.demo-badge-primary { background: rgba(82,113,255,0.1); color: var(--primary-300); }
-.demo-badge-success { background: rgba(77,204,143,0.08); color: var(--success); }
-.demo-badge-warning { background: rgba(255,184,77,0.08); color: var(--warning); }
-.demo-badge-error { background: rgba(255,82,82,0.08); color: var(--error); }
+.demo-badge-primary { background: rgba(92,114,245,0.12); border-color: rgba(92,114,245,0.25); color: var(--primary-300); }
+.demo-badge-neutral { background: rgba(255,255,255,0.03); border-color: var(--border); color: var(--text-secondary); }
+.demo-badge-success { background: rgba(77,204,143,0.12); border-color: rgba(77,204,143,0.25); color: var(--success); }
+.demo-badge-warning { background: rgba(255,184,77,0.12); border-color: rgba(255,184,77,0.25); color: var(--warning); }
+.demo-badge-error { background: rgba(255,82,82,0.12); border-color: rgba(255,82,82,0.25); color: var(--error); }
 .demo-badge-lilac { background: rgba(229,195,240,0.08); color: var(--common-lilac); }
 .demo-badge-ice { background: rgba(172,225,228,0.08); color: var(--comfort-ice); }
 
@@ -1097,8 +1102,8 @@
   align-items: center;
   gap: 10px;
   padding: 12px 24px;
-  border-radius: 10px;
-  background: var(--gradient-brand);
+  border-radius: var(--radius-lg);
+  background: var(--gradient-cta);
   color: #fff;
   font-size: 14px;
   font-weight: 600;
@@ -1136,7 +1141,7 @@
   font-size: 14px; font-weight: 600; font-family: var(--font-body);
   cursor: default; user-select: none; gap: 8px;
 }
-.mob-btn--primary { background: var(--gradient-brand); color: #fff; }
+.mob-btn--primary { background: var(--gradient-cta); color: #fff; }
 .mob-btn--outline { background: transparent; border: 1px solid var(--surface-700); color: var(--surface-100); }
 .mob-btn--ghost { background: transparent; color: var(--surface-400); }
 .mob-btn--disabled { opacity: 0.5; background: var(--surface-900); color: var(--surface-500); }
@@ -1161,14 +1166,33 @@
   background: rgba(255,255,255,0.04); border: 1px solid var(--surface-700);
   display: flex; align-items: center; justify-content: center;
 }
-.mob-chip {
-  padding: 8px 14px; border-radius: var(--radius-xl); font-size: 12px; font-weight: 500;
-  background: rgba(255,255,255,0.04); border: 1px solid var(--surface-800);
-  color: var(--surface-300); cursor: default;
+/* Cosmos §8 .choice-pill, drawn here with the same tokens the apps use.
+   --phone is the size both apps take on a phone. */
+.choice-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.choice-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 14px; border-radius: var(--radius-pill);
+  border: 1.5px solid var(--choice-border); background: var(--choice-bg); color: var(--choice-text);
+  font-family: var(--font); font-size: 13px; font-weight: 600; line-height: 1.2; white-space: nowrap;
+  cursor: pointer; user-select: none; transition: all 0.2s cubic-bezier(0.34, 1.4, 0.64, 1);
 }
-.mob-chip--selected {
-  background: rgba(92,114,245,0.15); border-color: var(--primary-500); color: var(--primary-300);
+.choice-pill:hover { background: rgba(255,255,255,0.13); border-color: rgba(255,255,255,0.28); color: #fff; transform: translateY(-3px) scale(1.02); }
+.choice-pill--on, .choice-pill--on:hover {
+  background: var(--chosen-bg); border-color: var(--chosen-border); color: var(--chosen-text);
+  transform: translateY(-3px) scale(1.02); box-shadow: var(--chosen-glow);
 }
+.choice-pills--phone { gap: 6px; }
+.choice-pills--phone .choice-pill { gap: 6px; padding: 6px 12px; border-width: 1px; font-size: 11.5px; font-weight: 500; line-height: 1.35; }
+.choice-pills--phone .choice-pill:hover:not(.choice-pill--on) { transform: none; }
+
+/* A chip that answers a question in the chat (incident questions, "What
+   went wrong?"): Cosmos §76 .chat-fb-chip, picked with --chosen-*. */
+.answer-chip {
+  padding: 8px 13px; border-radius: 999px; font-family: var(--font); font-size: 13px; font-weight: 500;
+  color: var(--text-secondary); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+  cursor: pointer; transition: border-color 160ms ease, background 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+.answer-chip--on { color: var(--chosen-text); background: var(--chosen-bg); border-color: var(--chosen-border); box-shadow: var(--chosen-glow); }
 .mob-bubble {
   padding: 10px 14px; border-radius: 18px; font-size: 13px; line-height: 1.5;
   max-width: 280px;

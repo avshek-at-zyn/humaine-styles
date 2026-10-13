@@ -13,24 +13,26 @@ export function MobilePage() {
       {/* ── Token Mapping ── */}
       <div className="section">
         <h2 className="section-title">Token Mapping</h2>
-        <p className="section-desc">Mobile uses the exact same Cosmos tokens as web. The table below shows how each mobile surface maps to the shared token set.</p>
+        <p className="section-desc">Mobile reads the same <span className="code-token">cosmos/tokens.css</span> as the web, synced into <span className="code-token">src/cosmos/tokens.css</span> by <span className="code-token">npm run cosmos:sync</span>; its build stops if the copy drifts. The phone adds only its own input and error tints, in §3.</p>
         <table className="demo-table">
           <thead><tr><th>Surface</th><th>Cosmos Token</th><th>Value</th></tr></thead>
           <tbody>
-            <tr><td>App background</td><td>var(--bg-primary)</td><td>#121315</td></tr>
+            <tr><td>App background</td><td>var(--bg)</td><td>#090b14</td></tr>
             <tr><td>Card / elevated</td><td>var(--surface-950)</td><td>#1b1b1b</td></tr>
-            <tr><td>Input field</td><td>var(--surface-950)</td><td>#1b1b1b</td></tr>
+            <tr><td>Input field</td><td>var(--bg-input)</td><td>rgba(14,17,35,0.8)</td></tr>
             <tr><td>Default border</td><td>var(--surface-700)</td><td>#474747</td></tr>
             <tr><td>Focus border</td><td>var(--primary-500)</td><td>#5c72f5</td></tr>
-            <tr><td>Heading text</td><td>var(--surface-50)</td><td>#fbfbfb</td></tr>
-            <tr><td>Body text</td><td>var(--surface-200)</td><td>#dadada</td></tr>
+            <tr><td>Heading text</td><td>var(--text-primary)</td><td>#ffffff</td></tr>
+            <tr><td>Body text</td><td>var(--text-secondary)</td><td>white at 50%</td></tr>
             <tr><td>Hint / label</td><td>var(--surface-400)</td><td>#979797</td></tr>
             <tr><td>Placeholder</td><td>var(--surface-500)</td><td>#6e6e6e</td></tr>
             <tr><td>Primary accent</td><td>var(--primary-400)</td><td>#768AFF</td></tr>
-            <tr><td>CTA gradient</td><td>var(--gradient-brand)</td><td>Shiny Blue to Common Lilac</td></tr>
+            <tr><td>Chosen (segmented, steps)</td><td>var(--primary-300)</td><td>#96a5ff</td></tr>
+            <tr><td>CTA gradient</td><td>var(--gradient-cta)</td><td>#768AFF → #fa81d6</td></tr>
+            <tr><td>Picked pill or chip</td><td>var(--chosen-bg)</td><td>#768AFF, white words</td></tr>
             <tr><td>Error</td><td>var(--error)</td><td>#ff5252</td></tr>
             <tr><td>Success</td><td>var(--success)</td><td>#4dcc8f</td></tr>
-            <tr><td>Font</td><td>var(--font-body)</td><td>Helvetica Neue</td></tr>
+            <tr><td>Font</td><td>var(--font)</td><td>Helvetica Neue — the wordmark keeps its own</td></tr>
           </tbody>
         </table>
       </div>
@@ -231,22 +233,20 @@ export function MobilePage() {
         </div>
 
         <h3 style={{ fontSize: 13, fontWeight: 600, color: 'var(--surface-200)', marginTop: 20, marginBottom: 10 }}>Chip Selection</h3>
-        <p className="section-desc">Multi-select chips for personalisation questions. Uses var(--primary-500) border and var(--primary-300) text on select.</p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, maxWidth: 360 }}>
+        <p className="section-desc">Personalisation's answers: Cosmos §8 <span className="code-token">.choice-pill</span> at phone size, the same pill relationship building uses on the web. Picked, it fills with var(--chosen-bg) and white words.</p>
+        <div className="choice-pills choice-pills--phone" style={{ maxWidth: 360 }}>
           {['Strategic thinking', 'Technical depth', 'Big picture ideas', 'Practical problem solving', 'Leadership topics', 'A balanced mix'].map((c, i) => (
-            <div key={c} className={`mob-chip ${i < 2 ? 'mob-chip--selected' : ''}`}>{c}</div>
+            <span key={c} className={`choice-pill${i < 2 ? ' choice-pill--on' : ''}`}>{c}</span>
           ))}
         </div>
         <table className="demo-table" style={{ marginTop: 16 }}>
           <thead><tr><th>Property</th><th>Cosmos Token</th></tr></thead>
           <tbody>
-            <tr><td>Chip Padding</td><td>8px 14px</td></tr>
-            <tr><td>Chip Radius</td><td>var(--radius-xl) 20px</td></tr>
-            <tr><td>Chip Background</td><td>rgba(255,255,255,0.04)</td></tr>
-            <tr><td>Chip Border</td><td>var(--surface-800)</td></tr>
-            <tr><td>Selected Background</td><td>rgba(92,114,245,0.15)</td></tr>
-            <tr><td>Selected Border</td><td>var(--primary-500)</td></tr>
-            <tr><td>Selected Text</td><td>var(--primary-300)</td></tr>
+            <tr><td>Pill Padding</td><td>6px 12px</td></tr>
+            <tr><td>Pill Type</td><td>11.5px / 500, var(--font)</td></tr>
+            <tr><td>Pill Radius</td><td>var(--radius-pill)</td></tr>
+            <tr><td>At rest</td><td>var(--choice-bg) · 1px var(--choice-border) · var(--choice-text)</td></tr>
+            <tr><td>Picked</td><td>var(--chosen-bg) · var(--chosen-text) · var(--chosen-glow)</td></tr>
           </tbody>
         </table>
       </div>
@@ -423,7 +423,9 @@ export function MobilePage() {
             <tr><td>.btn, .btn-primary, .btn-outline</td><td>Buttons</td><td>§35</td></tr>
             <tr><td>.input-field, .otp-*</td><td>Form Inputs</td><td>§36</td></tr>
             <tr><td>.sol-nav-m, .sol-planet-m</td><td>Solar System Nav</td><td>§39</td></tr>
-            <tr><td>.ob-chip, .ob-chips</td><td>Onboarding Chips</td><td>§39</td></tr>
+            <tr><td>.choice-pill, .choice-pills</td><td>Choice Pill (phone size)</td><td>§8 / §39</td></tr>
+            <tr><td>.chat-fb-chip.is-on</td><td>Answer Chip (picked)</td><td>§76</td></tr>
+            <tr><td>.badge, .badge--primary</td><td>Status Badge</td><td>§9</td></tr>
             <tr><td>.chat-bubble--user/--assistant</td><td>Chat Bubbles</td><td>§67</td></tr>
             <tr><td>.ci-card-m, .ci-send-pill-m</td><td>Chat Input</td><td>§61/§67</td></tr>
             <tr><td>.voice-overlay, .voice-orb</td><td>Voice Mode</td><td>§67</td></tr>
