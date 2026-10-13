@@ -1,0 +1,96 @@
+/* ════════════════════════════════════════════════════════════════════
+   COSMOS TOKENS
+   The one place humAIne's shared values are set. Both apps read this
+   file: humaine-personal (web) and humaine-personal-mobile each keep a
+   copy at src/cosmos/tokens.css, written by `npm run cosmos:sync`, and
+   their builds stop if a copy has been edited in place or has fallen
+   behind this one.
+
+   Change a value here, run `npm run cosmos:sync` in each app, and both
+   apps change together. Anything an app needs only for itself stays in
+   that app's own stylesheet.
+   ════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Ground ── */
+  --bg: #090b14;
+
+  /* ── Brand ── */
+  --color-primary: #7C6CF8;
+  --primary-200:   #b8c4ff;
+  --primary-300:   #96a5ff;   /* what is chosen: segmented, steps, badges */
+  --primary-400:   #768AFF;
+  --primary-500:   #5c72f5;
+  --brand-purple:  #9b7dff;
+  --brand-pink:    #fa81d6;
+  --color-accent:  var(--brand-pink);
+
+  /* The same two colours as raw channels, so a glow can carry an alpha. */
+  --gx-primary: 124, 108, 248;
+  --gx-accent:  250, 129, 214;
+
+  /* The main button, the switch that is on, the user's own message. */
+  --gradient-cta:   linear-gradient(90deg, var(--primary-400) 0%, var(--brand-pink) 100%);
+  --gradient-btn:   var(--gradient-cta);
+  /* The brand itself: wordmarks, highlights, the composer's edge. */
+  --gradient-brand: linear-gradient(90deg, #a78bfa, #fa81d6);
+
+  /* ── A choice to make ──
+     The pill a question offers, as relationship building draws it on the
+     web: a clear fill, a firm edge, quiet words. Picked, it wears the
+     --chosen-* tokens below. Used by relationship building and by
+     Personalisation in both apps, which ask the same questions. */
+  --choice-bg:     rgba(255, 255, 255, 0.07);
+  --choice-border: rgba(255, 255, 255, 0.14);
+  --choice-text:   rgba(255, 255, 255, 0.65);
+
+  /* ── A choice that has been made ──
+     The chip someone picked: filled primary-400, white words, a soft glow
+     under it. Set by the relationship-building chips on the web; worn by
+     every chip that answers a question, in both apps. */
+  --chosen-bg:     var(--primary-400);
+  --chosen-border: var(--primary-400);
+  --chosen-text:   #ffffff;
+  --chosen-glow:   0 4px 20px rgba(118, 138, 255, 0.35);
+
+  /* ── Text ── */
+  --text-primary:   #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.5);
+  --text-muted:     rgba(255, 255, 255, 0.3);   /* hints and meta, never body copy */
+
+  /* ── Lines ── */
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+
+  /* ── Status ──
+     Green is for something that went right, not for something that is on:
+     "Active" is a primary badge. */
+  --success:    #4dcc8f;
+  --warning:    #ffb84d;
+  --error:      #ff5252;
+  --error-text: #fc8181;   /* an error said in words, under a field */
+
+  /* ── Type ── */
+  --font:      'Helvetica Neue', Helvetica, Arial, -apple-system, sans-serif;
+  --font-sans: var(--font);
+  --font-body: var(--font);
+
+  /* The scale every size moves onto. */
+  --fs-11: 11px;
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+  --fs-22: 22px;
+  --fs-28: 28px;
+  --fs-34: 34px;
+
+  /* ── Shape ── */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-pill: 9999px;
+  --radius-full: 9999px;
+}

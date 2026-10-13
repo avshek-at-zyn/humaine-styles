@@ -8,7 +8,13 @@
      • humaine-styles (docs site)
    Dark-default, light via [data-theme="light"]
    Mobile tokens scoped under :root[data-platform="mobile"]
+
+   The values shared with the web app — ground, brand, text, lines,
+   status, type and corners — come from cosmos/tokens.css, the one copy
+   both apps read. They are not set again anywhere in this file.
    ============================================================ */
+
+@import './cosmos/tokens.css';
 
 /* ============================================================
    §1  RESET
@@ -67,26 +73,15 @@ a {
    §2  TOKENS — ENTERPRISE / WEB (dark default)
    ============================================================ */
 :root {
-  /* ── Brand colors ── */
-  --color-primary:   #7C6CF8;   /* alt: --primary-500: #5c72f5 (index.css) */
-  --color-accent:    #E879A0;
-  --gradient-brand:  linear-gradient(to right, #7C6CF8, #E879A0);
+  /* The shared values (brand, text, lines, status, type, corners) are in
+     cosmos/tokens.css. What follows is only what this file adds. */
 
-  /* ── Primary scale (component/index token set) ── */
-  --primary-200: #b8c4ff;
-  --primary-300: #96a5ff;       /* alt alias: #96a3ff */
-  --primary-400: #768AFF;
-  --primary-500: #5c72f5;       /* enterprise value; personal uses #7C6CF8 as --color-primary */
+  /* ── Primary scale, the deep end ── */
   --primary-600: #3a4ed4;
   --primary-700: #2b3aa3;
   --primary-800: #1d2770;
   --primary-900: #131a45;
   --primary-950: #0b0f26;       /* deepest brand surface — near the app ground */
-
-  /* Zyn galaxy tint — the light the dark surfaces are lit with, as raw
-     channels so they can carry an alpha. Violet overhead, accent beside it. */
-  --gx-primary: 124, 108, 248;
-  --gx-accent:  250, 129, 214;
 
   /* ── Surface stack (design-system.css) ── */
   --surface-0:   #080a12;
@@ -108,21 +103,8 @@ a {
   --surface-100:   #eeeeee;
   --surface-50:    #f9f9f9;
 
-  /* ── Text ── */
-  --text-primary:   #f0f0f0;
-  --text-secondary: rgba(255,255,255,0.60);
-  --text-muted:     rgba(255,255,255,0.35);
   --white:          #ffffff;
-
-  /* ── Borders ── */
-  --border:         rgba(255,255,255,0.08);
-  --border-strong:  rgba(255,255,255,0.14);
-
-  /* ── Semantic ── */
-  --error:    #ff5252;
-  --warning:  #ffb84d;
-  --success:  #4dcc8f;
-  --info:     #5c72f5;
+  --info:           #5c72f5;
 
   /* ── Spacing ── */
   --space-xs:   4px;
@@ -132,17 +114,7 @@ a {
   --space-xl:   32px;
   --space-2xl:  64px;
 
-  /* ── Radius ── */
-  --radius-sm:   6px;
-  --radius-md:   10px;
-  --radius-lg:   16px;
-  --radius-xl:   24px;
-  --radius-pill: 9999px;
-  --radius-full: 9999px;
-
   /* ── Typography ── */
-  --font-sans:   'Helvetica Neue', Helvetica, Arial, -apple-system, sans-serif;
-  --font-body:   'Helvetica Neue', Helvetica, Arial, -apple-system, sans-serif;
   --font-mono:   'SF Mono', 'Fira Code', 'Courier New', monospace;
   --font-serif:  Georgia, 'Times New Roman', serif;
 
@@ -190,23 +162,15 @@ a {
    §3  TOKENS — MOBILE (data-platform="mobile")
    ============================================================ */
 :root[data-platform="mobile"] {
-  --bg:               #090b14;
+  /* Only what the phone adds. Ground, brand, text, status and type are
+     the shared ones from cosmos/tokens.css. */
   --bg-card:          rgba(255,255,255,0.05);
   --bg-input:         rgba(14,17,35,0.8);
   --border-input:     rgba(255,255,255,0.1);
   --border-input-focus: rgba(139,92,246,0.55);
 
-  --brand-purple:    #9b7dff;
-  --brand-pink:      #fa81d6;
-  --gradient-btn:    linear-gradient(90deg, var(--primary-400) 0%, var(--brand-pink) 100%);
-  --gradient-brand:  linear-gradient(90deg, #a78bfa, #fa81d6);
-
   --error-bg:     rgba(220,38,38,0.12);
   --error-border: rgba(220,38,38,0.35);
-  --error-text:   #fc8181;
-  --success:      #04bd67;
-
-  --font: 'DM Sans', 'Helvetica Neue', -apple-system, sans-serif;
 }
 
 /* ============================================================
@@ -852,13 +816,52 @@ a {
   font-family: var(--font-body);
   transition: all var(--dur-fast);
 }
+/* Chosen: a chip someone picked. Filled, white words, a soft glow —
+   from the shared --chosen-* tokens, so a picked chip looks the same in
+   every question, in both apps. */
 .chip--active {
-  background: rgba(92,114,245,0.14);
-  border-color: rgba(92,114,245,0.35);
-  color: var(--primary-300);
+  background: var(--chosen-bg);
+  border-color: var(--chosen-border);
+  color: var(--chosen-text);
+  box-shadow: var(--chosen-glow);
 }
 .chip--clickable { cursor: pointer; }
 .chip--clickable:hover { border-color: var(--primary-500); color: var(--primary-300); }
+
+/* ── Choice pill ──
+   An answer to a question someone is asked about themselves: relationship
+   building on the web, Personalisation in both apps — the same questions,
+   so the same pill. Its look is the shared --choice-* tokens, and picked it
+   wears --chosen-*: filled, white words, lifted a little on a soft glow.
+   Each app sets the size; this is the desk one, §39 has the phone's. */
+.choice-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.choice-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--choice-border);
+  background: var(--choice-bg);
+  color: var(--choice-text);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+.choice-pill__icon { display: flex; flex-shrink: 0; opacity: 0.8; }
+.choice-pill--on {
+  background: var(--chosen-bg);
+  border-color: var(--chosen-border);
+  color: var(--chosen-text);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--chosen-glow);
+}
+.choice-pill--on .choice-pill__icon { opacity: 1; }
 
 .chip__remove {
   display: flex;
@@ -1377,6 +1380,24 @@ a {
 .progress--success .progress__bar { background: var(--success); }
 .progress--warning .progress__bar { background: var(--warning); }
 .progress--danger  .progress__bar { background: var(--error); }
+
+/* Progress in steps: one short line for each step of something that has a
+   known number of them — the questions in a flow, the pages of a form — so
+   how many there are, and how far through, is seen rather than read. Lines
+   behind are lit in primary-300, the current one lit and glowing, the ones
+   ahead waiting on the track. The flow fills the lines; nothing is drawn
+   for any one flow. */
+.progress-steps { display: flex; gap: 6px; flex: 1; min-width: 0; }
+.progress-steps__step {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  transition: background-color 240ms ease, box-shadow 240ms ease;
+}
+.progress-steps__step--done { background: var(--primary-300); }
+.progress-steps__step--current { background: var(--primary-300); box-shadow: 0 0 10px rgba(150, 165, 255, 0.6); }
+@media (prefers-reduced-motion: reduce) { .progress-steps__step { transition: none; } }
 
 /* Password strength bars */
 .pw-strength-bars {
@@ -3187,26 +3208,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 /* ============================================================
    §35 MOBILE SCREEN LAYOUT
    ============================================================ */
-/* Tokens defined here scope to mobile platform selector */
-:root[data-platform="mobile"] {
-  --bg: #090b14;
-  --bg-card: rgba(255,255,255,0.05);
-  --bg-input: rgba(14,17,35,0.8);
-  --border-input: rgba(255,255,255,0.1);
-  --border-input-focus: rgba(139,92,246,0.55);
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255,255,255,0.5);
-  --text-muted: rgba(255,255,255,0.3);
-  --brand-purple: #9b7dff;
-  --brand-pink: #fa81d6;
-  --gradient-btn: linear-gradient(90deg, var(--primary-400) 0%, var(--brand-pink) 100%);
-  --gradient-brand: linear-gradient(90deg, #a78bfa, #fa81d6);
-  --error-bg: rgba(220,38,38,0.12);
-  --error-border: rgba(220,38,38,0.35);
-  --error-text: #fc8181;
-  --success: #04bd67;
-  --font: 'DM Sans', 'Helvetica Neue', -apple-system, sans-serif;
-}
+/* The phone's tokens are in §3; the shared ones in cosmos/tokens.css. */
 
 :root[data-platform="mobile"] .screen { position: relative; display: flex; flex-direction: column; height: 100dvh; width: 100%; max-width: 430px; margin: 0 auto; overflow: hidden; background: var(--bg); padding-top: env(safe-area-inset-top, 0px); }
 :root[data-platform="mobile"] .screen-content { position: relative; z-index: 1; display: flex; flex-direction: column; flex: 1; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; overscroll-behavior-y: none; }
@@ -3303,6 +3305,18 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   animation: sheet-slide-up 0.3s cubic-bezier(0.32, 0.72, 0, 1);
 }
 :root[data-platform="mobile"] .sheet-container--tall { height: 90vh; height: 90dvh; }
+/* The keyboard up (BottomSheet measures it): the sheet sits on top of the
+   keys rather than under them, no taller than what the keyboard leaves, and
+   without the home-indicator inset the keyboard is now covering. */
+:root[data-platform="mobile"] .sheet-overlay[data-kb] {
+  padding-top: calc(var(--sheet-top, 0px) + 8px);
+  padding-bottom: var(--sheet-kb, 0px);
+}
+:root[data-platform="mobile"] .sheet-overlay[data-kb] .sheet-container {
+  max-height: 100%;
+  padding-bottom: 12px;
+}
+:root[data-platform="mobile"] .sheet-overlay[data-kb] .sheet-container--tall { height: 100%; }
 /* The legacy stylesheet padded the insides for a padding-less container; inside the sheet, nothing is inset twice. */
 :root[data-platform="mobile"] .sheet-container .ps-sheet-body {
   padding: 0; max-height: none; overflow: visible; /* the sheet body is the only thing that scrolls */
@@ -3328,6 +3342,13 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .sheet-body:empty { display: none; }
 /* The head's own margin is the gap; nothing inside adds a second one. */
 :root[data-platform="mobile"] .sheet-body > *:first-child { margin-top: 0; }
+/* A body that scrolls must not also squash what is in it. These are flex
+   children, so they shrink by default — and a child that sets overflow:
+   hidden has an automatic minimum size of zero, which means it can be
+   squashed to nothing rather than pushing the body into a scroll. The merged
+   card-number group does exactly that: on a sheet tall enough to overflow it
+   collapsed to its own two borders, and the card fields vanished. */
+:root[data-platform="mobile"] .sheet-body > * { flex-shrink: 0; }
 /* A tall sheet with only a header — a thank-you — holds it in the middle. */
 :root[data-platform="mobile"] .sheet-container--tall.sheet-container--hero:has(> .sheet-body:empty) .sheet-head {
   flex: 1; justify-content: center; margin-bottom: 0;
@@ -3464,17 +3485,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 /* Full page, not a bottom sheet: the body scrolls between the top of the
    screen and a pinned action row. */
 :root[data-platform="mobile"] .mfa-prompt-page { display: flex; flex-direction: column; flex: 1; min-height: 0; padding-top: max(40px, env(safe-area-inset-top)); }
-/* Demo affordance: with only one working code, the flow needs to say which.
-   Marked as prototype copy so it reads as scaffolding, not product. */
-:root[data-platform="mobile"] .otp-demo-hint {
-  margin: 12px 0 0; font-size: 11.5px; line-height: 1.5; text-align: center;
-  color: rgba(255,255,255,0.38); font-family: var(--font);
-}
-:root[data-platform="mobile"] .otp-demo-hint code {
-  font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
-  color: rgba(255,255,255,0.62); letter-spacing: 1px; padding: 1px 5px;
-  border-radius: 4px; background: rgba(255,255,255,0.07);
-}
 
 /* ── §72 Billing & Payments ───────────────────────────────────
    The web's Billing tab as stacked cards. A phone has no room for its
@@ -3492,7 +3502,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .bp-plan-price { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
 :root[data-platform="mobile"] .bp-plan-amount { font-size: 28px; font-weight: 700; color: var(--text-primary); font-family: var(--font); letter-spacing: -0.5px; font-variant-numeric: tabular-nums; }
 :root[data-platform="mobile"] .bp-plan-per { font-size: 13px; color: var(--text-secondary); font-family: var(--font); }
-:root[data-platform="mobile"] .bp-chip { padding: 3px 9px; border-radius: 50px; background: rgba(118,138,255,0.16); color: #96a5ff; font-size: 11px; font-weight: 700; font-family: var(--font); }
 :root[data-platform="mobile"] .bp-plan-note { font-size: 12.5px; line-height: 1.55; color: var(--text-secondary); font-family: var(--font); margin: 10px 0 0; }
 :root[data-platform="mobile"] .bp-plan-actions { display: flex; gap: 10px; margin-top: 16px; }
 /* Outline, not filled — these sit beside a plan the person already has, so
@@ -3531,9 +3540,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .bp-invoice-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
 :root[data-platform="mobile"] .bp-invoice-amount { font-size: 14px; font-weight: 700; color: var(--text-primary); font-family: var(--font); font-variant-numeric: tabular-nums; }
 :root[data-platform="mobile"] .bp-invoice-amount--refund { color: #4ade80; }
-:root[data-platform="mobile"] .bp-status { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 50px; font-family: var(--font); }
-:root[data-platform="mobile"] .bp-status--paid { background: rgba(4,189,103,0.13); color: #4ade80; }
-:root[data-platform="mobile"] .bp-status--refunded { background: rgba(255,255,255,0.07); color: var(--text-secondary); }
 :root[data-platform="mobile"] .bp-invoice-dl { background: none; border: none; padding: 2px; color: var(--text-muted); cursor: pointer; }
 
 /* Billing details form */
@@ -4128,16 +4134,13 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .ob-qblock { display: flex; flex-direction: column; gap: 6px; }
 :root[data-platform="mobile"] .ob-qblock-title { font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.85); font-family: var(--font); }
 :root[data-platform="mobile"] .ob-qblock-hint { font-size: 12px; color: rgba(255,255,255,0.35); font-family: var(--font); }
-/* Compact mobile chip: the 13px/7-14px size wrapped to two rows per chip
-   on a 375px screen. Icon + label, tighter padding, smaller type. */
-:root[data-platform="mobile"] .ob-chips { display: flex; gap: 6px; flex-wrap: wrap; }
-:root[data-platform="mobile"] .ob-chip { display: inline-flex; align-items: center; gap: 5px; padding: 5px 10px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.6); font-size: 11.5px; font-weight: 500; line-height: 1.35; cursor: pointer; font-family: var(--font); white-space: nowrap; transition: background 0.15s, border-color 0.15s, color 0.15s; }
-:root[data-platform="mobile"] .ob-chip.selected { background: rgba(124,58,237,0.18); border-color: rgba(124,58,237,0.5); color: #c4b5fd; }
-:root[data-platform="mobile"] .ob-chip-icon { flex-shrink: 0; opacity: 0.75; }
-:root[data-platform="mobile"] .ob-chip.selected .ob-chip-icon { opacity: 1; }
-:root[data-platform="mobile"] .ob-chip--plain { gap: 0; }
-
-:root[data-platform="mobile"] .ob-chip-dot { width: 4px; height: 4px; border-radius: 50%; background: currentColor; opacity: 0.45; flex-shrink: 0; }
+/* §8's choice pill at phone size — the size relationship building on the
+   web drops to under 600px, so a phone gets the same pill either way: the
+   full set of answers wraps in a few rows on a 375px screen. No hover lift
+   on glass; a press gives under the finger instead. */
+:root[data-platform="mobile"] .choice-pills { gap: 6px; }
+:root[data-platform="mobile"] .choice-pill { gap: 6px; padding: 6px 12px; border-width: 1px; font-size: 11.5px; font-weight: 500; line-height: 1.35; }
+:root[data-platform="mobile"] .choice-pill:active { transform: scale(0.96); }
 :root[data-platform="mobile"] .ob-textarea { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 14px; padding: 14px; color: #fff; font-size: 14px; font-family: var(--font); resize: none; outline: none; min-height: 100px; line-height: 1.5; transition: border-color 0.2s; }
 :root[data-platform="mobile"] .ob-textarea::placeholder { color: rgba(255,255,255,0.25); }
 :root[data-platform="mobile"] .ob-textarea:focus { border-color: rgba(124,58,237,0.45); }
@@ -4221,6 +4224,9 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 /* ── 40.7 Segmented control ── */
 [data-theme="light"] .segmented { background: rgba(0,0,0,0.03); }
+[data-theme="light"] .progress-steps__step { background: rgba(0,0,0,0.1); }
+[data-theme="light"] .progress-steps__step--done,
+[data-theme="light"] .progress-steps__step--current { background: var(--primary-500); }
 [data-theme="light"] .segmented__btn--active { background: #fff; }
 
 /* ── 40.8 Navigation — Sidebar (design-system.css) ── */
@@ -5781,11 +5787,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 /* ── MFA info card. There is deliberately no toggle or Remove action:
    once multi-factor auth is set up it cannot be switched off from here. ── */
+/* On the page like every other section on it, not in a card of its own. */
 :root[data-platform="mobile"] .ss-mfa-block {
-  padding: 16px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.07);
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -5793,18 +5796,10 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 :root[data-platform="mobile"] .ss-mfa-head { display: flex; align-items: center; gap: 10px; }
 
-:root[data-platform="mobile"] .ss-mfa-icon {
-  flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(139, 92, 246, 0.16);
-  border: 1px solid rgba(139, 92, 246, 0.28);
-  color: #c8bfff;
-}
+/* A clay mark, shaded in its own artwork: nothing behind it, and its shadow
+   allowed past its box. */
+:root[data-platform="mobile"] .ss-mfa-icon { flex-shrink: 0; display: flex; }
+:root[data-platform="mobile"] .ss-mfa-icon svg { display: block; overflow: visible; }
 
 :root[data-platform="mobile"] .ss-mfa-title {
   flex: 1;
@@ -5821,26 +5816,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   line-height: 1.45;
   color: rgba(255, 255, 255, 0.45);
   font-family: var(--font);
-}
-
-:root[data-platform="mobile"] .ss-mfa-badge {
-  flex-shrink: 0;
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  border-radius: 999px;
-  padding: 4px 10px;
-  color: rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  font-family: var(--font);
-}
-
-/* MFA is always active on mobile, so this is the only variant in use */
-:root[data-platform="mobile"] .ss-mfa-badge--on {
-  color: #4ade80;
-  background: rgba(74, 222, 128, 0.14);
-  border-color: rgba(74, 222, 128, 0.3);
 }
 
 :root[data-platform="mobile"] .ss-mfa-method {
@@ -5864,9 +5839,10 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   font-family: var(--font);
 }
 
+/* Quiet: the badge in the head already says it is on. */
 :root[data-platform="mobile"] .ss-mfa-method-meta {
   font-size: 11.5px;
-  color: #4ade80;
+  color: rgba(255, 255, 255, 0.45);
   font-family: var(--font);
 }
 
@@ -6217,19 +6193,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   font-family: var(--font);
 }
 
-:root[data-platform="mobile"] .ss-session-badge {
-  flex-shrink: 0;
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: #4ade80;
-  background: rgba(74, 222, 128, 0.14);
-  border: 1px solid rgba(74, 222, 128, 0.3);
-  border-radius: 999px;
-  padding: 4px 10px;
-  font-family: var(--font);
-}
-
 /* ============================================================
    §57 MOBILE — ACCOUNT SETTINGS HUB, PERSONALISATION,
    NOTIFICATIONS (the hub's list items, one screen each)
@@ -6265,7 +6228,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 /* ── Notifications ── */
 /* A required type's switch is on and locked; the Required badge beside its
    title says why, so it reads as fixed rather than broken. */
-:root[data-platform="mobile"] .nt-toggle--locked { cursor: default; }
 :root[data-platform="mobile"] .nt-required { margin: 0 0 0 8px; vertical-align: 1px; }
 
 /* ============================================================
@@ -6286,6 +6248,78 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 :root[data-platform="mobile"] .btn--sm { height: 34px; padding: 0 14px; font-size: 13px; gap: 6px; }
+
+/* ── The design system's badge, at phone size ──
+   §9's badge is set in the web's body face. On a phone it takes the app's,
+   a weight lighter, so a status sits beside a title rather than over it. */
+:root[data-platform="mobile"] .badge {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+/* ── The design system's segmented control, at phone size ──
+   §16's .segmented is sized for a desk: 13px on the web's face. On a phone
+   it takes the app's face and a finger's height, and it is made of the
+   system's own materials rather than a tint picked for it: the track is the
+   surface every text field sits on, and the chosen side is filled with
+   primary-300, solid, with its own glow under it. On a colour that light
+   the word is set in the app's dark ink — white on it would not be read.
+   --lg is for answering a question, where the control is the whole of the
+   answer. */
+:root[data-platform="mobile"] .segmented {
+  display: flex;
+  gap: 6px;
+  padding: 5px;
+  border-radius: 16px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-input);
+}
+:root[data-platform="mobile"] .segmented__item {
+  flex: 1;
+  min-height: 38px;
+  padding: 8px 6px;
+  border: none;
+  border-radius: 11px;
+  background: none;
+  font-family: var(--font);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 160ms ease, transform 100ms ease;
+  position: relative;
+  isolation: isolate;
+}
+/* Primary-300 fades up behind the chosen side rather than snapping on. */
+:root[data-platform="mobile"] .segmented__item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--primary-300);
+  box-shadow: 0 8px 22px -10px rgba(150, 165, 255, 0.85);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+:root[data-platform="mobile"] .segmented__item:active { transform: scale(0.98); }
+:root[data-platform="mobile"] .segmented__item--active { color: var(--bg); }
+:root[data-platform="mobile"] .segmented__item--active::before { opacity: 1; }
+:root[data-platform="mobile"] .segmented__item:focus-visible { outline: 2px solid rgba(var(--gx-primary), 0.85); outline-offset: 2px; }
+:root[data-platform="mobile"] .segmented--lg { border-radius: 18px; padding: 6px; gap: 6px; }
+:root[data-platform="mobile"] .segmented--lg .segmented__item { min-height: 54px; border-radius: 13px; font-size: 16.5px; }
+@media (prefers-reduced-motion: reduce) {
+  :root[data-platform="mobile"] .segmented__item,
+  :root[data-platform="mobile"] .segmented__item::before { transition: none; }
+  :root[data-platform="mobile"] .segmented__item:active { transform: none; }
+}
 :root[data-platform="mobile"] .btn--md { height: 40px; padding: 0 16px; font-size: 14px; }
 :root[data-platform="mobile"] .btn--lg { height: 48px; padding: 0 20px; font-size: 15px; }
 
@@ -7158,7 +7192,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
    they give way to shapes that are legible at a glance.
    ============================================================ */
 
-:root[data-platform="mobile"] .bg-scene--auth .sparkle-star { display: none; }
+:root[data-platform="mobile"] .bg-scene--auth .sparkle-star,
+:root[data-platform="mobile"] .bg-scene--sky .sparkle-star { display: none; }
 
 /* ── Ringed planets ──
    Kept dim on purpose: this is set dressing behind a form, so it should
@@ -7308,7 +7343,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .bg-glow-star-5 { top: 19%; left: 5%;  width: 2px; height: 2px; animation-duration: 4.9s; animation-delay: 1.7s; }
 
 /* The old rhombus orbit has no place on these screens */
-:root[data-platform="mobile"] .bg-scene--auth .orbit-container { display: none; }
+:root[data-platform="mobile"] .bg-scene--auth .orbit-container,
+:root[data-platform="mobile"] .bg-scene--sky .orbit-container { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   :root[data-platform="mobile"] .bg-orbit-arm,
@@ -7518,16 +7554,22 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   color: #c4b5fd;
 }
 
+/* Chat and News: a pane of frosted glass over the galaxy, kept quiet. The
+   track blurs what is behind it with only a hairline catching the light
+   along the top; the thumb is a brighter pane of the same glass, with a
+   breath of the brand's two colours in it and a soft shadow under it — no
+   glow, nothing lit up. It should look like it was always there. */
 :root[data-platform="mobile"] .chat-mode-toggle {
   position: relative;
   display: flex;
   align-items: center;
   padding: 4px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.035) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
 }
 
 :root[data-platform="mobile"] .chat-mode-thumb {
@@ -7536,9 +7578,16 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   left: 4px;
   width: 62px;
   height: calc(100% - 8px);
-  background: rgba(155,125,255,0.25);
-  border: 1px solid rgba(155,125,255,0.35);
   border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.07) 100%),
+    linear-gradient(120deg,
+      color-mix(in srgb, var(--primary-400) 14%, transparent) 0%,
+      color-mix(in srgb, var(--brand-pink) 10%, transparent) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 2px 8px -2px rgba(0, 0, 0, 0.45);
   transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -7557,7 +7606,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   font-size: 13px;
   font-weight: 600;
   font-family: var(--font);
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.5);
   cursor: pointer;
   transition: color 0.2s;
 }
@@ -7579,6 +7628,35 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 :root[data-platform="mobile"] .chat-thread::-webkit-scrollbar { display: none; }
+
+/* A conversation runs up behind the controls and fades as it goes. Once
+   there is a thread, the bar at the top floats over it rather than sitting
+   above it: the menu, the glass toggle and the private eye stay where they
+   are, and the messages scroll up underneath — fading out across the band
+   the controls sit in, blurred where they pass behind the glass — instead of
+   being cut off by an edge. The empty parts of the bar let a scroll through,
+   so the thread can be pushed from anywhere on the screen. */
+:root[data-platform="mobile"] .chat-screen--thread .chat-topbar {
+  position: absolute;
+  top: env(safe-area-inset-top, 0px);
+  left: 0;
+  right: 0;
+  z-index: 6;
+  background: none;
+  border-bottom: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  pointer-events: none;
+}
+:root[data-platform="mobile"] .chat-screen--thread .chat-topbar > * { pointer-events: auto; }
+/* Gone entirely across the band the controls sit in, then coming back in
+   slowly below it — so nothing reads behind the menu or the toggle, and
+   the edge where it returns is too soft to see. */
+:root[data-platform="mobile"] .chat-screen--thread .chat-thread {
+  padding-top: 162px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, transparent 100px, rgba(0, 0, 0, 0.12) 116px, rgba(0, 0, 0, 0.5) 136px, rgba(0, 0, 0, 0.85) 150px, #000 162px);
+  mask-image: linear-gradient(to bottom, transparent 0, transparent 100px, rgba(0, 0, 0, 0.12) 116px, rgba(0, 0, 0, 0.5) 136px, rgba(0, 0, 0, 0.85) 150px, #000 162px);
+}
 
 :root[data-platform="mobile"] .chat-bubble-row {
   display: flex;
@@ -8797,7 +8875,12 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .ois-app { font-family: var(--font); font-size: 15px; font-weight: 600; }
 /* Support's description grows into the tall sheet, so there is no gap above its buttons. */
 :root[data-platform="mobile"] .sup-field-m { flex: 1; min-height: 0; }
-:root[data-platform="mobile"] .sup-field-m .sup-textarea-m { flex: 1; min-height: 140px; resize: none; }
+/* It grows into whatever room the sheet has and gives that room back when
+   there is none. The floor used to be 140px, which is taller than what is
+   left on a 667pt screen once four topic tiles have taken two rows — so the
+   field pushed itself off the bottom and left its own label dangling over
+   nothing. Two lines is the least that still reads as somewhere to write. */
+:root[data-platform="mobile"] .sup-field-m .sup-textarea-m { flex: 1; min-height: 72px; resize: none; }
 :root[data-platform="mobile"] .dl-hint { min-height: 14px; }
 /* The last row of a section on Security Settings sits right above a section
    divider; one line between them, not two. */
@@ -8911,12 +8994,33 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   margin: 26px 8px 0; font-family: var(--font); font-size: 14px; line-height: 1.55;
   color: var(--text-secondary); text-align: center;
 }
-:root[data-platform="mobile"] .drawer-see-all {
-  width: 100%; margin-top: 4px; padding: 11px 12px; border: none; border-radius: 10px; background: none;
-  color: var(--brand-purple); font-family: var(--font); font-size: 13.5px; font-weight: 600;
-  text-align: left; cursor: pointer;
+/* The way out of the drawer's slice and into all of it. It was a bare purple
+   "See all chats" sitting under the list, which looked like one more chat
+   with a different colour and said nothing about what was on the other side.
+   It is a row now, with the count on it: the number is the reason to tap or
+   not, and the chevron says it goes somewhere rather than doing something. */
+:root[data-platform="mobile"] .drawer-all-rule {
+  height: 1px; margin: 10px 8px 8px;
+  background: rgba(255, 255, 255, 0.07);
 }
-:root[data-platform="mobile"] .drawer-see-all:active { background: rgba(255, 255, 255, 0.06); }
+:root[data-platform="mobile"] .drawer-all {
+  display: flex; align-items: center; gap: 10px;
+  width: 100%; padding: 11px 8px 11px 10px; border: none; border-radius: 10px; background: none;
+  color: var(--text-primary); font-family: var(--font); font-size: 13.5px; font-weight: 600;
+  text-align: left; cursor: pointer; transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+:root[data-platform="mobile"] .drawer-all:active { background: rgba(var(--gx-primary), 0.14); }
+:root[data-platform="mobile"] .drawer-all-label { margin-right: auto; }
+/* The count, as a fact rather than a badge: no colour, and figures that do
+   not shuffle when the number changes. */
+:root[data-platform="mobile"] .drawer-all-count {
+  padding: 2px 8px; border-radius: 50px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text-secondary); font-size: 11.5px; font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+:root[data-platform="mobile"] .drawer-all-chevron { flex-shrink: 0; color: var(--text-muted); }
 :root[data-platform="mobile"] .po-doc { gap: 22px; padding-top: 14px; padding-bottom: 44px; }
 :root[data-platform="mobile"] .po-intro {
   margin: 0; font-family: var(--font); font-size: 14.5px; line-height: 1.6; color: var(--text-secondary);
@@ -8944,8 +9048,8 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   height: 155px;
   position: relative;
   z-index: 1;
-  /* The still hung 30px below the centre of the hero box, over the glow
-     rather than in the middle of it. This margin keeps it exactly there:
+  /* The still hung 30px below the centre of the hero box. This margin
+     keeps it exactly there:
      the box centres what is left after it, which drops the mark 21px. */
   margin-bottom: -42px;
 }
@@ -8996,7 +9100,10 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 @keyframes vs-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 
-/* What has already been said: present, quiet, and out of the way. */
+/* Where what had already been said used to sit. It is empty now — the screen
+   is the line being said and nothing else — but the band stays, because its
+   height is what keeps the mark in the upper third of the screen whether the
+   conversation is one turn old or twenty. */
 :root[data-platform="mobile"] .vs-turns {
   position: relative;
   z-index: 1;
@@ -9196,8 +9303,15 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   font-family: var(--font);
   font-size: 15px;
   color: rgba(255, 255, 255, 0.88);
+  /* It says what a tap does, so it takes the tap. */
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.12s, transform 0.1s;
   animation: vs-hint-in 0.24s cubic-bezier(0.05, 0.7, 0.1, 1);
 }
+:root[data-platform="mobile"] .vs-hint-pill:active { background: rgba(255, 255, 255, 0.12); transform: scale(0.97); }
 @keyframes vs-hint-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 
 :root[data-platform="mobile"] .vs-bar {
@@ -9443,4 +9557,1616 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .ch-scroll {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §92  THE VOICE SCREEN, WITH SOMETHING GOING ON
+   Four things this screen was missing. The top of it is sky now — orbits
+   turning and the odd shooting star, no planets — because a flat backdrop
+   behind a mark, a word and a line left the whole upper half dead. The head
+   moves while either of you is talking, a few per cent and a degree or two,
+   which is the difference between listening and waiting. Processing is drawn
+   rather than written: a small orbit with two bodies on it and a light
+   running under the line, so the wait is a journey somewhere. And the light
+   along the foot of the screen is now the loud part of the aura — that
+   belongs to the canvas, not here.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── The sky, on a screen with nothing to compete with ──
+   Two arcs across the top of the screen, above the mark and clear of it. On
+   the auth screens the rings sit behind a form and are deliberately almost
+   invisible; here they are the only thing in the upper third, and at that
+   weight they were not there at all. Twice the contrast, and placed so the
+   mark never sits on top of them. */
+:root[data-platform="mobile"] .bg-scene--sky .bg-orbit {
+  border-color: rgba(186, 190, 250, 0.2);
+  opacity: 1;
+}
+/* Both are large ellipses hung off the top of the screen, so what shows is
+   the near arc of each — an orbit going somewhere, rather than a circle
+   drawn on the glass. */
+:root[data-platform="mobile"] .bg-scene--sky .bg-orbit-1 { top: -34%; left: -25%; width: 150%; }
+:root[data-platform="mobile"] .bg-scene--sky .bg-orbit-2 {
+  top: -6%; left: 4%; width: 92%;
+  border-color: rgba(186, 190, 250, 0.15);
+}
+:root[data-platform="mobile"] .bg-scene--sky .bg-orbit-body {
+  width: 5px; height: 5px; margin-left: -2.5px; top: -2.5px;
+}
+/* The two ends of the palette, the same split the light at the foot of the
+   screen makes: cool on the outer orbit, warm on the inner one. They are the
+   part that says this is moving, so they carry a little more glow than the
+   rings they ride. */
+:root[data-platform="mobile"] .bg-scene--sky .bg-orbit-1 .bg-orbit-body {
+  background: radial-gradient(circle at 34% 30%, #dcfbff, #4fd6ea 58%, #2b8fa8);
+  box-shadow: 0 0 9px 2px rgba(56, 205, 232, 0.5);
+}
+:root[data-platform="mobile"] .bg-scene--sky .bg-orbit-2 .bg-orbit-body {
+  box-shadow: 0 0 9px 2px rgba(240, 143, 208, 0.5);
+}
+
+/* Shooting stars kept to the top third, where the sky is. Longer gaps than
+   the auth screens get: this screen is looked at for minutes at a time, and a
+   streak every few seconds becomes a thing to watch instead of a thing to
+   notice. */
+:root[data-platform="mobile"] .bg-scene--sky .bg-shoot { animation-duration: 11s; }
+:root[data-platform="mobile"] .bg-scene--sky .bg-shoot-1 { top: 7%;  animation-delay: 1.2s; }
+:root[data-platform="mobile"] .bg-scene--sky .bg-shoot-2 { top: 15%; animation-delay: 5.4s; }
+:root[data-platform="mobile"] .bg-scene--sky .bg-shoot-3 { top: 24%; animation-delay: 9.1s; }
+:root[data-platform="mobile"] .bg-scene--sky .bg-shoot-4 { top: 11%; animation-delay: 14.6s; }
+:root[data-platform="mobile"] .bg-scene--sky .bg-shoot-5 { top: 20%; animation-delay: 19.3s; }
+
+/* ── The head, moving ──
+   Two movements that compose because they sit on two elements: the wrapper
+   keeps a slow float of its own, and the mark inside it leans into what the
+   microphone hears. Both are small on purpose. A mark that throbs in time
+   with a level reads as a machine metering you; a mark that shifts a degree
+   while you talk reads as something listening. */
+:root[data-platform="mobile"] .vs-mark-still {
+  transform-origin: 50% 56%;
+  transition: transform 0.16s ease-out;
+}
+:root[data-platform="mobile"] .vs-mark--listening .vs-mark-still {
+  transform: scale(calc(1 + var(--voice-level, 0) * 0.055));
+}
+
+@keyframes vs-head-float {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  26%  { transform: translate3d(1.5px, -3px, 0) rotate(0.9deg); }
+  52%  { transform: translate3d(0, -1px, 0) rotate(-0.4deg); }
+  76%  { transform: translate3d(-1.5px, -2.5px, 0) rotate(-1deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+/* Quickest while it talks, slowest while it waits for you to finish. */
+:root[data-platform="mobile"] .vs-mark--speaking .vs-mark-inner {
+  animation: vs-head-float 3.4s ease-in-out infinite;
+}
+:root[data-platform="mobile"] .vs-mark--listening .vs-mark-inner {
+  animation: vs-head-float 5.6s ease-in-out infinite;
+}
+:root[data-platform="mobile"] .vs-mark--thinking .vs-mark-inner {
+  animation: vs-head-float 2.9s ease-in-out infinite;
+}
+
+/* ── Processing, drawn ──
+   A ring with two bodies on it at different speeds, the line, and a light
+   running along underneath. Three moving things, all of them transform or
+   opacity, and all of them stopping the moment the answer arrives. */
+:root[data-platform="mobile"] .vs-zyn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+}
+
+:root[data-platform="mobile"] .vs-zyn-orbit {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Seen at an angle, like the ones in the sky above it */
+  transform: rotateX(66deg);
+}
+
+:root[data-platform="mobile"] .vs-zyn-arm {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  animation: bg-orbit-spin 2.6s linear infinite;
+}
+:root[data-platform="mobile"] .vs-zyn-arm--2 {
+  animation-duration: 4.1s;
+  animation-direction: reverse;
+}
+
+:root[data-platform="mobile"] .vs-zyn-body {
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: rgb(var(--gx-primary));
+  box-shadow: 0 0 6px 1px rgba(var(--gx-primary), 0.55);
+}
+:root[data-platform="mobile"] .vs-zyn-arm--2 .vs-zyn-body {
+  background: rgb(var(--gx-accent));
+  box-shadow: 0 0 6px 1px rgba(var(--gx-accent), 0.5);
+}
+
+:root[data-platform="mobile"] .vs-zyn-text { color: rgba(255, 255, 255, 0.92); }
+
+/* The light under the line. It crosses, pauses off the end, and crosses
+   again — a journey with somewhere to get to, rather than a spinner. */
+:root[data-platform="mobile"] .vs-zyn-trail {
+  position: relative;
+  width: 108px;
+  height: 1px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 1px;
+}
+:root[data-platform="mobile"] .vs-zyn-trail i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 46px;
+  border-radius: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(var(--gx-primary), 0.9) 46%,
+    rgba(var(--gx-accent), 0.75) 72%,
+    transparent);
+  animation: vs-zyn-run 1.9s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes vs-zyn-run {
+  0%   { transform: translate3d(-46px, 0, 0); }
+  100% { transform: translate3d(108px, 0, 0); }
+}
+
+/* ── Where the information has to arrive another way ──
+   Every one of these was carrying something: that the screen is alive, that
+   it is listening to you, that it is working. Take the movement away and the
+   words and the light are still saying all three. */
+@media (prefers-reduced-motion: reduce) {
+  :root[data-platform="mobile"] .bg-scene--sky .bg-shoot { display: none; }
+  :root[data-platform="mobile"] .vs-mark--speaking .vs-mark-inner,
+  :root[data-platform="mobile"] .vs-mark--listening .vs-mark-inner,
+  :root[data-platform="mobile"] .vs-mark--thinking .vs-mark-inner,
+  :root[data-platform="mobile"] .vs-zyn-arm { animation: none; }
+  :root[data-platform="mobile"] .vs-mark--listening .vs-mark-still { transform: none; }
+  /* The trail stays, because it is the only thing on screen saying that the
+     wait is going somewhere — but it crosses once and slowly. */
+  :root[data-platform="mobile"] .vs-zyn-trail i { animation-duration: 3.4s; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §93  THE OTHER WAYS IN, AND ONE MORE ASK BEFORE CANCELLING
+   Alternative method on the MFA screen opens the sheet the composer's +
+   uses, with a row per way past a lost authenticator. The rows that pick a
+   recovery destination are the same rows, holding a selection rather than
+   going somewhere, so they carry a mark instead of a chevron.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* A clay mark sits straight on the row: the shading is in the drawing, so a
+   tinted square behind it would be a second light source arguing with the
+   first. The row grows to fit it. */
+:root[data-platform="mobile"] .at-option--clay { min-height: 72px; gap: 12px; }
+:root[data-platform="mobile"] .at-icon--clay {
+  width: 46px;
+  height: 46px;
+  border-radius: 0;
+  background: none;
+  display: block;
+}
+:root[data-platform="mobile"] .at-icon--clay svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* The drop shadow is drawn outside the box it is drawn in. */
+  overflow: visible;
+}
+
+/* A row that goes somewhere says so, quietly, and gets out of the way of the
+   label beside it. */
+:root[data-platform="mobile"] .at-chevron {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+
+/* The same row, holding a choice. Chosen reads in the primary, the way every
+   selected thing in the app does. */
+:root[data-platform="mobile"] .at-option--on {
+  background: rgba(var(--gx-primary), 0.1);
+  border-color: rgba(var(--gx-primary), 0.45);
+}
+:root[data-platform="mobile"] .at-radio {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  transition: border-color 120ms ease;
+}
+:root[data-platform="mobile"] .at-radio--on {
+  border-color: rgb(var(--gx-primary));
+  /* The dot is drawn with a ring rather than a child element, so there is
+     one box to animate and nothing to lay out inside it. */
+  box-shadow: inset 0 0 0 4px rgb(var(--gx-primary)), inset 0 0 0 6px transparent;
+}
+
+/* The last ask before a subscription ends. Nothing to fill in — the signing
+   was the step before — so it is only the sentence and the two buttons, and
+   the destructive one is the filled red the app uses everywhere something
+   ends. */
+:root[data-platform="mobile"] .cp-final-note {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+:root[data-platform="mobile"] .cp-final-list {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+:root[data-platform="mobile"] .cp-final-point {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text-primary);
+}
+:root[data-platform="mobile"] .cp-final-list svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+/* What this does, and what it leaves alone. The two are told apart by the
+   shape of the mark before the colour is read: a barred circle for the thing
+   that stops, a tick for the things that do not. The colour only agrees with
+   the shape — it is never the only thing saying which is which. */
+:root[data-platform="mobile"] .cp-final-point--ends { font-weight: 550; }
+:root[data-platform="mobile"] .cp-final-point--ends svg { color: rgb(248, 113, 113); }
+:root[data-platform="mobile"] .cp-final-point--stays { color: var(--text-secondary); }
+:root[data-platform="mobile"] .cp-final-point--stays svg { color: rgb(var(--gx-primary)); }
+/* A hairline between what ends and what survives, so the list reads as two
+   answers to two questions rather than five things in a row. */
+:root[data-platform="mobile"] .cp-final-point--ends + .cp-final-point--stays {
+  margin-top: 4px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §94  ONE SHEET FOR EVERYTHING THAT GOES ON A CHARGE
+   The card and the lines that appear on the invoice were a sheet here and a
+   page elsewhere — two buttons for one errand. They are one form now, so it
+   needs a break between the two halves that reads as a break and not as
+   another field.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* The second half of the form. A rule above it and room around it: without
+   one, "Billing details" reads as a label belonging to the card fields it
+   follows rather than as the start of something else. */
+:root[data-platform="mobile"] .pay-section-label-m--split {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0;
+}
+/* A heading inside that half — quieter than the one that started it. */
+:root[data-platform="mobile"] .pay-section-label-m--sub {
+  margin-top: 18px;
+}
+:root[data-platform="mobile"] .pay-section-note-m {
+  margin: 0 0 10px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §95  STARTING THE SUBSCRIPTION AGAIN
+   The mirror of the sheet that ended it. That one marks what stops, in red,
+   under a filled red button. This one lights the plan back up: the price in
+   a tinted block at the top, what follows from it ticked underneath, and the
+   app's ordinary primary at the bottom, because nothing here is a warning.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* The plan, lit. The gradient is the app's own — the one on the primary
+   button and in the mark — turned right down so it reads as a surface rather
+   than as something to press. */
+:root[data-platform="mobile"] .rp-plan {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(var(--gx-primary), 0.3);
+  background:
+    linear-gradient(135deg, rgba(var(--gx-primary), 0.16), rgba(var(--gx-accent), 0.1) 62%, transparent),
+    rgba(255, 255, 255, 0.02);
+}
+:root[data-platform="mobile"] .rp-plan-name {
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.72);
+}
+:root[data-platform="mobile"] .rp-plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+:root[data-platform="mobile"] .rp-plan-amount {
+  font-family: var(--font);
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #fff;
+  /* Figures that do not shuffle as an amount changes. */
+  font-variant-numeric: tabular-nums;
+}
+:root[data-platform="mobile"] .rp-plan-per {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+:root[data-platform="mobile"] .rp-plan-sub {
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* What follows from it. Ticked, in the primary — here the cheerful mark is
+   the right one: everything in this list is something starting. */
+:root[data-platform="mobile"] .rp-list {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+:root[data-platform="mobile"] .rp-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text-primary);
+}
+:root[data-platform="mobile"] .rp-list svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: rgb(var(--gx-primary));
+}
+
+:root[data-platform="mobile"] .rp-note {
+  margin: 16px 0 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §96  THE NOTIFICATIONS THAT ARE NOT A CHOICE
+   Security updates and app updates are listed with the rest — a line of
+   prose saying "these always arrive" is a line that gets read past — but
+   they are shown on and cannot be moved. Greyed, locked, and said in words
+   underneath, because a switch that will not move explains nothing on its
+   own.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* A switch that is on and will not move. It keeps the shape of the on state
+   — it IS on, and pretending otherwise would be a lie — with the colour
+   taken out of it, because the colour is what invites the tap. */
+:root[data-platform="mobile"] .ps-toggle--locked {
+  cursor: default;
+  opacity: 0.55;
+  /* Flat, not the gradient: the gradient is the app saying "this is yours to
+     change". */
+  background: rgba(255, 255, 255, 0.34);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+:root[data-platform="mobile"] .ps-toggle--locked .ps-toggle-thumb {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+/* The rows those switches sit in, turned down to match. */
+:root[data-platform="mobile"] .nt-channels--locked .ps-row-label { color: var(--text-secondary); }
+
+/* The lock beside the title in the list. Small, and never the only thing
+   saying it — "Always on" is written out beside it. */
+/* All of this stays at the secondary weight rather than the muted one. The
+   greying belongs on the switch, which is the thing that will not move; the
+   words are the only cue that does not depend on seeing a colour, and at
+   --text-muted they measured 2.68:1 — the least legible text on the screen
+   carrying the one piece of information nothing else carries. */
+:root[data-platform="mobile"] .nt-row-lock {
+  flex-shrink: 0;
+  margin-left: -4px;
+  color: var(--text-secondary);
+}
+:root[data-platform="mobile"] .nt-row--locked .nt-row-title { color: var(--text-secondary); }
+:root[data-platform="mobile"] .nt-row--locked .nt-row-where { color: var(--text-secondary); }
+/* The arrow goes down with the value it follows. It reads as part of that
+   value everywhere else on this screen, and a locked row whose label is
+   turned down but whose arrow is not looks like a rendering mistake. */
+:root[data-platform="mobile"] .nt-row--locked > svg { color: var(--text-secondary); }
+
+/* Where the sheet points somewhere else. */
+/* ── A short phone ──
+   Four topic tiles over two rows take 301 of the 336 points a 667pt screen
+   leaves inside this sheet, which put the description field and its own
+   label off the bottom entirely. The tiles give the room back: a smaller
+   mark, less padding around it, and the hint a size down. Nothing moves on
+   a phone that has the room. */
+@media (max-height: 740px) {
+  :root[data-platform="mobile"] .sup-topic-m { padding: 10px; gap: 2px; }
+  :root[data-platform="mobile"] .sup-topic-icon-m { width: 34px; height: 34px; margin-bottom: 4px; }
+  :root[data-platform="mobile"] .sup-topic-label-m { font-size: 13.5px; }
+  :root[data-platform="mobile"] .sup-topic-hint-m { font-size: 11px; }
+  :root[data-platform="mobile"] .sup-topics-m { gap: 8px; }
+}
+
+:root[data-platform="mobile"] .sup-footnote-m {
+  margin: 14px 2px 0;
+  font-family: var(--font);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* And the reason, on the kind's own screen. */
+:root[data-platform="mobile"] .nt-locked-why {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  font-family: var(--font);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+:root[data-platform="mobile"] .nt-locked-why svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--text-muted);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §97  THE LAST SCREEN BEFORE AN ACCOUNT GOES
+   Nothing to type and nothing to tick — the sheet two steps back took the
+   password and the signature, and the code after it proved the inbox. This
+   one states what the next tap does. Same marks as the cancel-subscription
+   sheet: a barred circle for what stops, a tick for what does not.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-platform="mobile"] .dl-final-list {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+:root[data-platform="mobile"] .dl-final-point {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  font-family: var(--font);
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+:root[data-platform="mobile"] .dl-final-list svg { flex-shrink: 0; margin-top: 2px; }
+:root[data-platform="mobile"] .dl-final-point--ends { font-weight: 550; }
+:root[data-platform="mobile"] .dl-final-point--ends svg { color: rgb(248, 113, 113); }
+/* What survives it, under a rule, turned down — it is a reassurance, and it
+   is not what this screen is about. */
+:root[data-platform="mobile"] .dl-final-point--stays {
+  margin-top: 4px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+}
+:root[data-platform="mobile"] .dl-final-point--stays svg { color: rgb(var(--gx-primary)); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §98  HELP & SUPPORT
+   Four tiles, and the four screens behind them. The hub's tiles are the
+   type picker's grid — the shape people already know — but each opens a
+   screen built for its own job rather than four flavours of one form.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-platform="mobile"] .sup-tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+:root[data-platform="mobile"] .sup-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 16px 14px;
+  border-radius: 18px;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font);
+  color: var(--text-primary);
+  /* The galaxy surface in miniature, the same as the type tiles. */
+  background:
+    radial-gradient(120% 90% at 0% 0%, rgba(var(--gx-primary), 0.18) 0%, transparent 62%),
+    radial-gradient(90% 80% at 100% 100%, rgba(var(--gx-accent), 0.09) 0%, transparent 66%),
+    rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  transition: transform 100ms ease, border-color 140ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+:root[data-platform="mobile"] .sup-tile:active {
+  transform: scale(0.985);
+  border-color: rgba(var(--gx-primary), 0.5);
+}
+:root[data-platform="mobile"] .sup-tile-icon { display: block; width: 46px; height: 46px; margin-bottom: 8px; }
+:root[data-platform="mobile"] .sup-tile-icon svg { display: block; width: 100%; height: 100%; overflow: visible; }
+:root[data-platform="mobile"] .sup-tile-title { font-size: 15px; font-weight: 650; }
+:root[data-platform="mobile"] .sup-tile-blurb { font-size: 12px; line-height: 1.4; color: var(--text-secondary); }
+
+/* ── Contact ── */
+:root[data-platform="mobile"] .sc-body { gap: 16px; }
+:root[data-platform="mobile"] .sc-hero { margin: 0 -4px 2px; }
+:root[data-platform="mobile"] .sc-hero-svg { display: block; width: 100%; height: auto; }
+/* The note drifts along the thread between them — slow enough to be weather
+   rather than something to watch. */
+:root[data-platform="mobile"] .sc-hero-note {
+  transform-origin: 160px 56px;
+  animation: sc-note-drift 5.5s ease-in-out infinite;
+}
+@keyframes sc-note-drift {
+  0%, 100% { transform: translate3d(-10px, 3px, 0); }
+  50%      { transform: translate3d(10px, -3px, 0); }
+}
+
+:root[data-platform="mobile"] .sc-card {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+:root[data-platform="mobile"] .sc-card-title {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  color: var(--text-primary);
+}
+:root[data-platform="mobile"] .sc-card-title--small { font-size: 14px; font-weight: 600; }
+:root[data-platform="mobile"] .sc-card-desc {
+  margin: 8px 0 0;
+  font-family: var(--font);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+/* The buttons carry a mark, so they are rows rather than labels. */
+:root[data-platform="mobile"] .sc-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+  text-decoration: none;
+}
+:root[data-platform="mobile"] .sc-addr { text-decoration: underline; text-underline-offset: 3px; }
+/* What the button is about to do, said before it does it. */
+:root[data-platform="mobile"] .sc-note {
+  margin: 8px 2px 0;
+  font-family: var(--font);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+:root[data-platform="mobile"] .sc-hours { margin: 14px 0 0; padding: 0; }
+:root[data-platform="mobile"] .sc-hours-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 0;
+  font-family: var(--font);
+  font-size: 14.5px;
+}
+:root[data-platform="mobile"] .sc-hours-row dt {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+:root[data-platform="mobile"] .sc-hours-row dt svg { color: rgb(var(--gx-primary)); flex-shrink: 0; }
+:root[data-platform="mobile"] .sc-hours-row dd {
+  margin: 0;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+:root[data-platform="mobile"] .sc-link {
+  margin-top: 6px;
+  padding: 0;
+  border: none;
+  background: none;
+  align-self: flex-start;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(var(--gx-primary));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+:root[data-platform="mobile"] .sc-link--inline { margin: 0; font-size: inherit; font-weight: 600; }
+
+/* ── Report a bug ── */
+:root[data-platform="mobile"] .sb-textarea { min-height: 128px; resize: none; }
+:root[data-platform="mobile"] .sb-textarea--tall { min-height: 190px; }
+:root[data-platform="mobile"] .sb-optional { font-weight: 400; color: var(--text-muted); }
+:root[data-platform="mobile"] .sb-hint {
+  margin: 0 0 10px;
+  font-family: var(--font);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+:root[data-platform="mobile"] .sb-shots { display: flex; gap: 10px; flex-wrap: wrap; }
+:root[data-platform="mobile"] .sb-shot {
+  position: relative;
+  width: 94px;
+  height: 94px;
+  border-radius: 14px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+:root[data-platform="mobile"] .sb-shot-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+:root[data-platform="mobile"] .sb-shot-remove {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(10, 8, 20, 0.72);
+}
+/* The one that adds another: a dashed outline, because it is a space rather
+   than a thing. */
+:root[data-platform="mobile"] .sb-shot--add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  border: 1px dashed rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-secondary);
+  font-family: var(--font);
+  font-size: 12px;
+  -webkit-tap-highlight-color: transparent;
+}
+:root[data-platform="mobile"] .sb-shot--add:active {
+  border-color: rgba(var(--gx-primary), 0.6);
+  color: rgb(var(--gx-primary));
+}
+:root[data-platform="mobile"] .sb-count {
+  margin: 8px 2px 0;
+  font-family: var(--font);
+  font-size: 12px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+:root[data-platform="mobile"] .sb-footnote {
+  margin: 4px 2px 0;
+  font-family: var(--font);
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+/* ── FAQ ── */
+:root[data-platform="mobile"] .faq-cat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 15px 16px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: var(--font);
+  text-align: left;
+  cursor: pointer;
+}
+:root[data-platform="mobile"] .faq-cat:last-child { border-bottom: none; }
+:root[data-platform="mobile"] .faq-cat:active { background: rgba(255, 255, 255, 0.04); }
+:root[data-platform="mobile"] .faq-cat-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+:root[data-platform="mobile"] .faq-cat-title { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+:root[data-platform="mobile"] .faq-cat-blurb { font-size: 12.5px; line-height: 1.4; color: var(--text-secondary); }
+/* How many answers are in there, so the tap is worth deciding on. */
+:root[data-platform="mobile"] .faq-cat-count {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text-secondary);
+  font-size: 11.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+:root[data-platform="mobile"] .faq-cat > svg { flex-shrink: 0; color: var(--text-secondary); }
+
+:root[data-platform="mobile"] .faq-list { display: flex; flex-direction: column; gap: 10px; }
+:root[data-platform="mobile"] .faq-item {
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  transition: border-color 140ms ease;
+}
+:root[data-platform="mobile"] .faq-item--open { border-color: rgba(var(--gx-primary), 0.34); }
+:root[data-platform="mobile"] .faq-q {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 15px 16px;
+  background: none;
+  border: none;
+  font-family: var(--font);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+:root[data-platform="mobile"] .faq-q-text { flex: 1; min-width: 0; }
+:root[data-platform="mobile"] .faq-chev {
+  flex-shrink: 0;
+  color: var(--text-secondary);
+  transition: transform 180ms cubic-bezier(0.2, 0, 0, 1);
+}
+:root[data-platform="mobile"] .faq-item--open .faq-chev { transform: rotate(180deg); }
+:root[data-platform="mobile"] .faq-a {
+  margin: 0;
+  padding: 0 16px 16px;
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-platform="mobile"] .sc-hero-note { animation: none; }
+  :root[data-platform="mobile"] .faq-chev { transition: none; }
+}
+
+/* The first ask before an account goes: three lines and two buttons, no
+   fields. The marks are the pair used everywhere something ends. */
+:root[data-platform="mobile"] .dl-points {
+  margin: 2px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+:root[data-platform="mobile"] .dl-points li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text-primary);
+}
+:root[data-platform="mobile"] .dl-points svg { flex-shrink: 0; margin-top: 2px; color: rgb(248, 113, 113); }
+/* The last one is what survives, so it takes the tick and steps back. */
+:root[data-platform="mobile"] .dl-points li:last-child { color: var(--text-secondary); }
+:root[data-platform="mobile"] .dl-points li:last-child svg { color: rgb(var(--gx-primary)); }
+
+/* The last screen's hero. Larger than the sheet's, because here it is the
+   only warm thing on the page and everything under it is blunt. */
+:root[data-platform="mobile"] .dl-final-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 2px 0 20px;
+}
+:root[data-platform="mobile"] .dl-final-hero .dl-illo { width: 208px; height: auto; }
+:root[data-platform="mobile"] .dl-final-caption {
+  margin: 0;
+  font-family: 'Hahmlet', Georgia, serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.74);
+}
+/* The list stops being the first thing on the screen, so it needs a line
+   above it rather than a gap. */
+:root[data-platform="mobile"] .dl-final-hero + .dl-final-list {
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* How many backup codes are left. The struck-out ones say which are gone;
+   this says what that adds up to, which is the only number anyone wants
+   from this screen. */
+:root[data-platform="mobile"] .ss-code-left {
+  margin: 0 2px 12px;
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+:root[data-platform="mobile"] .ss-code-left strong {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §99  A SUBSCRIPTION THAT HAS RUN OUT
+   Not an error and not the person's fault, so none of this scolds. The
+   conversation is paused and says so where the conversation would be; the
+   plan card states it where the plan is read; and it is put right on the
+   web, which is named rather than opened.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Where the composer was. It has to carry more weight than the box it
+   replaces — this is the only thing on the screen with anything to do on it,
+   and a whisper in the composer's own colours reads as the composer being
+   broken rather than as the app being paused. Amber, because the plan ran
+   out; nothing has gone wrong. */
+:root[data-platform="mobile"] .ci-paused-m {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  background:
+    linear-gradient(135deg, rgba(251, 191, 36, 0.09), rgba(251, 191, 36, 0.03) 60%, transparent),
+    rgba(255, 255, 255, 0.035);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+:root[data-platform="mobile"] .ci-paused-head-m { display: flex; align-items: center; gap: 10px; }
+:root[data-platform="mobile"] .ci-paused-mark-m {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(251, 191, 36, 0.16);
+  color: #fcd34d;
+}
+:root[data-platform="mobile"] .ci-paused-title-m {
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 650;
+  color: var(--text-primary);
+}
+:root[data-platform="mobile"] .ci-paused-note-m {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+/* The address, and the one thing to do with it. */
+:root[data-platform="mobile"] .ci-paused-link-m {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 8px 8px 13px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.26);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+:root[data-platform="mobile"] .ci-paused-url-m {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+:root[data-platform="mobile"] .ci-paused-copy-m {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+:root[data-platform="mobile"] .ci-paused-copy-m:active { background: rgba(255, 255, 255, 0.12); }
+:root[data-platform="mobile"] .ci-paused-copy-m.is-copied {
+  color: rgb(var(--gx-primary));
+  border-color: rgba(var(--gx-primary), 0.5);
+  background: rgba(var(--gx-primary), 0.14);
+}
+
+/* The mark goes quiet with the plan, and the greeting is not said at all —
+   "Good morning" to somebody who cannot use the app is the wrong sentence. */
+:root[data-platform="mobile"] .chat-identifier-wrap--quiet { opacity: 0.4; filter: saturate(0.35); }
+:root[data-platform="mobile"] .chat-greeting--quiet { color: var(--text-secondary); }
+:root[data-platform="mobile"] .chat-expired-sub {
+  margin: 10px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: var(--font);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* Both halves lock together, because both are the subscription. The control
+   keeps its place and its shape — the app should not rearrange itself while
+   it is paused — and takes the same amber the card at the bottom uses, so
+   the two read as one state rather than two problems. One lock, on the
+   control, not a badge on the half that is "broken". */
+:root[data-platform="mobile"] .chat-mode-toggle--locked {
+  padding-right: 9px;
+  background: rgba(251, 191, 36, 0.07);
+  border: 1px solid rgba(251, 191, 36, 0.22);
+  cursor: default;
+}
+:root[data-platform="mobile"] .chat-mode-toggle--locked .chat-mode-btn {
+  color: rgba(255, 255, 255, 0.34);
+  cursor: default;
+}
+/* The one you are on still reads as the one you are on. */
+:root[data-platform="mobile"] .chat-mode-toggle--locked .chat-mode-btn--on { color: rgba(255, 255, 255, 0.6); }
+:root[data-platform="mobile"] .chat-mode-toggle--locked .chat-mode-thumb {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+:root[data-platform="mobile"] .chat-mode-lock {
+  display: grid;
+  place-items: center;
+  padding-left: 2px;
+  color: #fcd34d;
+  opacity: 0.85;
+}
+
+/* The sheet on the way in. */
+:root[data-platform="mobile"] .xp-illo { width: 168px; height: auto; display: block; margin: 0 auto; }
+:root[data-platform="mobile"] .xp-points {
+  margin: 2px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+:root[data-platform="mobile"] .xp-points li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+:root[data-platform="mobile"] .xp-points svg { flex-shrink: 0; margin-top: 2px; color: rgb(var(--gx-primary)); }
+/* The one thing that stops takes the barred circle, and leads. */
+:root[data-platform="mobile"] .xp-points li:first-child { color: var(--text-primary); font-weight: 550; }
+:root[data-platform="mobile"] .xp-points li:first-child svg { color: #fcd34d; }
+
+:root[data-platform="mobile"] .xp-where {
+  margin: 16px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font);
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+:root[data-platform="mobile"] .xp-where strong { color: var(--text-primary); font-weight: 650; }
+
+/* ── §76 Feedback reasons ──
+   The five things people mean when a reply misses, as chips: the same
+   question the web asks, so one answer means the same thing on both. */
+.chat-fb-reasons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.chat-fb-chip {
+  padding: 8px 13px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary, rgba(255,255,255,0.72));
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+/* Picked: the design system's chosen chip (§8 .chip--active). These chips
+   also answer the incident questions, so a picked answer reads the same
+   as a picked interest on the web's relationship-building screens. */
+.chat-fb-chip.is-on {
+  color: var(--chosen-text);
+  background: var(--chosen-bg);
+  border-color: var(--chosen-border);
+  box-shadow: var(--chosen-glow);
+}
+
+/* Under the composer, once a conversation has started. */
+.chat-disclaimer {
+  margin: 8px 20px 0;
+  text-align: center;
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+/* ── §77 Editing what you sent, and what is waiting ──
+   The editor replaces the bubble rather than sitting under it, and a message
+   held behind a reply says so where it will appear. */
+.chat-msg-edit { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.chat-msg-edit-input {
+  width: 100%;
+  min-height: 72px;
+  resize: none;
+  line-height: 1.5;
+}
+.chat-msg-edit-actions { display: flex; justify-content: flex-end; gap: 8px; }
+.chat-msg-edit-btn {
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 550;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.chat-msg-edit-btn--send {
+  color: #fff;
+  background: rgba(124, 108, 248, 0.9);
+  border-color: transparent;
+}
+
+.chat-queued { opacity: 0.6; }
+.chat-queued-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 5px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+}
+.chat-queued-remove {
+  padding: 0;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §100  EIGHT BOXES ON A PHONE
+   A backup code is eight characters, and the six-digit box is 48px wide.
+   Eight of those, seven gaps and a dash come to about 440 points inside a
+   350-point column — so the last two fields were off the side of the screen
+   with nothing to say they were there. They are sized to the room instead.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-platform="mobile"] .fp-backup-row-m {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  /* Nothing here may spill: a code you cannot see the end of is a code you
+     cannot type. */
+  width: 100%;
+  box-sizing: border-box;
+}
+:root[data-platform="mobile"] .fp-backup-row-m .otp-box {
+  /* Shares what is left after the dash and the gaps, and never grows past
+     the shape the six-digit boxes have. */
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+  max-width: 44px;
+  /* 46 keeps it above the 44pt touch minimum without turning a 30pt-wide
+     box into a pill. */
+  height: 46px;
+  padding: 0;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+:root[data-platform="mobile"] .fp-backup-dash-m {
+  flex: 0 0 auto;
+  padding: 0 1px;
+  font-size: 16px;
+}
+
+/* The rest of the FAQ, which is on the web. Separated from the categories
+   by its own gap and marked as leaving the app rather than going further
+   into it — the chevron above means "another screen of ours". */
+:root[data-platform="mobile"] .faq-all {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  color: var(--text-primary);
+  -webkit-tap-highlight-color: transparent;
+}
+:root[data-platform="mobile"] .faq-all:active {
+  background: rgba(var(--gx-primary), 0.1);
+  border-color: rgba(var(--gx-primary), 0.4);
+}
+:root[data-platform="mobile"] .faq-all-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+:root[data-platform="mobile"] .faq-all-title { font-family: var(--font); font-size: 14.5px; font-weight: 600; }
+:root[data-platform="mobile"] .faq-all-sub { font-family: var(--font); font-size: 12.5px; color: var(--text-secondary); }
+:root[data-platform="mobile"] .faq-all-icon { flex-shrink: 0; color: var(--text-secondary); }
+
+/* The tick the last delete screen waits for. */
+:root[data-platform="mobile"] .dl-final-agree { margin: 4px 2px 0; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §101  THE INCIDENT QUESTIONS (IncidentSheet.tsx)
+   Made of the design system: the bottom sheet, the stepped progress and label,
+   the sheet's title and subtitle, the chat's chips, the text field and the
+   sheet's buttons. Nothing here draws anything — it only says how those
+   pieces sit together.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-platform="mobile"] .inc-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+/* Each question arrives with the design system's own entrance. */
+:root[data-platform="mobile"] .inc-stage {
+  display: flex;
+  flex-direction: column;
+  animation: as-slide-in 240ms ease both;
+}
+:root[data-platform="mobile"] .inc-stage .chat-fb-reasons { margin-bottom: 14px; }
+:root[data-platform="mobile"] .inc-stage .segmented { margin-bottom: 4px; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §102  QUESTIONS SET DOWN, IN THE THREAD (TriageResume.tsx)
+   How far they got, in body text, and the design system's small buttons —
+   under the message that asked them.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-platform="mobile"] .triage-resume {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 10px;
+}
+:root[data-platform="mobile"] .triage-resume-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-platform="mobile"] .inc-stage { animation: none; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §103  FORMATTED REPLIES (RichText.tsx, src/lib/richText.ts)
+   A reply set out to be read at a glance. The type is the design system's:
+   the title is .h3, a section heading .h4, the eyebrow .label, all on the
+   app's own face. What is here is how they sit inside a bubble — spacing,
+   the numbered and bulleted markers, and the aside set apart.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-platform="mobile"] .rt {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  white-space: normal;
+}
+:root[data-platform="mobile"] .rt > * { margin: 0; }
+:root[data-platform="mobile"] .rt-title,
+:root[data-platform="mobile"] .rt-heading { font-family: var(--font); color: #fff; }
+:root[data-platform="mobile"] .rt-title { line-height: 1.25; letter-spacing: -0.2px; }
+:root[data-platform="mobile"] .rt-heading { margin-top: 4px; }
+/* The eyebrow in the brand's light violet rather than the muted grey the
+   label carries on a page — on a bubble that grey would not be read. */
+:root[data-platform="mobile"] .rt-eyebrow { font-family: var(--font); color: #c4b9ff; margin-bottom: -4px; }
+:root[data-platform="mobile"] .rt-para { line-height: 1.55; }
+:root[data-platform="mobile"] .rt strong { font-weight: 700; color: #fff; }
+
+:root[data-platform="mobile"] .rt-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+:root[data-platform="mobile"] .rt-list li { display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+:root[data-platform="mobile"] .rt-item { flex: 1; min-width: 0; }
+/* Numbered steps: the number in a small brand disc, so the order is the
+   first thing the eye finds. */
+:root[data-platform="mobile"] .rt-list--steps .rt-marker {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin-top: -1px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(var(--gx-primary), 0.22);
+  color: #c4b9ff;
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+:root[data-platform="mobile"] .rt-list--points .rt-marker {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  margin: 8px 4px 0;
+  border-radius: 50%;
+  background: rgb(var(--gx-primary));
+}
+/* An aside — what to do next, or a caveat — set apart by a rule in the
+   brand colour, a step quieter than the answer above it. */
+:root[data-platform="mobile"] .rt-note {
+  padding: 10px 12px;
+  border-left: 2px solid rgba(var(--gx-primary), 0.7);
+  border-radius: 0 12px 12px 0;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+/* Read back in their own bubble, the answers keep that bubble's colours. */
+:root[data-platform="mobile"] .chat-bubble--user .rt { gap: 4px; }
+/* A reply with a shape to it — a title, steps, a list — is given the width
+   to show that shape; a sentence stays the width of a sentence. */
+:root[data-platform="mobile"] .chat-bubble-col:has(> .chat-bubble--assistant .rt-title, > .chat-bubble--assistant .rt-list) { max-width: 94%; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   §104  THE MAIL APP STAND-IN (MailCompose.tsx)
+   Imitates Gmail's compose on an iPhone, on purpose and only here: light,
+   the blue-grey bar, × on the left and the tools on the right, From, To
+   with a recipient chip, and Subject. It is another app opened over
+   humAIne, so it looks like that app — the same choice the demo inbox
+   makes — and none of it is design-system styling to reuse.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-platform="mobile"] .mc-overlay {
+  --mc-ink: #000;
+  --mc-grey: #8a8a8e;
+  --mc-line: #e5e5ea;
+  --mc-blue: #007aff;
+  --mc-bar: #eef2f9;
+  --mc-font: -apple-system, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.42);
+  padding-top: calc(env(safe-area-inset-top, 0px) + 10px);
+  font-family: var(--mc-font);
+  animation: mc-fade 0.25s ease both;
+}
+:root[data-platform="mobile"] .mc-sheet {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  color: var(--mc-ink);
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.25);
+  animation: mc-rise 0.36s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+:root[data-platform="mobile"] .mc-overlay.is-close { animation: mc-fade-out 0.28s ease both; }
+:root[data-platform="mobile"] .mc-overlay.is-close .mc-sheet { animation: mc-drop 0.28s cubic-bezier(0.32, 0, 0.67, 0) both; }
+/* Sent: the sheet drops away faster and the backdrop goes with it, the way
+   Mail's does on Send. */
+:root[data-platform="mobile"] .mc-overlay.is-send { animation: mc-fade-out 0.42s ease both; }
+:root[data-platform="mobile"] .mc-overlay.is-send .mc-sheet { animation: mc-send 0.42s cubic-bezier(0.4, 0, 0.2, 1) both; }
+
+:root[data-platform="mobile"] .mc-bar {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 12px;
+  background: var(--mc-bar);
+}
+:root[data-platform="mobile"] .mc-round {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(120, 120, 128, 0.16);
+  color: #3c3c43;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+:root[data-platform="mobile"] .mc-tools { display: flex; align-items: center; gap: 6px; }
+:root[data-platform="mobile"] .mc-tool {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 12px;
+  background: none;
+  color: #1c1c1e;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+:root[data-platform="mobile"] .mc-tool:active,
+:root[data-platform="mobile"] .mc-tool.is-on,
+:root[data-platform="mobile"] .mc-round:active { background: rgba(120, 120, 128, 0.2); }
+:root[data-platform="mobile"] .mc-send { color: #1f1f1f; }
+:root[data-platform="mobile"] .mc-menu {
+  position: absolute;
+  right: 12px;
+  top: 62px;
+  z-index: 2;
+  min-width: 230px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(249, 249, 249, 0.96);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.22);
+  animation: mc-pop 0.18s ease-out both;
+}
+:root[data-platform="mobile"] .mc-menu button {
+  padding: 13px 16px;
+  border: none;
+  background: none;
+  text-align: left;
+  font-family: var(--mc-font);
+  font-size: 16px;
+  color: var(--mc-ink);
+  cursor: pointer;
+}
+:root[data-platform="mobile"] .mc-menu button + button { border-top: 0.5px solid #c6c6c8; }
+:root[data-platform="mobile"] .mc-menu button:active { background: rgba(0, 0, 0, 0.06); }
+
+:root[data-platform="mobile"] .mc-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+}
+:root[data-platform="mobile"] .mc-field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 46px;
+  margin: 0 16px;
+  padding: 12px 0;
+  border-bottom: 0.5px solid var(--mc-line);
+  font-size: 16px;
+  line-height: 1.35;
+}
+:root[data-platform="mobile"] .mc-label { flex-shrink: 0; min-width: 44px; color: #444746; }
+:root[data-platform="mobile"] .mc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 30px;
+  padding: 0 12px 0 3px;
+  border-radius: 15px;
+  border: 1px solid #c4c7c5;
+  font-size: 15px;
+  color: #1f1f1f;
+  white-space: nowrap;
+}
+:root[data-platform="mobile"] .mc-chip-avatar {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #7C6CF8;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+:root[data-platform="mobile"] .mc-cc { margin-left: auto; color: #444746; display: grid; place-items: center; }
+:root[data-platform="mobile"] .mc-value { color: #1f1f1f; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+:root[data-platform="mobile"] .mc-subject {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  font-family: var(--mc-font);
+  font-size: 16px;
+  color: var(--mc-ink);
+}
+/* 17px, the system's body size, and roomy — it is a letter, not a form. */
+:root[data-platform="mobile"] .mc-body {
+  display: block;
+  width: calc(100% - 32px);
+  min-height: 320px;
+  margin: 14px 16px 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  background: none;
+  font-family: var(--mc-font);
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--mc-ink);
+  caret-color: var(--mc-blue);
+}
+:root[data-platform="mobile"] .mc-files { display: flex; flex-direction: column; gap: 8px; margin: 10px 16px 0; }
+:root[data-platform="mobile"] .mc-file {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: #f2f2f7;
+}
+:root[data-platform="mobile"] .mc-thumb { width: 40px; height: 40px; flex-shrink: 0; border-radius: 8px; object-fit: cover; }
+:root[data-platform="mobile"] .mc-thumb--doc {
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border: 0.5px solid var(--mc-line);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--mc-blue);
+}
+:root[data-platform="mobile"] .mc-file-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+:root[data-platform="mobile"] .mc-file-name { font-size: 15px; color: var(--mc-ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+:root[data-platform="mobile"] .mc-file-size { font-size: 13px; color: var(--mc-grey); }
+:root[data-platform="mobile"] .mc-file-x {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(120, 120, 128, 0.2);
+  color: #3c3c43;
+  cursor: pointer;
+}
+
+/* The system's question sheet: choices grouped, Cancel apart and bold. */
+:root[data-platform="mobile"] .mc-ask {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 8px calc(8px + env(safe-area-inset-bottom, 0px));
+  background: rgba(0, 0, 0, 0.3);
+  animation: mc-fade 0.2s ease both;
+}
+:root[data-platform="mobile"] .mc-ask-stack {
+  width: 100%;
+  max-width: 414px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: mc-rise 0.3s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+:root[data-platform="mobile"] .mc-ask-group {
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(249, 249, 249, 0.96);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+:root[data-platform="mobile"] .mc-ask-title {
+  margin: 0;
+  padding: 14px 18px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--mc-grey);
+  border-bottom: 0.5px solid #c6c6c8;
+}
+:root[data-platform="mobile"] .mc-ask-btn {
+  height: 57px;
+  border: none;
+  background: rgba(249, 249, 249, 0.96);
+  font-family: var(--mc-font);
+  font-size: 20px;
+  color: var(--mc-blue);
+  cursor: pointer;
+}
+:root[data-platform="mobile"] .mc-ask-group .mc-ask-btn + .mc-ask-btn { border-top: 0.5px solid #c6c6c8; }
+:root[data-platform="mobile"] .mc-ask-btn.is-danger { color: #ff3b30; }
+:root[data-platform="mobile"] .mc-ask-cancel { border-radius: 14px; font-weight: 600; background: #fff; }
+:root[data-platform="mobile"] .mc-ask-btn:active { background: #e5e5ea; }
+
+@keyframes mc-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes mc-fade-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes mc-rise { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes mc-drop { from { transform: none; } to { transform: translateY(100%); } }
+@keyframes mc-send { 0% { transform: none; } 100% { transform: translateY(105%) scale(0.98); } }
+@keyframes mc-pop { from { opacity: 0; transform: scale(0.94); transform-origin: top right; } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-platform="mobile"] .mc-overlay,
+  :root[data-platform="mobile"] .mc-sheet,
+  :root[data-platform="mobile"] .mc-ask,
+  :root[data-platform="mobile"] .mc-ask-stack,
+  :root[data-platform="mobile"] .mc-menu { animation-duration: 0.01ms; }
 }
