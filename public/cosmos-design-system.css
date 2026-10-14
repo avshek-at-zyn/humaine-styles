@@ -5979,39 +5979,6 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   font-family: var(--font);
 }
 
-/* ── MFA setup: push number ── */
-:root[data-platform="mobile"] .ss-push-number {
-  font-size: 56px;
-  font-weight: 700;
-  text-align: center;
-  color: #fff;
-  font-family: var(--font);
-  letter-spacing: 0.04em;
-  padding: 12px 0 4px;
-}
-
-:root[data-platform="mobile"] .ss-push-bar {
-  height: 4px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-}
-
-:root[data-platform="mobile"] .ss-push-bar span {
-  display: block;
-  height: 100%;
-  width: 100%;
-  border-radius: 2px;
-  background: var(--gradient-btn);
-  transform-origin: left;
-  animation: ss-push-countdown 30s linear forwards;
-}
-
-@keyframes ss-push-countdown {
-  from { transform: scaleX(1); }
-  to { transform: scaleX(0); }
-}
-
 /* ── Backup codes ── */
 :root[data-platform="mobile"] .ss-code-grid {
   display: grid;
