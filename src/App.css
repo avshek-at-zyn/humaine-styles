@@ -1278,3 +1278,20 @@
   .demo-kpi-grid { grid-template-columns: 1fr; }
   .type-sample { flex-direction: column; gap: 6px; }
 }
+
+/* ── Formatted reply (Cosmos §103), drawn with the shared tokens ── */
+.rt-demo { display: flex; flex-direction: column; gap: 12px; padding: 12px 14px; border-radius: 18px 18px 18px 6px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.92); font-family: var(--font); font-size: 14.5px; line-height: 1.55; }
+.rt-demo > * { margin: 0; }
+.rt-demo strong { color: #fff; font-weight: 700; }
+.rt-demo-eyebrow { display: flex; align-items: center; gap: 7px; margin-bottom: -6px; font-size: 12.5px; font-weight: 500; color: var(--text-secondary); }
+.rt-demo-title { font-size: 18px; font-weight: 700; line-height: 1.25; color: #fff; letter-spacing: -0.2px; }
+.rt-demo-steps { list-style: none; padding: 0; display: flex; flex-direction: column; }
+.rt-demo-steps li { display: grid; grid-template-columns: 18px minmax(0, 1fr); column-gap: 10px; padding: 12px 0; }
+.rt-demo-steps li:first-child { padding-top: 2px; }
+.rt-demo-steps li:last-child { padding-bottom: 0; }
+.rt-demo-steps li + li { background: linear-gradient(var(--border), var(--border)) 28px 0 / calc(100% - 28px) 1px no-repeat; }
+.rt-demo-steps li > span:last-child { display: flex; flex-direction: column; gap: 3px; }
+.rt-demo-n { font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--primary-300); font-variant-numeric: tabular-nums; }
+.rt-demo-lead { font-size: 15px; font-weight: 600; line-height: 1.4; color: #fff; }
+.rt-demo-why { font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.62); }
+.rt-demo-note { padding-top: 12px; border-top: 1px solid var(--border); font-size: 14px; color: rgba(255,255,255,0.62); }

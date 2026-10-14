@@ -117,6 +117,45 @@ export function ChatBubblesPage() {
         </div>
       </div>
 
+      {/* ── Formatted replies ── */}
+      <div className="section">
+        <h2 className="section-title">Formatted replies</h2>
+        <p className="section-desc">
+          Cosmos §103. A reply with a shape to it is set out the way a person who knows the ground would write it down —
+          answer first, the reason under it — not the way a chatbot formats one: no capitals shouting a label, no numbered
+          discs, no box with a bar down its side.
+        </p>
+        <div style={{ maxWidth: 420 }}>
+          <div style={{ padding: 16, background: 'var(--bg)', borderRadius: 16, border: '1px solid var(--border)' }}>
+            <div className="rt-demo">
+              <p className="rt-demo-eyebrow">
+                <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3.4" fill="var(--primary-300)" /><ellipse cx="8" cy="8" rx="7" ry="2.5" transform="rotate(-22 8 8)" fill="none" stroke="var(--brand-pink)" strokeWidth="1.2" /></svg>
+                Incident · first steps
+              </p>
+              <h3 className="rt-demo-title">Here's where I'd start</h3>
+              <p className="rt-demo-para">You're seeing <strong>ransomware</strong>, and it's <strong>spreading now</strong>. This is built on that.</p>
+              <ol className="rt-demo-steps">
+                <li><span className="rt-demo-n">1</span><span><span className="rt-demo-lead">Stop it moving.</span><span className="rt-demo-why">Isolate what you can reach — network segments before individual machines.</span></span></li>
+                <li><span className="rt-demo-n">2</span><span><span className="rt-demo-lead">Do not pay, and do not touch the backups yet.</span><span className="rt-demo-why">Check whether they are reachable from the compromised network first.</span></span></li>
+                <li><span className="rt-demo-n">3</span><span><span className="rt-demo-lead">Tell someone.</span><span className="rt-demo-why">The first call is your security lead rather than the board.</span></span></li>
+              </ol>
+              <p className="rt-demo-note">Tell me what you find and I will keep up.</p>
+            </div>
+          </div>
+        </div>
+        <table className="demo-table" style={{ marginTop: 16 }}>
+          <thead><tr><th>Part</th><th>Written as</th><th>Set as</th></tr></thead>
+          <tbody>
+            <tr><td>Who is speaking</td><td><code>#### Incident · first steps</code></td><td>humAIne's mark and the words, 12.5px / 500, text-secondary, sentence case</td></tr>
+            <tr><td>Title</td><td><code># Here's where I'd start</code></td><td>.h3, 18px / 700</td></tr>
+            <tr><td>Step</td><td><code>1. **Action.** The reason.</code></td><td>The number bare in var(--primary-300); the action on its own line, 15px / 600; the reason under it, 14px, white at 62%</td></tr>
+            <tr><td>Between steps</td><td>—</td><td>An inset hairline, var(--border), starting where the words do — as §68's lists part their rows</td></tr>
+            <tr><td>Point</td><td><code>- text</code></td><td>A short var(--primary-300) dash</td></tr>
+            <tr><td>Last word</td><td><code>&gt; text</code></td><td>A sign-off under a hairline, 14px, white at 62% — nothing drawn round it</td></tr>
+          </tbody>
+        </table>
+      </div>
+
       {/* ── CSS Reference ── */}
       <div className="section">
         <h2 className="section-title">CSS Class Reference</h2>
@@ -132,6 +171,7 @@ export function ChatBubblesPage() {
             <tr><td>.chat-bubble-attachments</td><td>Attachment thumbnails</td><td>§67</td></tr>
             <tr><td>.chat-private, .chat-private-text</td><td>Privacy notice banner</td><td>§67</td></tr>
             <tr><td>.chip, .chip--clickable</td><td>Follow-up suggestion chips</td><td>§8</td></tr>
+            <tr><td>.rt, .rt-eyebrow, .rt-step, .rt-note</td><td>Formatted replies</td><td>§103</td></tr>
           </tbody>
         </table>
       </div>

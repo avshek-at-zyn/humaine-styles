@@ -10807,28 +10807,41 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 /* ══════════════════════════════════════════════════════════════════════════
    §103  FORMATTED REPLIES (RichText.tsx, src/lib/richText.ts)
-   A reply set out to be read at a glance. The type is the design system's:
-   the title is .h3, a section heading .h4, the eyebrow .label, all on the
-   app's own face. What is here is how they sit inside a bubble — spacing,
-   the numbered and bulleted markers, and the aside set apart.
+   A reply set out the way a person who knows the ground would write it
+   down — answer first, the reason under it — rather than the way a chatbot
+   formats one. No capitals shouting a label, no numbered discs, no box with
+   a bar down its side. The language is Cosmos's own: the title is .h3, the
+   numbers are primary-300 standing bare like a list row's glyph, and the
+   steps are parted by the inset hairlines of §68's lists.
    ══════════════════════════════════════════════════════════════════════════ */
 
 :root[data-platform="mobile"] .rt {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   white-space: normal;
 }
 :root[data-platform="mobile"] .rt > * { margin: 0; }
 :root[data-platform="mobile"] .rt-title,
-:root[data-platform="mobile"] .rt-heading { font-family: var(--font); color: #fff; }
+:root[data-platform="mobile"] .rt-heading { font-family: var(--font); color: var(--text-primary); }
 :root[data-platform="mobile"] .rt-title { line-height: 1.25; letter-spacing: -0.2px; }
 :root[data-platform="mobile"] .rt-heading { margin-top: 4px; }
-/* The eyebrow in the brand's light violet rather than the muted grey the
-   label carries on a page — on a bubble that grey would not be read. */
-:root[data-platform="mobile"] .rt-eyebrow { font-family: var(--font); color: #c4b9ff; margin-bottom: -4px; }
 :root[data-platform="mobile"] .rt-para { line-height: 1.55; }
-:root[data-platform="mobile"] .rt strong { font-weight: 700; color: #fff; }
+:root[data-platform="mobile"] .rt strong { font-weight: 700; color: var(--text-primary); }
+
+/* Who is speaking, and what this is: humAIne's mark and a few quiet words,
+   in sentence case. It sits close over the title it introduces. */
+:root[data-platform="mobile"] .rt-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: -6px;
+  font-family: var(--font);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+:root[data-platform="mobile"] .rt-mark { flex-shrink: 0; overflow: visible; }
 
 :root[data-platform="mobile"] .rt-list {
   list-style: none;
@@ -10837,41 +10850,65 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   flex-direction: column;
   gap: 10px;
 }
-:root[data-platform="mobile"] .rt-list li { display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
-:root[data-platform="mobile"] .rt-item { flex: 1; min-width: 0; }
-/* Numbered steps: the number in a small brand disc, so the order is the
-   first thing the eye finds. */
-:root[data-platform="mobile"] .rt-list--steps .rt-marker {
-  flex-shrink: 0;
-  width: 22px;
-  height: 22px;
-  margin-top: -1px;
+
+/* Steps: the action on its own line, the reason under it in a softer
+   voice, the number standing bare to its left. Each step after the first
+   is parted from the one before by an inset hairline, the way a Cosmos
+   list parts its rows — the line starts where the words do. */
+:root[data-platform="mobile"] .rt-list--steps { gap: 0; }
+:root[data-platform="mobile"] .rt-step {
   display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: rgba(var(--gx-primary), 0.22);
-  color: #c4b9ff;
-  font-size: 12px;
-  font-weight: 700;
+  grid-template-columns: 18px minmax(0, 1fr);
+  column-gap: 10px;
+  padding: 12px 0;
+}
+:root[data-platform="mobile"] .rt-step:first-child { padding-top: 2px; }
+:root[data-platform="mobile"] .rt-step:last-child { padding-bottom: 0; }
+:root[data-platform="mobile"] .rt-step + .rt-step { background: linear-gradient(var(--border), var(--border)) 28px 0 / calc(100% - 28px) 1px no-repeat; }
+:root[data-platform="mobile"] .rt-step-n {
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--primary-300);
   font-variant-numeric: tabular-nums;
 }
+:root[data-platform="mobile"] .rt-step-body { display: flex; flex-direction: column; gap: 3px; }
+:root[data-platform="mobile"] .rt-step-lead {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+:root[data-platform="mobile"] .rt-step-lead strong { font-weight: inherit; }
+:root[data-platform="mobile"] .rt-step-lead--plain { font-weight: 400; line-height: 1.5; color: inherit; }
+:root[data-platform="mobile"] .rt-step-why {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.62);
+}
+:root[data-platform="mobile"] .rt-step-why strong { color: rgba(255, 255, 255, 0.85); font-weight: 600; }
+
+/* Points: a short primary-300 dash, the line language of the stepped
+   progress, where a bullet would be. */
+:root[data-platform="mobile"] .rt-list--points li { display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+:root[data-platform="mobile"] .rt-item { flex: 1; min-width: 0; }
 :root[data-platform="mobile"] .rt-list--points .rt-marker {
   flex-shrink: 0;
-  width: 6px;
-  height: 6px;
-  margin: 8px 4px 0;
-  border-radius: 50%;
-  background: rgb(var(--gx-primary));
+  width: 8px;
+  height: 1.5px;
+  margin: 11px 2px 0;
+  border-radius: 1px;
+  background: var(--primary-300);
 }
-/* An aside — what to do next, or a caveat — set apart by a rule in the
-   brand colour, a step quieter than the answer above it. */
+
+/* The last word — what to do next, or a caveat — as a sign-off: under a
+   hairline, a step quieter than the answer, and nothing drawn round it. */
 :root[data-platform="mobile"] .rt-note {
-  padding: 10px 12px;
-  border-left: 2px solid rgba(var(--gx-primary), 0.7);
-  border-radius: 0 12px 12px 0;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text-secondary);
-  font-size: 13.5px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 14px;
   line-height: 1.5;
 }
 /* Read back in their own bubble, the answers keep that bubble's colours. */
