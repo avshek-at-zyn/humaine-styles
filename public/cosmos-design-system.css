@@ -10902,11 +10902,169 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   font-size: 14px;
   line-height: 1.5;
 }
+/* A line worth quoting: a pull quote, a size up and a weight up from the
+   answer, opened by a primary-300 quotation mark — no bar down its side. */
+:root[data-platform="mobile"] .rt-quote {
+  position: relative;
+  margin: 2px 0;
+  padding: 2px 0 2px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+}
+:root[data-platform="mobile"] .rt-quote::before {
+  content: '“';
+  position: absolute;
+  left: 0;
+  top: -4px;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--primary-300);
+}
+:root[data-platform="mobile"] .rt-quote p { margin: 0; }
+
+/* A stage of a named method — CARR's Contain, Analyse, Respond, Remediate.
+   Its letter stands bare in primary-300 where a step's number would, so
+   the method reads straight down the left; its practices sit under its
+   name, each led in white. Stages are parted like steps, by an inset
+   hairline that starts where the words do. */
+:root[data-platform="mobile"] .rt-stage {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  grid-template-areas: "mark title" ". items";
+  column-gap: 10px;
+  row-gap: 6px;
+  padding: 12px 0;
+}
+:root[data-platform="mobile"] .rt-stage + .rt-stage { background: linear-gradient(var(--border), var(--border)) 28px 0 / calc(100% - 28px) 1px no-repeat; }
+:root[data-platform="mobile"] .rt-stage-mark {
+  grid-area: mark;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--primary-300);
+}
+:root[data-platform="mobile"] .rt-stage-title {
+  grid-area: title;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+:root[data-platform="mobile"] .rt-stage-items {
+  grid-area: items;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.62);
+}
+:root[data-platform="mobile"] .rt-stage-items strong { color: rgba(255, 255, 255, 0.92); font-weight: 600; }
+
+/* A method as a table, made for a phone: the grid at a glance — a letter
+   and a verb over each column, a practice's name in each cell — on the
+   card fill of a Cosmos list, parted by hairlines. A tapped cell lights in
+   primary-300 and its column's head with it; its full line sits under the
+   table. Read all lays every practice out below. */
+:root[data-platform="mobile"] .rt-method { display: flex; flex-direction: column; gap: 10px; margin: 2px 0; }
+:root[data-platform="mobile"] .rt-method-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.025);
+}
+:root[data-platform="mobile"] .rt-method-table th {
+  padding: 10px 2px 8px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  transition: background 160ms ease;
+}
+:root[data-platform="mobile"] .rt-method-table th[data-on] { background: color-mix(in srgb, var(--primary-300) 9%, transparent); }
+:root[data-platform="mobile"] .rt-method-table th + th,
+:root[data-platform="mobile"] .rt-method-table td + td { border-left: 1px solid var(--border); }
+:root[data-platform="mobile"] .rt-method-table tr + tr td { border-top: 1px solid var(--border); }
+:root[data-platform="mobile"] .rt-method-table td { padding: 0; height: 1px; vertical-align: top; }
+:root[data-platform="mobile"] .rt-method-letter { display: block; font-size: 18px; font-weight: 700; line-height: 1.1; color: var(--primary-300); }
+:root[data-platform="mobile"] .rt-method-stage { display: block; margin-top: 3px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.02em; color: var(--text-secondary); }
+:root[data-platform="mobile"] .rt-method-cell {
+  width: 100%;
+  height: 100%;
+  min-height: 48px;
+  padding: 9px 4px;
+  border: 0;
+  background: none;
+  color: rgba(255, 255, 255, 0.82);
+  font-family: var(--font);
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  /* Long words carry a soft hyphen (RichText's hyphenate), so they break
+     there and nowhere else. */
+  hyphens: manual;
+  overflow-wrap: normal;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+:root[data-platform="mobile"] .rt-method-cell:active { background: rgba(255, 255, 255, 0.05); }
+
+:root[data-platform="mobile"] .rt-method-cell[aria-pressed="true"] {
+  color: #fff;
+  background: color-mix(in srgb, var(--primary-300) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary-300) 60%, transparent);
+}
+:root[data-platform="mobile"] .rt-method-detail { display: flex; flex-direction: column; gap: 3px; padding: 0 2px; }
+:root[data-platform="mobile"] .rt-method-tag { margin: 0; font-size: 12px; font-weight: 600; color: var(--primary-300); }
+:root[data-platform="mobile"] .rt-method-text { margin: 0; font-size: 14px; line-height: 1.5; color: rgba(255, 255, 255, 0.72); }
+:root[data-platform="mobile"] .rt-method-text strong { color: #fff; font-weight: 600; }
+:root[data-platform="mobile"] .rt-method-all {
+  align-self: flex-start;
+  padding: 4px 2px;
+  border: 0;
+  background: none;
+  color: var(--primary-300);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-platform="mobile"] .rt-method-cell,
+  :root[data-platform="mobile"] .rt-method-table th { transition: none; }
+}
+
+/* How sure the answer is, and what it needs: at the foot of the answer,
+   under a hairline like a sign-off, with the short values in the design
+   system's badges and the reason as a sentence. */
+:root[data-platform="mobile"] .rt-meta {
+  margin: 2px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+:root[data-platform="mobile"] .rt-meta-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+:root[data-platform="mobile"] .rt-meta-row dt { font-size: 13px; font-weight: 500; color: var(--text-secondary); }
+:root[data-platform="mobile"] .rt-meta-row dd { margin: 0; }
+:root[data-platform="mobile"] .rt-meta-row--text { flex-direction: column; align-items: flex-start; gap: 3px; }
+:root[data-platform="mobile"] .rt-meta-row--text dd { font-size: 13.5px; line-height: 1.5; color: rgba(255, 255, 255, 0.75); }
+
 /* Read back in their own bubble, the answers keep that bubble's colours. */
 :root[data-platform="mobile"] .chat-bubble--user .rt { gap: 4px; }
 /* A reply with a shape to it — a title, steps, a list — is given the width
    to show that shape; a sentence stays the width of a sentence. */
-:root[data-platform="mobile"] .chat-bubble-col:has(> .chat-bubble--assistant .rt-title, > .chat-bubble--assistant .rt-list) { max-width: 94%; }
+:root[data-platform="mobile"] .chat-bubble-col:has(> .chat-bubble--assistant .rt-title, > .chat-bubble--assistant .rt-list, > .chat-bubble--assistant .rt-stage) { max-width: 94%; }
 
 /* ══════════════════════════════════════════════════════════════════════════
    §104  THE MAIL APP STAND-IN (MailCompose.tsx)
