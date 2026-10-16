@@ -11127,61 +11127,20 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .rt-table td.rt-table-n { font-size: 15px; font-weight: 600; line-height: 1.25; color: var(--primary-300); text-align: center; }
 :root[data-platform="mobile"] .rt-table td.rt-table-end { width: 1%; white-space: nowrap; font-size: 13px; font-weight: 600; color: var(--primary-200); }
 :root[data-platform="mobile"] .rt-table th:last-child { white-space: normal; }
-:root[data-platform="mobile"] .chat-bubble-col:has(> .chat-bubble--assistant .rt-table, > .chat-bubble--assistant .rv) { max-width: 94%; }
+:root[data-platform="mobile"] .chat-bubble-col:has(> .chat-bubble--assistant .rt-table) { max-width: 94%; }
 
-/* The gap-review choices (ReviewChoices.tsx), in the thread under the
-   question so the composer's mic stays in reach. Whole sentences, so each
-   is a full-width row in the choice colours rather than a chip; chosen, it
-   fills with the chosen blue and its ring takes a tick. */
-:root[data-platform="mobile"] .rv { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
-:root[data-platform="mobile"] .rv-choices { display: flex; flex-direction: column; gap: 8px; }
-:root[data-platform="mobile"] .rv-choice {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+/* A question sheet's choices that are whole sentences (QuestionSheet.tsx):
+   the same chips, colours and chosen state as every other question, set one
+   to a row and squared to the sheet's field radius so the sentence reads,
+   rather than wrapping inside a pill. */
+:root[data-platform="mobile"] .chat-fb-reasons--rows { flex-direction: column; align-items: stretch; }
+:root[data-platform="mobile"] .chat-fb-reasons--rows .chat-fb-chip {
   width: 100%;
-  padding: 11px 13px;
+  padding: 11px 14px;
   border-radius: 14px;
-  border: 1px solid var(--choice-border, rgba(255, 255, 255, 0.12));
-  background: var(--choice-bg, rgba(255, 255, 255, 0.05));
-  color: var(--choice-text, rgba(255, 255, 255, 0.82));
-  font-family: var(--font);
   font-size: 14px;
-  font-weight: 500;
   line-height: 1.4;
   text-align: left;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  transition: background 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 100ms ease;
-}
-:root[data-platform="mobile"] .rv-choice:active { transform: scale(0.985); }
-:root[data-platform="mobile"] .rv-choice.is-on {
-  background: var(--chosen-bg);
-  border-color: var(--chosen-border);
-  color: var(--chosen-text);
-  box-shadow: var(--chosen-glow);
-}
-:root[data-platform="mobile"] .rv-tick {
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  width: 18px;
-  height: 18px;
-  margin-top: 1px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.32);
-  color: transparent;
-  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
-}
-:root[data-platform="mobile"] .rv-choice.is-on .rv-tick { background: #fff; border-color: #fff; color: var(--chosen-bg); }
-:root[data-platform="mobile"] .rv-label { flex: 1; min-width: 0; }
-:root[data-platform="mobile"] .rv-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-:root[data-platform="mobile"] .rv-hint { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; line-height: 1.35; color: var(--text-secondary); }
-:root[data-platform="mobile"] .rv-hint svg { flex-shrink: 0; }
-:root[data-platform="mobile"] .rv-next { flex-shrink: 0; min-width: 76px; justify-content: center; }
-@media (prefers-reduced-motion: reduce) {
-  :root[data-platform="mobile"] .rv-choice, :root[data-platform="mobile"] .rv-tick { transition: none; }
-  :root[data-platform="mobile"] .rv-choice:active { transform: none; }
 }
 
 /* Voice input (the composer's mic): what it is doing, the time, and Pause

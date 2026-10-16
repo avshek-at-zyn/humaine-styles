@@ -153,7 +153,7 @@ export function ChatBubblesPage() {
             <tr><td>Point</td><td><code>- text</code></td><td>A short var(--primary-300) dash</td></tr>
             <tr><td>Last word</td><td><code>&gt; text</code></td><td>A sign-off under a hairline, 14px, white at 62% — nothing drawn round it</td></tr>
             <tr><td>Table</td><td><code>| Priority | Action | Suggested timeframe |</code><br /><code>| 1 | Validate … | Next 7 days |</code></td><td>The CARR grid's frame, read as rows: the head 11px / 600 text-secondary; a priority number bare in var(--primary-300); the last column on one line in var(--primary-200)</td></tr>
-            <tr><td>Questions in the thread</td><td>ReviewChoices, under the question</td><td>Whole-sentence choices as full-width rows (.rv-choice) in the choice colours; chosen, var(--chosen-bg) and a ticked ring. Any number can be chosen; Skip, Next, or the last question's own label. In the thread rather than a sheet, so the composer's mic stays in reach</td></tr>
+            <tr><td>Questions before an answer</td><td>QuestionSheet, for every scenario</td><td>One sheet asks every scenario's questions: stepped progress and "1 of 3", the question as the sheet title and why it is asked under it, the chat's chips (chosen: var(--chosen-bg)), a line for their own words, Skip / Next and Not now / Back. A choice that is a whole sentence is the same chip set as a full-width row (.chat-fb-reasons--rows, radius 14px). No mic in the sheet — choosing is tapping. Set down, the thread holds a card to pick it up</td></tr>
             <tr><td>How sure</td><td><code>@ Confidence: Moderate</code><br /><code>@ Reason: …</code><br /><code>@ Human decision required: Yes</code></td><td>Under a hairline, two rows, each a 36px clay mark and a sentence — no badges. A dial lit to the level (one, two or three of its arcs), the level named in its status colour (var(--error-text), var(--warning), var(--success)) and the reason under it, 13.5px, white at 62%. Then a person, "Human decision required", and where the call sits</td></tr>
           </tbody>
         </table>
@@ -176,7 +176,7 @@ export function ChatBubblesPage() {
             <tr><td>.chip, .chip--clickable</td><td>Follow-up suggestion chips</td><td>§8</td></tr>
             <tr><td>.rt, .rt-eyebrow, .rt-step, .rt-note</td><td>Formatted replies</td><td>§103</td></tr>
             <tr><td>.rt-table, .rt-table-n, .rt-table-end</td><td>A plan as a table</td><td>§103</td></tr>
-            <tr><td>.rv, .rv-choice, .rv-tick, .rv-next</td><td>Questions asked in the thread</td><td>§103</td></tr>
+            <tr><td>.inc-sheet, .chat-fb-reasons--rows</td><td>The question sheet, every scenario</td><td>§103</td></tr>
             <tr><td>.rt-sure, .rt-sure-row, .rt-sure-level--*</td><td>How sure an answer is, and who decides</td><td>§103</td></tr>
           </tbody>
         </table>
