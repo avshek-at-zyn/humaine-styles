@@ -147,6 +147,47 @@ export function ChatInputPage() {
         </div>
       </div>
 
+      {/* Voice input on a phone */}
+      <div className="section">
+        <h2 className="section-title">Voice Input on a Phone — Pause and Resume</h2>
+        <p className="section-desc">
+          Cosmos §103 · ChatInputCard. The composer's mic writes what is said into the field, an utterance at a time, for as long as
+          it is left on. A strip across the top of the card says what it is doing, for how long, and offers Pause — which puts the mic
+          down and keeps every word — or Resume, which carries on after anything typed in the meantime. Paused, Resume takes the chosen
+          blue: it is the one thing to press. The mic button stays lit and ends voice input; sending ends it too. About half a minute of
+          silence pauses it by itself.
+        </p>
+        <div style={{ display: 'grid', gap: 16, maxWidth: 420 }}>
+          <div style={{ padding: 16, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingBottom: 10, marginBottom: 10, borderBottom: '1px solid var(--border)' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 2, width: 16, height: 14, color: 'var(--text-secondary)' }}><i style={{ display: 'block', width: 2.5, height: 6, borderRadius: 2, background: 'var(--brand-pink)' }} /><i style={{ display: 'block', width: 2.5, height: 12, borderRadius: 2, background: 'var(--brand-purple)' }} /><i style={{ display: 'block', width: 2.5, height: 8, borderRadius: 2, background: 'var(--primary-300)' }} /><i style={{ display: 'block', width: 2.5, height: 13, borderRadius: 2, background: 'var(--brand-purple)' }} /></span>
+              <span style={{ fontSize: 13, fontWeight: 600, color: '#fff' }}>Listening</span>
+              <span style={{ fontSize: 13, color: 'var(--text-secondary)', fontVariantNumeric: 'tabular-nums' }}>0:12</span>
+              <span style={{ marginLeft: 'auto', display: 'inline-flex', alignItems: 'center', gap: 6, height: 30, padding: '0 12px', borderRadius: 999, border: '1px solid var(--border-strong)', background: 'rgba(255,255,255,0.06)', color: '#fff', fontSize: 13, fontWeight: 600 }}><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.5" fill="currentColor" /><rect x="14" y="5" width="4" height="14" rx="1.5" fill="currentColor" /></svg>Pause</span>
+            </div>
+            <div style={{ fontSize: 15, color: '#fff' }}>With all the recent cyberattacks we're seeing,</div>
+          </div>
+          <div style={{ padding: 16, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingBottom: 10, marginBottom: 10, borderBottom: '1px solid var(--border)' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 2, width: 16, height: 14, color: 'var(--text-secondary)' }}><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.5" fill="currentColor" /><rect x="14" y="5" width="4" height="14" rx="1.5" fill="currentColor" /></svg></span>
+              <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.72)' }}>Paused</span>
+              <span style={{ fontSize: 13, color: 'var(--text-secondary)', fontVariantNumeric: 'tabular-nums' }}>0:12</span>
+              <span style={{ marginLeft: 'auto', display: 'inline-flex', alignItems: 'center', gap: 6, height: 30, padding: '0 12px', borderRadius: 999, border: '1px solid var(--chosen-border)', background: 'var(--chosen-bg)', color: '#fff', fontSize: 13, fontWeight: 600, boxShadow: 'var(--chosen-glow)' }}><svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3" stroke="currentColor" strokeWidth="2.2" /><path d="M5 10a7 7 0 0 0 14 0M12 17v4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" /></svg>Resume</span>
+            </div>
+            <div style={{ fontSize: 15, color: '#fff' }}>With all the recent cyberattacks we're seeing,</div>
+          </div>
+        </div>
+        <table className="demo-table" style={{ marginTop: 16 }}>
+          <thead><tr><th>Part</th><th>Set as</th></tr></thead>
+          <tbody>
+            <tr><td>.ci-dictate</td><td>Across the top of the card, a hairline under it; 13px / 600 label, the clock in tabular figures, text-secondary</td></tr>
+            <tr><td>.ci-dictate-signal</td><td>Four 2.5px bars in brand pink, purple and primary-300, rising and falling while it listens; the pause mark when paused; still under reduced motion</td></tr>
+            <tr><td>.ci-dictate-toggle</td><td>30px pill, border-strong on white at 6%; paused, var(--chosen-bg) with var(--chosen-glow)</td></tr>
+            <tr><td>.ci-mic-btn--rec / --held</td><td>Listening: red, pulsing. Paused: red, still</td></tr>
+          </tbody>
+        </table>
+      </div>
+
       {/* Voice Transcribed */}
       <div className="section">
         <h2 className="section-title">Voice Transcribed</h2>

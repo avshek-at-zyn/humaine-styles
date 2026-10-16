@@ -11090,6 +11090,161 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
    to show that shape; a sentence stays the width of a sentence. */
 :root[data-platform="mobile"] .chat-bubble-col:has(> .chat-bubble--assistant .rt-title, > .chat-bubble--assistant .rt-list, > .chat-bubble--assistant .rt-stage) { max-width: 94%; }
 
+/* A plan as a table (| a | b | c |): the CARR grid's frame, but read as
+   rows. The head is quiet; a priority number stands bare in primary-300 as a
+   step's does; the last column — a timeframe — keeps to one line, in
+   primary-200 so the when can be run down the side. */
+:root[data-platform="mobile"] .rt-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.025);
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+:root[data-platform="mobile"] .rt-table th {
+  padding: 9px 10px 8px;
+  text-align: left;
+  vertical-align: bottom;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+:root[data-platform="mobile"] .rt-table td {
+  padding: 11px 10px;
+  vertical-align: top;
+  color: rgba(255, 255, 255, 0.86);
+}
+:root[data-platform="mobile"] .rt-table tr + tr td { border-top: 1px solid var(--border); }
+:root[data-platform="mobile"] .rt-table--numbered th:first-child,
+:root[data-platform="mobile"] .rt-table--numbered td:first-child { width: 1%; padding-right: 2px; white-space: nowrap; }
+:root[data-platform="mobile"] .rt-table td.rt-table-n { font-size: 15px; font-weight: 600; line-height: 1.25; color: var(--primary-300); text-align: center; }
+:root[data-platform="mobile"] .rt-table td.rt-table-end { width: 1%; white-space: nowrap; font-size: 13px; font-weight: 600; color: var(--primary-200); }
+:root[data-platform="mobile"] .rt-table th:last-child { white-space: normal; }
+:root[data-platform="mobile"] .chat-bubble-col:has(> .chat-bubble--assistant .rt-table, > .chat-bubble--assistant .rv) { max-width: 94%; }
+
+/* The gap-review choices (ReviewChoices.tsx), in the thread under the
+   question so the composer's mic stays in reach. Whole sentences, so each
+   is a full-width row in the choice colours rather than a chip; chosen, it
+   fills with the chosen blue and its ring takes a tick. */
+:root[data-platform="mobile"] .rv { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
+:root[data-platform="mobile"] .rv-choices { display: flex; flex-direction: column; gap: 8px; }
+:root[data-platform="mobile"] .rv-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 14px;
+  border: 1px solid var(--choice-border, rgba(255, 255, 255, 0.12));
+  background: var(--choice-bg, rgba(255, 255, 255, 0.05));
+  color: var(--choice-text, rgba(255, 255, 255, 0.82));
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 100ms ease;
+}
+:root[data-platform="mobile"] .rv-choice:active { transform: scale(0.985); }
+:root[data-platform="mobile"] .rv-choice.is-on {
+  background: var(--chosen-bg);
+  border-color: var(--chosen-border);
+  color: var(--chosen-text);
+  box-shadow: var(--chosen-glow);
+}
+:root[data-platform="mobile"] .rv-tick {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.32);
+  color: transparent;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+:root[data-platform="mobile"] .rv-choice.is-on .rv-tick { background: #fff; border-color: #fff; color: var(--chosen-bg); }
+:root[data-platform="mobile"] .rv-label { flex: 1; min-width: 0; }
+:root[data-platform="mobile"] .rv-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+:root[data-platform="mobile"] .rv-hint { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; line-height: 1.35; color: var(--text-secondary); }
+:root[data-platform="mobile"] .rv-hint svg { flex-shrink: 0; }
+:root[data-platform="mobile"] .rv-next { flex-shrink: 0; min-width: 76px; justify-content: center; }
+@media (prefers-reduced-motion: reduce) {
+  :root[data-platform="mobile"] .rv-choice, :root[data-platform="mobile"] .rv-tick { transition: none; }
+  :root[data-platform="mobile"] .rv-choice:active { transform: none; }
+}
+
+/* Voice input (the composer's mic): what it is doing, the time, and Pause
+   or Resume, across the top of the card over the words it writes. Four
+   bars move while it listens; paused, they give way to the pause mark and
+   Resume takes the chosen blue, the one thing to press. The mic button
+   stays lit while paused, without the pulse, and ends voice input. */
+:root[data-platform="mobile"] .ci-dictate {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: -4px 0 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+:root[data-platform="mobile"] .ci-dictate-signal { display: inline-flex; align-items: center; gap: 2px; width: 16px; height: 14px; color: var(--text-secondary); }
+:root[data-platform="mobile"] .ci-dictate-signal i {
+  display: block;
+  width: 2.5px;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--brand-pink);
+  transform-origin: center;
+  animation: ci-dictate-bar 900ms ease-in-out infinite;
+}
+:root[data-platform="mobile"] .ci-dictate-signal i:nth-child(2) { animation-delay: -300ms; background: var(--brand-purple); }
+:root[data-platform="mobile"] .ci-dictate-signal i:nth-child(3) { animation-delay: -600ms; background: var(--primary-300); }
+:root[data-platform="mobile"] .ci-dictate-signal i:nth-child(4) { animation-delay: -150ms; background: var(--brand-purple); }
+@keyframes ci-dictate-bar { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+:root[data-platform="mobile"] .ci-dictate-label { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+:root[data-platform="mobile"] .ci-dictate-time { font-size: 13px; font-variant-numeric: tabular-nums; color: var(--text-secondary); }
+:root[data-platform="mobile"] .ci-dictate.is-paused .ci-dictate-label { color: rgba(255, 255, 255, 0.72); }
+:root[data-platform="mobile"] .ci-dictate-toggle {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: var(--radius-pill, 999px);
+  border: 1px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 160ms ease, border-color 160ms ease, transform 100ms ease;
+}
+:root[data-platform="mobile"] .ci-dictate-toggle:active { transform: scale(0.96); }
+:root[data-platform="mobile"] .ci-dictate.is-paused .ci-dictate-toggle {
+  background: var(--chosen-bg);
+  border-color: var(--chosen-border);
+  color: var(--chosen-text);
+  box-shadow: var(--chosen-glow);
+}
+:root[data-platform="mobile"] .ci-mic-btn--held { color: #f87171 !important; background: rgba(239, 68, 68, 0.1) !important; }
+@media (prefers-reduced-motion: reduce) {
+  :root[data-platform="mobile"] .ci-dictate-signal i { animation: none; transform: scaleY(0.7); }
+  :root[data-platform="mobile"] .ci-dictate-toggle { transition: none; }
+}
+
 /* ══════════════════════════════════════════════════════════════════════════
    §104  THE MAIL APP STAND-IN (MailCompose.tsx)
    Imitates Gmail's compose on an iPhone, on purpose and only here: light,
