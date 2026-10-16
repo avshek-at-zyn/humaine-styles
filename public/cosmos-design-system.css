@@ -11060,6 +11060,30 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .rt-meta-row--text { flex-direction: column; align-items: flex-start; gap: 3px; }
 :root[data-platform="mobile"] .rt-meta-row--text dd { font-size: 13.5px; line-height: 1.5; color: rgba(255, 255, 255, 0.75); }
 
+/* How sure the answer is, and who decides, when the answer says so: each a
+   clay mark (§ClayMarks) and a sentence, under the same hairline. The
+   confidence is a dial lit to its level, the level named in that level's
+   status colour; the reason sits under it as the why of that confidence.
+   The human decision is a person, and where the call sits. The title is
+   padded down to sit on the mark's middle. */
+:root[data-platform="mobile"] .rt-sure {
+  margin: 2px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+:root[data-platform="mobile"] .rt-sure-row { display: flex; align-items: flex-start; gap: 12px; }
+:root[data-platform="mobile"] .rt-sure-mark { flex-shrink: 0; display: flex; width: 36px; height: 36px; }
+:root[data-platform="mobile"] .rt-sure-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; padding-top: 7px; }
+:root[data-platform="mobile"] .rt-sure-title { margin: 0; font-size: 15px; font-weight: 600; line-height: 22px; color: var(--text-primary); }
+:root[data-platform="mobile"] .rt-sure-level--low { color: var(--error-text); }
+:root[data-platform="mobile"] .rt-sure-level--moderate { color: var(--warning); }
+:root[data-platform="mobile"] .rt-sure-level--high { color: var(--success); }
+:root[data-platform="mobile"] .rt-sure-text { margin: 0; font-size: 13.5px; line-height: 1.5; color: rgba(255, 255, 255, 0.62); }
+:root[data-platform="mobile"] .rt-sure > .rt-meta { padding-top: 0; border-top: 0; }
+
 /* Read back in their own bubble, the answers keep that bubble's colours. */
 :root[data-platform="mobile"] .chat-bubble--user .rt { gap: 4px; }
 /* A reply with a shape to it — a title, steps, a list — is given the width

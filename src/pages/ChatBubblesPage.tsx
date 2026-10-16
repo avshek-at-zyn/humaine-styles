@@ -152,6 +152,7 @@ export function ChatBubblesPage() {
             <tr><td>Between steps</td><td>—</td><td>An inset hairline, var(--border), starting where the words do — as §68's lists part their rows</td></tr>
             <tr><td>Point</td><td><code>- text</code></td><td>A short var(--primary-300) dash</td></tr>
             <tr><td>Last word</td><td><code>&gt; text</code></td><td>A sign-off under a hairline, 14px, white at 62% — nothing drawn round it</td></tr>
+            <tr><td>How sure</td><td><code>@ Confidence: Moderate</code><br /><code>@ Reason: …</code><br /><code>@ Human decision required: Yes</code></td><td>Under a hairline, two rows, each a 36px clay mark and a sentence — no badges. A dial lit to the level (one, two or three of its arcs), the level named in its status colour (var(--error-text), var(--warning), var(--success)) and the reason under it, 13.5px, white at 62%. Then a person, "Human decision required", and where the call sits</td></tr>
           </tbody>
         </table>
       </div>
@@ -172,6 +173,7 @@ export function ChatBubblesPage() {
             <tr><td>.chat-private, .chat-private-text</td><td>Privacy notice banner</td><td>§67</td></tr>
             <tr><td>.chip, .chip--clickable</td><td>Follow-up suggestion chips</td><td>§8</td></tr>
             <tr><td>.rt, .rt-eyebrow, .rt-step, .rt-note</td><td>Formatted replies</td><td>§103</td></tr>
+            <tr><td>.rt-sure, .rt-sure-row, .rt-sure-level--*</td><td>How sure an answer is, and who decides</td><td>§103</td></tr>
           </tbody>
         </table>
       </div>
