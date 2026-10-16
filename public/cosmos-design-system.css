@@ -10752,29 +10752,10 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 :root[data-platform="mobile"] .inc-stage .chat-fb-reasons { margin-bottom: 14px; }
 
-/* The breath before the questions: a primary-300 ring that grows for four
-   seconds and settles for six, the pace of a slow breath in and out. With
-   motion off it simply sits there, and the words carry it. */
-:root[data-platform="mobile"] .inc-calm { display: flex; flex-direction: column; align-items: center; gap: 20px; padding-top: 6px; }
-:root[data-platform="mobile"] .inc-calm .sheet-head { text-align: center; }
-:root[data-platform="mobile"] .inc-breath { width: 104px; height: 104px; display: grid; place-items: center; }
-:root[data-platform="mobile"] .inc-breath span {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  border: 1.5px solid color-mix(in srgb, var(--primary-300) 70%, transparent);
-  background: radial-gradient(circle, color-mix(in srgb, var(--primary-300) 28%, transparent) 0%, color-mix(in srgb, var(--primary-300) 6%, transparent) 60%, transparent 72%);
-  box-shadow: 0 0 28px color-mix(in srgb, var(--primary-300) 28%, transparent);
-  animation: inc-breathe 10s ease-in-out infinite;
-}
-@keyframes inc-breathe {
-  0%   { transform: scale(0.78); opacity: 0.6; }
-  40%  { transform: scale(1.14); opacity: 1; }
-  100% { transform: scale(0.78); opacity: 0.6; }
-}
-@media (prefers-reduced-motion: reduce) {
-  :root[data-platform="mobile"] .inc-breath span { animation: none; transform: none; }
-}
+/* The incident's first question opens with a breath said in one light
+   line above it (QuestionSheet's lead): text-secondary, a step under the
+   subtitle, nothing to press and nothing in the way. */
+:root[data-platform="mobile"] .qs-lead { margin: 0 0 8px; font-size: 13px; line-height: 1.45; color: var(--text-secondary); }
 :root[data-platform="mobile"] .inc-stage .segmented { margin-bottom: 4px; }
 
 /* ══════════════════════════════════════════════════════════════════════════
