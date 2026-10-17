@@ -177,6 +177,7 @@ export function ChatBubblesPage() {
             <tr><td>.rt, .rt-eyebrow, .rt-step, .rt-note</td><td>Formatted replies</td><td>§103</td></tr>
             <tr><td>.rt-table, .rt-table-n, .rt-table-end</td><td>A plan as a table</td><td>§103</td></tr>
             <tr><td>.inc-sheet, .chat-fb-reasons--rows</td><td>The question sheet, every scenario</td><td>§103</td></tr>
+            <tr><td>.proceed-card, .proceed-card-actions</td><td>The prompt to go on to the next stage, under an answer — the same card as the questions set down</td><td>§103</td></tr>
             <tr><td>.rt-sure, .rt-sure-row, .rt-sure-level--*</td><td>How sure an answer is, and who decides</td><td>§103</td></tr>
           </tbody>
         </table>

@@ -10764,14 +10764,18 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
    under the message that asked them.
    ══════════════════════════════════════════════════════════════════════════ */
 
-:root[data-platform="mobile"] .triage-resume {
+/* The questions set down (TriageResume), and the way on to the next stage
+   (ProceedCard): the same card, a line and the small buttons. */
+:root[data-platform="mobile"] .triage-resume,
+:root[data-platform="mobile"] .proceed-card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
   margin-top: 10px;
 }
-:root[data-platform="mobile"] .triage-resume-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+:root[data-platform="mobile"] .triage-resume-actions,
+:root[data-platform="mobile"] .proceed-card-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 
 @media (prefers-reduced-motion: reduce) {
   :root[data-platform="mobile"] .inc-stage { animation: none; }
