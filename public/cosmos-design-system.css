@@ -10776,6 +10776,11 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 :root[data-platform="mobile"] .triage-resume-actions,
 :root[data-platform="mobile"] .proceed-card-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+/* The next stage is the one thing to do next, so its prompt is a size up
+   from a card set down: body text, and the large primary button. */
+:root[data-platform="mobile"] .proceed-card { gap: 12px; margin-top: 14px; }
+:root[data-platform="mobile"] .proceed-card-line { font-size: 15px; font-weight: 500; line-height: 1.45; color: rgba(255, 255, 255, 0.82); }
+:root[data-platform="mobile"] .proceed-card-btn { min-width: 148px; justify-content: center; }
 
 @media (prefers-reduced-motion: reduce) {
   :root[data-platform="mobile"] .inc-stage { animation: none; }
