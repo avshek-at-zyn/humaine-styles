@@ -3,8 +3,8 @@
    Synthesized from 5 HumAIne projects:
      • humaine-personal  (v2.0.5.2 design-system.css + components)
      • humaine-personal-mobile
-     • humAIne-admin
-     • humAIne-backoffice
+     • HumAIne-admin
+     • HumAIne-backoffice
      • humaine-styles (docs site)
    Dark-default, light via [data-theme="light"]
    Mobile tokens scoped under :root[data-platform="mobile"]
@@ -8475,12 +8475,12 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   opacity: 0.5;
 }
 
-/* ── §75 humAInizing and Stop ─────────────────────────────────────
+/* ── §75 HumAInizing and Stop ─────────────────────────────────────
    The wait before a reply — a set four seconds — in a small container, the
    way AI assistants show a reply on its way: a live mark and one line of
    status, no bubble. The mark is a Lottie (HumainizingLottie), a tiny orbit
    after the Zyn loader whose trail closes the ring as the wait runs out; the
-   line names what humAIne is doing, shimmering slowly, and enters as each
+   line names what HumAIne is doing, shimmering slowly, and enters as each
    step begins (160ms).
    At the end of the file so it follows the send pill it modifies. */
 :root[data-platform="mobile"] .chat-thinking {
@@ -8569,7 +8569,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
    Nothing is really sent, so the reset email is opened from a stand-in inbox
    reached from the top of the email-sent screen, as on the web (MockInbox).
    The mail client is deliberately light so it reads as another app rather
-   than another humAIne screen, and it rises as a sheet like the app's others. */
+   than another HumAIne screen, and it rises as a sheet like the app's others. */
 :root[data-platform="mobile"] .fp-inbox-pill-m {
   position: fixed; top: calc(env(safe-area-inset-top, 0px) + 14px); right: 14px; z-index: 60;
   display: inline-flex; align-items: center; gap: 7px;
@@ -8703,7 +8703,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 /* ── §79 Zyn loading screen ─────────────────────────────────────
-   The humAIne loading animation (src/lib/zynLoader.ts) as a full-screen
+   The HumAIne loading animation (src/lib/zynLoader.ts) as a full-screen
    state: the brand, the molten world on its orbit, one status line. Colours
    are the loader's own; type is the app's, so nothing waits on a web font. */
 :root[data-platform="mobile"] .zl-screen {
@@ -9002,7 +9002,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 /* ══════════════════════════════════════════════════════════════════════════
    §87  THE MARK ON THE FIRST SCREEN
-   The humAIne head, animated. The still it replaces was the whole lockup at
+   The HumAIne head, animated. The still it replaces was the whole lockup at
    220px wide, clipped at 75% so only the head showed: that drew the head
    137px across. The head fills 89% of this animation's square frame, so a
    155px box draws it at the same 137px — the same size, not a larger one.
@@ -9042,7 +9042,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   §89  TALKING TO humAIne
+   §89  TALKING TO HumAIne
    A screen of its own rather than a strip under the composer. The mark is
    the middle of it, the waves answer the room around it, and one line says
    what is being said right now. What came before sits above, dimmed, so the
@@ -9251,7 +9251,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .vs-line-rest { color: rgba(255, 255, 255, 0.4); }
 
 /* What the microphone will do if you press it now. Only said when it is
-   worth saying — mostly, while humAIne is talking over you. */
+   worth saying — mostly, while HumAIne is talking over you. */
 :root[data-platform="mobile"] .vs-hint {
   position: relative;
   z-index: 1;
@@ -10810,7 +10810,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .rt-para { line-height: 1.55; }
 :root[data-platform="mobile"] .rt strong { font-weight: 700; color: var(--text-primary); }
 
-/* Who is speaking, and what this is: humAIne's mark and a few quiet words,
+/* Who is speaking, and what this is: HumAIne's mark and a few quiet words,
    in sentence case. It sits close over the title it introduces. */
 :root[data-platform="mobile"] .rt-eyebrow {
   display: flex;
@@ -11117,6 +11117,51 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .rt-table td.rt-table-n { font-size: 15px; font-weight: 600; line-height: 1.25; color: var(--primary-300); text-align: center; }
 :root[data-platform="mobile"] .rt-table td.rt-table-end { width: 1%; white-space: nowrap; font-size: 13px; font-weight: 600; color: var(--primary-200); }
 :root[data-platform="mobile"] .rt-table th:last-child { white-space: normal; }
+/* The trust strip (RichText's TrustStrip): five checks on every reply that
+   has to say how far it can be trusted. The chat's chips, a size down, with
+   a dot for the state — quiet when there is nothing to flag, --warning to
+   look closer, --error-text to stop — and the open one filled with its own
+   colour. What it found sits under the row, tagged like a CARR detail. */
+:root[data-platform="mobile"] .rt-checks { display: flex; flex-direction: column; gap: 10px; }
+:root[data-platform="mobile"] .rt-checks-row { display: flex; flex-wrap: wrap; gap: 6px; }
+:root[data-platform="mobile"] .rt-check {
+  --level: rgba(255, 255, 255, 0.34);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 11px;
+  border-radius: var(--radius-pill, 999px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary);
+  font-family: var(--font);
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 100ms ease;
+}
+:root[data-platform="mobile"] .rt-check:active { transform: scale(0.96); }
+:root[data-platform="mobile"] .rt-check--watch { --level: var(--warning); color: rgba(255, 255, 255, 0.86); border-color: color-mix(in srgb, var(--warning) 45%, transparent); }
+:root[data-platform="mobile"] .rt-check--stop { --level: var(--error-text); color: rgba(255, 255, 255, 0.9); border-color: color-mix(in srgb, var(--error-text) 50%, transparent); }
+:root[data-platform="mobile"] .rt-check-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--level); flex-shrink: 0; }
+:root[data-platform="mobile"] .rt-check[aria-pressed="true"] { background: color-mix(in srgb, var(--level) 16%, transparent); border-color: var(--level); color: var(--text-primary); }
+:root[data-platform="mobile"] .rt-check--ok[aria-pressed="true"] { --level: var(--primary-300); }
+:root[data-platform="mobile"] .rt-checks.is-closed .rt-checks-row { padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+:root[data-platform="mobile"] .rt-checks-detail { margin: 0; display: flex; flex-direction: column; gap: 3px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+:root[data-platform="mobile"] .rt-checks-tag { font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--text-secondary); }
+:root[data-platform="mobile"] .rt-checks-tag--watch { color: var(--warning); }
+:root[data-platform="mobile"] .rt-checks-tag--stop { color: var(--error-text); }
+:root[data-platform="mobile"] .rt-checks-note { font-size: 13.5px; line-height: 1.45; color: rgba(255, 255, 255, 0.78); }
+@media (prefers-reduced-motion: reduce) {
+  :root[data-platform="mobile"] .rt-check { transition: none; }
+  :root[data-platform="mobile"] .rt-check:active { transform: none; }
+}
+
+/* A table of sources (no numbers): the first column names who says it, set
+   a step brighter and given room; the rest is what they say. */
+:root[data-platform="mobile"] .rt-table--labelled td:first-child { width: 36%; font-weight: 600; color: rgba(255, 255, 255, 0.92); }
 :root[data-platform="mobile"] .chat-bubble-col:has(> .chat-bubble--assistant .rt-table) { max-width: 94%; }
 
 /* A question sheet's choices that are whole sentences (QuestionSheet.tsx):
@@ -11199,7 +11244,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
    Imitates Gmail's compose on an iPhone, on purpose and only here: light,
    the blue-grey bar, × on the left and the tools on the right, From, To
    with a recipient chip, and Subject. It is another app opened over
-   humAIne, so it looks like that app — the same choice the demo inbox
+   HumAIne, so it looks like that app — the same choice the demo inbox
    makes — and none of it is design-system styling to reuse.
    ══════════════════════════════════════════════════════════════════════════ */
 

@@ -28,6 +28,7 @@ import { SocialButtonPage } from './pages/SocialButtonPage'
 import { MobilePage } from './pages/MobilePage'
 import { ChatBubblesPage } from './pages/ChatBubblesPage'
 import { ChatInteractionsPage } from './pages/ChatInteractionsPage'
+import { TrustRepliesPage } from './pages/TrustRepliesPage'
 
 export const CopyContext = createContext<(t: string) => void>(() => {})
 export const useCopy = () => useContext(CopyContext)
@@ -36,7 +37,7 @@ type PageId =
   | 'home' | 'philosophy' | 'logo' | 'colors' | 'typography' | 'radius' | 'spacing' | 'shadows' | 'gradients'
   | 'buttons' | 'inputs' | 'cards' | 'badges' | 'navigation' | 'chat-input' | 'data-display'
   | 'tabs' | 'chips' | 'avatar' | 'toggle' | 'modal' | 'divider' | 'tooltip' | 'list-item' | 'social-button'
-  | 'mobile' | 'chat-bubbles' | 'chat-interactions'
+  | 'mobile' | 'chat-bubbles' | 'chat-interactions' | 'trust-replies'
 
 const NAV = [
   {
@@ -84,6 +85,7 @@ const NAV = [
     items: [
       { id: 'chat-bubbles' as PageId, label: 'Chat Bubbles', icon: 'bubble', color: '#5271FF' },
       { id: 'chat-interactions' as PageId, label: 'Chat Interactions', icon: 'zap', color: '#B5B7F6' },
+      { id: 'trust-replies' as PageId, label: 'Trust Replies', icon: 'info', color: '#E5C3F0' },
     ],
   },
   {
@@ -122,6 +124,7 @@ const PAGES: Record<PageId, React.FC> = {
   'data-display': DataDisplayPage,
   'chat-bubbles': ChatBubblesPage,
   'chat-interactions': ChatInteractionsPage,
+  'trust-replies': TrustRepliesPage,
   mobile: MobilePage,
 }
 
