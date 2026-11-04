@@ -10851,7 +10851,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   font-size: 15px;
   font-weight: 600;
   line-height: 1.4;
-  color: var(--primary-300);
+  color: var(--text-primary);   /* a plain white number, like the text */
   font-variant-numeric: tabular-nums;
 }
 :root[data-platform="mobile"] .rt-step-body { display: flex; flex-direction: column; gap: 3px; }
