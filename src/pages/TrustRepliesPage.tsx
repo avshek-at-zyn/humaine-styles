@@ -61,10 +61,9 @@ const bubble: React.CSSProperties = {
   border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.88)', fontSize: 14.5, lineHeight: 1.55,
   display: 'flex', flexDirection: 'column', gap: 10,
 }
-const note: React.CSSProperties = {
-  padding: '9px 12px', borderLeft: '2px solid var(--primary-300)', borderRadius: '0 11px 11px 0',
-  background: 'rgba(255,255,255,0.045)', color: 'rgba(255,255,255,0.75)', fontSize: 13.5,
-}
+/* The closing note and the confidence are plain text in the answer's own
+   white: no box, no bar, no coloured level. */
+const note: React.CSSProperties = { color: 'var(--text-primary, #fff)' }
 const tag = (n: number) => (
   <span style={{ flexShrink: 0, width: 18, height: 18, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'var(--primary-300)', color: '#0b0d1a', fontSize: 10, fontWeight: 700 }}>{n}</span>
 )
@@ -118,7 +117,7 @@ export function TrustRepliesPage() {
           {part(2, <span style={{ color: 'rgba(255,255,255,0.8)' }}>Thanks for asking, Abhi. It's the right thing to check.</span>)}
           {part(3, <span style={{ fontSize: 19, fontWeight: 700, color: '#fff', lineHeight: 1.25 }}>I can't answer that with confidence yet</span>)}
           {part(4, <span>Whether you're exposed depends on evidence from your own estate, and I don't have enough of it.</span>)}
-          {part(5, <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13 }}><span style={{ color: 'var(--text-secondary)' }}>Confidence</span><span style={{ color: 'var(--error-text)', fontWeight: 600 }}>Low</span></div>)}
+          {part(5, <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13 }}><span style={{ color: 'var(--text-secondary)' }}>Confidence</span><span style={{ color: 'var(--text-primary, #fff)', fontWeight: 600 }}>Low</span></div>)}
           {part(6, <div style={note}>Share an asset list or a recent scan, and I'll look again.</div>)}
         </div>
         <table className="demo-table" style={{ marginTop: 16 }}>
@@ -128,8 +127,8 @@ export function TrustRepliesPage() {
             <tr><td>2</td><td>Acknowledgement: one line to the person, by name, when it's tense</td><td>plain line</td><td>.rt-para</td></tr>
             <tr><td>3</td><td>Title: the situation in plain words, never a system label</td><td><code># Title</code> (optional <code>#### Eyebrow</code> above)</td><td>.rt-title / .rt-eyebrow</td></tr>
             <tr><td>4</td><td>Substance: what HumAIne can say; tables for sources side by side, numbered steps for what to do</td><td>text, <code>## Heading</code>, <code>| a | b |</code>, <code>1. step</code>, <code>- point</code></td><td>.rt-heading, .rt-table, .rt-steps</td></tr>
-            <tr><td>5</td><td>How sure: Low · Moderate · High, why, and whether a person must decide</td><td><code>@ Confidence: Moderate</code>, <code>@ Reason: …</code>, <code>@ Human decision required: Yes</code></td><td>.rt-meta / .rt-sure</td></tr>
-            <tr><td>6</td><td>Next step: what would change the answer, or what to do now</td><td><code>&gt; note</code></td><td>.rt-note</td></tr>
+            <tr><td>5</td><td>How sure: Low · Moderate · High, why, and whether a person must decide</td><td><code>@ Confidence: Moderate</code>, <code>@ Reason: …</code>, <code>@ Human decision required: Yes</code></td><td>.rt-meta / .rt-sure: plain white text; the level is not coloured, the gauge carries it</td></tr>
+            <tr><td>6</td><td>Next step: what would change the answer, or what to do now</td><td><code>&gt; note</code></td><td>.rt-note: plain white text, no box or bar</td></tr>
           </tbody>
         </table>
       </div>

@@ -10885,10 +10885,10 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 /* The last word — what to do next, or a caveat — as a sign-off: under a
    hairline, a step quieter than the answer, and nothing drawn round it. */
+/* The closing note: plain text, the same white as the answer above it —
+   the last thing said, not set apart. */
 :root[data-platform="mobile"] .rt-note {
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--text-primary);
   font-size: 14px;
   line-height: 1.5;
 }
@@ -11048,7 +11048,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .rt-meta-row dt { font-size: 13px; font-weight: 500; color: var(--text-secondary); }
 :root[data-platform="mobile"] .rt-meta-row dd { margin: 0; }
 :root[data-platform="mobile"] .rt-meta-row--text { flex-direction: column; align-items: flex-start; gap: 3px; }
-:root[data-platform="mobile"] .rt-meta-row--text dd { font-size: 13.5px; line-height: 1.5; color: rgba(255, 255, 255, 0.75); }
+:root[data-platform="mobile"] .rt-meta-row--text dd { font-size: 13.5px; line-height: 1.5; color: var(--text-primary); }
 
 /* How sure the answer is, and who decides, when the answer says so: each a
    clay mark (§ClayMarks) and a sentence, under the same hairline. The
@@ -11068,10 +11068,10 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .rt-sure-mark { flex-shrink: 0; display: flex; width: 36px; height: 36px; }
 :root[data-platform="mobile"] .rt-sure-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; padding-top: 7px; }
 :root[data-platform="mobile"] .rt-sure-title { margin: 0; font-size: 15px; font-weight: 600; line-height: 22px; color: var(--text-primary); }
-:root[data-platform="mobile"] .rt-sure-level--low { color: var(--error-text); }
-:root[data-platform="mobile"] .rt-sure-level--moderate { color: var(--warning); }
-:root[data-platform="mobile"] .rt-sure-level--high { color: var(--success); }
-:root[data-platform="mobile"] .rt-sure-text { margin: 0; font-size: 13.5px; line-height: 1.5; color: rgba(255, 255, 255, 0.62); }
+/* How sure, said plainly: the level in the same white as the line, and
+   the reason under it at full strength. The gauge carries the level. */
+:root[data-platform="mobile"] .rt-sure-level { color: inherit; }
+:root[data-platform="mobile"] .rt-sure-text { margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--text-primary); }
 :root[data-platform="mobile"] .rt-sure > .rt-meta { padding-top: 0; border-top: 0; }
 
 /* Read back in their own bubble, the answers keep that bubble's colours. */
