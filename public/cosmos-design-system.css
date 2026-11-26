@@ -5889,6 +5889,13 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   font-family: var(--font);
 }
 
+/* ── The AI notice: plain text, no card, the link in the brand's light blue ── */
+:root[data-platform="mobile"] .ss-ai-note { display: flex; flex-direction: column; gap: 4px; padding: 12px 0 14px; }
+:root[data-platform="mobile"] .ss-ai-note-title { margin: 0; font-size: 14px; font-weight: 600; color: var(--text-primary); font-family: var(--font); }
+:root[data-platform="mobile"] .ss-ai-note-text { margin: 0; font-size: 13px; line-height: 1.5; color: rgba(255, 255, 255, 0.72); font-family: var(--font); }
+:root[data-platform="mobile"] .ss-ai-note-link { align-self: flex-start; margin-top: 4px; padding: 0; background: none; border: none; font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--primary-300); cursor: pointer; text-align: left; }
+:root[data-platform="mobile"] .ss-ai-note-link:active { opacity: 0.7; }
+
 /* ── Clay icon link rows ── */
 :root[data-platform="mobile"] .ss-link-row {
   width: 100%;
