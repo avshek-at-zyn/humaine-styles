@@ -5889,6 +5889,16 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
   font-family: var(--font);
 }
 
+/* ── The policies sheet: the web page edge to edge in a tall sheet ── */
+:root[data-platform="mobile"] .legal-sheet { padding-left: 0; padding-right: 0; }
+:root[data-platform="mobile"] .legal-sheet .sheet-handle { margin-bottom: 8px; }
+:root[data-platform="mobile"] .legal-sheet .sheet-body { overflow: hidden; gap: 0; position: relative; }
+:root[data-platform="mobile"] .legal-sheet .sheet-footer { padding: 12px 20px 0; }
+:root[data-platform="mobile"] .legal-sheet-frame { flex: 1 1 auto; width: 100%; min-height: 0; border: 0; background: transparent; opacity: 0; transition: opacity 200ms ease; }
+:root[data-platform="mobile"] .legal-sheet-frame.is-loaded { opacity: 1; }
+:root[data-platform="mobile"] .legal-sheet-loading { position: absolute; inset: 40% 0 auto; margin: 0; text-align: center; font-family: var(--font); font-size: 14px; color: var(--text-secondary); }
+@media (prefers-reduced-motion: reduce) { :root[data-platform="mobile"] .legal-sheet-frame { transition: none; } }
+
 /* ── The AI notice: plain text, no card, the link in the brand's light blue ── */
 :root[data-platform="mobile"] .ss-ai-note { display: flex; flex-direction: column; gap: 4px; padding: 12px 0 14px; }
 :root[data-platform="mobile"] .ss-ai-note-title { margin: 0; font-size: 14px; font-weight: 600; color: var(--text-primary); font-family: var(--font); }
