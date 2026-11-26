@@ -1,10 +1,10 @@
 /* ============================================================
    COSMOS DESIGN SYSTEM  v1.0.0
-   Synthesized from 5 HumAIne projects:
+   Synthesized from 5 humAIne projects:
      • humaine-personal  (v2.0.5.2 design-system.css + components)
      • humaine-personal-mobile
-     • HumAIne-admin
-     • HumAIne-backoffice
+     • humAIne-admin
+     • humAIne-backoffice
      • humaine-styles (docs site)
    Dark-default, light via [data-theme="light"]
    Mobile tokens scoped under :root[data-platform="mobile"]
@@ -2162,7 +2162,7 @@ a {
 }
 
 /* Mobile brand header */
-/* The HumAIne wordmark in type, as the identifier draws it: Koh
+/* The humAIne wordmark in type, as the identifier draws it: Koh
    Santepheap 700, upright, hum and ne in lavender and AI in the stronger
    blue. One spec wherever the name is set as the brand, never a gradient
    or an italic AI. */
@@ -8509,7 +8509,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
    way AI assistants show a reply on its way: a live mark and one line of
    status, no bubble. The mark is a Lottie (HumainizingLottie), a tiny orbit
    after the Zyn loader whose trail closes the ring as the wait runs out; the
-   line names what HumAIne is doing, shimmering slowly, and enters as each
+   line names what humAIne is doing, shimmering slowly, and enters as each
    step begins (160ms).
    At the end of the file so it follows the send pill it modifies. */
 :root[data-platform="mobile"] .chat-thinking {
@@ -8598,7 +8598,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
    Nothing is really sent, so the reset email is opened from a stand-in inbox
    reached from the top of the email-sent screen, as on the web (MockInbox).
    The mail client is deliberately light so it reads as another app rather
-   than another HumAIne screen, and it rises as a sheet like the app's others. */
+   than another humAIne screen, and it rises as a sheet like the app's others. */
 :root[data-platform="mobile"] .fp-inbox-pill-m {
   position: fixed; top: calc(env(safe-area-inset-top, 0px) + 14px); right: 14px; z-index: 60;
   display: inline-flex; align-items: center; gap: 7px;
@@ -8732,7 +8732,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 /* ── §79 Zyn loading screen ─────────────────────────────────────
-   The HumAIne loading animation (src/lib/zynLoader.ts) as a full-screen
+   The humAIne loading animation (src/lib/zynLoader.ts) as a full-screen
    state: the brand, the molten world on its orbit, one status line. Colours
    are the loader's own; type is the app's, so nothing waits on a web font. */
 :root[data-platform="mobile"] .zl-screen {
@@ -9031,7 +9031,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 
 /* ══════════════════════════════════════════════════════════════════════════
    §87  THE MARK ON THE FIRST SCREEN
-   The HumAIne head, animated. The still it replaces was the whole lockup at
+   The humAIne head, animated. The still it replaces was the whole lockup at
    220px wide, clipped at 75% so only the head showed: that drew the head
    137px across. The head fills 89% of this animation's square frame, so a
    155px box draws it at the same 137px — the same size, not a larger one.
@@ -9071,7 +9071,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   §89  TALKING TO HumAIne
+   §89  TALKING TO humAIne
    A screen of its own rather than a strip under the composer. The mark is
    the middle of it, the waves answer the room around it, and one line says
    what is being said right now. What came before sits above, dimmed, so the
@@ -9280,7 +9280,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .vs-line-rest { color: rgba(255, 255, 255, 0.4); }
 
 /* What the microphone will do if you press it now. Only said when it is
-   worth saying — mostly, while HumAIne is talking over you. */
+   worth saying — mostly, while humAIne is talking over you. */
 :root[data-platform="mobile"] .vs-hint {
   position: relative;
   z-index: 1;
@@ -10839,7 +10839,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
 :root[data-platform="mobile"] .rt-para { line-height: 1.55; }
 :root[data-platform="mobile"] .rt strong { font-weight: 700; color: var(--text-primary); }
 
-/* Who is speaking, and what this is: HumAIne's mark and a few quiet words,
+/* Who is speaking, and what this is: humAIne's mark and a few quiet words,
    in sentence case. It sits close over the title it introduces. */
 :root[data-platform="mobile"] .rt-eyebrow {
   display: flex;
@@ -11273,7 +11273,7 @@ a.pp-pin-btn { display: inline-flex; align-items: center; justify-content: cente
    Imitates Gmail's compose on an iPhone, on purpose and only here: light,
    the blue-grey bar, × on the left and the tools on the right, From, To
    with a recipient chip, and Subject. It is another app opened over
-   HumAIne, so it looks like that app — the same choice the demo inbox
+   humAIne, so it looks like that app — the same choice the demo inbox
    makes — and none of it is design-system styling to reuse.
    ══════════════════════════════════════════════════════════════════════════ */
 

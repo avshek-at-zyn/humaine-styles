@@ -209,7 +209,7 @@ function App() {
               </div>
               <span className="logo-text">Cosmos</span>
             </div>
-            <div className="sidebar-version">HumAIne Design System</div>
+            <div className="sidebar-version">humAIne Design System</div>
           </div>
           <nav className="sidebar-nav">
             {NAV.map((group) => (

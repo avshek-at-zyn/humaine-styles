@@ -89,7 +89,7 @@ export function NavigationPage() {
         <div className="card" style={{ maxWidth: 256, padding: 8 }}>
           <div className="sb-demo-item sb-demo-item--active">
             <span className="sb-demo-item-icon" style={{ color: 'var(--primary-300)' }}><ChatIcon /></span>
-            HumAIne
+            humAIne
           </div>
           <div className="sb-demo-item">
             <span className="sb-demo-item-icon"><DocIcon /></span>
@@ -134,7 +134,7 @@ export function NavigationPage() {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
               <div style={{ width: 28, height: 28, borderRadius: 8, background: 'var(--gradient-brand)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: 12, fontWeight: 700 }}>H</div>
-              <span style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 600, color: 'var(--surface-50)' }}>HumAIne</span>
+              <span style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 600, color: 'var(--surface-50)' }}>humAIne</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--surface-400)" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>

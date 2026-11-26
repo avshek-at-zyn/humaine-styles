@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 /* Trust replies (HP-107 to HP-114, HP-272, HP-273): the standard replies
-   HumAIne gives when an answer has to say how far it can be trusted. One
+   humAIne gives when an answer has to say how far it can be trusted. One
    shape for all of them, written the way a careful colleague speaks.
    The source of the wording is src/lib/assurance.ts and src/lib/replies.ts
    in humaine-personal-mobile; the web app (humaine-personal) carries the
@@ -102,8 +102,8 @@ export function TrustRepliesPage() {
         <div className="page-badge">Pattern</div>
         <h1 className="page-title">Trust Replies</h1>
         <p className="page-desc">
-          The standard replies for the edge cases HP-107 to HP-114, HP-272 and HP-273: when HumAIne has to say how far an answer can be trusted.
-          Every one has the same shape, so it reads as HumAIne being careful rather than as an error. The wording lives in
+          The standard replies for the edge cases HP-107 to HP-114, HP-272 and HP-273: when humAIne has to say how far an answer can be trusted.
+          Every one has the same shape, so it reads as humAIne being careful rather than as an error. The wording lives in
           {' '}<code>src/lib/assurance.ts</code> and <code>src/lib/replies.ts</code>, the same in humaine-personal-mobile and humaine-personal.
         </p>
       </div>
@@ -111,7 +111,7 @@ export function TrustRepliesPage() {
       {/* ── Anatomy ── */}
       <div className="section">
         <h2 className="section-title">One shape for every reply</h2>
-        <p className="section-desc">Always in this order. The reader always knows where to look: how far to trust it, what's happening, what HumAIne can tell them, how sure it is, and what to do next.</p>
+        <p className="section-desc">Always in this order. The reader always knows where to look: how far to trust it, what's happening, what humAIne can tell them, how sure it is, and what to do next.</p>
         <div style={bubble}>
           {part(1, <Strip checks={SCENARIOS[0].checks} />)}
           {part(2, <span style={{ color: 'rgba(255,255,255,0.8)' }}>Thanks for asking, Abhi. It's the right thing to check.</span>)}
@@ -126,7 +126,7 @@ export function TrustRepliesPage() {
             <tr><td>1</td><td>Trust strip: the checks that matter here (Evidence, Sources, Access, Impact, Safety), only the ones flagged</td><td><code>!! Name | ok|watch|stop | what it found</code></td><td>.rt-checks</td></tr>
             <tr><td>2</td><td>Acknowledgement: one line to the person, by name, when it's tense</td><td>plain line</td><td>.rt-para</td></tr>
             <tr><td>3</td><td>Title: the situation in plain words, never a system label</td><td><code># Title</code> (optional <code>#### Eyebrow</code> above)</td><td>.rt-title / .rt-eyebrow</td></tr>
-            <tr><td>4</td><td>Substance: what HumAIne can say; tables for sources side by side, numbered steps for what to do</td><td>text, <code>## Heading</code>, <code>| a | b |</code>, <code>1. step</code>, <code>- point</code></td><td>.rt-heading, .rt-table, .rt-steps</td></tr>
+            <tr><td>4</td><td>Substance: what humAIne can say; tables for sources side by side, numbered steps for what to do</td><td>text, <code>## Heading</code>, <code>| a | b |</code>, <code>1. step</code>, <code>- point</code></td><td>.rt-heading, .rt-table, .rt-steps</td></tr>
             <tr><td>5</td><td>How sure: Low · Moderate · High, why, and whether a person must decide</td><td><code>@ Confidence: Moderate</code>, <code>@ Reason: …</code>, <code>@ Human decision required: Yes</code></td><td>.rt-meta / .rt-sure: plain white text; the level is not coloured, the gauge carries it</td></tr>
             <tr><td>6</td><td>Next step: what would change the answer, or what to do now</td><td><code>&gt; note</code></td><td>.rt-note: plain white text, no box or bar</td></tr>
           </tbody>
@@ -161,7 +161,7 @@ export function TrustRepliesPage() {
       {/* ── The ten ── */}
       <div className="section">
         <h2 className="section-title">The ten scenarios</h2>
-        <p className="section-desc">Pick one to see its strip and title. HP-107 to HP-114 are chosen from the question's meaning (<code>assuranceFor</code>), before the general reply; HP-114 only once HumAIne has answered something. HP-272 and HP-273 come from <code>classifyQuestion</code>.</p>
+        <p className="section-desc">Pick one to see its strip and title. HP-107 to HP-114 are chosen from the question's meaning (<code>assuranceFor</code>), before the general reply; HP-114 only once humAIne has answered something. HP-272 and HP-273 come from <code>classifyQuestion</code>.</p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 16 }}>
           {SCENARIOS.map((x, i) => (
             <button key={x.id} type="button" onClick={() => setPick(i)} aria-pressed={pick === i}

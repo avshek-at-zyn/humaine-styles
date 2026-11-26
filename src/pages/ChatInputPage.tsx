@@ -20,7 +20,7 @@ export function ChatInputPage() {
         <div className="page-badge">Component</div>
         <h1 className="page-title">ChatInput</h1>
         <p className="page-desc">
-          The primary input for HumAIne's AI chat. A card-style container with textarea, attachment menu, voice recording, and send controls.
+          The primary input for humAIne's AI chat. A card-style container with textarea, attachment menu, voice recording, and send controls.
         </p>
       </div>
 

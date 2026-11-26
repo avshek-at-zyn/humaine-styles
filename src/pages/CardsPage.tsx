@@ -54,7 +54,7 @@ export function CardsPage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
             <div style={{ width: 40, height: 40, borderRadius: 'var(--radius-full)', background: 'var(--gradient-brand)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 600, fontSize: 14 }}>AI</div>
             <div>
-              <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--surface-50)' }}>HumAIne Assistant</div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--surface-50)' }}>humAIne Assistant</div>
               <div style={{ fontSize: 11, color: 'var(--surface-500)' }}>Active now</div>
             </div>
           </div>

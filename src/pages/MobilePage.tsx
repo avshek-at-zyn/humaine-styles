@@ -6,7 +6,7 @@ export function MobilePage() {
         <div className="page-badge">Mobile</div>
         <h1 className="page-title">Mobile System</h1>
         <p className="page-desc">
-          Mobile-specific patterns for HumAIne Personal. All components use the same Cosmos tokens as the web apps — same colours, same radii, same typography. Only the layout adapts: 430px max-width, safe-area insets, and touch-optimised sizing.
+          Mobile-specific patterns for humAIne Personal. All components use the same Cosmos tokens as the web apps — same colours, same radii, same typography. Only the layout adapts: 430px max-width, safe-area insets, and touch-optimised sizing.
         </p>
       </div>
 

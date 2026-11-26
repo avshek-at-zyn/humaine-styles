@@ -83,7 +83,7 @@ export function LogoPage() {
         <div className="card" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 20, width: 'fit-content' }}>
           <div style={{ width: 32, height: 32, borderRadius: 10, background: 'var(--gradient-brand)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 15, fontWeight: 700, fontFamily: 'var(--font-display)', color: '#fff' }}>H</div>
           <div>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 600, color: 'var(--surface-50)', letterSpacing: -0.2 }}>HumAIne</div>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 600, color: 'var(--surface-50)', letterSpacing: -0.2 }}>humAIne</div>
             <div style={{ fontSize: 9, color: 'var(--surface-600)', fontFamily: 'var(--font-mono)' }}>by ZynGlobal</div>
           </div>
         </div>
@@ -97,7 +97,7 @@ export function LogoPage() {
             <div style={{ position: 'absolute', top: 6, left: '50%', transform: 'translateX(-50%)', fontSize: 8, color: 'var(--primary-500)', fontFamily: 'var(--font-mono)' }}>1× height</div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <div style={{ width: 36, height: 36, borderRadius: 10, background: 'var(--gradient-brand)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 17, fontWeight: 700, fontFamily: 'var(--font-display)', color: '#fff' }}>H</div>
-              <span style={{ fontFamily: 'var(--font-display)', fontSize: 16, fontWeight: 600, color: 'var(--surface-50)' }}>HumAIne</span>
+              <span style={{ fontFamily: 'var(--font-display)', fontSize: 16, fontWeight: 600, color: 'var(--surface-50)' }}>humAIne</span>
             </div>
           </div>
         </div>
